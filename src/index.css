@@ -1,11 +1,19 @@
 @import "tailwindcss";
 
+/* Roboto everywhere: Tailwind's sans, mono and display stacks all point to it */
+@theme {
+  --font-sans: 'Roboto', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Roboto', system-ui, -apple-system, sans-serif;
+  --font-display: 'Roboto', system-ui, -apple-system, sans-serif;
+}
+
 @layer base {
   body {
-    font-family: 'Roboto', system-ui, -apple-system, sans-serif;
+    font-family: var(--font-sans);
   }
-  h1, h2, h3, .font-display {
-    font-family: 'Roboto', system-ui, -apple-system, sans-serif;
+  /* Codes, timers and prices set in font-mono keep aligned digits */
+  .font-mono {
+    font-variant-numeric: tabular-nums;
   }
 }
 
