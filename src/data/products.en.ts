@@ -8,6 +8,7 @@ export interface ProductEnOverride {
   tagline: string;
   features: string[];
   specs: Record<string, string>;
+  highlights?: { title: string; desc: string }[];
   videoTitle?: string;
   variants?: { name: string; value: string; badge?: string }[];
   colorOptions?: { name: string }[];
@@ -18,553 +19,2165 @@ export const PRODUCTS_EN: Record<string, ProductEnOverride> = {
   'lio-666v': {
     name: 'Livotec E-smart LIO-666V Double Induction Hob',
     tagline: 'Genuine Livotec double induction hob',
-    features: [],
+    features: [
+      'Smart Inverter – efficient power control, energy saving',
+      'E-smart – steady heat for more precise cooking',
+      '100% pure copper coil – heats fast, lasts for years',
+      'Super-fast Booster – up to 4800W across 2 cooking zones',
+      'Smart Start – safe start-up, prevents accidental operation',
+      'Quickstop – automatic shut-off when spills are detected',
+      'Low-simmer mode – steady heat for richer flavor',
+      '9 power levels from 400W – 2400W – flexible for any cooking',
+      'Independent timer up to 99 minutes per cooking zone',
+      'Premium Eduraz glass – withstands up to 800°C, durable and easy to clean',
+      'Mirror-printed design with an elegant aluminum rim'
+    ],
     specs: {
       Brand: 'Livotec',
-      Model: 'LIO-666V',
-      Category: 'Induction hob',
-      'Cooking zones': '2'
-    }
+      Model: 'LIO-666VT',
+      Type: 'Double induction hob',
+      'Induction coil': 'Copper',
+      'IGBT control': 'Infineon',
+      'Cooking zones': '2 induction zones',
+      'Cooking zone size': '222 mm',
+      'Cooling fan': '2 coaxial fans',
+      'Inverter technology': 'Yes',
+      'Control panel': 'Independent 2-zone touch sliders',
+      'Glass surface': 'Eduraz',
+      Features: 'Booster, timer, child lock',
+      'Safety functions': '10 safety features',
+      'Product dimensions': '730 × 430 × 60 mm',
+      'Cut-out size': '690 × 400 mm',
+      Warranty: '36 months / 30 days'
+    },
+    highlights: [
+      { title: 'ENERGY SAVING AND DURABLE WITH SMART INVERTER TECHNOLOGY', desc: 'The Livotec LIO-666V double induction hob uses an Infineon IGBT chip (Germany) for precise power control and optimal heating throughout cooking. Its flexible power adjustment responds quickly to each setting, making heat control easier and more precise.' },
+      { title: 'PRECISE TEMPERATURE CONTROL WITH E-SMART TECHNOLOGY', desc: 'E-smart technology lets the LIO-666V control power to match the set level, so the heat output tracks real cooking needs. The hob keeps heating more stable, making it easy to control the temperature for each dish and each cooking stage.' },
+      { title: 'FAST, LASTING HEATING WITH A PURE COPPER COIL', desc: 'The LIO-666V uses a 100% pure copper induction coil for better conductivity and heat transfer than aluminum-blend coils. Heat builds faster and reaches the bottom of the pan efficiently, shortening cooking time.' },
+      { title: 'SUPER-FAST COOKING WITH BOOSTER MODE', desc: 'In Booster mode, the LIO-666V raises the cooking zone to its maximum 2400W, giving strong heat for tasks that need fast heating such as boiling water, preheating pans or high-temperature cooking. A total of up to 4800W across both zones makes cooking faster and more efficient.' },
+      { title: 'SAFER WITH SMART START SOFT-START TECHNOLOGY', desc: 'The LIO-666V has Smart Start: press and hold the lock button for about 2 seconds before starting the hob. This confirmation step prevents accidental activation from stray touches.' },
+      { title: 'QUICKSTOP – AUTO SHUT-OFF WHEN WATER SPILLS ON THE CONTROL PANEL', desc: 'When cooking watery dishes such as soups, hot pots or stews, boiling over can happen at any moment. With Quickstop technology, the LIO-666V switches off automatically when water or liquid spills onto the control panel, limiting risks during use.' },
+      { title: 'PEACE OF MIND WITH 10 LAYERS OF SAFETY PROTECTION', desc: 'The hob has a system of 10 safety features that monitor and protect it throughout operation. When it detects abnormal situations such as overheating, no pan, unsuitable cookware or water spilling onto the controls, it warns you or switches off to limit risks.' },
+      { title: 'MORE CONTROL WITH A TIMER OF UP TO 99 MINUTES PER COOKING ZONE', desc: 'The Livotec LIO-666V double induction hob has a timer of up to 99 minutes per cooking zone, so you can set the right time for each dish. When the time is up, the hob switches off automatically without any extra action.' }
+    ]
   },
   'lid-888': {
     name: 'Livotec LID-888 Double Induction-Infrared Hob',
     tagline: 'Genuine Livotec double induction-infrared hob',
-    features: [],
+    features: [
+      'Double induction hob with up to 4000W cooking power to save time',
+      'Touch slider control panel with 9 heat/power levels',
+      'Eduraz Ceramic glass withstands up to 800℃, with an aluminum rim against knocks and scratches',
+      'Smart hob shut-off effectively prevents spills and keeps you safe',
+      'One-touch quick cooking',
+      'Child lock'
+    ],
     specs: {
       Brand: 'Livotec',
       Model: 'LID-888',
-      Category: 'Induction hob',
-      'Cooking zones': '2',
-      'Hob type': 'Induction + infrared'
-    }
+      Type: 'Double induction hob',
+      'Total power': '4,000 W',
+      'Cooking zone power': 'Left 2,000 W; Right 2,000W',
+      'Installation type': 'Built-in and freestanding installation',
+      'Control panel': 'Touch',
+      'Cooktop material': 'Eduraz Ceramic glass',
+      Standard: 'QCVN 9:2012/BKHCN and amendment 1:2018 QCVN 9:2012/BKHCN',
+      'Cookware type': 'Use only cookware with a magnetic base',
+      Features: 'Booster cooking mode; swipe to set power',
+      'Safety features': 'Overheat shut-off; low-voltage warning; anti-spill protection for the control panel; no-pan warning; hot-surface warning',
+      'Cut-out size': '680 x 390 mm',
+      Warranty: '24 months',
+      'Made in': 'China'
+    },
+    highlights: [
+      { title: 'SMART AUTO SHUT-OFF – MAXIMUM SAVINGS', desc: 'More than a place where countless delicious dishes are made, the Livotec LID-888 has a smart shut-off feature for maximum safety every time you cook. It also saves you cooking time so you have more time to enjoy life.' },
+      { title: '2 INDEPENDENT COOKING ZONES – 9 ADJUSTABLE POWER LEVELS', desc: 'Each cooking zone has its own touch control panel with 9 power levels, easily adjusted with a swipe. With 9 levels you can make countless dishes, from gentle low-heat frying to soups that need high heat.' },
+      { title: 'BOOSTER FUNCTION – SUPER-FAST COOKING – SAVES TIME', desc: 'Just touch the Booster button on the control panel and the hob jumps to maximum power in moments, cooking food super-fast and shortening cooking time. This is especially useful for dishes that need fast heating to keep their authentic flavor.' },
+      { title: 'PREMIUM EDURAZ GLASS – EXCELLENT HEAT AND IMPACT RESISTANCE', desc: 'The Livotec LID-888 double induction-infrared hob uses premium Eduraz glass that withstands impacts and heat up to 800°C, dissipates heat quickly, resists scratches and is easy to wipe clean.' },
+      { title: 'QCVN 9:2012/BKHCN CERTIFIED', desc: 'The product meets QCVN 9:2012/BKHCN for induction hobs, demonstrating stability and good compatibility with the whole electrical system.' }
+    ]
   },
   'lv-200': {
     name: 'Livotec LV-200 Cordless Vacuum Cleaner',
     tagline: 'Genuine Livotec cordless vacuum cleaner',
-    features: [],
+    features: [
+      'Cordless handheld',
+      'Strong suction up to 25,000 PA',
+      'EMO technology: light, easy-to-handle movement assist',
+      'HEPA filter: captures 99.97% of fine dust to protect your lungs',
+      'Tornado cyclone suction: deep cleaning, optimized suction',
+      'Brushless BDC motor: 1.5 times more efficient, up to 30% battery savings',
+      'Onto technology: one-touch operation, quick hands-free cleaning',
+      'Multiple nozzles: handles every area flexibly, including corners',
+      'Removable 2000mAh battery: up to 30 minutes of continuous use, charges separately'
+    ],
     specs: {
+      Model: 'Livotec LV-200',
+      Type: 'Cordless vacuum cleaner',
+      'Operating power': '120W',
+      'Suction power': '15/25 kPa',
+      'Container type': 'Container',
+      Capacity: '200ml',
+      'Highest noise': '60 dB',
+      Filter: 'HEPA filter',
+      'Nozzle types': 'Floor nozzle',
+      'Battery capacity': '2000 mAh',
+      Runtime: '30 minutes',
       Brand: 'Livotec',
-      Model: 'LV-200',
-      Category: 'Vacuum cleaner',
-      Power: 'Cordless (battery)'
-    }
+      'Launch year': '2025',
+      Technology: '1. EMO technology 2. HEPA filtration 3. Tornado smart cyclone suction 4. Smart compact design 5. Brumo technology with a brushless BLDC motor 6. Removable 2000mAh battery',
+      Features: 'LED light – battery indicator – anti-tangle for hair',
+      'Dimensions & weight': 'Width 23 cm – Height 98.7 cm – Depth 18 cm – Weight 1.2 kg',
+      'Unit weight': '1603g',
+      'Product dimensions': '230,5x165x1034.6',
+      'Rated voltage': '22.2V DC',
+      'Motor power': '250W',
+      Noise: '60 dB',
+      Suction: '15/25 kPa',
+      'Filtration technology': 'HEPA filter',
+      'Control mode': 'On/off push switch – ECO/MAX mode buttons',
+      'Motor type': 'Brushless DC motor with silicon steel core',
+      'Rotation speed': 'Rotation speed: 86,260 RPM',
+      'Dust container volume': 'Volume: 250 ml',
+      Material: 'Premium ABS plastic',
+      'Battery type': 'TP LI-ION (Li-ion) ICR 18650',
+      'Number of batteries': '6 pin',
+      'Full charging time': '4h30p'
+    },
+    highlights: [
+      { title: 'MOVEMENT ASSIST – CLEANS EVERYTHING', desc: 'Unlike typical vacuum cleaners that focus only on suction, the LV-200 offers a complete experience: 1.25 times the suction (25,000PA), smooth movement with EMO technology, thorough fine-dust cleaning with powerful TORNADO cyclones, and BRUMO efficiency that saves up to 30% battery.' },
+      { title: 'EMO technology – smart movement assist', desc: 'The Livotec LV-200 handheld vacuum features EMO technology with an assist motor that helps it move. Vacuuming becomes light, smooth and flexible – you can easily clean wooden floors, stone or carpets with one hand.' },
+      { title: 'Brumo technology – brushless BLDC motor', desc: 'The Livotec LV-200 vacuum has a contactless Brumo BLDC motor that creates strong centrifugal force, increasing suction efficiency 2.5 times and saving up to 30% battery. The brushless design runs more quietly and lasts far longer than traditional vacuums.' },
+      { title: 'Tornado technology – smart cyclone suction', desc: 'The Livotec LV-200 vacuum integrates Tornado technology, creating a powerful high-speed centrifugal vortex that separates fine dust, hair and debris from the first stage. Suction stays steady and container clogging is minimized.' },
+      { title: 'MASUFO technology – cleans in a single pass', desc: 'The Livotec LV-200 vacuum features Masufo technology with up to 25,000PA suction, removing dust, debris and hair in a single pass.' },
+      { title: 'HEPA filter – captures 99.97% of fine dust', desc: 'The Livotec LV-200 vacuum has a HEPA filter combined with a 4-layer filtration system that removes up to 99.97% of ultra-fine particles ≥ 0.3 microns.' },
+      { title: 'LIPO technology – dust-revealing light for every corner', desc: 'The Livotec LV-200 vacuum features LIPO technology with a green LED light that reveals fine dust and small debris in dim places such as under beds, cabinet corners and narrow gaps. Cleaning becomes more thorough, with no dust left behind.' },
+      { title: 'High-capacity lithium battery – up to 30 minutes of continuous suction', desc: 'The Livotec LV-200 vacuum has a high-capacity lithium battery that runs continuously for up to 30 minutes on a single charge. You can comfortably clean the whole home without interruption.' }
+    ]
   },
   'lv-100': {
     name: 'Livotec LV-100 Cordless Vacuum Cleaner',
     tagline: 'Genuine Livotec cordless vacuum cleaner',
-    features: [],
+    features: [
+      'Cordless handheld',
+      'Strong suction up to 20,000 PA',
+      'Tornado technology: deep-cleaning suction',
+      'Brushless BDC motor: higher efficiency, longer battery life',
+      'Multiple nozzles: flexible cleaning everywhere',
+      'Removable 2000mAh battery, up to 40 minutes of continuous use',
+      'Durable design, stable operation'
+    ],
     specs: {
+      Model: 'Livotec LV-100',
+      Type: 'Cordless vacuum cleaner',
+      'Operating power': '250W',
+      'Suction power': '15/25 kPa',
+      'Container type': 'Container',
+      Capacity: '600ml',
+      'Highest noise': '58.2 dB',
+      Filter: 'HEPA filter',
+      'Nozzle types': 'Floor nozzle – 2-in-1 nozzle – crevice nozzle',
+      'Battery capacity': '2000 mAh',
+      Runtime: '40 minutes',
       Brand: 'Livotec',
-      Model: 'LV-100',
-      Category: 'Vacuum cleaner',
-      Power: 'Cordless (battery)'
-    }
+      'Launch year': '2025',
+      Technology: '1. HEPA filtration 2. Tornado smart cyclone suction 3. MASUFO technology 4. Multiple nozzles – flexible cleaning in every corner 5. Brumo technology with a brushless BDC motor 6. Removable 2000mAh battery',
+      Features: 'LED light – battery indicator – anti-tangle for hair',
+      'Dimensions & weight': 'Width 24.4 cm – Height 120.8 cm – Depth 22.6 cm – Weight 1.85 kg',
+      'Unit weight': '1868g',
+      'Product dimensions': '113.4×226.5×1207.9',
+      'Rated voltage': '14.4V DC',
+      'Motor power': '150W',
+      Noise: '58.2 dB',
+      Suction: '15/20 kPa',
+      'Filtration technology': 'Multi-layer mechanical filter',
+      'Control mode': 'On/off push switch – MIN/MAX mode buttons',
+      'Motor type': 'Brushless DC motor with silicon steel core',
+      'Rotation speed': 'Rotation speed: 55,488 RPM',
+      'Dust container volume': '600 ml',
+      Material: 'Premium ABS plastic',
+      'Battery type': 'TP LI-ION (Li-ion) ICR 18650',
+      Efficiency: 'Runtime: min 18 min - max 40 min',
+      'Number of batteries': '6 batteries – connected in series',
+      'Full charging time': '4.5 hours'
+    },
+    highlights: [
+      { title: 'Brumo technology – brushless BLDC motor', desc: 'The Livotec LV-100 handheld vacuum has a contactless Brumo BLDC motor that creates a powerful vortex, doubling suction efficiency and saving up to 30% battery.' },
+      { title: 'Tornado technology – smart cyclone suction', desc: 'Effective dust separation keeps suction steady and limits container clogging. With this technology, the LV-100 delivers lasting cleaning performance, overcoming the weakness of ordinary vacuums that lose suction as dust builds up.' },
+      { title: 'MASUFO technology – cleans in a single pass', desc: 'The Livotec LV-100 vacuum features Masufo technology with up to 20,000PA suction, easily handling fine dust, fallen hair and debris in a single pass.' },
+      { title: 'High-capacity lithium battery – up to 40 minutes of continuous suction', desc: 'The Livotec LV-100 vacuum uses a high-capacity lithium battery for up to 40 minutes of runtime on a single charge. With such long runtime, you can easily clean the whole home without interruption.' },
+      { title: 'Smart anti-tip design – convenient anytime, safe anywhere', desc: 'The Livotec LV-100 vacuum has an advanced anti-tip design that lets it stand on its own anywhere when you pause, without leaning it on a wall or laying it on the floor. You can take a break or move furniture while cleaning without worrying about it falling over.' },
+      { title: 'Multiple nozzles – flexible cleaning', desc: 'The Livotec LV-100 vacuum comes with several specialized nozzles that are easy to swap for each surface and area. From wooden floors, under beds and narrow gaps to sofas and car interiors, all dirt is handled quickly.' }
+    ]
   },
   'lv-99': {
     name: 'Livotec LV-99 Cordless Vacuum Cleaner',
     tagline: 'Genuine Livotec cordless vacuum cleaner',
-    features: [],
+    features: [
+      'Cordless handheld',
+      'Compact design, weighs only 1,238g',
+      'EMO technology: light movement assist',
+      'Strong suction with Tornado technology',
+      'HEPA filter: captures 99.97% of fine dust',
+      'Brushless BDC motor: 30% battery savings',
+      'Removable 2000mAh battery: up to 30 minutes of use',
+      'Convenient Type-C charging'
+    ],
     specs: {
+      Model: 'Livotec LV-99',
+      Type: 'Cordless vacuum cleaner',
+      'Operating power': '250W',
+      'Suction power': '15/25 kPa',
+      'Container type': 'Container',
+      Capacity: '250ml',
+      'Highest noise': '60 dB',
+      Filter: 'HEPA filter',
+      'Nozzle types': 'Floor nozzle – 2-in-1 nozzle – crevice nozzle',
+      'Battery capacity': '2000 mAh',
+      Runtime: '30 minutes',
       Brand: 'Livotec',
-      Model: 'LV-99',
-      Category: 'Vacuum cleaner',
-      Power: 'Cordless (battery)'
-    }
+      'Launch year': '2025',
+      Technology: '1. EMO technology 2. HEPA filtration 3. Tornado smart cyclone suction 4. MASUFO technology 5. Brumo technology with a brushless BDC motor 6. Onto technology 7. Multiple nozzles 8. Removable 2000mAh battery',
+      Features: 'LED light – battery indicator – anti-tangle for hair',
+      'Dimensions & weight': 'Width 23 cm – Height 103.5 cm – Depth 16.5 cm – Weight 1.6 kg',
+      'Unit weight': '1238g',
+      'Product dimensions': '65.8×84.3×987.2',
+      'Rated voltage': '11.1 V DC',
+      'Motor power': '120W',
+      Noise: '60.5 dB',
+      Suction: '10/15 kPa',
+      'Filtration technology': 'HEPA filter',
+      'Control mode': 'On/off push switch – 2-mode control buttons',
+      'Motor type': 'Brushless DC motor with silicon steel core',
+      'Rotation speed': 'Rotation speed: 48,517 RPM',
+      'Dust container volume': 'Volume: 200 ml',
+      Material: 'Premium ABS plastic',
+      'Battery type': 'TP LI-ION (Li-ion) ICR 18650',
+      'Number of batteries': '3 pin',
+      'Full charging time': '3h30p'
+    },
+    highlights: [
+      { title: 'COMPACT AND SMART. MOVEMENT ASSIST, CLEANS EVERYTHING', desc: 'Designed for users who value convenience, compactness and superior cleaning. With a range of modern technologies, it not only cleans easily but also protects your health with every use.' },
+      { title: 'SMART MOVEMENT ASSIST WITH EMO TECHNOLOGY', desc: 'Unlike ordinary vacuum cleaners, the Livotec LV-99 uses EMO smart movement assist, so it glides extremely smoothly and feels light. You can work on any surface effortlessly, even during long sessions.' },
+      { title: 'BRUMO TECHNOLOGY – BRUSHLESS BLDC MOTOR', desc: 'The Livotec LV-99 vacuum uses a contactless Brumo BLDC motor that creates strong centrifugal force – 1.5 times the suction, up to 30% battery savings, and quieter, longer-lasting operation than ordinary vacuums.' },
+      { title: 'TORNADO CYCLONE SUCTION – OPTIMIZED SUCTION POWER', desc: 'Tornado technology on the Livotec LV-99 creates a high-speed centrifugal vortex that separates dust, hair and debris from the first layer, keeping suction strong and limiting clogging. This outperforms ordinary vacuums without centrifugal separation, which lose suction as the container fills.' },
+      { title: 'FINE DUST FILTRATION WITH A HEPA FILTER', desc: 'The HEPA filter in the Livotec LV-99 captures up to 99.97% of fine dust, including ultra-small particles in the air.' },
+      { title: 'LIPO TECHNOLOGY – DUST-REVEALING LIGHT FOR EVERY CORNER', desc: 'LIPO technology on the Livotec LV-99 has a green LED light that reveals tiny dust in dark corners, under beds and shelves, so no speck is missed. Ordinary vacuums without a light make dust in dark areas hard to see and clean.' },
+      { title: 'HIGH-CAPACITY REMOVABLE BATTERY', desc: 'The Livotec LV-99 vacuum uses a high-capacity 2000mAh lithium battery for up to 30 minutes of continuous use – enough to clean a whole apartment or car. The removable battery is convenient for charging separately or replacing when needed.' },
+      { title: 'SMART ANTI-TIP DESIGN – CONVENIENT ANYTIME, SAFE ANYWHERE', desc: 'The Livotec LV-99 vacuum has a smart anti-tip design that lets it stand on its own anywhere when you pause, without leaning on a wall or lying down. You can easily take a break or move furniture while cleaning without worrying about it falling.' }
+    ]
   },
   'lac-g62': {
     name: 'Livotec LAC-G62 Evaporative Air Cooler',
     tagline: 'Genuine Livotec evaporative air cooler',
-    features: [],
+    features: [
+      'Compact, stylish design',
+      'Negative ions help purify the air',
+      'Nano Silver filter',
+      'Touch control panel',
+      'Pump cut-off when water runs low (with float)',
+      'Easy-moving wheels, dry gel – ice packs',
+      '12-hour timer and 12-month warranty'
+    ],
     specs: {
       Brand: 'Livotec',
       Model: 'LAC-G62',
-      Category: 'Evaporative air cooler'
-    }
+      'Cooling range': '25m²',
+      'Fan power': '135W',
+      Voltage: '220V/50Hz',
+      'Max noise': '60 dB',
+      'Tank capacity': '15.5 liters',
+      'Control panel': 'Touch; with remote',
+      'Fan speeds': '3 fan speeds',
+      'Wind mode': 'Normal breeze',
+      'Air output': '1325 m³/h',
+      Features: 'Ice box for cooling; negative ion air purification; remote control; automatic pump cut-off when water runs low; off-timer; display screen; water-level gauge; tank drain valve; automatic left–right oscillation; moving wheels; automatic fan speed based on room temperature',
+      Dimensions: '340x320x1100 mm',
+      Weight: '11 Kg',
+      Origin: 'Vietnam',
+      'Launch year': '2025',
+      Warranty: '12 Tháng'
+    },
+    highlights: [
+      { title: 'SMART TECHNOLOGY – GERM-FREE, FRESH AIR', desc: 'More than a top cooling solution for open spaces of about 25m2 with 2 levels of cool airflow, the LAC-G62 air cooler also looks after the whole family\'s health with fresh, germ-free air.' },
+      { title: 'NANO SILVER FILTER: REMOVES BACTERIA FOR TRULY FRESH AIR', desc: 'The LAC-G62 has a Nano Silver filter that removes bacteria and viruses so the air it blows is clean, fresh and healthy. The Nano Silver filter also limits mold getting inside, keeping the system clean and running reliably.' },
+      { title: 'NEGATIVE ION TECHNOLOGY – FRESH, CLEAN AIR', desc: 'Negative ion technology releases negative ions into the air to remove fine dust, bacteria, smoke and odors, keeping the air fresh and clean. You\'ll feel more comfortable and relaxed, less stressed and tired, and sleep better.' },
+      { title: '3 FAN SPEEDS – ADJUST BY SMART TOUCH OR REMOTE CONTROL', desc: 'The Livotec LAC-G62 has 3 fan speeds – high, medium and low – adjustable precisely and easily with smart touch controls on the fan body.' },
+      { title: 'WATER-LEVEL SENSOR – AUTOMATIC PUMP CUT-OFF', desc: 'The Livotec LAC-G62 air cooler cuts off the pump automatically when the water runs low to protect it from running dry, keeping the unit stable, reducing maintenance costs and extending the fan\'s life.' },
+      { title: 'ICE GEL & WATER MIST – FAST COOLING, OPTIMAL HUMIDITY', desc: 'Ice gel combined with water mist creates a cool, pleasant breeze while keeping natural humidity, without drying the skin.' },
+      { title: 'TIMER UP TO 12 HOURS', desc: 'The Livotec LAC-G62 lets you set its run time with a timer of up to 12 hours, saving electricity and helping you sleep soundly.' },
+      { title: 'COMPACT DESIGN – FITS ANY SPACE', desc: 'The product has an elegant style, compact size and refined white color that suit almost any home. Its premium housing resists dust and is easy to wipe, keeping it looking good for a long time.' }
+    ]
   },
   'lac-g60': {
     name: 'Livotec LAC-G60 Evaporative Air Cooler',
     tagline: 'Genuine Livotec evaporative air cooler',
-    features: [],
+    features: [
+      'Compact, stylish design',
+      'Negative ions help purify the air',
+      'Nano Silver filter',
+      'Touch control panel',
+      'Pump cut-off when water runs low (with float)',
+      'Easy-moving wheels, dry gel – ice packs',
+      '12-hour timer and 12-month warranty'
+    ],
     specs: {
       Brand: 'Livotec',
       Model: 'LAC-G60',
-      Category: 'Evaporative air cooler'
-    }
+      'Cooling range': '15m²',
+      'Fan power': '75W',
+      Voltage: '220V/50Hz',
+      'Max noise': '60 dB',
+      'Tank capacity': '15.5 liters',
+      'Control panel': 'Touch; with remote',
+      'Fan speeds': '3 fan speeds',
+      'Wind mode': 'Normal breeze',
+      'Air output': '590 m³/h',
+      Features: 'Ice box for cooling; negative ion air purification; remote control; automatic pump cut-off when water runs low; off-timer; display screen; water-level gauge; tank drain valve; automatic left–right oscillation; moving wheels; automatic fan speed based on room temperature;',
+      Dimensions: '340x320x755 mm',
+      Weight: '8 Kg',
+      Origin: 'Vietnam',
+      'Launch year': '2025',
+      Warranty: '12 Tháng'
+    },
+    highlights: [
+      { title: 'LAC-G60 AIR COOLER: 1.5 TIMES FARTHER COOL BREEZE – SMART CONTROL, 25% ENERGY SAVING', desc: 'With a cool breeze that reaches 1.5 times farther and 25% energy savings compared to typical air coolers, the Livotec LAC-G60 is an ideal cooling solution for open spaces of about 20m2.' },
+      { title: 'NANO SILVER FILTER: REMOVES BACTERIA FOR TRULY FRESH AIR', desc: 'The LAC-G60 has a Nano Silver filter that removes bacteria and viruses so the air it blows is clean, fresh and healthy. The Nano Silver filter also limits mold getting inside, keeping the system clean and running reliably.' },
+      { title: 'NEGATIVE ION TECHNOLOGY – FRESH, CLEAN AIR', desc: 'Negative ion technology releases negative ions into the air to remove fine dust, bacteria, smoke and odors, keeping the air fresh and clean. You\'ll feel more comfortable and relaxed, less stressed and tired, and sleep better.' },
+      { title: '3 FAN SPEEDS – ADJUST BY SMART TOUCH OR REMOTE CONTROL', desc: 'The Livotec LAC-G60 has 3 fan speeds – high, medium and low – adjustable precisely and easily with smart touch controls on the fan body.' },
+      { title: 'WATER-LEVEL SENSOR – AUTOMATIC PUMP CUT-OFF', desc: 'Automatic pump cut-off when the water runs low protects the pump from running dry, keeps the unit stable, reduces maintenance costs and extends the fan\'s life.' },
+      { title: 'ICE GEL & WATER MIST – FAST COOLING, OPTIMAL HUMIDITY', desc: 'Ice gel combined with water mist creates a cool, pleasant breeze while keeping natural humidity, without drying the skin.' },
+      { title: 'TIMER UP TO 12 HOURS', desc: 'The Livotec LAC-G60 lets you set its run time with a timer of up to 12 hours, saving electricity and helping you sleep soundly.' },
+      { title: 'COMPACT DESIGN – FITS ANY SPACE', desc: 'The product has an elegant style, compact size and refined white color that suit almost any home. Its premium housing resists dust and is easy to wipe, keeping it looking good for a long time.' }
+    ]
   },
   'lac-h66': {
     name: 'Livotec LAC-H66 Evaporative Air Cooler',
     tagline: 'Genuine Livotec evaporative air cooler',
-    features: [],
+    features: [
+      'Waterproof copper motor',
+      'Cools up to 55m², 10,600m³/h airflow',
+      'Large water tank runs 24h non-stop',
+      'Simple, easy-to-use mechanical controls',
+      'Environmentally friendly product',
+      '24-month warranty'
+    ],
     specs: {
       Brand: 'Livotec',
       Model: 'LAC-H66',
-      Category: 'Evaporative air cooler'
-    }
+      'Cooling range': '75m²',
+      'Fan power': '260W',
+      Voltage: '220V/50Hz',
+      'Max noise': '≤ 68dB',
+      'Tank capacity': '75 Lít',
+      'Control panel': 'Push buttons',
+      'Wind speed': '11,58 m/s',
+      'Fan speeds': '3',
+      'Wind mode': '2',
+      'Air output': '10,600 m³/h',
+      Features: 'Includes 2 ice packs; easy-moving wheels; automatic pump cut-off when water runs out; water-resistant motor',
+      Dimensions: '600 x 430 x 1210 mm',
+      Weight: '16 Kg',
+      Origin: 'China',
+      'Launch year': '2025',
+      Warranty: '24 Tháng'
+    },
+    highlights: [
+      { title: '1.5 TIMES THE AIRFLOW – COOL – FAST – DURABLE', desc: 'The LAC-H66 delivers powerful airflow 1.5 times larger than usual for effective, instant cooling.' },
+      { title: 'OUTSTANDING AIRFLOW – 1.5 TIMES THE COOLING', desc: '260W power, maximum airspeed of 11.58m/s and 10,600 m3/h airflow – far ahead of typical products with the same power.' },
+      { title: 'LARGE COVERAGE UP TO 55M2', desc: 'With fast cooling, the LAC-H66 air cooler suits large open spaces of up to 55m2 such as cafés, eateries and garden houses. It overcomes the drawbacks of air conditioners and mist fans: high cost, high power use, water spray and being unsuitable for large open spaces.' },
+      { title: 'WATER TANK UP TO 75 LITERS – FAN RUNS 24H NON-STOP', desc: 'The Livotec LAC-H66 has a tank of up to 75 liters; with average evaporation of 3-5L/h, the fan can run continuously for 24h without refilling.' },
+      { title: 'ICE BOX WITH WATER MIST – COOLS 3 TIMES FASTER', desc: 'Ice gel combined with water mist creates a deep, fast cooling breeze that stays comfortable and pleasant – and never dries your skin. With a single turn of the start knob, you instantly feel cool relief from the summer heat.' },
+      { title: '3 FLEXIBLE COOLING MODES', desc: 'With an easy mechanical dial control panel, you can choose 3 cooling modes – low, medium, high – plus a combined fan and water-mist mode and adjust the air direction to suit your needs.' },
+      { title: 'REFINED DESIGN – ENVIRONMENTALLY FRIENDLY', desc: 'The LAC-H66 has a refined, modern design. Its ABS/PP plastic housing is safe for users.' },
+      { title: '24-MONTH WARRANTY – PEACE OF MIND', desc: 'The LAC-H66 comes with a warranty of up to 24 months. Any product issues during use are fixed quickly by a highly skilled, experienced technical team.' }
+    ]
   },
   'lac-g66s': {
     name: 'Livotec LAC-G66S Evaporative Air Cooler',
     tagline: 'Genuine Livotec evaporative air cooler',
-    features: [],
+    features: [
+      'Waterproof copper motor',
+      'Large cooling area up to 75m2',
+      'Large water tank runs 24h non-stop',
+      'Smart touch-button control panel',
+      'Convenient remote control',
+      'Environmentally friendly product',
+      '24-month warranty'
+    ],
     specs: {
       Brand: 'Livotec',
       Model: 'LAC-G66S',
-      Category: 'Evaporative air cooler'
-    }
+      Voltage: '220V/50Hz',
+      'Wind mode': '3',
+      'Wind speed': '11,58m/s',
+      'Max noise': '≤ 68dB',
+      'Control panel': 'Touch, with remote',
+      Features: '12h timer; extra humidifying mode – includes 2 ice packs; easy-moving wheels; water-resistant motor; water-level sensor with a float that cuts off the pump. Dust screen keeps out insects, hair and dirt.',
+      Dimensions: '600 x 430 x 1210 mm',
+      Weight: '16 kg',
+      Origin: 'China',
+      'Launch year': '2025',
+      'Cooling range': '75m²',
+      'Fan power': '260W',
+      'Tank capacity': '75 Lít',
+      'Fan speeds': '3',
+      'Air output': '10.600 m³/h',
+      Warranty: '24 Tháng'
+    },
+    highlights: [
+      { title: '1.5 TIMES COOLER AND FARTHER – SMART TOUCH CONTROL WITH HUMIDIFYING', desc: 'The Livotec LAC-G66S air cooler creates powerful airflow 1.5 times larger than usual, cooling quickly and bringing instant relief.' },
+      { title: 'AIRFLOW UP TO 10,600 M3/H – FAST, INSTANT COOLING', desc: 'With 260W power and a maximum airspeed of 11.58m/s, the LAC-G66S air cooler produces airflow of up to 10,600 m3/h, driving away the stifling heat so you feel cool and comfortable almost instantly.' },
+      { title: 'LARGE COOLING AREA UP TO 75M2', desc: 'With fast cooling, the Livotec LAC-G66S air cooler suits large open spaces of up to 75m2 such as cafés, eateries and garden houses. It overcomes the drawbacks of air conditioners and mist fans: high cost, high power use, water spray and being unsuitable for large open spaces.' },
+      { title: 'WATER TANK UP TO 75 LITERS – RUNS 24H NON-STOP', desc: 'The Livotec LAC-G66S has a tank of up to 75 liters; with average evaporation of 3-5L/h, the fan can run continuously for 24h without refilling' },
+      { title: 'WATER-RESISTANT COPPER MOTOR – DURABLE, LONGER LIFE', desc: 'The water-resistant fan motor lasts longer, improves electrical safety and runs reliably. The product also holds CB certification – the electrical safety certification of the International Electrotechnical Commission (IEC).' },
+      { title: 'ICE BOX WITH WATER MIST – COOLS 3 TIMES FASTER', desc: 'Ice gel combined with water mist creates a deep, fast cooling breeze that stays comfortable and pleasant – and never dries your skin. With a single press of the start button, you instantly feel cool relief from the summer heat.' },
+      { title: 'SMART CONTROL – 3 ADJUSTABLE FAN SPEEDS', desc: 'With a smart touch control panel, you can choose 3 fan speeds or the combined fan and water-mist mode (cooling mode) to suit your needs. The display shows temperature and operating mode clearly.' },
+      { title: 'SMART WATER-LEVEL SENSOR – LONGER FAN LIFE', desc: 'The water-level sensor accurately detects how much water is in the tank. When it\'s too low, the float switches off the pump to prevent dry running, extending pump life and keeping the unit stable.' }
+    ]
   },
   'lac-h66s': {
     name: 'Livotec LAC-H66S Evaporative Air Cooler',
     tagline: 'Genuine Livotec evaporative air cooler',
-    features: [],
+    features: [
+      '10,600m3/h airflow for fast, wide-reaching cooling',
+      'Outstanding cooling for large spaces up to 75m2',
+      'Durable, safe water-resistant copper motor',
+      '75-liter water tank, runs 24 hours non-stop',
+      'Easy-to-use mechanical control panel',
+      'Ice packs add extra cooling and can be reused many times.',
+      'Environmentally friendly product',
+      '24-month warranty'
+    ],
     specs: {
       Brand: 'Livotec',
       Model: 'LAC-H66S',
-      Category: 'Evaporative air cooler'
-    }
+      'Cooling range': '75m²',
+      'Fan power': '260W',
+      Voltage: '220V/50Hz',
+      'Max noise': '≤ 68dB',
+      'Tank capacity': '75 Lít',
+      'Control panel': 'Push buttons',
+      'Wind speed': '11,58 m/s',
+      'Fan speeds': '3',
+      'Wind mode': '2',
+      'Air output': '10.600 m³/h',
+      Features: 'Includes 2 ice packs; easy-moving wheels; water-resistant motor; water-level sensor; float-operated automatic pump cut-off; dust screen',
+      Dimensions: '600 x 430 x 1210 mm',
+      Weight: '16kg',
+      Warranty: '24 Tháng'
+    },
+    highlights: [
+      { title: '1.5 TIMES THE WIND STRENGTH – POWERFUL – FAST COOLING – DURABLE', desc: 'The Livotec LAC-H66S air cooler is an effective cooling solution for the hottest days. With airflow 1.5 times stronger than typical air coolers of the same power, it cools your family instantly with fresh, pleasant air from the moment it starts.' },
+      { title: 'OUTSTANDING AIRFLOW – COOLS 1.5 TIMES FASTER', desc: 'With 260W power, maximum airspeed of 11.58 m/s and airflow up to 10,600 m³/h, the LAC-H66S creates outstanding airflow that cools 1.5 times faster than typical air coolers of the same power.' },
+      { title: 'COOLS LARGE SPACES UP TO 75M2', desc: 'Fast and steady cooling makes the Livotec LAC-H66S air cooler well suited to large open areas of up to 75m², such as cafés, restaurants, garden houses and workshops.' },
+      { title: 'WATER-RESISTANT COPPER MOTOR – SAFE TO USE', desc: 'The fan has a water-resistant copper motor with CB certification – the electrical safety certification of the International Electrotechnical Commission (IEC) – which keeps it running reliably and improves user safety throughout its life.' },
+      { title: '75-LITER WATER TANK – RUNS 24 HOURS NON-STOP', desc: 'The LAC-H66S has a large 75-liter water tank with average consumption of about 3-5 liters/hour. It can run continuously for 24 hours without refilling, for maximum convenience.' },
+      { title: 'FAST, PLEASANT COOLING WITH ICE GEL AND WATER MIST', desc: 'The Livotec LAC-H66S air cooler uses ice gel and evaporative water cooling for a fast, pleasant breeze. With a simple switch-on, the summer heat disappears instantly, leaving you relaxed without dry skin – safe for families with young children.' },
+      { title: 'EASILY SWITCH BETWEEN 3 COOLING SPEEDS', desc: 'The intuitive mechanical dial lets you easily choose 3 cooling speeds: low – medium – high. Combined with fan and water-mist modes and flexible oscillation, it suits many different needs.' },
+      { title: 'SMART WATER-LEVEL SENSOR – SAFE TO USE', desc: 'The Livotec LAC-H66S air cooler has a smart protection system for safe, durable operation and a longer product life: the pump cuts off automatically when the water level is low to prevent damage, and a dust and insect screen protects internal parts and keeps performance steady' }
+    ]
   },
   'lch-1597d': {
     name: 'Livotec LCH-1597D Ceramic Heater',
     tagline: 'Genuine Livotec ceramic heater',
-    features: [],
+    features: [
+      'Warms 1.3 times faster; compact, smart design.',
+      'Aero-Boost warms up in just 3 seconds and spreads heat up to 1.5m.',
+      'Trip-Safe & Safe-Skin: multi-layer safety that protects skin and health.',
+      'TripHeat with 3 modes plus an energy-saving Eco mode for every need.',
+      'Touch control, convenient remote, 24h energy-saving timer.'
+    ],
     specs: {
       Brand: 'Livotec',
       Model: 'LCH-1597D',
-      Category: 'Ceramic heater',
-      'Heating element': 'Ceramic'
-    }
+      Style: 'Tabletop',
+      'Housing material': 'ABS',
+      'Heating mode': 'H3, H2, H1, Eco, Ventilation',
+      'Rated power': '1500W',
+      'Voltage/frequency': '220–240V / 50–60Hz',
+      'Coverage area': 'Up to 15m²',
+      'Temperature control': '15–35°C',
+      Control: 'Touch & remote',
+      Noise: '37,7 dB',
+      Timer: '24 hours',
+      'Power cord': '1500mm long, 1.0mm² cross-section',
+      'Unit weight': '1433g',
+      Dimensions: '158 × 168 × 245 mm'
+    },
+    highlights: [
+      { title: 'WARMS 1.3 TIMES FASTER, SPREADS HEAT UP TO 1.5M', desc: 'This power comes with 3-level TRIP-SAFE protection that switches off automatically on overheating or tipping over, keeping your family completely safe. In particular, SAFE-SKIN ceramic heating with "3 no\'s" – no oxygen burning, no dry skin, no fire or explosion risk – keeps your family healthy every day.' },
+      { title: 'TRIP-SAFE – 3-LEVEL SAFETY, COMPLETE PROTECTION', desc: 'The first layer of protection is a tip-over switch that cuts power the moment the heater tilts or is knocked, stopping risks before they start. The second layer is an overheat sensor that constantly monitors and cuts heating if the temperature rises abnormally, so problems never get a chance to happen.' },
+      { title: 'SAFE-SKIN PTC CERAMIC HEATING WITH 3 NO\'S – NO OXYGEN BURNING, NO DRY SKIN, NO FIRE OR EXPLOSION', desc: 'PTC ceramic heating in Livotec heaters warms the air by convection. Air passes over the hot ceramic element and spreads warmth without burning oxygen, keeping the air fresh.' },
+      { title: 'TRIPHEAT 3 HEATING MODES', desc: 'With multi-mode TripHeat technology, you can adjust the heat flexibly with 3 separate heating levels plus an energy-saving Eco mode.' },
+      { title: 'ECO POWER-SAVING MODE – EFFICIENT WARMTH, LOWER COST', desc: 'Thanks to this smart operation, you can enjoy steady warmth all day without worrying about your electricity bill.' },
+      { title: 'CONVENIENT TOUCH & REMOTE CONTROL, 24H TIMER FOR CONTROL AND SAVINGS', desc: 'With a smart control pair – a modern touch panel and a remote – you can operate and adjust every mode easily. You can stay relaxed on the sofa or under a warm blanket and still change the temperature or set the off-timer without getting up.' }
+    ]
   },
   'lch-2089t': {
     name: 'Livotec LCH-2089T Ceramic Heater',
     tagline: 'Genuine Livotec ceramic heater',
-    features: [],
+    features: [
+      '2000W power with a premium DC-motor cooling fan – instant warmth, quiet operation',
+      '4 operating modes: warm, hot, temperature control, cool fan',
+      'Temperature control from 15-40°C for every need',
+      'Flexible, convenient 12-hour timer',
+      '60-degree oscillation spreads warmth evenly across the room',
+      '3-level safety for complete peace of mind',
+      'PTC ceramic heating with 3 NO\'S – no oxygen burning, no dry skin, no fire or explosion',
+      'Modern touch & remote control for convenient operation.',
+      'Sturdy one-piece base for safe use.',
+      'CE certified – meets European safety standards'
+    ],
     specs: {
       Brand: 'Livotec',
       Model: 'LCH-2089T',
-      Category: 'Ceramic heater',
-      'Heating element': 'Ceramic'
-    }
+      Style: 'PTC ceramic heating',
+      'Heating mode': 'Warm, hot, temperature control, cool fan',
+      'Rated power': '2000W',
+      'Voltage/frequency': '220-240V~/50-60Hz',
+      'Coverage area': 'Rooms of 10-25m²',
+      'Temperature control': '15-40°C',
+      Control: 'Touch & remote',
+      Oscillation: '60 degrees',
+      Timer: 'Yes',
+      'Display light': 'Yes',
+      'Unit weight': '1.6 kg',
+      'Overheat auto shut-off': 'Yes',
+      'Tip-over auto shut-off': 'Yes',
+      'Protection relay': 'Yes',
+      'Product dimensions': '170 x 170 x 415 mm'
+    },
+    highlights: [
+      { title: 'INSTANT WARMTH – SMART CONTROL', desc: 'Using modern PTC ceramic heating, the LCH-2089T warms instantly and spreads gentle warmth without burning oxygen or drying the skin – suitable for young children and the elderly.' },
+      { title: '2000W PTC CERAMIC HEATING – INSTANT WARMTH', desc: 'High 2000W power with a premium DC motor spreads heat quickly for instant warmth.' },
+      { title: 'PREMIUM DC MOTOR – DURABLE, OUTSTANDING SAFETY', desc: 'Running on direct current, the unit uses 20-30% less electricity than traditional AC motors, saving significantly in the cold season. It runs quietly without disturbing rest or work, and extends the unit\'s life for years of reliable use.' },
+      { title: 'EASY-SWING – FLEXIBLE 60-DEGREE OSCILLATION', desc: 'Easy-Swing technology lets the heater oscillate up to 60°, extending heating coverage to 25m². Warm air spreads evenly around the room instead of staying in one spot, creating a cozy, relaxing atmosphere for the whole family all winter.' },
+      { title: 'SAFE-HEAT 3-LEVEL PROTECTION – COMPLETE PEACE OF MIND', desc: 'Overheat relay sensor: cuts power automatically when the temperature exceeds the safe threshold, protecting parts and users from fire risk. Smart anti-tip: switches off when placed on a slope or tipped over, keeping families with young children or pets safe.' },
+      { title: 'SAFE-SKIN – PTC CERAMIC HEATING WITH 3 NO\'S: NO OXYGEN BURNING, NO DRY SKIN, NO FIRE OR EXPLOSION', desc: 'The Livotec LCH-2089T ceramic heater offers modern, fast, safe and health-friendly heating with SAFE-SKIN technology and a premium PTC ceramic core. It not only warms instantly but also keeps you comfortable all winter.' },
+      { title: 'SMART-HEAT – 4 FLEXIBLE HEATING MODES FOR EVERY NEED', desc: 'Using modern SMART-HEAT technology, the Livotec LCH-2089T is a smart heating solution that fully meets every family need with 4 heating modes.' },
+      { title: 'FLEXIBLE TEMPERATURE SETTING FROM 15-40°C – FOR EVERY NEED', desc: 'Flexible temperature control lets the LCH-2089T work efficiently, save power and feel more comfortable than ordinary heaters with a single fixed heat level. The Livotec LCH-2089T ceramic heater offers convenient, safe and personalized warmth for any space.' }
+    ]
   },
   'lch-2079t': {
     name: 'Livotec LCH-2079T Ceramic Heater',
     tagline: 'Genuine Livotec ceramic heater',
-    features: [],
+    features: [
+      'Warms up in just 5 seconds and spreads across the room.',
+      'TurboHeat & Swing-Heat technology: gentle airflow, even heat, wide coverage.',
+      'Durable Dura-Heat motor with 1.5 times longer life.',
+      'SafeHeat™ & Safe Skin: multi-layer safety, complete protection for skin and health.',
+      'Smart-Heat with 4 modes, adjustable 15-35°C, with a convenient remote.'
+    ],
     specs: {
       Brand: 'Livotec',
       Model: 'LCH-2079T',
-      Category: 'Ceramic heater',
-      'Heating element': 'Ceramic'
-    }
+      Style: 'Standing',
+      Material: 'ABS',
+      'Heating mode': 'HI, LO, Eco, Ventilation',
+      'Rated power': '2000W',
+      'Voltage/frequency': '220-240V/50–60Hz',
+      'Coverage area': 'Suitable for spaces up to 25m²',
+      'Temperature control': '15-35°C',
+      Control: 'Touch & remote',
+      Oscillation: 'Yes, swings 90° left and right',
+      Timer: '24-hour fan off-timer',
+      Noise: '37,7 dB',
+      'Display light': 'Yes',
+      'Power cord': '1650mm long, 1.0mm cross-section',
+      'Safe heat clearance': '2m',
+      'Unit weight': '2479g',
+      'Overheat auto shut-off': 'Yes',
+      'Tip-over auto shut-off': 'Yes',
+      'Protection relay': 'Overheat sensor',
+      'Product dimensions': '415 × 130 × 150 mm',
+      'Weight with packaging': '2479g'
+    },
+    highlights: [
+      { title: 'WARM IN 5 SECONDS – SPREADS ACROSS THE ROOM', desc: 'Breakthrough TURBOHEAT technology uses a centrifugal fan and a durable DURA-HEAT motor (1.5 times longer life) to create warm air that spreads 1.3 times more evenly while running quietly. The 90° SWING-HEAT oscillation gently circulates the heat, covering up to 1.5 times more space for even warmth across the room.' },
+      { title: 'TURBOHEAT – GENTLE AIRFLOW, EVEN HEAT, WARMS 1.3 TIMES FASTER', desc: 'The exclusive TURBOHEAT technology is a major upgrade, with a powerful 2000W PTC ceramic core combined with a centrifugal fan and a Class B Duramotor™. Together they deliver outstanding warmth – 1.3 times more than typical heaters.' },
+      { title: 'DURA-HEAT MOTOR – DURABLE, OUTSTANDING SAFETY, 1.5 TIMES LONGER LIFE', desc: 'The Class B high-temperature-rated DURA-HEAT motor runs quietly and steadily for a healthy, relaxing living space. This stability not only feels pleasant but also ensures an outstanding lifespan, 1.5 times longer than ordinary motors.' },
+      { title: 'SWING-HEAT – 90° OSCILLATION, 1.5 TIMES WIDER WARMTH', desc: 'With smart SWING-HEAT technology, the heater oscillates automatically through 90°, spreading warmth up to 1.5 times wider. This superior coverage shares warmth evenly with every family member, so everyone feels cozy wherever they sit in the room.' },
+      { title: 'SAFEHEAT™ – 3-LEVEL SAFETY, COMPLETE PROTECTION', desc: 'SAFEHEAT™ technology – a smart protection system that works non-stop to keep a healthy living space for your loved ones every day.' },
+      { title: '3 NO\'S – NO OXYGEN BURNING, NO DRY SKIN, NO FIRE OR EXPLOSION', desc: 'The Livotec LCH-2079T ceramic heater with SAFE-SKIN technology redefines warmth. It burns no oxygen at all, keeping the air fresh so your children and whole family stay healthy every day with protected airways.' },
+      { title: 'SMART-HEAT 4 HEATING MODES – FOR EVERY NEED', desc: 'With SMART-HEAT technology, the Livotec LCH-2079T is more than a heater – it\'s a smart multi-function heating solution for every need. Choose High for the coldest days, Low for chilly weather, Eco for economical warmth, and a gentle fan mode to keep the room airy.' },
+      { title: 'TEMPERATURE CONTROL FROM 15-35°C – FLEXIBLE AND COMFORTABLE', desc: 'This is the thoughtful, superior care of the Livotec LCH-2079T compared to ordinary heaters with only a few fixed heat levels, which can\'t precisely meet the varied needs of each family member.' }
+    ]
   },
   'lhd-18iu': {
     name: 'Livotec LHD-18IU Dehumidifier',
     tagline: 'Genuine Livotec dehumidifier',
-    features: [],
+    features: [
+      'Dehumidifies 1.25 times faster – 25L/day capacity',
+      'Pure copper piston compressor – powerful, durable for up to 10 years',
+      'High-efficiency R290 refrigerant',
+      'Multi-layer air filtration with negative ions – inhibits bacteria and removes up to 99.95% of PM2.5 fine dust',
+      'Dedicated clothes-drying mode – outlet air up to 59°C',
+      '15 operating modes – flexible for every need',
+      'Large 6L tank & direct drain hose – no more frequent emptying',
+      'Flexible humidity setting from 30-80% RH',
+      'Low noise of just 47dB – ultra-quiet operation',
+      'Fully safe with child lock and 24-hour timer',
+      'Outstanding warranty: up to 36 months on the product and 60 months on the compressor'
+    ],
     specs: {
       Brand: 'Livotec',
       Model: 'LHD-18IU',
-      Category: 'Dehumidifier'
-    }
+      'Power consumption (W)': '270W',
+      'Voltage/frequency': '220–240V/50Hz',
+      'Dehumidifying capacity': '18L/D (30 ºC, RH 80%)',
+      'Tank capacity': '2,2L',
+      'Suitable room size': '15-30 m²',
+      'Maximum noise': '48 dB',
+      Gas: 'R290',
+      'Unit dimensions': '255*255*456mm',
+      'Unit weight': '13,5kg',
+      Warranty: '36 months'
+    },
+    highlights: [
+      { title: 'STRONG SUCTION – STERILIZING – DRY EVERY DAY', desc: 'The Livotec LHD-18IU dehumidifier is ideal for damp spaces of 15-30m². Besides dehumidifying, it has a pre-filter and UVC light that reduce odors and kill bacteria for fresh, safe air for the whole family.' },
+      { title: 'TURBO-DRY TECHNOLOGY – FAST, POWERFUL DEHUMIDIFYING', desc: 'A pure copper piston compressor lasts up to 10 years with optimal conductivity and heat transfer, handles heavy loads well, reduces energy loss and extends the unit\'s life to up to 10 years.' },
+      { title: 'GOLD FIN COATED CONDENSER – OUTSTANDING DURABILITY, 3 TIMES MORE CORROSION RESISTANT', desc: 'The Livotec LHD-18IU dehumidifier has a Gold Fin condenser with outstanding corrosion resistance, 3 times more durable than ordinary aluminum. The gold coating drains water quickly, limits oxidation and keeps dehumidifying steady in very humid weather.' },
+      { title: 'UVC STERILIZATION – DRY AND GERM-FREE', desc: 'Pre-filter: stops large dust, hair, pet fur and coarse particles, protecting internal parts and keeping performance steady. UVC sterilization: kills bacteria and viruses for fresher, safer indoor air, especially for young children, the elderly and sensitive people.' },
+      { title: 'NEGATIVE ION TECHNOLOGY FOR FRESH, CLEAN AIR', desc: 'Removes bacteria and harmful agents; reduces fine dust, smoke and unpleasant odors; improves sleep and creates a more comfortable living environment' },
+      { title: 'FAST CLOTHES-DRYING MODE – SMART AND CONVENIENT', desc: 'The Livotec LHD-18IU dehumidifier has a smart clothes-drying mode that dries clothes quickly and removes dampness and odors – especially useful on rainy, humid days.' },
+      { title: '3 FLEXIBLE DEHUMIDIFYING MODES – OPTIMIZED FOR EVERY LIVING SPACE', desc: 'Normal dehumidifying: keeps humidity stable, limits dampness and keeps the space airy. Continuous dehumidifying: for very damp areas, closed rooms or right after heavy rain.' },
+      { title: 'COMPACT, CONVENIENT TANK – DEHUMIDIFIES 24 HOURS NON-STOP', desc: 'The Livotec LHD-18IU dehumidifier has an easily removable 2.2L water tank so you empty it less often. A 2-meter direct drain hose is handy for continuous dehumidifying.' }
+    ]
   },
   'lhd-25ih': {
     name: 'Livotec LHD-25IH Dehumidifier',
     tagline: 'Genuine Livotec dehumidifier',
-    features: [],
+    features: [
+      'Dehumidifies 1.25 times faster – 25L/day capacity',
+      'Pure copper piston compressor – powerful, durable for up to 10 years',
+      'High-efficiency R290 refrigerant',
+      'Multi-layer air filtration with negative ions – inhibits bacteria and removes up to 99.95% of PM2.5 fine dust',
+      'Dedicated clothes-drying mode – outlet air up to 59°C',
+      '15 operating modes – flexible for every need',
+      'Large 6L tank & direct drain hose – no more frequent emptying',
+      'Flexible humidity setting from 30-80% RH',
+      'Low noise of just 47dB – ultra-quiet operation',
+      'Fully safe with child lock and 24-hour timer',
+      'Outstanding warranty: up to 36 months on the product and 60 months on the compressor'
+    ],
     specs: {
       Brand: 'Livotec',
       Model: 'LHD-25IH',
-      Category: 'Dehumidifier'
-    }
+      'Power consumption (W)': '420W',
+      'Voltage/frequency': '220–240V/50Hz',
+      'Dehumidifying capacity': '25L/day (30°C, RH 80%)',
+      'Tank capacity': '6L',
+      'Suitable room size': '30-40 m²',
+      'Maximum noise': '48 dB',
+      'Maximum airflow': '180 m³/h',
+      Gas: 'R290',
+      'Unit dimensions': '370 × 210 × 600 mm',
+      'Unit weight': '12 kg',
+      Warranty: '36 months'
+    },
+    highlights: [
+      { title: 'DOUBLE THE DEHUMIDIFYING PERFORMANCE – INSTANTLY DRY, HEALTHY EVERY DAY', desc: 'With double the dehumidifying efficiency and a powerful 25L/day capacity, the Livotec LHD-25IH quickly brings humidity to the ideal level, drying out your home after only a short time.' },
+      { title: 'DEHUMIDIFIES 1.25 TIMES FASTER – DRY AND HEALTHY', desc: 'With 25L/day dehumidifying capacity, the Livotec LHD-25IH is over twice as effective as ordinary dehumidifiers and suits spaces of up to 50m², keeping living rooms, large bedrooms and offices ideally dry.' },
+      { title: 'SAVES 20% ELECTRICITY, LASTS UP TO 10 YEARS', desc: 'Energy-saving R290 refrigerant: improves dehumidifying efficiency and cuts power use by about 20% compared to conventional gases, while being more environmentally friendly.' },
+      { title: '3-STAGE SMART FILTRATION REMOVES UP TO 99.95% OF FINE DUST', desc: 'Pre-filter: traps large dust, fabric fibers, hair and pet fur, protecting the filters behind and keeping filtration steady. HEPA H13: removes up to 99.95% of PM2.5 fine dust, pollen, mold spores and allergens for cleaner, safer air for sensitive people, children and the elderly.' },
+      { title: 'DEDICATED SMART CLOTHES-DRYING MODE', desc: 'Strong air circulation lets the Livotec LHD-25IH quickly lower humidity while blowing out warm, dry air that dries damp, musty clothes much faster than ordinary units.' },
+      { title: '15 SMART OPERATING MODES', desc: 'Continuous dehumidifying: keeps the room dry and airy, especially effective in the humid season. Strong dehumidifying: speeds up moisture removal in very damp areas or after heavy rain.' },
+      { title: 'LARGE 6L TANK & DIRECT DRAIN HOSE – DEHUMIDIFIES 24H NON-STOP', desc: 'The unit has a large 6L water tank, with a full-tank alert and automatic shut-off when water reaches the maximum level for safety and to prevent overflow.' },
+      { title: 'FLEXIBLE HUMIDITY SETTING 30-80%', desc: 'Humidity can be set from 30% to 80% RH (relative humidity), so you can choose the right level for your needs at any time.' }
+    ]
   },
   'lhd-36iu': {
     name: 'Livotec LHD-36IU Dehumidifier',
     tagline: 'Genuine Livotec dehumidifier',
-    features: [],
+    features: [
+      'Dehumidifies 1.3 times faster',
+      '36L/day dehumidifying for 50-70 m² spaces',
+      'Pure copper piston compressor, lasts up to 10 years',
+      'High-efficiency R290 refrigerant',
+      '3 flexible dehumidifying modes',
+      'Dedicated clothes-drying mode',
+      'Large 4.2L tank & direct drain hose',
+      'Low noise of just 52dB',
+      'Smart sensors and child safety lock',
+      'Convenient 24-hour timer',
+      'Up to 36 months product warranty',
+      'Up to 60 months warranty on the compressor'
+    ],
     specs: {
       Brand: 'Livotec',
       Model: 'LHD-36IU',
-      Category: 'Dehumidifier'
-    }
+      'Power consumption (W)': '600W',
+      'Voltage/frequency': '220–240V/50Hz',
+      'Dehumidifying capacity': '36L/day (30°C, RH 80%)',
+      'Tank capacity': '4,2L',
+      'Suitable room size': '50–70m²',
+      'Maximum noise': '52 dB',
+      'Maximum airflow': '180 m³/h',
+      Gas: 'R290',
+      'Unit dimensions': '350 × 245 × 500 mm',
+      'Unit weight': '15 kg',
+      Warranty: '36 months'
+    },
+    highlights: [
+      { title: 'DEHUMIDIFIES 1.3 TIMES FASTER', desc: 'With 36L/day dehumidifying capacity, the Livotec LHD-36IU removes moisture about 1.3 times faster than ordinary units and suits large spaces of 50-70m². Running powerfully for 24 hours straight, it removes the equivalent of ≈ 72 bottles of 500ml water every day.' },
+      { title: 'TURBO-DRY TECHNOLOGY', desc: 'The Livotec LHD-36IU features Turbo-Dry technology with a durable compressor, safe refrigerant, premium condenser and high-airflow fan.' },
+      { title: 'GOLD FIN COATED CONDENSER – 3 TIMES MORE CORROSION RESISTANT', desc: 'The Livotec LHD-36IU has a Gold Fin condenser with a premium gold coating, 3 times more corrosion-resistant than ordinary aluminum, with fast drainage and outstanding oxidation resistance.' },
+      { title: 'NEGATIVE ION TECHNOLOGY FOR FRESH, CLEAN AIR – HEALTHY LIVING', desc: 'Negative ion air purification releases negative ions into the air to remove bacteria and smoke and reduce odors, keeping the air fresh and clean every day. You\'ll feel more comfortable and relaxed, less stressed and tired, and sleep better.' },
+      { title: '3 CONVENIENT DEHUMIDIFYING MODES – USE AS YOU NEED', desc: 'Normal dehumidifying: keeps the room dry and airy, especially effective in the humid season. Continuous dehumidifying: speeds up moisture removal in very damp areas or after heavy rain.' },
+      { title: 'DEDICATED SMART CLOTHES-DRYING MODE', desc: 'The LHD-36IU dries clothes quickly, fully and without musty odors on humid days. Strong airflow and stable temperature protect fabrics and save many times the time of natural drying.' },
+      { title: 'LARGE 4.2L TANK & DIRECT DRAIN HOSE – DEHUMIDIFIES 24 HOURS NON-STOP', desc: 'The Livotec LHD-36IU dehumidifier has a 4.2L tank that reduces how often you need to empty it. For long continuous use, a 2-meter direct drain hose carries water away – very convenient on humid days or overnight without frequent checks.' },
+      { title: 'ULTRA-QUIET OPERATION – NOISE AS LOW AS 52dB', desc: 'Optimized motor keeps noise down – suitable for bedrooms, offices and homes with the elderly or young children.' }
+    ]
   },
   'lwh-i30a26s': {
     name: 'Livotec LWH-I30A26S 30L Storage Water Heater',
     tagline: 'Genuine Livotec 30L storage water heater',
-    features: [],
+    features: [
+      'IPUS technology: keeps heat for up to 48 hours',
+      'LED display: easy temperature monitoring',
+      'Titan Incoloy® 840: heats fast to 78°C, limits scale',
+      'Large magnesium rod: softens hard water, gentle on skin and hair',
+      '5-level safety system: ELCB (European standard)',
+      'Official warranty: lifetime heating element – 8 years tank – 2 years components'
+    ],
     specs: {
       Brand: 'Livotec',
       Model: 'LWH-I30A26S',
-      Category: 'Water heater',
-      Capacity: '30 liters',
-      'Heating type': 'Storage (indirect)'
-    }
+      Capacity: '30L',
+      Voltage: '220V/50Hz',
+      'Heating element': 'Titan Incoloy 840',
+      'Anti-corrosion magnesium rod': 'Yes',
+      'Inner tank': 'Titanium enamel',
+      'Polyurethane (PU) insulation': 'High-density PU',
+      'Maximum water temperature': '78°C',
+      'Water heating time': '15-30′',
+      'Operating water pressure': '0,75 MPa',
+      'Thermal insulation': 'PU insulation',
+      Weight: '11,06 kg',
+      'Product dimensions': '655 × 345 × 360 mm',
+      'Waterproof rating': 'IPX1 fire- and water-resistance to international standards',
+      'ELCB residual-current circuit breaker': 'Yes',
+      'TBST thermostat': 'Yes',
+      'Water pressure relief safety valve': 'Yes',
+      'Heat retention time': '48H',
+      'Indicator light': 'Yes',
+      'Built-in drain valve': 'Yes',
+      'Built-in booster pump': 'No',
+      'Temperature display': 'Yes',
+      'Unit warranty': 'Lifetime heating element – 8 years tank – 2 years components'
+    },
+    highlights: [
+      { title: 'SMART DISPLAY – ACCURATE READINGS', desc: 'The Livotec LWH-I30A26S has a clear LED display so you always know the exact water temperature in the tank.' },
+      { title: 'IPUS TECHNOLOGY – KEEPS HEAT FOR UP TO 48 HOURS', desc: 'The Livotec LWH-I30A26S tank is lined with US-standard Titanium Plus enamel for better corrosion resistance, fewer leaks and greater durability. With high-density PU insulation it limits heat loss effectively and keeps water hot for up to 48 hours.' },
+      { title: 'TITAN INCOLOY® 840 ELEMENT – FAST HEATING – ENERGY SAVING – LIFETIME WARRANTY', desc: 'The Livotec LWH-I30A26S has a premium ceramic-coated Titan Incoloy® 840 element with self-cleaning and outstanding corrosion resistance, heating water quickly up to 78°C. Premium Titan Incoloy limits limescale, resists corrosion and keeps heat transfer fast and stable.' },
+      { title: 'EUROPEAN STANDARDS', desc: 'The Livotec LWH-I30A26S storage water heater has a 5-level safety system so the whole family can enjoy warm showers every day with peace of mind. The 5 safety levels include a European-standard ELCB that cuts power automatically when a leak is detected.' },
+      { title: 'OFFICIAL WARRANTY – PEACE OF MIND', desc: 'Beyond the user experience, Livotec offers long-term peace of mind with a clear, transparent warranty policy for the Livotec LWH-I30A26S storage water heater: 8 years on the tank – a commitment to lasting durability and quality (*); 2 years on components – peace of mind…' }
+    ]
   },
   'lwh-i30t26': {
     name: 'Livotec LWH-I30T26 30L Storage Water Heater',
     tagline: 'Genuine Livotec 30L storage water heater',
-    features: [],
+    features: [
+      'IPUS technology keeps heat for up to 48 hours',
+      'SUS316L element heats fast up to 78°C',
+      'AZ63B magnesium rod softens hard water, gentle on skin and hair',
+      '5 safety levels to European standards',
+      'Flexible temperature control',
+      'Youthful design, modern colors',
+      'Official warranty: 8 years on the tank, 2 years on components'
+    ],
     specs: {
       Brand: 'Livotec',
       Model: 'LWH-I30T26',
-      Category: 'Water heater',
-      Capacity: '30 liters',
-      'Heating type': 'Storage (indirect)'
-    }
+      Capacity: '30L',
+      Power: '2500W',
+      'Heating element': 'SUS316L',
+      'Anti-corrosion magnesium rod': 'Yes',
+      'Inner tank': 'Titanium enamel, 100% US enamel',
+      Insulation: 'Polyurethane (PU)',
+      'Maximum heating temperature': '78°C',
+      'Water heating time': '15-30 minutes',
+      Adjustment: 'Temperature dial',
+      'Safety functions': 'ELCB residual-current circuit breaker – European standard; fire-protection relay; safety valve; IPX1 fire and water resistance to international standards; TBST thermostat',
+      Thermostat: 'Yes',
+      'Operation indicator light': 'Yes',
+      'Heat retention time': '48 hours',
+      'Built-in drain valve': 'Yes',
+      'Unit warranty': '2 years components, 8 years tank',
+      '1-for-1 replacement warranty': '15 days'
+    },
+    highlights: [
+      { title: 'MODERN IPUS TECHNOLOGY – KEEPS WATER HOT FOR UP TO 48 HOURS', desc: 'The Livotec LWH-I30T26 uses IPUS heat-retention technology with high-density PU insulation to limit heat loss effectively. Hot water lasts up to 48 hours, so warm water is always ready without reheating again and again.' },
+      { title: 'SUS316L HEATING ELEMENT – FAST HEATING, DURABLE OVER TIME', desc: 'The SUS316L heating element is made of premium stainless steel that heats quickly up to 78°C while effectively limiting scale and corrosion. The water heater runs stably and durably and keeps its heating performance throughout its life.' },
+      { title: 'LARGE AZ63B MAGNESIUM ROD – PROTECTS THE TANK, GENTLE ON SKIN AND HAIR', desc: 'The large-diameter AZ63B magnesium rod reduces the effects of hard water, limits scale forming inside the tank and helps protect the heating element from corrosion.' },
+      { title: '5-LEVEL SAFETY SYSTEM – PEACE OF MIND EVERY TIME', desc: 'Safety always comes first when choosing a water heater. The Livotec LWH-I30T26 has a 5-level safety system that limits electrical and pressure risks during operation.' },
+      { title: 'OFFICIAL WARRANTY FOR PEACE OF MIND', desc: 'The Livotec LWH-I30T26 comes with an official warranty for peace of mind: up to 8 years on the tank and 2 years on components.' }
+    ]
   },
   'lwh-i30b26': {
     name: 'Livotec LWH-I30B26 30L Storage Water Heater',
     tagline: 'Genuine Livotec 30L storage water heater',
-    features: [],
+    features: [
+      'IPUS technology keeps heat for 48 hours',
+      'Fast-heating SUS316L element',
+      'Large-diameter AZ63B magnesium rod',
+      '5 safety levels to European standards',
+      'Temperature control up to 78°C',
+      'Modern design that brightens the room',
+      'Official warranty'
+    ],
     specs: {
       Brand: 'Livotec',
       Model: 'LWH-I30B26',
-      Category: 'Water heater',
-      Capacity: '30 liters',
-      'Heating type': 'Storage (indirect)'
-    }
+      Capacity: '30L',
+      Power: '2500W',
+      'Heating element': 'SUS316L',
+      'Anti-corrosion magnesium rod': 'Yes',
+      'Inner tank': 'Titanium enamel, 100% US enamel',
+      Insulation: 'Polyurethane (PU)',
+      'Maximum heating temperature': '78°C',
+      'Water heating time': '15-30 minutes',
+      Adjustment: 'Temperature dial',
+      'Safety functions': 'ELCB residual-current circuit breaker – European standard; fire-protection relay; safety valve; IPX1 fire and water resistance to international standards; TBST thermostat',
+      'Operation indicator light': 'Yes',
+      'Heat retention time': '48 hours',
+      'Built-in drain valve': 'Yes',
+      'Unit warranty': '2 years components, 8 years tank',
+      '1-for-1 replacement warranty': '15 days'
+    },
+    highlights: [
+      { title: 'IPUS TECHNOLOGY KEEPS HEAT FOR UP TO 48 HOURS', desc: 'The Livotec LWH-I30B26 uses IPUS heat-retention technology with high-density PU insulation to reduce heat loss and keep water hot for up to 48 hours. You always have hot water ready without reheating again and again.' },
+      { title: 'SUS316L HEATING ELEMENT – FAST HEATING, LONG-LASTING', desc: 'The Livotec LWH-I30B26 has a premium stainless steel SUS316L element that heats water quickly up to 78°C, so you have hot water for showers and daily use without a long wait.' },
+      { title: 'LARGE AZ63B MAGNESIUM ROD – PROTECTS THE TANK, GENTLE ON SKIN AND HAIR', desc: 'The large-diameter AZ63B magnesium rod reduces the effects of hard water, limits scale forming inside the tank and helps protect the heating element from corrosion.' },
+      { title: 'EUROPEAN SAFETY STANDARDS', desc: 'The Livotec LWH-I30T26 has a 5-level safety system meeting European standards that controls electricity, temperature and pressure during operation for the whole family\'s peace of mind. It includes a European-standard ELCB that cuts power automatically when a leak is detected.' },
+      { title: 'OFFICIAL WARRANTY', desc: 'With the Livotec LWH-I30B26 you get a clear official warranty for peace of mind: 8 years on the tank and 2 years on components. If you need help, Livotec\'s technical and customer care teams are always ready to support you so you can use the product conveniently and…' }
+    ]
   },
   'lwh-i30a25': {
     name: 'Livotec LWH-I30A25 30L Storage Water Heater',
     tagline: 'Genuine Livotec 30L storage water heater',
-    features: [],
+    features: [
+      'Titanium enamel tank with premium PU insulation.',
+      'Keeps heat for up to 48 hours',
+      'Ceramic Incoloy 840 heating element saves 30% electricity.',
+      'Large XMAS Mg+ magnesium rod helps soften water.',
+      'European-standard ELCB for 5 times the electrical safety.',
+      'Stable water temperature up to 78°C,',
+      'Easy to adjust with an illuminated dial.',
+      'Lifetime heating element warranty'
+    ],
     specs: {
       Brand: 'Livotec',
       Model: 'LWH-I30A25',
-      Category: 'Water heater',
-      Capacity: '30 liters',
-      'Heating type': 'Storage (indirect)'
-    }
+      Capacity: '30L',
+      Power: '2500W',
+      Voltage: '220V/50Hz',
+      'Heating element': 'Titan Incoloy 840',
+      'Anti-corrosion magnesium rod': 'Yes',
+      'Inner tank': 'Titanium enamel',
+      'Polyurethane (PU) insulation': 'High-density PU',
+      'Maximum water temperature': '78°C',
+      'Water heating time': '27′-32′',
+      'Mechanical control': 'Temperature dial',
+      'Operating water pressure': '0,8Mpa',
+      'Thermal insulation': 'PU insulation',
+      Weight: '14 Kg',
+      'Product dimensions': '655 * 345* 360',
+      'Waterproof rating': 'IPX1',
+      'ELCB residual-current circuit breaker': 'Yes',
+      'TBST thermostat': 'Yes',
+      'Water pressure relief safety valve': 'Yes',
+      'Silver ion / titanium-coated heating element': 'No',
+      'Heat retention time': '48H',
+      'Indicator light': 'Yes',
+      'Built-in drain valve': 'Yes',
+      'Built-in booster pump': 'No',
+      'Temperature display': 'No'
+    },
+    highlights: [
+      { title: '5 SAFETY LEVELS – HIGH HEAT – EFFICIENT HEAT RETENTION', desc: 'Designed with maximum safety in mind, the Livotec LWH-I20A25 storage water heater is an ideal choice for families. With 5-layer protection, deep heating and long heat retention, it meets every hot water need in the cold season.' },
+      { title: 'TITANIUM ENAMEL TANK – DURABLE, KEEPS HEAT UP TO', desc: 'Inside the tank is a US-imported Titanium enamel coating that resists corrosion, reduces hard-water damage and limits leaks. Combined with high-density PU insulation, the tank keeps heat for up to 48 hours – 35% better heat retention than usual.' },
+      { title: 'FAST HEATING – SAVES 30% ELECTRICITY', desc: 'Dual Ceramic Incoloy®840 heating elements enlarge the heat-transfer area and speed up heating. Self-cleaning limits scale, improving efficiency and saving electricity, with maximum power up to 2500W.' },
+      { title: 'XMAS MG+ MAGNESIUM ROD – PROTECTS HAIR AND SKIN, SOFTENS HARD WATER', desc: 'Large magnesium rods with a Ti+Titanium crystal coating help soften water and protect hair and skin. The magnesium rods also limit scale, extend the heating element\'s life and optimize heating efficiency.' },
+      { title: 'EUROPEAN SAFETY STANDARD – USE WITH CONFIDENCE', desc: 'The Livotec LWH-I30A25 water heater has a 5-level protection system meeting European safety standards, keeping operation completely safe for users.' },
+      { title: 'PROFESSIONAL OFFICIAL WARRANTY', desc: 'The Livotec LWH-I30A25 storage water heater comes with a lifetime warranty on the heating element, 8 years on the tank and 2 years on electrical components for peace of mind.' }
+    ]
   },
   'lwh-i30x26': {
     name: 'Livotec LWH-I30X26 30L Storage Water Heater',
     tagline: 'Genuine Livotec 30L storage water heater',
-    features: [],
+    features: [
+      'IPUS keeps heat for up to 48 hours',
+      'Titan Incoloy 840 element heats fast up to 78°C',
+      'XMAS MG+ magnesium rod softens hard water',
+      '5 safety levels to European standards',
+      'Temperature dial',
+      'Modern design',
+      'Official warranty'
+    ],
     specs: {
       Brand: 'Livotec',
       Model: 'LWH-I30X26',
-      Category: 'Water heater',
-      Capacity: '30 liters',
-      'Heating type': 'Storage (indirect)'
-    }
+      Capacity: '30L',
+      Power: '2500W',
+      'Heating element': 'Titan Incoloy® 840',
+      'Anti-corrosion magnesium rod': 'Yes',
+      'Inner tank': 'Titanium enamel (100% Ferro enamel from the USA)',
+      Insulation: 'Polyurethane (PU)',
+      'Maximum heating temperature': '78°C',
+      'Water heating time': '15-30 minutes',
+      Adjustment: 'Temperature dial',
+      'Residual-current circuit breaker': 'ELCB – European standard (made in France)',
+      'Dual protection relay': 'Fire-protection relay',
+      'Safety valve': 'Yes',
+      'Thermal insulation': 'IPX1 fire- and water-resistance to international standards',
+      Thermostat: 'Yes',
+      'Operation indicator light': 'Yes',
+      'Heat retention time': '48 hours',
+      'Built-in drain valve': 'Yes',
+      'Unit warranty': '2 years components, 8 years tank',
+      '1-for-1 replacement warranty': '15 days'
+    },
+    highlights: [
+      { title: '5 SAFETY LEVELS – HIGH TEMPERATURE, LONG HEAT RETENTION', desc: 'After a busy day, relaxing under warm water always feels good. The Livotec LWH-I30X26 keeps hot water ready for showers and daily needs with fast heating and heat retention of up to 48 hours.' },
+      { title: 'IPUS TECHNOLOGY – KEEPS WATER HOT FOR UP TO 48 HOURS', desc: 'Titanium Plus enamel with high-density PU insulation keeps water hot longer and limits heat loss. You can use hot water whenever you need without switching the heater on repeatedly – convenient and energy saving.' },
+      { title: 'TITAN INCOLOY® 840 ELEMENT – FAST HEATING, DURABLE OVER TIME', desc: 'The ceramic-coated Titan Incoloy® 840 element with a dual-burner design heats water quickly to 78°C, so hot water is always ready when you need it. It limits scale and reduces the effects of hard water, keeping performance stable for the family\'s daily hot water needs.' },
+      { title: 'LARGE MAGNESIUM ROD – HELPS SOFTEN HARD WATER', desc: 'Over long-term use, hard water can form scale inside the tank and reduce efficiency. The large magnesium rod limits this, helping protect the tank and internal parts.' },
+      { title: '5-LAYER SAFETY SYSTEM TO EUROPEAN STANDARDS', desc: 'The Livotec LWH-I30X26 has a 5-layer safety system for peace of mind every day: a European-standard ELCB cuts power automatically in case of leakage, and a fire-protection relay limits overheating and short circuits.' },
+      { title: 'OFFICIAL WARRANTY – USE WITH CONFIDENCE', desc: 'The Livotec LWH-I30X26 has up to 8 years of tank warranty and 2 years on components. If you need inspection, warranty service or technical advice, the Livotec team is always ready to help promptly.' }
+    ]
   },
   'lwh-v15a26s': {
     name: 'Livotec LWH-V15A26S 15L Storage Water Heater',
     tagline: 'Genuine Livotec 15L storage water heater',
-    features: [],
+    features: [
+      'Modern LED display for easy monitoring',
+      'IPUS technology keeps heat for 48 hours',
+      'Fast-heating Titan Incoloy 840 element',
+      'Large XMAS MG+ magnesium rod',
+      '5 safety levels to European standards',
+      'Modern, elegant design',
+      'Official warranty'
+    ],
     specs: {
       Brand: 'Livotec',
       Model: 'LWH-V15A26S',
-      Category: 'Water heater',
-      Capacity: '15 liters',
-      'Heating type': 'Storage (indirect)'
-    }
+      Capacity: '15L',
+      Power: '2500W',
+      'Heating element': 'Titan Incoloy® 840',
+      'Anti-corrosion magnesium rod': 'Yes',
+      'Inner tank': 'Titanium enamel (100% Ferro enamel from the USA)',
+      Insulation: 'Polyurethane (PU)',
+      'Maximum heating temperature': '78°C',
+      'Water heating time': '15-30 minutes',
+      'Residual-current circuit breaker': 'ELCB – European standard (made in France)',
+      'Dual protection relay': 'Fire-protection relay',
+      'Safety valve': 'Yes',
+      'Thermal insulation': 'IPX1 fire- and water-resistance to international standards',
+      Thermostat: 'TBST',
+      'Heat retention time': '48 hours',
+      'Built-in drain valve': 'Yes',
+      'Unit warranty': '2 years components, 8 years tank',
+      '1-for-1 replacement warranty': '15 days'
+    },
+    highlights: [
+      { title: 'IPUS TECHNOLOGY – KEEPS HEAT FOR UP TO 48 HOURS', desc: 'The tank is lined with Titanium Plus enamel to US standards for better corrosion resistance and durability. Together with high-density PU insulation, it limits heat loss and keeps water hot for up to 48 hours.' },
+      { title: 'TITAN INCOLOY® 840 ELEMENT – FAST HEATING, RELIABLE EVERY DAY', desc: 'The Livotec LWH-V15A26S uses a ceramic-coated Titan Incoloy® 840 element that heats water quickly to about 78°C, so you never wait long for hot water. Its durable material limits scale and reduces the effects of hard water, keeping heating efficient over time.' },
+      { title: 'LARGE MAGNESIUM ROD – GENTLE ON SKIN AND HAIR', desc: 'Fitted with a large magnesium rod that reduces the effects of hard water and limits metal deposits.' },
+      { title: '5-LEVEL SAFETY SYSTEM – PEACE OF MIND IN USE', desc: 'The Livotec LWH-V15A26S has a 5-layer protection system for peace of mind every day: European-standard ELCB cuts power automatically when a leak is detected; anti-fire and anti-shock relay for electrical safety; safety valve controls tank water pressure; fire-resistant insulation limits heat risks; TBST thermostat controls the temperature…' },
+      { title: 'OFFICIAL WARRANTY – LONG-TERM PEACE OF MIND', desc: 'With the Livotec LWH-V15A26S water heater, you can use it with confidence thanks to a clear, transparent warranty: up to 8 years on the tank and 2 years on components' }
+    ]
   },
   'lwh-v15b26': {
     name: 'Livotec LWH-V15B26 15L Storage Water Heater',
     tagline: 'Genuine Livotec 15L storage water heater',
-    features: [],
+    features: [
+      'IPUS technology keeps heat for 48 hours',
+      'SUS316L element heats fast to 78°C',
+      'AZ63B magnesium rod removes hard-water scale',
+      '5 safety levels meeting European standards',
+      'Flexible temperature control',
+      'Modern design, youthful colors',
+      'Official warranty'
+    ],
     specs: {
       Brand: 'Livotec',
       Model: 'LWH-V15B26',
-      Category: 'Water heater',
-      Capacity: '15 liters',
-      'Heating type': 'Storage (indirect)'
-    }
+      Capacity: '15L',
+      Power: '2500W',
+      'Heating element': 'SUS316L',
+      'Anti-corrosion magnesium rod': 'Yes',
+      'Inner tank': 'Titanium enamel (100% Ferro enamel from the USA)',
+      Insulation: 'Polyurethane (PU)',
+      'Maximum heating temperature': '78°C',
+      'Water heating time': '15-30 minutes',
+      Adjustment: 'Temperature dial',
+      'Safety functions': 'European-standard ELCB residual-current circuit breaker, fire-protection relay, safety valve, IPX1-rated fire- and water-resistant insulation, TBST thermostat',
+      'Operation indicator light': 'Yes',
+      'Built-in drain valve': 'Yes',
+      'Unit warranty': '2 years electrical components, 8 years tank',
+      '1-for-1 replacement policy': 'Within 15 days'
+    },
+    highlights: [
+      { title: 'IPUS TECHNOLOGY – KEEPS WATER HOT FOR UP TO 48 HOURS', desc: 'The Livotec LWH-V15B26 uses IPUS heat-retention technology with high-density PU insulation to limit heat loss and keep water hot for up to 48 hours.' },
+      { title: 'SUS316L HEATING ELEMENT – HEATS FAST TO 78°C, STABLE OPERATION', desc: 'The Livotec LWH-V15B26 has a premium stainless steel SUS316L element that heats quickly up to 78°C so you get hot water fast. Besides resisting corrosion and limiting scale, the element keeps heating performance stable and helps extend the heater\'s life.' },
+      { title: 'LARGE AZ63B MAGNESIUM ROD – GENTLE ON SKIN AND HAIR', desc: 'The large AZ63B magnesium rod is made of high-quality magnesium alloy that reduces the effects of hard water, limits scale in the tank and helps protect the heating element from corrosion and rust.' },
+      { title: 'EUROPEAN SAFETY STANDARDS – PEACE OF MIND FOR THE WHOLE FAMILY', desc: 'The Livotec LWH-V15B26 has a 5-level safety system meeting European standards that controls electricity, temperature and pressure during operation. It includes a European-standard ELCB that cuts power automatically when a leak is detected.' },
+      { title: 'EASY TEMPERATURE CONTROL TO SUIT YOUR NEEDS', desc: 'The Livotec LWH-V15B26 has an intuitive temperature dial so you can choose the right hot water level with a single turn.' },
+      { title: 'OFFICIAL WARRANTY – CONFIDENCE THROUGHOUT USE', desc: 'The Livotec LWH-V15B26 comes with a clear official warranty for years of confident use: up to 8 years on the tank and up to 2 years on components.' }
+    ]
   },
   'lwh-v15t26': {
     name: 'Livotec LWH-V15T26 15L Storage Water Heater',
     tagline: 'Genuine Livotec 15L storage water heater',
-    features: [],
+    features: [
+      'IPUS technology keeps heat for up to 48 hours',
+      'Fast-heating, corrosion-resistant SUS316L element',
+      'AZ63B magnesium rod removes hard-water scale',
+      '5 safety levels to European standards',
+      'Temperature dial',
+      'Modern square design, space-saving',
+      'Official warranty'
+    ],
     specs: {
       Brand: 'Livotec',
       Model: 'LWH-V15T26',
-      Category: 'Water heater',
-      Capacity: '15 liters',
-      'Heating type': 'Storage (indirect)'
-    }
+      Capacity: '15L',
+      Power: '2500W',
+      'Heating element': 'Titan Incoloy® 840',
+      'Anti-corrosion magnesium rod': 'Yes',
+      'Inner tank': 'Titanium enamel (100% Ferro enamel from the USA)',
+      Insulation: 'Polyurethane (PU)',
+      'Maximum heating temperature': '78°C',
+      Adjustment: 'Temperature dial',
+      'Residual-current circuit breaker': 'ELCB – European standard (made in France)',
+      'Dual protection relay': 'Fire-protection relay',
+      'Safety valve': 'Yes',
+      'Thermal insulation': 'IPX1 fire- and water-resistance to international standards',
+      Thermostat: 'TBST',
+      'Heat retention time': '48 hours',
+      'Indicator light': 'Yes',
+      'Built-in drain valve': 'Yes',
+      'Unit warranty': '2 years components, 8 years tank',
+      '1-for-1 replacement warranty': '15 days'
+    },
+    highlights: [
+      { title: 'IPUS TECHNOLOGY – KEEPS WATER HOT FOR UP TO 48 HOURS', desc: 'The Livotec LWH-V15T26 uses IPUS heat-retention technology with high-density PU insulation to retain heat effectively after heating. Water stays hot for up to 48 hours, so warm water is ready whenever you need it without reheating again and again.' },
+      { title: 'SUS316L HEATING ELEMENT – FAST HEATING, STEADY PERFORMANCE', desc: 'The Livotec LWH-V15T26 uses a premium stainless steel SUS316L element that heats water quickly up to 78°C, giving you hot water in a short time.' },
+      { title: 'LARGE AZ63B MAGNESIUM ROD – LIMITS SCALE, PROTECTS THE HEATING ELEMENT', desc: 'The Livotec LWH-V15T26 has a large-diameter AZ63B magnesium rod that reduces the effects of hard water, limits scale inside the tank and protects the heating element from corrosion.' },
+      { title: '5-LEVEL SAFETY SYSTEM – PEACE OF MIND FOR THE WHOLE FAMILY', desc: 'The Livotec LWH-V15T26 has a 5-level safety system that controls electricity, temperature and pressure during operation. It includes a European-standard ELCB that cuts power automatically when a leak is detected.' },
+      { title: 'FLEXIBLE TEMPERATURE CONTROL', desc: 'The Livotec LWH-V15T26 has an intuitive temperature dial so you can easily choose the right temperature for each need.' },
+      { title: 'OFFICIAL WARRANTY – USE WITH CONFIDENCE', desc: 'The Livotec LWH-V15T26 comes with an official warranty for peace of mind throughout its use: up to 8 years on the tank.' }
+    ]
   },
   'lwh-v15a25': {
     name: 'Livotec LWH-V15A25 15L Storage Water Heater',
     tagline: 'Genuine Livotec 15L storage water heater',
-    features: [],
+    features: [
+      '15L capacity',
+      '5 safety levels to European standards',
+      'Titanium Plus enamel coating',
+      'Ceramic-coated Titan Incoloy 840 element',
+      'Large XMAS MG+ magnesium rod',
+      'Flexible temperature control',
+      'Modern, youthful design',
+      'Official warranty'
+    ],
     specs: {
       Brand: 'Livotec',
       Model: 'LWH-V15A25',
-      Category: 'Water heater',
-      Capacity: '15 liters',
-      'Heating type': 'Storage (indirect)'
-    }
+      Capacity: '15L',
+      Power: '2500W',
+      Voltage: '220V/50Hz',
+      'Heating element': 'Titan Incoloy 840',
+      'Anti-corrosion magnesium rod': 'Yes',
+      'Inner tank': 'Titanium enamel',
+      'Polyurethane (PU) insulation': 'High-density PU',
+      'Maximum water temperature': '78°C',
+      'Water heating time': '15-30 minutes',
+      'Mechanical control': 'Temperature dial',
+      'Operating water pressure': '0,75Mpa',
+      'Thermal insulation': 'PU insulation',
+      Weight: '9,1kg',
+      'Product dimensions': '390mmx390mmx342mm',
+      'Waterproof rating': 'IPX1',
+      'ELCB residual-current circuit breaker': 'Yes',
+      'TBST thermostat': 'Yes',
+      'Water pressure relief safety valve': 'Yes',
+      'Silver ion / titanium-coated heating element': 'No',
+      'Heat retention time': '48 hours',
+      'Indicator light': 'Yes',
+      'Built-in booster pump': 'No',
+      'Temperature display': 'No'
+    },
+    highlights: [
+      { title: 'HIGH TEMPERATURE, LONG HEAT RETENTION – 5 SAFETY LEVELS', desc: 'To bring safe, convenient and fast hot showers, Livotec launched the Livotec LWH-V15A25 water heater – a perfect choice for you and your family in the cold winter.' },
+      { title: 'TITANIUM PLUS ENAMEL – KEEPS HEAT FOR UP TO 48 HOURS', desc: 'The inner tank is lined with premium US-imported Titanium Plus enamel that resists oxidation, limits corrosion and prevents leaks for outstanding durability.' },
+      { title: 'CERAMIC-COATED TITAN INCOLOY 840 ELEMENT – FAST HEATING, PREVENTS LIMESCALE', desc: 'With modern heating technology and a ceramic-coated Titan Incoloy 840 element, the Livotec LWH-V20A25 storage water heater heats water quickly to 78°C for instant hot showers.' },
+      { title: 'LARGE XMAS MG+ MAGNESIUM ROD – SOFTENS WATER, PROTECTS SKIN AND HAIR', desc: 'The LWH-V15A25 storage water heater has a large XMAS MG+ magnesium rod that softens hard water, limits metal build-up and protects skin and hair. The magnesium rod also protects the heating element from corrosion, extending the heater\'s life.' },
+      { title: 'EUROPEAN STANDARDS – 5-LEVEL SAFETY', desc: 'The Livotec LWH-V15A25 storage water heater has a 5-level protection system for the whole family\'s safety. The 5 safety levels include a European-standard ELCB that cuts power in case of leakage.' },
+      { title: 'EASY TEMPERATURE CONTROL UP TO 78°C – CONVENIENT FOR THE WHOLE FAMILY', desc: 'With the smart mechanical dial and LED indicator on the Livotec LWH-V15A25, you can set the right temperature for each family member, especially young children and the elderly. The temperature can easily be set up to 78°C so the whole family can enjoy comfortable hot showers all year round.' }
+    ]
   },
   'lwh-v15x26': {
     name: 'Livotec LWH-V15X26 15L Storage Water Heater',
     tagline: 'Genuine Livotec 15L storage water heater',
-    features: [],
+    features: [
+      'IPUS technology keeps heat for up to 48 hours',
+      'Fast-heating Titan Incoloy 840 element',
+      'XMAS MG+ magnesium rod softens hard water',
+      '5 safety levels to European standards',
+      'Flexible temperature control',
+      'Modern, youthful design',
+      'Official warranty'
+    ],
     specs: {
       Brand: 'Livotec',
       Model: 'LWH-V15X26',
-      Category: 'Water heater',
-      Capacity: '15 liters',
-      'Heating type': 'Storage (indirect)'
-    }
+      Capacity: '15L',
+      Power: '2500W',
+      'Heating element': 'Titan Incoloy® 840',
+      'Anti-corrosion magnesium rod': 'Yes',
+      'Inner tank': 'Titanium enamel (100% Ferro enamel from the USA)',
+      Insulation: 'Polyurethane (PU)',
+      'Maximum heating temperature': '78°C',
+      'Water heating time': '15-30 minutes',
+      Adjustment: 'Temperature dial',
+      'Residual-current circuit breaker': 'ELCB – European standard (made in France)',
+      'Dual protection relay': 'Fire-protection relay',
+      'Safety valve': 'Yes',
+      'Thermal insulation': 'IPX1 fire- and water-resistance to international standards',
+      Thermostat: 'TBST',
+      'Heat retention time': '48 hours',
+      'Indicator light': 'Yes',
+      'Built-in drain valve': 'Yes',
+      'Unit warranty': '2 years components, 8 years tank',
+      '1-for-1 replacement warranty': '15 days'
+    },
+    highlights: [
+      { title: '5 SAFETY LEVELS – HIGH TEMPERATURE, LONG HEAT RETENTION', desc: 'A water heater that\'s always ready makes showers and daily routines more comfortable. With heat retention of up to 48 hours, the Livotec LWH-V15X26 keeps hot water available when you need it without reheating again and again.' },
+      { title: 'IPUS TECHNOLOGY – KEEPS WATER HOT FOR UP TO 48 HOURS', desc: 'High-density PU insulation retains heat effectively and limits heat loss during use. Hot water lasts up to 48 hours, ready whenever you need it.' },
+      { title: 'TITAN INCOLOY® 840 ELEMENT – FAST HEATING, LIMITS SCALE', desc: 'With the Livotec LWH-V15X26, you don\'t wait long for hot water. The Titan Incoloy® 840 element heats water quickly to about 78°C, ready when you need it.' },
+      { title: 'LARGE XSMAS MG+ MAGNESIUM ROD – GENTLE ON SKIN AND HAIR', desc: 'The Livotec LWH-V15X26 has a large XMAS MG+ magnesium rod that limits mineral scale from hard water, helping protect skin and hair and keep water cleaner. The magnesium rod also protects the inner tank against corrosion for long-lasting durability and performance.' },
+      { title: '5-LEVEL SAFETY SYSTEM – USE WITH CONFIDENCE', desc: 'The Livotec LWH-V15X26 has a 5-layer protection system for safer hot water use: a European-standard ELCB cuts power automatically in case of leakage for added safety, and an overheat relay actively protects the unit against overheating.' },
+      { title: 'FLEXIBLE TEMPERATURE CONTROL', desc: 'With a simple turn, you can set the right heat level for each need. The intuitive dial design is easy for every family member to use every day.' },
+      { title: 'OFFICIAL WARRANTY, PEACE OF MIND', desc: 'Up to 8 years warranty on the tank, 2 years on components' }
+    ]
   },
   'lwh-v20a25': {
     name: 'Livotec LWH-V20A25 20L Storage Water Heater',
     tagline: 'Genuine Livotec 20L storage water heater',
-    features: [],
+    features: [
+      '20L capacity',
+      '5 safety levels to European standards',
+      'Titanium Plus enamel coating',
+      'Ceramic-coated Titan Incoloy 840 element',
+      'Large XMAS MG+ magnesium rod',
+      'Flexible temperature control',
+      'Modern, youthful design',
+      'Official warranty'
+    ],
     specs: {
       Brand: 'Livotec',
       Model: 'LWH-V20A25',
-      Category: 'Water heater',
-      Capacity: '20 liters',
-      'Heating type': 'Storage (indirect)'
-    }
+      Capacity: '20L',
+      Voltage: '220V/50Hz',
+      'Heating element': 'Titan Incoloy 840',
+      'Anti-corrosion magnesium rod': 'Yes',
+      'Inner tank': 'Titanium enamel',
+      'Polyurethane (PU) insulation': 'High-density PU',
+      'Maximum water temperature': '78°C',
+      'Water heating time': '15-30 minutes',
+      'Mechanical control': 'Temperature dial',
+      'Operating water pressure': '0,75Mpa',
+      'Thermal insulation': 'PU insulation',
+      Weight: '9,6kg',
+      'Product dimensions': '390mmx390mmx342mm',
+      'Waterproof rating': 'IPX1',
+      'ELCB residual-current circuit breaker': 'Yes',
+      'TBST thermostat': 'Yes',
+      'Water pressure relief safety valve': 'Yes',
+      'Silver ion / titanium-coated heating element': 'No',
+      'Heat retention time': '48 hours',
+      'Indicator light': 'Yes',
+      'Built-in booster pump': 'No',
+      'Temperature display': 'No'
+    },
+    highlights: [
+      { title: '5 SAFETY LEVELS, HIGH TEMPERATURE, LONG HEAT RETENTION', desc: 'The 20-liter Livotec LWH-V20A25 storage water heater supplies hot water quickly and steadily for healthy modern families.' },
+      { title: 'TITANIUM PLUS ENAMEL – KEEPS HEAT FOR UP TO 48 HOURS', desc: 'The tank is lined with premium US-imported Titanium Plus enamel for better oxidation and corrosion resistance and effective leak prevention, ensuring durability throughout its life. It keeps water hot for up to 48 hours while optimizing power use and cost.' },
+      { title: 'CERAMIC-COATED TITAN INCOLOY 840 ELEMENT – HEATS FAST TO 78°C, LIMITS LIMESCALE', desc: 'The Livotec LWH-V20A25 storage water heater uses a ceramic-coated Titan Incoloy 840 element and 2,500W power for outstanding heat transfer, faster heating and less waiting.' },
+      { title: 'LARGE XMAS MG+ MAGNESIUM ROD – SOFTENS HARD WATER, PROTECTS SKIN & HAIR', desc: 'Helps limit metal build-up in the water and softens hard water, protecting your skin and hair. The magnesium rod also protects the heating element from corrosion, extending the heater\'s life and keeping it running reliably over time.' },
+      { title: 'EUROPEAN STANDARDS – COMPLETE PEACE OF MIND', desc: 'The Livotec LWH-V20A25 storage water heater has a 5-level protection system for the whole family\'s safety. The 5 safety levels include a European-standard ELCB that cuts power in case of leakage.' }
+    ]
   },
   'lwh-i20a25': {
     name: 'Livotec LWH-I20A25 20L Storage Water Heater',
     tagline: 'Genuine Livotec 20L storage water heater',
-    features: [],
+    features: [
+      'Titanium enamel tank with premium PU insulation.',
+      'Keeps heat for up to 48 hours',
+      'Ceramic Incoloy 840 heating element saves 30% electricity.',
+      'Large XMAS Mg+ magnesium rod helps soften water.',
+      'European-standard ELCB for 5 times the electrical safety.',
+      'Stable water temperature up to 78°C,',
+      'Easy to adjust with an illuminated dial.',
+      'Lifetime heating element warranty'
+    ],
     specs: {
       Brand: 'Livotec',
       Model: 'LWH-I20A25',
-      Category: 'Water heater',
-      Capacity: '20 liters',
-      'Heating type': 'Storage (indirect)'
-    }
+      Capacity: '20L',
+      Power: '2500W',
+      Voltage: '220V/50Hz',
+      'Heating element': 'Titan Incoloy 840',
+      'Anti-corrosion magnesium rod': 'Yes',
+      'Inner tank': 'Titanium enamel',
+      'Polyurethane (PU) insulation': 'High-density PU',
+      'Maximum water temperature': '78°C',
+      'Water heating time': '15′-30′',
+      'Mechanical control': 'Temperature dial',
+      'Operating water pressure': '0,8Mpa',
+      'Thermal insulation': 'PU insulation',
+      Weight: '11,5 Kg',
+      'Product dimensions': '615 * 305* 320',
+      'Waterproof rating': 'IPX1',
+      'ELCB residual-current circuit breaker': 'Yes',
+      'TBST thermostat': 'Yes',
+      'Water pressure relief safety valve': 'Yes',
+      'Silver ion / titanium-coated heating element': 'No',
+      'Heat retention time': '48H',
+      'Indicator light': 'Yes',
+      'Built-in drain valve': 'Yes',
+      'Built-in booster pump': 'No',
+      'Temperature display': 'No'
+    },
+    highlights: [
+      { title: '5 SAFETY LEVELS – HIGH HEAT – EFFICIENT HEAT RETENTION', desc: 'Designed with maximum safety in mind, the Livotec LWH-I20A25 storage water heater is an ideal choice for families. With 5-layer protection, deep heating and long heat retention, it meets every hot water need in the cold season.' },
+      { title: 'TITANIUM ENAMEL TANK – DURABLE, KEEPS HEAT UP TO', desc: 'Inside the tank is a US-imported Titanium enamel coating that resists corrosion, reduces hard-water damage and limits leaks. Combined with high-density PU insulation, the tank keeps heat for up to 48 hours – 35% better heat retention than usual.' },
+      { title: 'FAST HEATING – SAVES 30% ELECTRICITY', desc: 'Dual Ceramic Incoloy®840 heating elements enlarge the heat-transfer area and speed up heating. Self-cleaning limits scale, improving efficiency and saving electricity, with maximum power up to 2500W.' },
+      { title: 'XMAS MG+ MAGNESIUM ROD – PROTECTS HAIR AND SKIN, SOFTENS HARD WATER', desc: 'Large magnesium rods with a Ti+Titanium crystal coating help soften water and protect hair and skin. The magnesium rods also limit scale, extend the heating element\'s life and optimize heating efficiency.' },
+      { title: 'EUROPEAN SAFETY STANDARD – USE WITH CONFIDENCE', desc: 'The Livotec LWH-I20A25 water heater has a 5-level protection system meeting European safety standards, keeping operation completely safe for users.' },
+      { title: 'PROFESSIONAL OFFICIAL WARRANTY', desc: 'The Livotec LWH-I20A25 storage water heater comes with a lifetime warranty on the heating element, 8 years on the tank and 2 years on electrical components for peace of mind.' }
+    ]
   },
   'lwh-i20a26s': {
     name: 'Livotec LWH-I20A26S 20L Storage Water Heater',
     tagline: 'Genuine Livotec 20L storage water heater',
-    features: [],
+    features: [
+      'IPUS technology: keeps heat for up to 48 hours',
+      'LED display: easy temperature monitoring',
+      'Titan Incoloy® 840: heats fast to 78°C, limits scale',
+      'Large magnesium rod: softens hard water, gentle on skin and hair',
+      '5-level safety system: ELCB (European standard)',
+      'Official warranty: lifetime heating element – 8 years tank – 2 years components'
+    ],
     specs: {
       Brand: 'Livotec',
       Model: 'LWH-I20A26S',
-      Category: 'Water heater',
-      Capacity: '20 liters',
-      'Heating type': 'Storage (indirect)'
-    }
+      Capacity: '20L',
+      Voltage: '220V/50Hz',
+      'Heating element': 'Titan Incoloy 840',
+      'Anti-corrosion magnesium rod': 'Yes',
+      'Inner tank': 'Titanium enamel',
+      'Polyurethane (PU) insulation': 'High-density PU',
+      'Maximum water temperature': '78°C',
+      'Water heating time': '15-30′',
+      'Operating water pressure': '0,75 MPa',
+      'Thermal insulation': 'PU insulation',
+      Weight: '11,06 kg',
+      'Product dimensions': '615x305x320 mm',
+      'Waterproof rating': 'IPX1 fire- and water-resistance to international standards',
+      'ELCB residual-current circuit breaker': 'Yes',
+      'TBST thermostat': 'Yes',
+      'Water pressure relief safety valve': 'Yes',
+      'Heat retention time': '48H',
+      'Indicator light': 'Yes',
+      'Built-in drain valve': 'Yes',
+      'Built-in booster pump': 'No',
+      'Temperature display': 'Yes',
+      'Unit warranty': 'Lifetime heating element – 8 years tank – 2 years components'
+    },
+    highlights: [
+      { title: 'SMART DISPLAY – ACCURATE READINGS', desc: 'The Livotec LWH-I20A26S has a clear LED display so you always know the exact water temperature in the tank.' },
+      { title: 'IPUS TECHNOLOGY – KEEPS HEAT FOR UP TO 48 HOURS', desc: 'The Livotec LWH-I20A26S tank is lined with US-standard Titanium Plus enamel for better corrosion resistance, fewer leaks and greater durability. With high-density PU insulation it limits heat loss effectively and keeps water hot for up to 48 hours.' },
+      { title: 'TITAN INCOLOY® 840 ELEMENT – FAST HEATING – ENERGY SAVING – LIFETIME WARRANTY', desc: 'The Livotec LWH-I20A26S has a premium ceramic-coated Titan Incoloy® 840 element with self-cleaning and outstanding corrosion resistance, heating water quickly up to 78°C. Premium Titan Incoloy limits limescale, resists corrosion and keeps heat transfer fast and stable.' },
+      { title: 'EUROPEAN STANDARDS', desc: 'The Livotec LWH-V20A26S storage water heater has a 5-level safety system so the whole family can enjoy warm showers every day with peace of mind. The 5 safety levels include a European-standard ELCB that cuts power automatically when a leak is detected.' },
+      { title: 'OFFICIAL WARRANTY – PEACE OF MIND', desc: 'Beyond the user experience, Livotec offers long-term peace of mind with a clear, transparent warranty policy for the Livotec LWH-I20A26S storage water heater: 8 years on the tank – a commitment to lasting durability and quality (*); 2 years on components – peace of mind…' }
+    ]
   },
   'lwh-i20b26': {
     name: 'Livotec LWH-I20B26 20L Storage Water Heater',
     tagline: 'Genuine Livotec 20L storage water heater',
-    features: [],
+    features: [
+      'IPUS technology keeps heat for 48 hours',
+      'Fast-heating SUS316L element',
+      'Large-diameter AZ63B magnesium rod',
+      '5 safety levels to European standards',
+      'Temperature control up to 78°C',
+      'Modern design that brightens the room',
+      'Official warranty'
+    ],
     specs: {
       Brand: 'Livotec',
       Model: 'LWH-I20B26',
-      Category: 'Water heater',
-      Capacity: '20 liters',
-      'Heating type': 'Storage (indirect)'
-    }
+      Capacity: '20L',
+      Power: '2500W',
+      'Heating element': 'SUS316L',
+      'Anti-corrosion magnesium rod': 'Yes',
+      'Inner tank': 'Titanium enamel, 100% US enamel',
+      Insulation: 'Polyurethane (PU)',
+      'Maximum heating temperature': '78°C',
+      'Water heating time': '15-30 minutes',
+      Adjustment: 'Temperature dial',
+      'Safety functions': 'ELCB residual-current circuit breaker – European standard; fire-protection relay; safety valve; IPX1 fire and water resistance to international standards; TBST thermostat',
+      'Operation indicator light': 'Yes',
+      'Heat retention time': '48 hours',
+      'Built-in drain valve': 'Yes',
+      'Unit warranty': '2 years components, 8 years tank',
+      '1-for-1 replacement warranty': '15 days'
+    },
+    highlights: [
+      { title: 'IPUS TECHNOLOGY KEEPS HEAT FOR UP TO 48 HOURS', desc: 'The Livotec LWH-I20B26 uses IPUS heat-retention technology with high-density PU insulation to reduce heat loss and keep water hot for up to 48 hours. You always have hot water ready without reheating again and again.' },
+      { title: 'SUS316L HEATING ELEMENT – FAST HEATING, LONG-LASTING', desc: 'The Livotec LWH-I20B26 has a premium stainless steel SUS316L element that heats water quickly up to 78°C, so you have hot water for showers and daily use without a long wait.' },
+      { title: 'LARGE AZ63B MAGNESIUM ROD – PROTECTS THE TANK, GENTLE ON SKIN AND HAIR', desc: 'The large-diameter AZ63B magnesium rod reduces the effects of hard water, limits scale forming inside the tank and helps protect the heating element from corrosion.' },
+      { title: 'EUROPEAN SAFETY STANDARDS', desc: 'The Livotec LWH-I20T26 has a 5-level safety system meeting European standards that controls electricity, temperature and pressure during operation for the whole family\'s peace of mind. It includes a European-standard ELCB that cuts power automatically when a leak is detected.' },
+      { title: 'OFFICIAL WARRANTY', desc: 'With the Livotec LWH-I20B26 you get a clear official warranty for peace of mind: 8 years on the tank and 2 years on components. If you need help, Livotec\'s technical and customer care teams are always ready to support you so you can use the product conveniently and…' }
+    ]
   },
   'lwh-i20t26': {
     name: 'Livotec LWH-I20T26 20L Storage Water Heater',
     tagline: 'Genuine Livotec 20L storage water heater',
-    features: [],
+    features: [
+      'IPUS technology keeps heat for up to 48 hours',
+      'SUS316L element heats fast up to 78°C',
+      'AZ63B magnesium rod softens hard water, gentle on skin and hair',
+      '5 safety levels to European standards',
+      'Flexible temperature control',
+      'Youthful design, modern colors',
+      'Official warranty: 8 years on the tank, 2 years on components'
+    ],
     specs: {
       Brand: 'Livotec',
       Model: 'LWH-I20T26',
-      Category: 'Water heater',
-      Capacity: '20 liters',
-      'Heating type': 'Storage (indirect)'
-    }
+      Capacity: '20L',
+      Power: '2500W',
+      'Heating element': 'SUS316L',
+      'Anti-corrosion magnesium rod': 'Yes',
+      'Inner tank': 'Titanium enamel, 100% US enamel',
+      Insulation: 'Polyurethane (PU)',
+      'Maximum heating temperature': '78°C',
+      'Water heating time': '15-30 minutes',
+      Adjustment: 'Temperature dial',
+      'Safety functions': 'ELCB residual-current circuit breaker – European standard; fire-protection relay; safety valve; IPX1 fire and water resistance to international standards; TBST thermostat',
+      Thermostat: 'Yes',
+      'Operation indicator light': 'Yes',
+      'Heat retention time': '48 hours',
+      'Built-in drain valve': 'Yes',
+      'Unit warranty': '2 years components, 8 years tank',
+      '1-for-1 replacement warranty': '15 days'
+    },
+    highlights: [
+      { title: 'MODERN IPUS TECHNOLOGY – KEEPS WATER HOT FOR UP TO 48 HOURS', desc: 'The Livotec LWH-I20T26 uses IPUS heat-retention technology with high-density PU insulation to limit heat loss effectively. Hot water lasts up to 48 hours, so warm water is always ready without reheating again and again.' },
+      { title: 'SUS316L HEATING ELEMENT – FAST HEATING, DURABLE OVER TIME', desc: 'The SUS316L heating element is made of premium stainless steel that heats quickly up to 78°C while effectively limiting scale and corrosion. The water heater runs stably and durably and keeps its heating performance throughout its life.' },
+      { title: 'LARGE AZ63B MAGNESIUM ROD – PROTECTS THE TANK, GENTLE ON SKIN AND HAIR', desc: 'The large-diameter AZ63B magnesium rod reduces the effects of hard water, limits scale forming inside the tank and helps protect the heating element from corrosion.' },
+      { title: '5-LEVEL SAFETY SYSTEM – PEACE OF MIND EVERY TIME', desc: 'Safety always comes first when choosing a water heater. The Livotec LWH-I20T26 has a 5-level safety system that limits electrical and pressure risks during operation.' },
+      { title: 'OFFICIAL LIVOTEC LWH-I20T26 WARRANTY – PEACE OF MIND', desc: 'The Livotec LWH-I20T26 comes with an official warranty for peace of mind: up to 8 years on the tank and 2 years on components.' }
+    ]
   },
   'lwh-i20x26': {
     name: 'Livotec LWH-I20X26 20L Storage Water Heater',
     tagline: 'Genuine Livotec 20L storage water heater',
-    features: [],
+    features: [
+      'IPUS keeps heat for up to 48 hours',
+      'Titan Incoloy 840 element heats fast up to 78°C',
+      'XMAS MG+ magnesium rod softens hard water',
+      '5 safety levels to European standards',
+      'Temperature dial',
+      'Modern design',
+      'Official warranty'
+    ],
     specs: {
       Brand: 'Livotec',
       Model: 'LWH-I20X26',
-      Category: 'Water heater',
-      Capacity: '20 liters',
-      'Heating type': 'Storage (indirect)'
-    }
+      Capacity: '20L',
+      Power: '2500W',
+      'Heating element': 'Titan Incoloy® 840',
+      'Anti-corrosion magnesium rod': 'Yes',
+      'Inner tank': 'Titanium enamel (100% Ferro enamel from the USA)',
+      Insulation: 'Polyurethane (PU)',
+      'Maximum heating temperature': '78°C',
+      'Water heating time': '15-30 minutes',
+      Adjustment: 'Temperature dial',
+      'Residual-current circuit breaker': 'ELCB – European standard (made in France)',
+      'Dual protection relay': 'Fire-protection relay',
+      'Safety valve': 'Yes',
+      'Thermal insulation': 'IPX1 fire- and water-resistance to international standards',
+      Thermostat: 'Yes',
+      'Operation indicator light': 'Yes',
+      'Heat retention time': '48 hours',
+      'Built-in drain valve': 'Yes',
+      'Unit warranty': '2 years components, 8 years tank',
+      '1-for-1 replacement warranty': '15 days'
+    },
+    highlights: [
+      { title: '5 SAFETY LEVELS – HIGH TEMPERATURE, LONG HEAT RETENTION', desc: 'After a busy day, relaxing under warm water always feels good. The Livotec LWH-I20X26 keeps hot water ready for showers and daily needs with fast heating and heat retention of up to 48 hours.' },
+      { title: 'IPUS TECHNOLOGY – KEEPS WATER HOT FOR UP TO 48 HOURS', desc: 'Titanium Plus enamel with high-density PU insulation keeps water hot longer and limits heat loss. You can use hot water whenever you need without switching the heater on repeatedly – convenient and energy saving.' },
+      { title: 'TITAN INCOLOY® 840 ELEMENT – FAST HEATING, DURABLE OVER TIME', desc: 'The ceramic-coated Titan Incoloy® 840 element with a dual-burner design heats water quickly to 78°C, so hot water is always ready when you need it. It limits scale and reduces the effects of hard water, keeping performance stable for the family\'s daily hot water needs.' },
+      { title: 'LARGE MAGNESIUM ROD – HELPS SOFTEN HARD WATER', desc: 'Over long-term use, hard water can form scale inside the tank and reduce efficiency. The large magnesium rod limits this, helping protect the tank and internal parts.' },
+      { title: '5-LAYER SAFETY SYSTEM TO EUROPEAN STANDARDS', desc: 'The Livotec LWH-I20X26 has a 5-layer safety system for peace of mind every day: a European-standard ELCB cuts power automatically in case of leakage, and a fire-protection relay limits overheating and short circuits.' },
+      { title: 'OFFICIAL WARRANTY – USE WITH CONFIDENCE', desc: 'The Livotec LWH-I20X26 has up to 8 years of tank warranty and 2 years on components. If you need inspection, warranty service or technical advice, the Livotec team is always ready to help promptly.' }
+    ]
   },
   'lwh-v20a26s': {
     name: 'Livotec LWH-V20A26S 20L Storage Water Heater',
     tagline: 'Genuine Livotec 20L storage water heater',
-    features: [],
+    features: [
+      'Modern LED display for easy monitoring',
+      'IPUS technology keeps heat for 48 hours',
+      'Fast-heating Titan Incoloy 840 element',
+      'Large XMAS MG+ magnesium rod',
+      '5 safety levels to European standards',
+      'Modern, elegant design',
+      'Official warranty'
+    ],
     specs: {
       Brand: 'Livotec',
       Model: 'LWH-V20A26S',
-      Category: 'Water heater',
-      Capacity: '20 liters',
-      'Heating type': 'Storage (indirect)'
-    }
+      Capacity: '20L',
+      Power: '2500W',
+      'Heating element': 'Titan Incoloy® 840',
+      'Anti-corrosion magnesium rod': 'Yes',
+      'Inner tank': 'Titanium enamel (100% Ferro enamel from the USA)',
+      Insulation: 'Polyurethane (PU)',
+      'Maximum heating temperature': '78°C',
+      'Water heating time': '15-30 minutes',
+      'Residual-current circuit breaker': 'ELCB – European standard (made in France)',
+      'Dual protection relay': 'Fire-protection relay',
+      'Safety valve': 'Yes',
+      'Thermal insulation': 'IPX1 fire- and water-resistance to international standards',
+      Thermostat: 'TBST',
+      'Heat retention time': '48 hours',
+      'Built-in drain valve': 'Yes',
+      'Unit warranty': '2 years components, 8 years tank',
+      '1-for-1 replacement warranty': '15 days'
+    },
+    highlights: [
+      { title: 'IPUS TECHNOLOGY – KEEPS HEAT FOR UP TO 48 HOURS', desc: 'The tank is lined with Titanium Plus enamel to US standards for better corrosion resistance and durability. Together with high-density PU insulation, it limits heat loss and keeps water hot for up to 48 hours.' },
+      { title: 'TITAN INCOLOY® 840 ELEMENT – FAST HEATING, RELIABLE EVERY DAY', desc: 'The Livotec LWH-V20A26S uses a ceramic-coated Titan Incoloy® 840 element that heats water quickly to about 78°C, so you never wait long for hot water. Its durable material limits scale and reduces the effects of hard water, keeping heating efficient over time.' },
+      { title: 'LARGE MAGNESIUM ROD – GENTLE ON SKIN AND HAIR', desc: 'Fitted with a large magnesium rod that reduces the effects of hard water and limits metal deposits.' },
+      { title: '5-LEVEL SAFETY SYSTEM – PEACE OF MIND IN USE', desc: 'The Livotec LWH-V20A26S has a 5-layer protection system for peace of mind every day: European-standard ELCB cuts power automatically when a leak is detected; anti-fire and anti-shock relay for electrical safety; safety valve controls tank water pressure; fire-resistant insulation limits heat risks; TBST thermostat controls the temperature…' },
+      { title: 'OFFICIAL WARRANTY – LONG-TERM PEACE OF MIND', desc: 'With the Livotec LWH-V20A26S water heater, you can use it with confidence thanks to a clear, transparent warranty: up to 8 years on the tank and 2 years on components' }
+    ]
   },
   'lwh-v20b26': {
     name: 'Livotec LWH-V20B26 20L Storage Water Heater',
     tagline: 'Genuine Livotec 20L storage water heater',
-    features: [],
+    features: [
+      'IPUS technology keeps heat for 48 hours',
+      'SUS316L element heats fast to 78°C',
+      'AZ63B magnesium rod removes hard-water scale',
+      '5 safety levels meeting European standards',
+      'Flexible temperature control',
+      'Modern design, youthful colors',
+      'Official warranty'
+    ],
     specs: {
       Brand: 'Livotec',
       Model: 'LWH-V20B26',
-      Category: 'Water heater',
-      Capacity: '20 liters',
-      'Heating type': 'Storage (indirect)'
-    }
+      Capacity: '20L',
+      Power: '2500W',
+      'Heating element': 'SUS316L',
+      'Anti-corrosion magnesium rod': 'Yes',
+      'Inner tank': 'Titanium enamel (100% Ferro enamel from the USA)',
+      Insulation: 'Polyurethane (PU)',
+      'Maximum heating temperature': '78°C',
+      'Water heating time': '15-30 minutes',
+      Adjustment: 'Temperature dial',
+      'Safety functions': 'European-standard ELCB residual-current circuit breaker, fire-protection relay, safety valve, IPX1-rated fire- and water-resistant insulation, TBST thermostat',
+      'Operation indicator light': 'Yes',
+      'Built-in drain valve': 'Yes',
+      'Unit warranty': '2 years electrical components, 8 years tank',
+      '1-for-1 replacement policy': 'Within 15 days'
+    },
+    highlights: [
+      { title: 'IPUS TECHNOLOGY – KEEPS WATER HOT FOR UP TO 48 HOURS', desc: 'The Livotec LWH-V20B26 uses IPUS heat-retention technology with high-density PU insulation to limit heat loss and keep water hot for up to 48 hours.' },
+      { title: 'SUS316L HEATING ELEMENT – HEATS FAST TO 78°C, STABLE OPERATION', desc: 'The Livotec LWH-I20B26 has a premium stainless steel SUS316L element that heats quickly up to 78°C so you get hot water fast. Besides resisting corrosion and limiting scale, the element keeps heating performance stable and helps extend the heater\'s life.' },
+      { title: 'LARGE AZ63B MAGNESIUM ROD – GENTLE ON SKIN AND HAIR', desc: 'The large AZ63B magnesium rod is made of high-quality magnesium alloy that reduces the effects of hard water, limits scale in the tank and helps protect the heating element from corrosion and rust.' },
+      { title: 'EUROPEAN SAFETY STANDARDS – PEACE OF MIND FOR THE WHOLE FAMILY', desc: 'The Livotec LWH-V20B26 has a 5-level safety system meeting European standards that controls electricity, temperature and pressure during operation. It includes a European-standard ELCB that cuts power automatically when a leak is detected.' },
+      { title: 'EASY TEMPERATURE CONTROL TO SUIT YOUR NEEDS', desc: 'The Livotec LWH-V20B26 has an intuitive temperature dial so you can choose the right hot water level with a single turn.' },
+      { title: 'OFFICIAL WARRANTY – CONFIDENCE THROUGHOUT USE', desc: 'The Livotec LWH-V20B26 comes with a clear official warranty for years of confident use: up to 8 years on the tank and up to 2 years on components.' }
+    ]
   },
   'lwh-v20t26': {
     name: 'Livotec LWH-V20T26 20L Storage Water Heater',
     tagline: 'Genuine Livotec 20L storage water heater',
-    features: [],
+    features: [
+      'IPUS technology keeps heat for up to 48 hours',
+      'Fast-heating, corrosion-resistant SUS316L element',
+      'AZ63B magnesium rod removes hard-water scale',
+      '5 safety levels to European standards',
+      'Temperature dial',
+      'Modern square design, space-saving',
+      'Official warranty'
+    ],
     specs: {
       Brand: 'Livotec',
       Model: 'LWH-V20T26',
-      Category: 'Water heater',
-      Capacity: '20 liters',
-      'Heating type': 'Storage (indirect)'
-    }
+      Capacity: '20L',
+      Power: '2500W',
+      'Heating element': 'Titan Incoloy® 840',
+      'Anti-corrosion magnesium rod': 'Yes',
+      'Inner tank': 'Titanium enamel (100% Ferro enamel from the USA)',
+      Insulation: 'Polyurethane (PU)',
+      'Maximum heating temperature': '78°C',
+      Adjustment: 'Temperature dial',
+      'Residual-current circuit breaker': 'ELCB – European standard (made in France)',
+      'Dual protection relay': 'Fire-protection relay',
+      'Safety valve': 'Yes',
+      'Thermal insulation': 'IPX1 fire- and water-resistance to international standards',
+      Thermostat: 'TBST',
+      'Heat retention time': '48 hours',
+      'Indicator light': 'Yes',
+      'Built-in drain valve': 'Yes',
+      'Unit warranty': '2 years components, 8 years tank',
+      '1-for-1 replacement warranty': '15 days'
+    },
+    highlights: [
+      { title: 'IPUS TECHNOLOGY – KEEPS WATER HOT FOR UP TO 48 HOURS', desc: 'The Livotec LWH-V20T26 uses IPUS heat-retention technology with high-density PU insulation to retain heat effectively after heating. Water stays hot for up to 48 hours, so warm water is ready whenever you need it without reheating again and again.' },
+      { title: 'SUS316L HEATING ELEMENT – FAST HEATING, STEADY PERFORMANCE', desc: 'The Livotec LWH-V20T26 uses a premium stainless steel SUS316L element that heats water quickly up to 78°C, giving you hot water in a short time.' },
+      { title: 'LARGE AZ63B MAGNESIUM ROD – LIMITS SCALE, PROTECTS THE HEATING ELEMENT', desc: 'The Livotec LWH-V20T26 has a large-diameter AZ63B magnesium rod that reduces the effects of hard water, limits scale inside the tank and protects the heating element from corrosion.' },
+      { title: '5-LEVEL SAFETY SYSTEM – PEACE OF MIND FOR THE WHOLE FAMILY', desc: 'The Livotec LWH-V20T26 has a 5-level safety system that controls electricity, temperature and pressure during operation. It includes a European-standard ELCB that cuts power automatically when a leak is detected.' },
+      { title: 'FLEXIBLE TEMPERATURE CONTROL', desc: 'The Livotec LWH-V20T26 has an intuitive temperature dial so you can easily choose the right temperature for each need.' },
+      { title: 'OFFICIAL WARRANTY – USE WITH CONFIDENCE', desc: 'The Livotec LWH-V20T26 comes with an official warranty for peace of mind throughout its use: up to 8 years on the tank.' }
+    ]
   },
   'lwh-v20x26': {
     name: 'Livotec LWH-V20X26 20L Storage Water Heater',
     tagline: 'Genuine Livotec 20L storage water heater',
-    features: [],
+    features: [
+      'IPUS keeps heat for up to 48 hours',
+      'Fast-heating Titan Incoloy 840 element',
+      'XMAS MG+ magnesium rod, gentle on skin and hair',
+      '5 safety levels to European standards',
+      'Flexible temperature control',
+      'Compact, space-saving design',
+      'Official warranty'
+    ],
     specs: {
       Brand: 'Livotec',
       Model: 'LWH-V20X26',
-      Category: 'Water heater',
-      Capacity: '20 liters',
-      'Heating type': 'Storage (indirect)'
-    }
+      Capacity: '20L',
+      Power: '2500W',
+      'Heating element': 'Titan Incoloy® 840',
+      'Anti-corrosion magnesium rod': 'Yes',
+      'Inner tank': 'Titanium enamel (100% Ferro enamel from the USA)',
+      Insulation: 'Polyurethane (PU)',
+      'Maximum heating temperature': '78°C',
+      Adjustment: 'Temperature dial',
+      'Residual-current circuit breaker': 'ELCB – European standard (made in France)',
+      'Dual protection relay': 'Fire-protection relay',
+      'Safety valve': 'Yes',
+      'Thermal insulation': 'IPX1 fire- and water-resistance to international standards',
+      Thermostat: 'TBST',
+      'Heat retention time': '48 hours',
+      'Indicator light': 'Yes',
+      'Built-in drain valve': 'Yes',
+      'Unit warranty': '2 years components, 8 years tank',
+      '1-for-1 replacement warranty': '15 days'
+    },
+    highlights: [
+      { title: '5 SAFETY LEVELS – HIGH TEMPERATURE, LONG HEAT RETENTION', desc: 'The Livotec LWH-V20X26 storage water heater keeps heat for up to 48 hours, so you can enjoy warm water whenever you need it without reheating again and again.' },
+      { title: 'IPUS TECHNOLOGY – KEEPS HEAT FOR UP TO 48 HOURS', desc: 'Titanium Plus enamel with high-density PU insulation retains heat effectively and limits heat loss during use. Hot water lasts up to 48 hours, always ready without reheating constantly, saving electricity every day.' },
+      { title: 'TITAN INCOLOY® 840 ELEMENT – HEATS FAST TO 78°C, LIMITS LIMESCALE', desc: 'The ceramic-coated Titan Incoloy® 840 element has a dual-burner design that heats water quickly to 78°C, so you never wait long for hot water.' },
+      { title: 'LARGE MAGNESIUM ROD – SOFTENS HARD WATER, SAFE FOR SKIN & HAIR', desc: 'The large magnesium rod helps reduce the effects of hard water and limits scale in the tank. Water feels gentler on skin and hair, and the tank lining is protected for long-lasting durability.' },
+      { title: '5-LAYER SAFETY SYSTEM TO EUROPEAN STANDARDS', desc: 'The Livotec LWH-V20X26 has a 5-layer safety system for peace of mind and warm showers every day: European-standard ELCB cuts power automatically when a leak is detected; anti-fire and anti-shock relay for electrical safety; safety valve controls tank water pressure; fire-resistant insulation limits heat risks; TBST thermostat…' },
+      { title: 'TEMPERATURE DIAL – EASY AND FLEXIBLE', desc: 'The Livotec LWH-V20X26 has a simple temperature dial so you can choose the right heat level with one gentle turn.' },
+      { title: 'OFFICIAL WARRANTY, LONG-TERM PEACE OF MIND', desc: 'With the Livotec LWH-V20X26 water heater, you can use it with confidence thanks to a clear, transparent warranty: up to 8 years on the tank and 2 years on components' }
+    ]
   },
   'sb-616': {
     name: 'Livotec SB-616 Standing Fan',
     tagline: 'Genuine Livotec standing fan',
-    features: [],
+    features: [
+      'BLDC motor: quiet operation, energy saving',
+      'SoftAir technology: pleasant cool breeze',
+      '12 flexible fan speeds for every need',
+      'Sleepy mode: natural breeze.',
+      'Slim design with one-piece base: fits many spaces.',
+      '24-month warranty'
+    ],
     specs: {
       Brand: 'Livotec',
-      Model: 'SB-616',
-      Category: 'Standing fan'
-    }
+      'Fan type': 'Standing fan',
+      Motor: 'BLDC with ball bearings',
+      Power: '45W',
+      Voltage: '220V/50Hz',
+      'Wind mode': 'Normal breeze, Sleepy',
+      'Number of blades': '6 blades, 16-inch diameter',
+      'Number of speeds': '12 levels',
+      'Dimensions (W x D x H)': '460 × 450 × (1170-1370) mm',
+      'Oscillation angle': 'Horizontal 80°, vertical 30°',
+      Timer: 'Up to 8 hours',
+      Control: 'Push buttons plus remote control'
+    },
+    highlights: [
+      { title: 'STRONGER, QUIETER', desc: 'With optimized BLDC motor efficiency, the fan delivers far more airflow than ordinary AC-motor fans. The airflow is strong yet quiet, cooling quickly and spreading evenly so you feel comfortable as soon as you switch it on.' },
+      { title: 'SOFTAIR TECHNOLOGY – NEW-GENERATION GENTLE BREEZE', desc: 'The fan uses a ball-bearing BLDC motor with 6 aerodynamic 39cm blades, keeping noise low at about 45dB for a quiet space suited to resting, working or night use. Its wide 80° oscillation spreads the breeze evenly instead of focusing on one spot.' },
+      { title: 'HIGH-EFFICIENCY BLDC MOTOR TECHNOLOGY', desc: 'The fan uses a brushless BLDC motor with premium ball bearings, running smoothly with little wobble and limited heat build-up during long use. The Livotec SB-616 stays durable and stable, so your family can enjoy a pleasant breeze every day.' },
+      { title: 'AMS 6.0 TECHNOLOGY – SMOOTH AIRFLOW', desc: 'The SB-616 standing fan uses an AMS 6.0 system of 6 curved aerodynamic blades that "cut" the air more finely before it blows out.' },
+      { title: 'WIND 12.0 TECHNOLOGY – 12 FLEXIBLE SPEEDS', desc: 'The SB-616 lets you choose 12 fan speeds from gentle to strong for every need through the day. Whether resting, working or needing fast cooling, you can adjust it easily with the included remote without getting up.' },
+      { title: 'SLEEPY NATURAL BREEZE MODE – SLEEP WELL ALL NIGHT', desc: 'The Livotec SB-616 standing fan helps you sleep better with smart Sleepy mode, which gently adjusts the breeze to each stage of rest and avoids chills at night.' },
+      { title: 'MODERN SLIM DESIGN WITH A ONE-PIECE BASE', desc: 'The sturdy one-piece base keeps the fan stable and limits wobbling for peace of mind. The minimalist yet refined design makes your living space look more modern and tidy.' },
+      { title: '24-MONTH WARRANTY – LONG-TERM PEACE OF MIND', desc: 'The product comes with an official warranty of up to 24 months for peace of mind throughout its use.' }
+    ]
   },
   's-420': {
     name: 'Livotec S-420 Standing Fan',
     tagline: 'Genuine Livotec standing fan',
-    features: [],
+    features: [
+      'Boost Master technology: 72m³/min airflow',
+      'Turbo-Fan technology: cool breeze reaching up to 5 meters',
+      'Extension 120 technology: wide 120-degree oscillation',
+      'One-piece body: one-piece cast base',
+      'Remote control',
+      'Smart timer mode',
+      '24-month warranty'
+    ],
     specs: {
       Brand: 'Livotec',
-      Model: 'S-420',
-      Category: 'Standing fan'
-    }
+      'Fan type': 'Standing fan',
+      Power: '50W',
+      Voltage: '220V/50Hz',
+      'Wind mode': 'Sleep breeze, normal breeze',
+      'Number of blades': '3 blades',
+      Airflow: '73 m³/min',
+      Weight: '5.4 Kg',
+      'Dimensions (actual)': '440 x 395 x (1160-1360) mm',
+      'Wind speed': '7 m/s',
+      'Control panel': 'Remote, push buttons',
+      'Fan speeds': '3',
+      Features: 'Adjustable height',
+      'Made in': 'Vietnam',
+      'Launch year': '2025',
+      Warranty: '24 Tháng',
+      'Blade diameter': '39cm',
+      'Rotation angle': '90 degrees',
+      'Swing speed': '12 turns/minute'
+    },
+    highlights: [
+      { title: 'MODERN BOOST MASTER TECHNOLOGY', desc: 'What sets the Livotec S-420 standing fan apart is Boost Master technology, which delivers airflow of up to 73m³/min, significantly higher than ordinary standing fans.' },
+      { title: 'TURBO FAN TECHNOLOGY', desc: 'Turbo Fan technology on the Livotec S-420 produces airspeed up to 7m/s, spreading the breeze quickly so you feel comfortable within seconds. The airflow reaches up to 5 meters, distributing cool air evenly across the room instead of only near the fan.' },
+      { title: 'WIDE, FAR-REACHING COOLING – RELAX IN COMFORT', desc: 'Effectively cooling spaces of 15 – 20m², the Livotec S-420 is a good choice for living rooms, bedrooms or offices.' },
+      { title: 'EXTENSION 120 TECHNOLOGY – EVEN COOLING ACROSS THE ROOM', desc: 'Extension 120 technology widens the Livotec S-420 standing fan\'s cooling range with up to 120° oscillation, spreading the cool breeze evenly across the room.' },
+      { title: '3 FLEXIBLE FAN SPEEDS – ADJUST TO YOUR NEEDS', desc: 'The Livotec S-420 standing fan has 3 fan speeds plus Sleepy mode, so you can easily choose the right cooling level for each time of day.' },
+      { title: 'SLEEPY NATURAL BREEZE MODE – GENTLE, COMFORTABLE, RESTFUL NIGHTS', desc: 'After a long day, everyone needs a space cool enough to fall asleep easily. Sleepy mode on the Livotec S-420 creates a gentle, soft breeze with low noise for comfort all night without waking you.' },
+      { title: 'SMART TIMER – IN CONTROL EVERY DAY', desc: 'After a long day, just set the time you want and rest easy – the fan switches off automatically at the set time, with no need to wake up in the night.' },
+      { title: 'ONE-PIECE DESIGN, YOUTHFUL COLORS', desc: 'Besides effective cooling, the Livotec S-420 has a sturdy one-piece design that keeps the fan stable and limits wobbling during use. As a result, the airflow is always even and smoother, for everyday comfort.' }
+    ]
   },
   's-400': {
     name: 'Livotec S-400 Standing Fan',
     tagline: 'Genuine Livotec standing fan',
-    features: [],
+    features: [
+      'Boost Master technology: 30% more airflow',
+      'Turbo-Fan technology: 1.3 times stronger airflow',
+      'Extension 120 technology: 1.5 times the cooling coverage',
+      'One-piece body: one-piece cast base',
+      'Remote control',
+      'Smart timer mode',
+      '24-month warranty'
+    ],
     specs: {
       Brand: 'Livotec',
-      Model: 'S-400',
-      Category: 'Standing fan'
-    }
+      'Fan type': 'Standing fan',
+      Power: '50W',
+      Voltage: '220V/50Hz',
+      'Wind mode': 'Sleep breeze, normal breeze',
+      'Number of blades': '3 blades',
+      Airflow: '72 m³/min',
+      Weight: '5.4 Kg',
+      'Dimensions (actual)': '440 x 395 x (1160-1360) mm',
+      'Wind speed': '7 m/s',
+      'Control panel': 'Remote, push buttons',
+      'Fan speeds': '3',
+      Features: 'Adjustable height',
+      'Made in': 'Vietnam',
+      'Launch year': '2025',
+      Warranty: '24 Tháng',
+      'Blade diameter': '39cm',
+      'Rotation angle': '90 degrees',
+      'Swing speed': '12 turns/minute',
+      'Motor type': 'Brass bushing'
+    },
+    highlights: [
+      { title: 'COOL BREEZE REACHING ACROSS THE ROOM', desc: 'The Livotec S-400 standing fan features Turbo-Fan technology for very strong airflow at up to 7m/s – blowing away the summer heat within seconds. Turbo-Fan technology gives the S-400 far higher airspeed than traditional fans with limited airspeed.' },
+      { title: 'EXTENSION 120 TECHNOLOGY – WIDE, FAR-REACHING COOLING THROUGHOUT THE HOME', desc: 'The up-to-120-degree oscillation of Extension 120 technology on the Livotec S-400 standing fan cools wide and far, covering almost the entire room. This is a key advantage of the Livotec S-400 over ordinary fans.' },
+      { title: 'ONE-PIECE DESIGN – QUIET, STURDY, ELEGANT', desc: 'Unlike many assembled fans that wobble, the one-piece base of the Livotec S-400 feels solid and runs quietly, with a minimalist design that suits any modern home.' },
+      { title: 'REMOTE & SMART LED DISPLAY – HAPPY AND HEALTHY EVERY DAY', desc: 'The Livotec S-400 standing fan has a remote control and smart LED display, so you can easily control every function without getting up. Smart technology is not only convenient but also suits a young, active, joyful lifestyle.' },
+      { title: 'SMART TIMER MODE', desc: 'The S-400 standing fan has a smart timer that you can set flexibly up to 8 hours – economical and convenient every day.' },
+      { title: 'ENERGY SAVING – 5-STAR RATED', desc: 'The Livotec S-400 standing fan has an optimized motor that saves up to 20% electricity compared to ordinary fans of the same power, and is rated 5-star for energy.' },
+      { title: 'BUILT-IN SLEEPY NATURAL BREEZE – GENTLE AND COOL, BETTER SLEEP EVERY NIGHT', desc: 'Sleepy mode creates a gentle natural breeze, ideal for drifting into deep sleep without dry skin or discomfort.' },
+      { title: 'PEACE OF MIND – OFFICIAL WARRANTY UP TO 24 MONTHS', desc: 'The product comes with a warranty of up to 24 months and professional customer care from Livotec – for peace of mind every day.' }
+    ]
   },
   's-300': {
     name: 'Livotec S-300 Standing Fan',
     tagline: 'Genuine Livotec standing fan',
-    features: [],
+    features: [
+      'Boost Master technology: airflow up to 72m³/min',
+      'Turbo-Fan technology: 7m/s airspeed, cool breeze reaching 5 meters',
+      'Extension 90 technology: 90° oscillation, even across the room',
+      'Convenient, easy-to-use remote control',
+      '3 flexible fan speeds for every need',
+      'Sleepy mode: gentle natural breeze for relaxing rest',
+      '9-hour smart timer',
+      'Official warranty up to 24 months'
+    ],
     specs: {
       Brand: 'Livotec',
-      Model: 'S-300',
-      Category: 'Standing fan'
-    }
+      'Fan type': 'Standing fan',
+      Power: '45W',
+      Voltage: '220V/50Hz',
+      'Wind mode': 'Sleep breeze, normal breeze',
+      'Number of blades': '7 blades',
+      Airflow: '72 m³/min',
+      Weight: '3.4 Kg',
+      'Dimensions (actual)': '410x380x1050 (mm)',
+      'Wind speed': '7 m/s',
+      'Control panel': 'Remote, push buttons',
+      'Fan speeds': '3',
+      Features: 'Adjustable height',
+      'Made in': 'Vietnam',
+      'Launch year': '2025',
+      Warranty: '24 Tháng',
+      'Blade diameter': '35cm',
+      'Rotation angle': '90 degrees',
+      'Swing speed': '12 turns/minute',
+      'Motor type': 'Brass bushing'
+    },
+    highlights: [
+      { title: 'BOOST MASTER TECHNOLOGY – POWERFUL AIRFLOW, ENERGY SAVING', desc: 'What sets the Livotec S-300 standing fan apart is Boost Master technology, which delivers outstanding airflow of up to 72m³/min compared to ordinary standing fans of the same power.' },
+      { title: 'TURBO FAN TECHNOLOGY – FAR-REACHING COOL BREEZE', desc: 'On the hottest days, you need a breeze strong enough to cool the air the moment you switch on. Turbo Fan technology on the Livotec S-300 produces airspeed up to 7m/s, so you feel noticeably cooler within seconds.' },
+      { title: 'EXTENSION 90 TECHNOLOGY – EVEN COOLING ACROSS THE ROOM', desc: 'Besides strong airflow, the Livotec S-300 spreads the breeze more evenly with Extension 90 technology and its wide 90-degree oscillation. Air reaches many places in the room instead of cooling just one fixed area.' },
+      { title: 'ENERGY SAVING – USE WITH CONFIDENCE EVERY DAY', desc: 'Besides powerful airflow, the Livotec S-300 optimizes energy use. With airflow up to 72m³/min and only 45W of power, it keeps you pleasantly cool without using much electricity.' },
+      { title: 'MULTIPLE WIND MODES – FLEXIBLE FOR YOUR NEEDS', desc: 'The Livotec S-300 standing fan has 3 fan speeds plus Sleepy mode, so you can easily choose the right breeze for each time of day.' },
+      { title: 'SMART FEATURES FOR THE BEST EXPERIENCE', desc: 'Beyond effective cooling, the Livotec S-300 offers convenient smart features: a modern LED display that shows clear information so you can easily follow the fan\'s mode, and an easy mechanical control panel with simple adjustments for every family member.' },
+      { title: 'OFFICIAL 24-MONTH WARRANTY FOR THE LIVOTEC S-300 STANDING FAN', desc: 'The Livotec S-300 standing fan comes with an official warranty of up to 24 months for your family\'s peace of mind. Livotec\'s customer care and technical staff are always ready to help you enjoy a cooler, more comfortable home every day.' }
+    ]
   },
   's-150b': {
     name: 'Livotec S-150B Standing Fan',
     tagline: 'Genuine Livotec standing fan',
-    features: [],
+    features: [
+      'Boost Master technology: 70m³/min airflow.',
+      'Turbo-Fan technology: cooling reaches 5 meters, 7m/s airspeed',
+      'Extension 120 technology: 120-degree oscillation cools everywhere',
+      'Fast Angle technology: fast oscillation at 12 turns/minute.',
+      'Adjust cooling with 3 fan speeds',
+      '24-month warranty'
+    ],
     specs: {
       Brand: 'Livotec',
-      Model: 'S-150B',
-      Category: 'Standing fan'
-    }
+      'Fan type': 'Standing fan',
+      Power: '50W',
+      Voltage: '220V/50Hz',
+      'Wind mode': 'Normal breeze',
+      'Number of blades': '3 blades',
+      Airflow: '70 m³/min',
+      Weight: '5,7 Kg',
+      'Dimensions (actual)': '456 x 450 x (1185-1330) mm',
+      'Wind speed': '7 m/s',
+      'Control panel': 'Push buttons',
+      'Fan speeds': '3',
+      Features: 'Adjustable height',
+      'Made in': 'Vietnam',
+      'Launch year': '2026',
+      Warranty: '24 Tháng',
+      'Blade diameter': '39cm',
+      'Rotation angle': '120 degrees',
+      'Swing speed': '12 turns/minute',
+      'Motor type': 'Brass bushing'
+    },
+    highlights: [
+      { title: 'BOOST MASTER TECHNOLOGY – POWERFUL AIRFLOW THAT BLOWS AWAY THE HEAT', desc: 'The Livotec S-150B features smart Boost Master technology with airflow of up to 70m³/min, blowing away the heat so the room quickly becomes cool and comfortable.' },
+      { title: 'TURBO FAN TECHNOLOGY – 7M/S AIRSPEED, COOL BREEZE REACHING 5 METERS', desc: 'Turbo Fan technology on the Livotec S-150B produces outstanding cooling airflow with airspeed up to 7m/s, so you feel cool within seconds of switching on. The breeze reaches up to 5 meters, spreading cool air to more places in the room.' },
+      { title: 'WIDE, FAR-REACHING COOLING – BLOWS AWAY THE HEAT', desc: 'Effectively cooling spaces of 15 – 20m², the Livotec S-150B suits living rooms, bedrooms, offices and shared family areas. With a wide 120-degree oscillation and fast 12-turns/minute swing, it keeps the breeze reaching many places in the room.' },
+      { title: 'MODERN DESIGN – EASY TO CLEAN', desc: 'The Livotec S-150B has a modern design in two minimalist colors, navy and black, that blends easily with living rooms, bedrooms or workspaces. The removable fan guard makes regular cleaning quick and simple.' },
+      { title: '3 FLEXIBLE FAN SPEEDS – ADJUST TO YOUR NEEDS', desc: 'The Livotec S-150B standing fan has 3 fan speeds so you can easily adjust the cooling to suit each moment and space.' },
+      { title: 'OFFICIAL WARRANTY UP TO 24 MONTHS – PEACE OF MIND', desc: 'The Livotec S-150B standing fan comes with an official warranty of up to 24 months for peace of mind during use.' }
+    ]
   },
   's-200': {
     name: 'Livotec S-200 Standing Fan',
     tagline: 'Genuine Livotec standing fan',
-    features: [],
+    features: [
+      'Boost Master technology: 30% more airflow, up to 20% energy savings',
+      'Turbo-Fan technology: 1.3 times stronger airflow, cool and far-reaching',
+      'Extension 120 technology: 1.5 times the cooling coverage.',
+      'Fast Angle technology: 1.2 times faster oscillation',
+      'One-piece body: one-piece cast base',
+      'Adjust cooling with 3 fan speeds',
+      '24-month warranty'
+    ],
     specs: {
       Brand: 'Livotec',
-      Model: 'S-200',
-      Category: 'Standing fan'
-    }
+      'Fan type': 'Standing fan',
+      Power: '50W',
+      Voltage: '220V/50Hz',
+      'Wind mode': 'Normal breeze',
+      'Number of blades': '3 blades',
+      Airflow: '71 m³/min',
+      Weight: '5,2 Kg',
+      'Dimensions (actual)': '440 x 395 x (1080-1300) mm',
+      'Wind speed': '7 m/s',
+      'Control panel': 'Push buttons',
+      'Fan speeds': '3',
+      Features: 'Adjustable height',
+      'Made in': 'Vietnam',
+      'Launch year': '2025',
+      Warranty: '24 Tháng',
+      'Blade diameter': '39cm',
+      'Rotation angle': '120 degrees',
+      'Swing speed': '12 turns/minute',
+      'Motor type': 'Brass bushing'
+    },
+    highlights: [
+      { title: 'BOOST MASTER TECHNOLOGY – OUTSTANDING AIRFLOW', desc: 'The Livotec S-200 standing fan uses new-generation Boost Master technology for airflow up to 71m³/min and airspeed of 7m/s. The cool breeze reaches up to 5 meters, effectively cooling spaces of 20-30m².' },
+      { title: 'TURBO-FAN TECHNOLOGY – COOL BREEZE ACROSS THE WHOLE ROOM', desc: 'Turbo-Fan technology creates very strong airflow at up to 7m/s, blowing away the summer heat within seconds. Turbo-Fan technology gives the S-200 far higher airspeed than traditional fans with limited airspeed.' },
+      { title: 'FAST ANGLE TECHNOLOGY – EVENLY SPREAD COOL AIR', desc: 'Beyond fast cooling, the Livotec S-200 cools evenly thanks to Fast Angle technology with oscillation of up to 12 turns/minute. Combined with large blades and high airspeed, the breeze spreads across the whole space instead of cooling just one spot like ordinary fans.' },
+      { title: 'WIDE, FAR-REACHING COOLING – FRESH AIR EVERYWHERE', desc: 'With a wide 120-degree oscillation, Extension 120 technology lets the Livotec S-200 standing fan cover almost the entire room. Whether you\'re working, resting or with family, the cool breeze is spread evenly and pleasantly.' },
+      { title: 'ONE-PIECE DESIGN – STURDY, QUIET AND REFINED', desc: 'Unlike many assembled fans that wobble, the one-piece base of the Livotec S-200 feels solid and runs quietly, with a minimalist design that suits any modern home.' },
+      { title: 'ENERGY SAVING – USE WITH CONFIDENCE', desc: 'With an optimized motor and efficiency, the Livotec S-200 standing fan saves about 20% electricity compared to fans of the same power and is rated 5-star for energy. It\'s an economical choice for families who use fans often in summer.' },
+      { title: '3 FAN SPEEDS – FLEXIBLE FOR EVERY NEED', desc: 'Easily switch between 3 fan speeds to suit the moment' },
+      { title: 'EASY TO CLEAN – DURABLE', desc: 'The removable fan head makes cleaning simple, keeping the airflow clean and safe for the whole family\'s health.' }
+    ]
   },
   's-100': {
     name: 'Livotec S-100 Standing Fan',
     tagline: 'Genuine Livotec standing fan',
-    features: [],
+    features: [
+      'Boost Master technology: 30% more airflow, up to 20% energy savings',
+      'Turbo-Fan technology: 1.3 times stronger airflow, cool and far-reaching',
+      'Extension 120 technology: 1.5 times the cooling coverage.',
+      'Fast Angle technology: 1.2 times faster oscillation',
+      'Adjust cooling with 3 fan speeds',
+      '24-month warranty'
+    ],
     specs: {
       Brand: 'Livotec',
-      Model: 'S-100',
-      Category: 'Standing fan'
-    }
+      'Fan type': 'Standing fan',
+      Power: '50W',
+      Voltage: '220V/50Hz',
+      'Wind mode': 'Normal breeze',
+      'Number of blades': '3 blades',
+      Airflow: '71 m³/min',
+      Weight: '3,9 Kg',
+      'Dimensions (actual)': '456 x 450 x (1185-1330) mm',
+      'Wind speed': '7 m/s',
+      'Control panel': 'Push buttons',
+      'Fan speeds': '3',
+      Features: 'Adjustable height',
+      'Made in': 'Vietnam',
+      'Launch year': '2025',
+      Warranty: '24 Tháng',
+      'Blade diameter': '39cm',
+      'Rotation angle': '120 degrees',
+      'Swing speed': '12 turns/minute',
+      'Motor type': 'Brass bushing'
+    },
+    highlights: [
+      { title: 'BOOST MASTER TECHNOLOGY – POWERFUL AIRFLOW, ENERGY SAVING', desc: 'The Livotec S-100 standing fan features modern Boost Master technology with airflow up to 71m³/min, cooling 20–30m² spaces quickly and evenly. Compared to typical fans at only about 50–55m³/min, the S-100 feels noticeably cooler right from the start.' },
+      { title: 'TURBO-FAN TECHNOLOGY', desc: 'The Livotec S-100 standing fan integrates Turbo-Fan technology for strong airflow at up to 7m/s, easily dispelling the heat on the hottest days. Compared to traditional fans with limited airspeed, it delivers a far-reaching breeze that keeps the room airy and comfortable.' },
+      { title: 'FAST ANGLE TECHNOLOGY – SPREADS COOL AIR EVENLY AROUND THE ROOM', desc: 'The Livotec S-100 standing fan distributes air better with Fast Angle technology and oscillation of up to 12 turns/minute. Combined with large blades and strong airflow, the breeze spreads evenly across the space, outperforming ordinary fans of the same power that cool only one spot.' },
+      { title: 'EXTENSION 120 TECHNOLOGY – WIDE, FAR-REACHING COOLING', desc: 'With up to 120-degree oscillation, Extension 120 technology lets the Livotec S-100 standing fan spread cool air evenly across the room. Whether you\'re working, relaxing or with family, the air stays pleasantly cool instead of cooling just one spot like ordinary fans' },
+      { title: 'SAVES 20% ELECTRICITY', desc: 'With an optimized motor, the Livotec standing fan saves significant electricity. Rated 5-star for energy, the Livotec S-100 is an economical cooling solution for the daily needs of modern families.' },
+      { title: '3 ADJUSTABLE FAN SPEEDS', desc: 'The Livotec S-100 lets you easily switch between 3 fan speeds to suit each need.' },
+      { title: 'EASY TO CLEAN – FRESH, COOL AIR', desc: 'The Livotec S-100 standing fan has a removable fan head, so you can wipe and clean it in just a few minutes. The airflow stays clean and fresh, so the whole family can enjoy a pleasant breeze every day' },
+      { title: 'OFFICIAL WARRANTY UP TO 24 MONTHS', desc: 'The S-100 standing fan comes with a 24-month official warranty and professional customer care from Livotec, so you and your family can enjoy a pleasant breeze every day without worrying about issues during use.' }
+    ]
   },
   dhv12i: {
     name: 'Livotec DHV12I Inverter Air Conditioner (Cooling Only)',
     tagline: 'Genuine Livotec one-way Inverter air conditioner',
-    features: [],
+    features: [
+      '1-for-1 full-unit replacement within the first 90 days.',
+      'i-Money technology: energy saving.',
+      'i-Boost technology: cools in 30 seconds.',
+      'Smart IVO 4.0 chip.',
+      'i-Health technology: 5 filter layers protect against dust.',
+      'ACF technology: 4-step automatic indoor coil cleaning.',
+      'i-Chill technology: automatic fault detection.',
+      'Smart-Feel sensor',
+      'i-Sleep technology: automatic temperature adjustment.',
+      'AMCAAI technology: protects the outdoor unit for 10 years of durability.',
+      'i-Time technology: convenient off-timer up to 24 hours.',
+      'i-Mute technology: low noise of 30 dB',
+      '36-month official warranty'
+    ],
     specs: {
       Brand: 'Livotec',
-      Model: 'DHV12I',
-      Category: 'Air conditioner',
-      Technology: 'Inverter',
-      Function: 'Cooling only'
-    }
+      Type: 'Cooling only (one-way)',
+      Inverter: 'Inverter',
+      'Cooling capacity': '12.000 BTU',
+      'Cool airflow (m³/hour)': 'Indoor: 620/540/500/420/310',
+      'Average noise': 'Indoor: 42/40/37/31 – Outdoor: 52',
+      'Made in': 'Vietnam',
+      'Indoor unit warranty': '3 years',
+      'Outdoor unit warranty': 'Compressor 60-month warranty',
+      Refrigerant: 'R32',
+      'Power consumption': '1375W',
+      'Energy label': '3 sao (CSPF 4.46)',
+      'Indoor unit dimensions – weight': '750mm*285mm*201mm – 8 kg',
+      'Outdoor unit dimensions – weight': '726mm*455mm*233mm – 16.2 kg',
+      'Maximum installation height between indoor and outdoor units': '10m',
+      'Input current': '220–240V~, 50Hz',
+      'Operating current': '220–240V~, 50Hz'
+    },
+    highlights: [
+      { title: 'SUPER-FAST COOLING IN 30 SECONDS WITH I-BOOST TECHNOLOGY', desc: 'You can feel the cool air just 30 seconds after switching on. i-Boost technology speeds up cooling right from start-up, so you feel comfortable quickly without a long wait.' },
+      { title: 'SMART IVO 4.0 CHIP – WORKS ACROSS A WIDE VOLTAGE RANGE', desc: 'The IVO 4.0 chip lets the Livotec DHV10.8J Inverter air conditioner run across a wide 130 – 265V voltage range (*), keeping cooling steady even at peak hours.' },
+      { title: 'I-HEALTH 5-IN-1 FILTER – PROTECTS THE WHOLE FAMILY\'S HEALTH', desc: 'The Livotec DHV10.8J Inverter air conditioner has a 5-layer i-Health filter that helps reduce dust, limit bacteria and remove odors effectively.' },
+      { title: 'I-MONEY TECHNOLOGY – POWERFUL OPERATION, EFFICIENT ENERGY SAVING', desc: 'With i-Money technology, the Livotec DHV10.8J Inverter air conditioner cools quickly from start-up so the room reaches a comfortable temperature sooner.' },
+      { title: 'ACF TECHNOLOGY – 4-STEP AUTOMATIC CLEANING', desc: 'Condenses water to trap dirt; freezes the indoor coil; thaws and washes away residue; dries the indoor coil. You no longer need to clean the indoor unit as often, saving maintenance time and helping the unit last longer.' },
+      { title: 'I-CHILL TECHNOLOGY – EASY MONITORING OF THE UNIT\'S STATUS', desc: 'i-Chill technology shows error codes directly on the display, helping you quickly check the unit\'s status when something goes wrong. This makes inspection, maintenance and repair more convenient and saves time.' },
+      { title: 'AMCAAI TECHNOLOGY PROTECTS THE OUTDOOR UNIT', desc: 'AMCAAI technology on the Livotec DHV10.8J Inverter air conditioner better protects the outdoor unit against harsh outdoor weather.' },
+      { title: 'I-TIME – FLEXIBLE, EASY-TO-USE TIMER', desc: 'You can set on/off times to suit your day. The air conditioner runs at exactly the right time, saving power and adding convenience – no more worrying about forgetting to switch it off.' }
+    ]
   },
   'dhv10-8i': {
     name: 'Livotec DHV10.8I Inverter Air Conditioner (Cooling Only)',
     tagline: 'Genuine Livotec one-way Inverter air conditioner',
-    features: [],
+    features: [
+      '1-for-1 full-unit replacement within the first 90 days.',
+      'i-Money technology: energy saving.',
+      'i-Boost technology: cools in 30 seconds.',
+      'Smart IVO 4.0 chip.',
+      'i-Health technology: 5 filter layers protect against dust.',
+      'ACF technology: 4-step automatic indoor coil cleaning.',
+      'i-Chill technology: automatic fault detection.',
+      'Smart-Feel sensor',
+      'i-Sleep technology: automatic temperature adjustment.',
+      'AMCAAI technology: protects the outdoor unit for 10 years of durability.',
+      'i-Time technology: convenient off-timer up to 24 hours.',
+      'i-Mute technology: low noise of 22dB',
+      '36-month official warranty'
+    ],
     specs: {
       Brand: 'Livotec',
-      Model: 'DHV10.8I',
-      Category: 'Air conditioner',
-      Technology: 'Inverter',
-      Function: 'Cooling only'
-    }
+      Type: 'Cooling only (one-way)',
+      Inverter: 'Inverter',
+      'Cooling capacity': '10.800 BTU',
+      'Cool airflow (m³/hour)': 'Indoor: 620/540/400/310/250',
+      'Average noise': 'Indoor: 41/39/37/31/22 – Outdoor: 52',
+      'Made in': 'Vietnam',
+      'Indoor unit warranty': '3 years',
+      'Outdoor unit warranty': 'Compressor 60-month warranty',
+      Refrigerant: 'R32',
+      'Power consumption': '1110W',
+      'Energy label': '3 sao (CSPF 4.65)',
+      'Indoor unit dimensions – weight': '750mm*285mm*201mm – 8 kg',
+      'Outdoor unit dimensions – weight': '726mm*455mm*233mm – 16.2 kg',
+      'Maximum installation height between indoor and outdoor units': '10m',
+      'Input current': '220–240V~, 50Hz'
+    },
+    highlights: [
+      { title: 'SUPER-FAST COOLING IN 30 SECONDS WITH I-BOOST TECHNOLOGY', desc: 'You can feel the cool air just 30 seconds after switching on. i-Boost technology speeds up cooling right from start-up, so you feel comfortable quickly without a long wait.' },
+      { title: 'SMART IVO 4.0 CHIP – WORKS ACROSS A WIDE VOLTAGE RANGE', desc: 'The IVO 4.0 chip lets the Livotec DHV10.8J Inverter air conditioner run across a wide 130 – 265V voltage range (*), keeping cooling steady even at peak hours.' },
+      { title: 'I-HEALTH 5-IN-1 FILTER – PROTECTS THE WHOLE FAMILY\'S HEALTH', desc: 'The Livotec DHV10.8J Inverter air conditioner has a 5-layer i-Health filter that helps reduce dust, limit bacteria and remove odors effectively.' },
+      { title: 'I-MONEY TECHNOLOGY – POWERFUL OPERATION, EFFICIENT ENERGY SAVING', desc: 'With i-Money technology, the Livotec DHV10.8J Inverter air conditioner cools quickly from start-up so the room reaches a comfortable temperature sooner.' },
+      { title: 'ACF TECHNOLOGY – 4-STEP AUTOMATIC CLEANING', desc: 'Condenses water to trap dirt; freezes the indoor coil; thaws and washes away residue; dries the indoor coil. You no longer need to clean the indoor unit as often, saving maintenance time and helping the unit last longer.' },
+      { title: 'I-CHILL TECHNOLOGY – EASY MONITORING OF THE UNIT\'S STATUS', desc: 'i-Chill technology shows error codes directly on the display, helping you quickly check the unit\'s status when something goes wrong. This makes inspection, maintenance and repair more convenient and saves time.' },
+      { title: 'AMCAAI TECHNOLOGY PROTECTS THE OUTDOOR UNIT', desc: 'AMCAAI technology on the Livotec DHV10.8J Inverter air conditioner better protects the outdoor unit against harsh outdoor weather.' },
+      { title: 'I-TIME – FLEXIBLE, EASY-TO-USE TIMER', desc: 'You can set on/off times to suit your day. The air conditioner runs at exactly the right time, saving power and adding convenience – no more worrying about forgetting to switch it off.' }
+    ]
   },
   dhv09i: {
     name: 'Livotec DHV09I Inverter Air Conditioner (Cooling Only)',
     tagline: 'Genuine Livotec one-way Inverter air conditioner',
-    features: [],
+    features: [
+      '1-for-1 full-unit replacement within 90 days',
+      'i-Boost technology: super-fast cooling in just 30 seconds.',
+      'Smart IVO 4.0 chip.',
+      'i-Health technology: 5 filter layers protect against dust.',
+      'i-Money technology: outstanding energy savings.',
+      'Smart ACF technology: automatic indoor coil cleaning.',
+      'i-Chill technology: smart error alerts.',
+      'AMCAAI technology: protects the outdoor unit for 10 years of durability.',
+      'i-Time technology: off-timer up to 24 hours',
+      'i-Sleep technology: low noise of just 30dB.',
+      '36-month warranty with a transparent warranty policy'
+    ],
     specs: {
       Brand: 'Livotec',
-      Model: 'DHV09I',
-      Category: 'Air conditioner',
-      Technology: 'Inverter',
-      Function: 'Cooling only'
-    }
+      Type: 'Cooling only (one-way)',
+      Inverter: 'Inverter',
+      'Cooling capacity': '9.500 BTU',
+      'Cool airflow (m³/hour)': 'Indoor: 620/540/500/420/310',
+      'Average noise': 'Indoor: 42/39/36/31 – Outdoor: 52',
+      'Made in': 'Vietnam',
+      'Indoor unit warranty': '3 years',
+      'Outdoor unit warranty': 'Compressor 60-month warranty',
+      Refrigerant: 'R32',
+      'Power consumption': '900W',
+      'Energy label': '4 sao (CSPF 4.82)',
+      'Indoor unit dimensions – weight': '750mm*285mm*201mm – 8 kg',
+      'Outdoor unit dimensions – weight': '726mm*455mm*233mm – 16.2 kg',
+      'Maximum installation height between indoor and outdoor units': '10m',
+      'Input current': '220–240V~, 50Hz'
+    },
+    highlights: [
+      { title: 'SUPER-FAST COOLING IN 30 SECONDS WITH I-BOOST TECHNOLOGY', desc: 'You can feel the cool air just 30 seconds after switching on. i-Boost technology speeds up cooling right from start-up, so you feel comfortable quickly without a long wait.' },
+      { title: 'SMART IVO 4.0 CHIP – WORKS ACROSS A WIDE VOLTAGE RANGE', desc: 'The IVO 4.0 chip lets the Livotec DHV10.8J Inverter air conditioner run across a wide 130 – 265V voltage range (*), keeping cooling steady even at peak hours.' },
+      { title: 'I-HEALTH 5-IN-1 FILTER – PROTECTS THE WHOLE FAMILY\'S HEALTH', desc: 'The Livotec DHV10.8J Inverter air conditioner has a 5-layer i-Health filter that helps reduce dust, limit bacteria and remove odors effectively.' },
+      { title: 'I-MONEY TECHNOLOGY – POWERFUL OPERATION, EFFICIENT ENERGY SAVING', desc: 'With i-Money technology, the Livotec DHV10.8J Inverter air conditioner cools quickly from start-up so the room reaches a comfortable temperature sooner.' },
+      { title: 'ACF TECHNOLOGY – 4-STEP AUTOMATIC CLEANING', desc: 'Condenses water to trap dirt; freezes the indoor coil; thaws and washes away residue; dries the indoor coil. You no longer need to clean the indoor unit as often, saving maintenance time and helping the unit last longer.' },
+      { title: 'I-CHILL TECHNOLOGY – EASY MONITORING OF THE UNIT\'S STATUS', desc: 'i-Chill technology shows error codes directly on the display, helping you quickly check the unit\'s status when something goes wrong. This makes inspection, maintenance and repair more convenient and saves time.' },
+      { title: 'AMCAAI TECHNOLOGY PROTECTS THE OUTDOOR UNIT', desc: 'AMCAAI technology on the Livotec DHV10.8J Inverter air conditioner better protects the outdoor unit against harsh outdoor weather.' },
+      { title: 'I-TIME – FLEXIBLE, EASY-TO-USE TIMER', desc: 'You can set on/off times to suit your day. The air conditioner runs at exactly the right time, saving power and adding convenience – no more worrying about forgetting to switch it off.' }
+    ]
   },
   dhv12j: {
     name: 'Livotec DHV12J Inverter Air Conditioner (Cooling Only)',
     tagline: 'Genuine Livotec one-way Inverter air conditioner',
-    features: [],
+    features: [
+      '1-for-1 full-unit replacement within the first 90 days.',
+      'i-Money technology: energy saving.',
+      'i-Boost technology: cools in 30 seconds.',
+      'Smart IVO 4.0 chip.',
+      'i-Health technology: 5 filter layers protect against dust.',
+      'ACF technology: 4-step automatic indoor coil cleaning.',
+      'i-Chill technology: automatic fault detection.',
+      'Smart-Feel sensor',
+      'i-Sleep technology: automatic temperature adjustment.',
+      'AMCAAI technology: protects the outdoor unit for 10 years of durability.',
+      'i-Time technology: convenient off-timer up to 24 hours.',
+      'i-Mute technology: low noise of 22dB',
+      '36-month official warranty'
+    ],
     specs: {
       Brand: 'Livotec',
-      Model: 'DHV12J',
-      Category: 'Air conditioner',
-      Technology: 'Inverter',
-      Function: 'Cooling only'
-    }
+      Type: 'Cooling only (one-way)',
+      Inverter: 'Inverter',
+      'Cooling capacity': '12.000 BTU',
+      'Cool airflow (m³/hour)': 'Indoor: 600/500/400/310/250',
+      'Average noise': 'Indoor: 41/39/37/31/22 – Outdoor: 52',
+      'Made in': 'Vietnam',
+      'Indoor unit warranty': '3 years',
+      'Outdoor unit warranty': 'Compressor 60-month warranty',
+      Refrigerant: 'R32',
+      'Power consumption': '1335W',
+      'Energy label': '3 sao (CSPF 4.7)',
+      'Indoor unit dimensions – weight': '750mm*285mm*201mm – 8 kg',
+      'Outdoor unit dimensions – weight': '726mm*455mm*233mm – 16.2 kg',
+      'Maximum installation height between indoor and outdoor units': '10m',
+      'Input current': '220–240V~, 50Hz'
+    },
+    highlights: [
+      { title: 'SUPER-FAST COOLING IN 30 SECONDS WITH I-BOOST TECHNOLOGY', desc: 'You can feel the cool air just 30 seconds after switching on. i-Boost technology speeds up cooling right from start-up, so you feel comfortable quickly without a long wait.' },
+      { title: 'SMART IVO 4.0 CHIP – WORKS ACROSS A WIDE VOLTAGE RANGE', desc: 'The IVO 4.0 chip lets the Livotec DHV10.8J Inverter air conditioner run across a wide 130 – 265V voltage range (*), keeping cooling steady even at peak hours.' },
+      { title: 'I-HEALTH 5-IN-1 FILTER – PROTECTS THE WHOLE FAMILY\'S HEALTH', desc: 'The Livotec DHV10.8J Inverter air conditioner has a 5-layer i-Health filter that helps reduce dust, limit bacteria and remove odors effectively.' },
+      { title: 'I-MONEY TECHNOLOGY – POWERFUL OPERATION, EFFICIENT ENERGY SAVING', desc: 'With i-Money technology, the Livotec DHV10.8J Inverter air conditioner cools quickly from start-up so the room reaches a comfortable temperature sooner.' },
+      { title: 'ACF TECHNOLOGY – 4-STEP AUTOMATIC CLEANING', desc: 'Condenses water to trap dirt; freezes the indoor coil; thaws and washes away residue; dries the indoor coil. You no longer need to clean the indoor unit as often, saving maintenance time and helping the unit last longer.' },
+      { title: 'I-CHILL TECHNOLOGY – EASY MONITORING OF THE UNIT\'S STATUS', desc: 'i-Chill technology shows error codes directly on the display, helping you quickly check the unit\'s status when something goes wrong. This makes inspection, maintenance and repair more convenient and saves time.' },
+      { title: 'AMCAAI TECHNOLOGY PROTECTS THE OUTDOOR UNIT', desc: 'AMCAAI technology on the Livotec DHV10.8J Inverter air conditioner better protects the outdoor unit against harsh outdoor weather.' },
+      { title: 'I-TIME – FLEXIBLE, EASY-TO-USE TIMER', desc: 'You can set on/off times to suit your day. The air conditioner runs at exactly the right time, saving power and adding convenience – no more worrying about forgetting to switch it off.' }
+    ]
   },
   'dhv10-8j': {
     name: 'Livotec DHV10.8J Inverter Air Conditioner (Cooling Only)',
     tagline: 'Genuine Livotec one-way Inverter air conditioner',
-    features: [],
+    features: [
+      '1-for-1 full-unit replacement within the first 90 days.',
+      'i-Money technology: energy saving.',
+      'i-Boost technology: cools in 30 seconds.',
+      'Smart IVO 4.0 chip.',
+      'i-Health technology: 5 filter layers protect against dust.',
+      'ACF technology: 4-step automatic indoor coil cleaning.',
+      'i-Chill technology: automatic fault detection.',
+      'Smart-Feel sensor',
+      'i-Sleep technology: automatic temperature adjustment.',
+      'AMCAAI technology: protects the outdoor unit for 10 years of durability.',
+      'i-Time technology: convenient off-timer up to 24 hours.',
+      'i-Mute technology: low noise of 22dB',
+      '36-month official warranty'
+    ],
     specs: {
       Brand: 'Livotec',
-      Model: 'DHV10.8J',
-      Category: 'Air conditioner',
-      Technology: 'Inverter',
-      Function: 'Cooling only'
-    }
+      Type: 'Cooling only (one-way)',
+      Inverter: 'Inverter',
+      'Cooling capacity': '10.800 BTU',
+      'Cool airflow (m³/hour)': 'Indoor: 620/540/400/310/250',
+      'Average noise': 'Indoor: 41/39/37/31/22 – Outdoor: 52',
+      'Made in': 'Vietnam',
+      'Indoor unit warranty': '3 years',
+      'Outdoor unit warranty': 'Compressor 60-month warranty',
+      Refrigerant: 'R32',
+      'Power consumption': '1110W',
+      'Energy label': '3 sao (CSPF 4.65)',
+      'Indoor unit dimensions – weight': '750mm*285mm*201mm – 8 kg',
+      'Outdoor unit dimensions – weight': '726mm*455mm*233mm – 16.2 kg',
+      'Maximum installation height between indoor and outdoor units': '10m',
+      'Input current': '220–240V~, 50Hz'
+    },
+    highlights: [
+      { title: 'SUPER-FAST COOLING IN 30 SECONDS WITH I-BOOST TECHNOLOGY', desc: 'You can feel the cool air just 30 seconds after switching on. i-Boost technology speeds up cooling right from start-up, so you feel comfortable quickly without a long wait.' },
+      { title: 'SMART IVO 4.0 CHIP – WORKS ACROSS A WIDE VOLTAGE RANGE', desc: 'The IVO 4.0 chip lets the Livotec DHV10.8J Inverter air conditioner run across a wide 130 – 265V voltage range (*), keeping cooling steady even at peak hours.' },
+      { title: 'I-HEALTH 5-IN-1 FILTER – PROTECTS THE WHOLE FAMILY\'S HEALTH', desc: 'The Livotec DHV10.8J Inverter air conditioner has a 5-layer i-Health filter that helps reduce dust, limit bacteria and remove odors effectively.' },
+      { title: 'I-MONEY TECHNOLOGY – POWERFUL OPERATION, EFFICIENT ENERGY SAVING', desc: 'With i-Money technology, the Livotec DHV10.8J Inverter air conditioner cools quickly from start-up so the room reaches a comfortable temperature sooner.' },
+      { title: 'ACF TECHNOLOGY – 4-STEP AUTOMATIC CLEANING', desc: 'Condenses water to trap dirt; freezes the indoor coil; thaws and washes away residue; dries the indoor coil. You no longer need to clean the indoor unit as often, saving maintenance time and helping the unit last longer.' },
+      { title: 'I-CHILL TECHNOLOGY – EASY MONITORING OF THE UNIT\'S STATUS', desc: 'i-Chill technology shows error codes directly on the display, helping you quickly check the unit\'s status when something goes wrong. This makes inspection, maintenance and repair more convenient and saves time.' },
+      { title: 'AMCAAI TECHNOLOGY PROTECTS THE OUTDOOR UNIT', desc: 'AMCAAI technology on the Livotec DHV10.8J Inverter air conditioner better protects the outdoor unit against harsh outdoor weather.' },
+      { title: 'I-TIME – FLEXIBLE, EASY-TO-USE TIMER', desc: 'You can set on/off times to suit your day. The air conditioner runs at exactly the right time, saving power and adding convenience – no more worrying about forgetting to switch it off.' }
+    ]
   },
   dhv09j: {
     name: 'Livotec DHV09J Inverter Air Conditioner (Cooling Only)',
     tagline: 'Genuine Livotec one-way Inverter air conditioner',
-    features: [],
+    features: [
+      '1-for-1 full-unit replacement within the first 90 days.',
+      'i-Money technology: energy saving.',
+      'i-Boost technology: cools in 30 seconds.',
+      'Smart IVO 4.0 chip.',
+      'i-Health technology: 5 filter layers protect against dust.',
+      'ACF technology: 4-step automatic indoor coil cleaning.',
+      'i-Chill technology: automatic fault detection.',
+      'Smart-Feel sensor',
+      'i-Sleep technology: automatic temperature adjustment.',
+      'AMCAAI technology: protects the outdoor unit for 10 years of durability.',
+      'i-Time technology: convenient off-timer up to 24 hours.',
+      'i-Mute technology: low noise of 22dB',
+      '36-month official warranty'
+    ],
     specs: {
       Brand: 'Livotec',
-      Model: 'DHV09J',
-      Category: 'Air conditioner',
-      Technology: 'Inverter',
-      Function: 'Cooling only'
-    }
+      Type: 'Cooling only (one-way)',
+      Inverter: 'Inverter',
+      'Cooling capacity': '9.800 BTU',
+      'Cool airflow (m³/hour)': 'Indoor: 41/38/35/30/22 – Outdoor: 52',
+      'Average noise': '41/38/35/30/22 dB',
+      'Made in': 'Vietnam',
+      'Indoor unit warranty': '3 years',
+      'Outdoor unit warranty': 'Compressor 60-month warranty',
+      Refrigerant: 'R32',
+      'Power consumption': '935W',
+      'Energy label': '4 sao (CSPF 4.81)',
+      'Indoor unit dimensions – weight': '750mm*285mm*201mm – 8 kg',
+      'Outdoor unit dimensions – weight': '726mm*455mm*233mm – 16.2 kg',
+      'Maximum installation height between indoor and outdoor units': '10m',
+      'Input current': '220–240V~, 50Hz'
+    },
+    highlights: [
+      { title: 'SUPER-FAST COOLING IN 30 SECONDS WITH I-BOOST TECHNOLOGY', desc: 'You can feel the cool air just 30 seconds after switching on. i-Boost technology speeds up cooling right from start-up, so you feel comfortable quickly without a long wait.' },
+      { title: 'SMART IVO 4.0 CHIP – WORKS ACROSS A WIDE VOLTAGE RANGE', desc: 'The IVO 4.0 chip lets the Livotec DHV10.8J Inverter air conditioner run across a wide 130 – 265V voltage range (*), keeping cooling steady even at peak hours.' },
+      { title: 'I-HEALTH 5-IN-1 FILTER – PROTECTS THE WHOLE FAMILY\'S HEALTH', desc: 'The Livotec DHV10.8J Inverter air conditioner has a 5-layer i-Health filter that helps reduce dust, limit bacteria and remove odors effectively.' },
+      { title: 'I-MONEY TECHNOLOGY – POWERFUL OPERATION, EFFICIENT ENERGY SAVING', desc: 'With i-Money technology, the Livotec DHV10.8J Inverter air conditioner cools quickly from start-up so the room reaches a comfortable temperature sooner.' },
+      { title: 'ACF TECHNOLOGY – 4-STEP AUTOMATIC CLEANING', desc: 'Condenses water to trap dirt; freezes the indoor coil; thaws and washes away residue; dries the indoor coil. You no longer need to clean the indoor unit as often, saving maintenance time and helping the unit last longer.' },
+      { title: 'I-CHILL TECHNOLOGY – EASY MONITORING OF THE UNIT\'S STATUS', desc: 'i-Chill technology shows error codes directly on the display, helping you quickly check the unit\'s status when something goes wrong. This makes inspection, maintenance and repair more convenient and saves time.' },
+      { title: 'AMCAAI TECHNOLOGY PROTECTS THE OUTDOOR UNIT', desc: 'AMCAAI technology on the Livotec DHV10.8J Inverter air conditioner better protects the outdoor unit against harsh outdoor weather.' },
+      { title: 'I-TIME – FLEXIBLE, EASY-TO-USE TIMER', desc: 'You can set on/off times to suit your day. The air conditioner runs at exactly the right time, saving power and adding convenience – no more worrying about forgetting to switch it off.' }
+    ]
   }
 };
 

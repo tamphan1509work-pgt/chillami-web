@@ -478,6 +478,7 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
       tagline: override.tagline,
       features: override.features,
       specs: override.specs,
+      highlights: override.highlights ?? product.highlights,
       videoTitle: override.videoTitle ?? product.videoTitle,
       variants: product.variants?.map((v, i) => ({ ...v, ...override.variants?.[i] })),
       colorOptions: product.colorOptions?.map((c, i) => ({ ...c, ...override.colorOptions?.[i] })),

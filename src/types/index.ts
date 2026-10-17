@@ -20,6 +20,7 @@ export interface Product {
   tagline: string;
   features: string[];
   specs: Record<string, string>;
+  highlights?: { title: string; desc: string }[]; // detailed feature sections from the product page
   powerWatt?: number;
   energyRating?: number; // 1-5 stars
   warrantyMonths?: number;

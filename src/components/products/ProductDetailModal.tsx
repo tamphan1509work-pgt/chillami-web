@@ -555,6 +555,18 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                     </div>
                   ))}
                 </div>
+
+                {/* Detailed feature sections from the product page */}
+                {product.highlights && product.highlights.length > 0 && (
+                  <div className="space-y-3 pt-4">
+                    {product.highlights.map((h, i) => (
+                      <div key={i} className="p-4 bg-white rounded-xl border border-slate-200/60">
+                        <h5 className="text-xs font-bold text-teal-800 uppercase tracking-wide mb-1.5">{h.title}</h5>
+                        <p className="text-slate-600 leading-relaxed">{h.desc}</p>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             )}
 
