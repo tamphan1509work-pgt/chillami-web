@@ -7,10 +7,15 @@
   --font-display: 'Roboto Variable', 'Roboto', system-ui, -apple-system, sans-serif;
 }
 
+/* Unlayered and more specific than a plain `body` rule, so a host page's body reset
+   (the artifact preview injects `body { font: 14px system-ui }`) can't swap the font or size */
+html body {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
 @layer base {
-  body {
-    font-family: var(--font-sans);
-  }
   /* Codes, timers and prices set in font-mono keep aligned digits */
   .font-mono {
     font-variant-numeric: tabular-nums;
