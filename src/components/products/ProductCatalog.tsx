@@ -87,7 +87,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
       // Price range
       if (priceRange === '<2m' && p.price >= 2000000) return false;
       if (priceRange === '2-5m' && (p.price < 2000000 || p.price > 5000000)) return false;
-      if (priceRange === '5-10m' && (p.price < 5000000 || p.price > 1000000)) return false;
+      if (priceRange === '5-10m' && (p.price < 5000000 || p.price > 10000000)) return false;
       if (priceRange === '>10m' && p.price <= 10000000) return false;
 
       // Technology filter
