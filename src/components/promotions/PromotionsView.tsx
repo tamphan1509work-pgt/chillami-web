@@ -42,13 +42,13 @@ export const PromotionsView: React.FC<PromotionsViewProps> = ({
   const vouchers = [
     {
       code: 'CHILLAMI2026',
-      discount: l('Giảm 200.000 đ', '200,000đ off'),
-      condition: l('Cho đơn hàng từ 2.000.000 đ', 'For orders from 2,000,000đ'),
+      discount: l('Giảm 200.000đ', '200,000đ off'),
+      condition: l('Cho đơn hàng từ 2.000.000đ', 'For orders from 2,000,000đ'),
       expiry: l('Hạn dùng: 31/12/2026', 'Valid until: 31/12/2026'),
     },
     {
       code: 'COMBOVIP',
-      discount: l('Giảm 500.000 đ', '500,000đ off'),
+      discount: l('Giảm 500.000đ', '500,000đ off'),
       condition: l('Khi mua combo Điều hòa + Quạt cây', 'With an AC + standing fan combo'),
       expiry: l('Hạn dùng: 31/12/2026', 'Valid until: 31/12/2026'),
     },
@@ -80,7 +80,7 @@ export const PromotionsView: React.FC<PromotionsViewProps> = ({
               {l('Đại Tiệc Mùa Hè: Sống Mát Lành, Không Lo Hóa Đơn Điện', 'Summer Sale: Stay Cool Without Worrying About Power Bills')}
             </h1>
             <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-              {l('Ưu đãi mùa hè cho quạt cây, quạt điều hòa và điều hòa Inverter Livotec. Miễn phí công lắp đặt tiêu chuẩn trị giá 500.000 đ.', 'Summer offers on Livotec standing fans, air coolers and Inverter air conditioners. Free standard installation worth 500,000đ.')}
+              {l('Ưu đãi mùa hè cho quạt cây, quạt điều hòa và điều hòa Inverter Livotec. Miễn phí công lắp đặt tiêu chuẩn trị giá 500.000đ.', 'Summer offers on Livotec standing fans, air coolers and Inverter air conditioners. Free standard installation worth 500,000đ.')}
             </p>
           </div>
         </div>
@@ -142,7 +142,7 @@ export const PromotionsView: React.FC<PromotionsViewProps> = ({
                 {l('Thu Cũ Đổi Mới Thiết Bị Gia Dụng', 'Trade In Your Old Appliances')}
               </h4>
               <p className="text-xs text-slate-500 mt-1">
-                {l('Chillami thu mua quạt cũ, điều hòa cũ mọi thương hiệu với mức trợ giá lên đến 1.500.000 đ khi mua sản phẩm mới.', 'Chillami buys back old fans and air conditioners of any brand with a subsidy of up to 1,500,000đ when you buy a new product.')}
+                {l('Chillami thu mua quạt cũ, điều hòa cũ mọi thương hiệu với mức trợ giá lên đến 1.500.000đ khi mua sản phẩm mới.', 'Chillami buys back old fans and air conditioners of any brand with a subsidy of up to 1,500,000đ when you buy a new product.')}
               </p>
             </div>
           </div>

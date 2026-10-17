@@ -42,7 +42,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
   isCompared,
   onOpenOrderNow,
 }) => {
-  const { l, language, translateCategory } = useLanguage();
+  const { l, language, translateCategory, formatCurrency } = useLanguage();
   if (!product) return null;
 
   const [activeImage, setActiveImage] = useState(product.gallery[0] ?? product.image);
@@ -77,9 +77,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
     return product.price;
   }, [product, selectedVariant]);
 
-  const formatPrice = (amount: number) => {
-    return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(amount);
-  };
+  const formatPrice = formatCurrency;
 
   const handleDownloadManual = () => {
     setDownloadSuccess(true);
@@ -256,7 +254,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                 {/* Price Box */}
                 <div className="p-4 rounded-2xl bg-teal-50/70 border border-teal-100 mb-5 flex items-baseline justify-between">
                   <div>
-                    <div className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+                    <div className="text-2xl sm:text-3xl font-bold text-slate-900 tabular-nums">
                       {product.contactForPrice ? l('Liên hệ', 'Contact us') : formatPrice(currentPrice)}
                     </div>
                     {product.originalPrice > product.price && (
@@ -339,7 +337,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                           </div>
 
                           <div className="text-right">
-                            <div className="text-teal-700 font-extrabold text-sm">{formatPrice(v.price)}</div>
+                            <div className="text-teal-700 font-bold text-sm">{formatPrice(v.price)}</div>
                             {selectedVariant === v.value && (
                               <div className="text-[10px] text-teal-600 font-semibold flex items-center justify-end gap-1">
                                 <Check className="w-3 h-3" /> {l('Đang chọn', 'Selected')}

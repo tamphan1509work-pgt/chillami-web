@@ -18,10 +18,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   onToggleCompare,
   isCompared,
 }) => {
-  const { l } = useLanguage();
-  const formatPrice = (amount: number) => {
-    return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(amount);
-  };
+  const { l, formatCurrency } = useLanguage();
+  const formatPrice = formatCurrency;
 
   return (
     <div className="group relative flex flex-col bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-xs hover:shadow-2xl hover:border-teal-500/50 hover:-translate-y-1.5 hover:scale-[1.02] transition-all duration-300 ease-out cursor-default will-change-transform">

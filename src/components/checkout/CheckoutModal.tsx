@@ -30,7 +30,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
   onOrderSuccess,
   onOpenOrderTracking,
 }) => {
-  const { l } = useLanguage();
+  const { l, formatCurrency } = useLanguage();
   if (!isOpen) return null;
 
   const [step, setStep] = useState<'info' | 'payment' | 'success'>('info');
@@ -54,9 +54,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
     0
   );
 
-  const formatPrice = (amount: number) => {
-    return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(amount);
-  };
+  const formatPrice = formatCurrency;
 
   const handleProceedToPayment = (e: React.FormEvent) => {
     e.preventDefault();
@@ -254,7 +252,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
               <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
                 <div>
                   <span className="text-slate-500">{l('Tổng thanh toán:', 'Total:')} </span>
-                  <strong className="text-base font-extrabold text-teal-800">{formatPrice(totalAmount)}</strong>
+                  <strong className="text-base font-bold text-teal-800">{formatPrice(totalAmount)}</strong>
                 </div>
 
                 <button
@@ -414,7 +412,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                       </span>
                     </div>
                     <p className="text-slate-500 mt-1">
-                      {l('Áp dụng cho đơn hàng từ 3.000.000 đ qua hơn 25 ngân hàng liên kết tại Việt Nam.', 'For orders from 3,000,000đ through 25+ partner banks in Vietnam.')}
+                      {l('Áp dụng cho đơn hàng từ 3.000.000đ qua hơn 25 ngân hàng liên kết tại Việt Nam.', 'For orders from 3,000,000đ through 25+ partner banks in Vietnam.')}
                     </p>
                   </div>
                 </div>
@@ -476,7 +474,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                 </div>
                 <div className="flex items-center justify-between pt-2 border-t border-slate-200">
                   <span className="font-bold text-slate-800">{l('Tổng thanh toán:', 'Total:')}</span>
-                  <strong className="text-base font-extrabold text-slate-900">{formatPrice(createdOrder.totalAmount)}</strong>
+                  <strong className="text-base font-bold text-slate-900">{formatPrice(createdOrder.totalAmount)}</strong>
                 </div>
               </div>
 

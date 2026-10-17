@@ -316,8 +316,8 @@ export const AiChatbotModal: React.FC<AiChatbotModalProps> = ({
                         />
                         <div className="flex-1 min-w-0">
                           <div className="text-xs font-bold text-slate-900 truncate">{translateProduct(p).name}</div>
-                          <div className="text-[11px] text-teal-700 font-extrabold mt-0.5">
-                            {new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(p.price)}
+                          <div className="text-[11px] text-teal-700 font-bold mt-0.5">
+                            {formatCurrency(p.price)}
                           </div>
                           <div className="flex items-center gap-2 mt-1">
                             <button

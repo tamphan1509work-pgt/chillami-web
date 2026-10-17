@@ -503,20 +503,10 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
     return override ? { ...cat, ...override } : cat;
   };
 
-  const formatCurrency = (amount: number): string => {
-    if (language === 'en') {
-      // Format as USD approximate ($1 ~ 25,000 VND) or VND international
-      return new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'VND',
-        maximumFractionDigits: 0
-      }).format(amount);
-    }
-    return new Intl.NumberFormat('vi-VN', {
-      style: 'currency',
-      currency: 'VND'
-    }).format(amount);
-  };
+  // Prices as Vietnamese shops write them: digits grouped, then a lowercase "đ" right after
+  // (the "₫" sign from Intl renders as a small underlined glyph in Roboto)
+  const formatCurrency = (amount: number): string =>
+    `${new Intl.NumberFormat(language === 'en' ? 'en-US' : 'vi-VN', { maximumFractionDigits: 0 }).format(amount)}đ`;
 
   useEffect(() => {
     document.documentElement.lang = language;

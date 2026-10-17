@@ -18,10 +18,8 @@ export const ProductComparisonModal: React.FC<ProductComparisonModalProps> = ({
   onAddToCart,
   onClearAll,
 }) => {
-  const { l } = useLanguage();
-  const formatPrice = (amount: number) => {
-    return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(amount);
-  };
+  const { l, formatCurrency } = useLanguage();
+  const formatPrice = formatCurrency;
 
   // Collect all unique spec keys across compared products
   const allSpecKeys = React.useMemo(() => {
@@ -116,7 +114,7 @@ export const ProductComparisonModal: React.FC<ProductComparisonModalProps> = ({
                             {p.name}
                           </h4>
 
-                          <div className="text-sm font-extrabold text-slate-900 mb-3">
+                          <div className="text-sm font-bold text-slate-900 mb-3">
                             {p.contactForPrice ? l('Liên hệ', 'Contact us') : formatPrice(p.price)}
                           </div>
 

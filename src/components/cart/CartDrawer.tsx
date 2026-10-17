@@ -34,7 +34,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
   onAddUpsell,
   upsellProducts,
 }) => {
-  const { l, translateProduct, translateVariant } = useLanguage();
+  const { l, translateProduct, translateVariant, formatCurrency } = useLanguage();
   if (!isOpen) return null;
 
   const totalAmount = items.reduce(
@@ -42,9 +42,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
     0
   );
 
-  const formatPrice = (amount: number) => {
-    return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(amount);
-  };
+  const formatPrice = formatCurrency;
 
   return (
     <div className="fixed inset-0 z-50 overflow-hidden bg-slate-950/60 backdrop-blur-xs flex justify-end animate-in fade-in duration-200">
@@ -215,7 +213,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                 <span>{l('Phí vận chuyển & Lắp đặt:', 'Delivery & installation:')}</span>
                 <span className="text-emerald-700 font-semibold">{l('Miễn phí 100%', '100% free')}</span>
               </div>
-              <div className="flex justify-between text-base font-extrabold text-slate-900 pt-2 border-t border-slate-200">
+              <div className="flex justify-between text-base font-bold text-slate-900 pt-2 border-t border-slate-200">
                 <span>{l('Tổng thanh toán:', 'Total:')}</span>
                 <span className="text-teal-800 tracking-tight">{formatPrice(totalAmount)}</span>
               </div>

@@ -52,7 +52,7 @@ export const Header: React.FC<HeaderProps> = ({
   onSelectProduct,
   allProducts,
 }) => {
-  const { language, setLanguage, t, l, translateCategory } = useLanguage();
+  const { language, setLanguage, t, l, translateCategory, formatCurrency } = useLanguage();
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
   const [isSupportMenuOpen, setIsSupportMenuOpen] = useState(false);
   const [isAboutMenuOpen, setIsAboutMenuOpen] = useState(false);
@@ -210,7 +210,7 @@ export const Header: React.FC<HeaderProps> = ({
                           {item.name}
                         </div>
                         <div className="text-[11px] text-teal-700 font-bold">
-                          {item.contactForPrice ? l('Liên hệ', 'Contact us') : new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(item.price)}
+                          {item.contactForPrice ? l('Liên hệ', 'Contact us') : formatCurrency(item.price)}
                         </div>
                       </div>
                     </div>

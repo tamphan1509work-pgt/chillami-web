@@ -55,7 +55,7 @@ export const OrderTrackingModal: React.FC<OrderTrackingModalProps> = ({
   onClose,
   orders,
 }) => {
-  const { l, language } = useLanguage();
+  const { l, language, formatCurrency } = useLanguage();
   const tr = (text: string) =>
     language === 'en' ? ORDER_TEXT_EN[text] ?? text.replace(/^Dự kiến /, 'Expected ') : text;
   const [searchTerm, setSearchTerm] = useState(initialOrderId || '');
@@ -76,9 +76,7 @@ export const OrderTrackingModal: React.FC<OrderTrackingModalProps> = ({
     setSearchedOrder(found || null);
   };
 
-  const formatPrice = (amount: number) => {
-    return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(amount);
-  };
+  const formatPrice = formatCurrency;
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-950/75 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6 animate-in fade-in duration-200">

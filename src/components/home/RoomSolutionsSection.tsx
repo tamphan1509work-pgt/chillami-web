@@ -17,7 +17,7 @@ export const RoomSolutionsSection: React.FC<RoomSolutionsSectionProps> = ({
   onOpenDetail,
   onAddToCart,
 }) => {
-  const { l, language } = useLanguage();
+  const { l, language, formatCurrency } = useLanguage();
   const [activeSpaceId, setActiveSpaceId] = useState<'bedroom' | 'living' | 'kitchen' | 'bathroom'>('bedroom');
 
   const icons = {
@@ -38,9 +38,7 @@ export const RoomSolutionsSection: React.FC<RoomSolutionsSectionProps> = ({
     .map((id) => allProducts.find((p) => p.id === id))
     .filter(Boolean) as Product[];
 
-  const formatPrice = (amount: number) => {
-    return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(amount);
-  };
+  const formatPrice = formatCurrency;
 
   return (
     <section className="py-16 bg-white overflow-hidden">
@@ -153,7 +151,7 @@ export const RoomSolutionsSection: React.FC<RoomSolutionsSectionProps> = ({
 
                   <div className="flex items-center justify-between sm:justify-end gap-4 w-full sm:w-auto shrink-0 pt-2 sm:pt-0 border-t sm:border-t-0 border-slate-100">
                     <div className="text-right">
-                      <div className="text-sm font-extrabold text-slate-900">
+                      <div className="text-sm font-bold text-slate-900">
                         {p.contactForPrice ? l('Liên hệ', 'Contact us') : formatPrice(p.price)}
                       </div>
                       {p.originalPrice > p.price && (

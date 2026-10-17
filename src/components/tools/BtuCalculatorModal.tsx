@@ -27,7 +27,7 @@ export const BtuCalculatorModal: React.FC<BtuCalculatorModalProps> = ({
   onSelectProduct,
   onAddToCart,
 }) => {
-  const { l } = useLanguage();
+  const { l, formatCurrency } = useLanguage();
   const [area, setArea] = useState<number>(14); // m2
   const [ceilingHeight, setCeilingHeight] = useState<number>(3.0); // meters
   const [roomType, setRoomType] = useState<'bedroom' | 'living' | 'kitchen'>('bedroom');
@@ -86,7 +86,7 @@ export const BtuCalculatorModal: React.FC<BtuCalculatorModalProps> = ({
       recommendedBtu: roundedBtu,
       recommendedHp,
       matchingProduct,
-      estimatedSavingYear: '1.450.000 đ',
+      estimatedSavingYear: '1.450.000đ',
     };
   }, [area, ceilingHeight, roomType, sunExposure, occupants, acProducts]);
 
@@ -340,10 +340,8 @@ export const BtuCalculatorModal: React.FC<BtuCalculatorModalProps> = ({
                         <div className="text-xs text-slate-500">
                           {calculatedResult.matchingProduct.model}
                         </div>
-                        <div className="text-sm font-extrabold text-teal-700 mt-1">
-                          {new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(
-                            calculatedResult.matchingProduct.price
-                          )}
+                        <div className="text-sm font-bold text-teal-700 mt-1">
+                          {formatCurrency(calculatedResult.matchingProduct.price)}
                         </div>
                       </div>
                     </div>
