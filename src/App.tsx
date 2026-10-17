@@ -33,6 +33,9 @@ import { PromotionalBanner } from './components/promotions/PromotionalBanner';
 import { GitCompare, ArrowRight, ShieldCheck, Zap, Sparkles } from 'lucide-react';
 import { useLanguage } from './context/LanguageContext';
 
+// Sample order shown in order tracking (a priced standing fan)
+const DEMO_ORDER_PRODUCT = PRODUCTS.find((p) => p.id === 's-400') ?? PRODUCTS[0];
+
 export default function App() {
   const { l, language, translateProducts, translateProduct } = useLanguage();
   const products = React.useMemo(() => translateProducts(PRODUCTS), [language]);
@@ -48,7 +51,10 @@ export default function App() {
   const [cartItems, setCartItems] = useState<CartItem[]>(() => {
     try {
       const saved = localStorage.getItem('chillami_cart');
-      return saved ? JSON.parse(saved) : [];
+      // Drop items saved before the catalog changed (unknown product ids)
+      return saved
+        ? (JSON.parse(saved) as CartItem[]).filter((item) => PRODUCTS.some((p) => p.id === item.product.id))
+        : [];
     } catch {
       return [];
     }
@@ -74,12 +80,12 @@ export default function App() {
       customerAddress: 'Số 168 Đường Láng, Q. Đống Đa, Hà Nội',
       items: [
         {
-          product: PRODUCTS[0],
+          product: DEMO_ORDER_PRODUCT,
           quantity: 1,
-          unitPrice: PRODUCTS[0].price,
+          unitPrice: DEMO_ORDER_PRODUCT.price,
         },
       ],
-      totalAmount: PRODUCTS[0].price,
+      totalAmount: DEMO_ORDER_PRODUCT.price,
       paymentMethod: 'vietqr',
       status: 'confirmed',
       createdAt: '16/10/2026 14:30',
@@ -95,7 +101,7 @@ export default function App() {
           title: 'Kho xuất hàng & Kiểm định',
           time: '14:45',
           done: true,
-          description: 'Kiểm tra động cơ BLDC và dán tem kích hoạt bảo hành điện tử.',
+          description: 'Kiểm tra sản phẩm và dán tem kích hoạt bảo hành điện tử.',
         },
         {
           title: 'Kỹ thuật viên đang giao & lắp đặt',
@@ -129,7 +135,7 @@ export default function App() {
   const [isAiChatOpen, setIsAiChatOpen] = useState(false);
 
   // Home Featured Tab
-  const [homeFeaturedTab, setHomeFeaturedTab] = useState<'bestseller' | 'bldc' | 'new' | 'ac'>('bestseller');
+  const [homeFeaturedTab, setHomeFeaturedTab] = useState<'fan' | 'ac' | 'water_heater' | 'air_cooler'>('fan');
 
   // Navigation handler with smooth loading transition
   const handleNavigate = (view: string, payload?: any) => {
@@ -240,22 +246,11 @@ export default function App() {
     .map((id) => products.find((p) => p.id === id))
     .filter(Boolean) as Product[];
 
-  // Filtered featured products on home
-  const homeFeaturedProducts = React.useMemo(() => {
-    if (homeFeaturedTab === 'bestseller') {
-      return products.filter((p) => p.isBestSeller).slice(0, 8);
-    }
-    if (homeFeaturedTab === 'bldc') {
-      return products.filter(
-        (p) =>
-          p.features.some((f) => /bldc|không chổi than|brushless/i.test(f))
-      ).slice(0, 8);
-    }
-    if (homeFeaturedTab === 'new') {
-      return products.filter((p) => p.isNew || p.discountPercent).slice(0, 8);
-    }
-    return products.filter((p) => p.category === 'ac').slice(0, 8);
-  }, [homeFeaturedTab, products]);
+  // Featured products on home, one tab per main category
+  const homeFeaturedProducts = React.useMemo(
+    () => products.filter((p) => p.category === homeFeaturedTab).slice(0, 8),
+    [homeFeaturedTab, products]
+  );
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-50 text-slate-800">
@@ -282,7 +277,7 @@ export default function App() {
           <div className="space-y-0">
             {/* 1. Hero Banner */}
             <HeroBanner
-              onExploreProducts={() => handleNavigate('products')}
+              onExploreProducts={(category) => handleNavigate('products', category ? { category } : undefined)}
               onOpenBtuCalc={() => setIsBtuCalcOpen(true)}
             />
 
@@ -318,34 +313,14 @@ export default function App() {
                     {/* Tabs */}
                     <div className="flex items-center gap-1.5 p-1 bg-slate-200/70 rounded-xl overflow-x-auto">
                       <button
-                        onClick={() => setHomeFeaturedTab('bestseller')}
+                        onClick={() => setHomeFeaturedTab('fan')}
                         className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors cursor-pointer whitespace-nowrap ${
-                          homeFeaturedTab === 'bestseller'
+                          homeFeaturedTab === 'fan'
                             ? 'bg-white text-slate-900 shadow-xs'
                             : 'text-slate-600 hover:text-slate-900'
                         }`}
                       >
-                        {l('Bán chạy nhất', 'Best Sellers')}
-                      </button>
-                      <button
-                        onClick={() => setHomeFeaturedTab('bldc')}
-                        className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors cursor-pointer whitespace-nowrap ${
-                          homeFeaturedTab === 'bldc'
-                            ? 'bg-white text-slate-900 shadow-xs'
-                            : 'text-slate-600 hover:text-slate-900'
-                        }`}
-                      >
-                        {l('Động cơ BLDC siêu êm', 'Ultra-quiet BLDC Motors')}
-                      </button>
-                      <button
-                        onClick={() => setHomeFeaturedTab('new')}
-                        className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors cursor-pointer whitespace-nowrap ${
-                          homeFeaturedTab === 'new'
-                            ? 'bg-white text-slate-900 shadow-xs'
-                            : 'text-slate-600 hover:text-slate-900'
-                        }`}
-                      >
-                        {l('Mới ra mắt 2026', 'New for 2026')}
+                        {l('Quạt cây', 'Standing fans')}
                       </button>
                       <button
                         onClick={() => setHomeFeaturedTab('ac')}
@@ -356,6 +331,26 @@ export default function App() {
                         }`}
                       >
                         {l('Điều hòa Inverter', 'Inverter ACs')}
+                      </button>
+                      <button
+                        onClick={() => setHomeFeaturedTab('water_heater')}
+                        className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors cursor-pointer whitespace-nowrap ${
+                          homeFeaturedTab === 'water_heater'
+                            ? 'bg-white text-slate-900 shadow-xs'
+                            : 'text-slate-600 hover:text-slate-900'
+                        }`}
+                      >
+                        {l('Bình nước nóng', 'Water heaters')}
+                      </button>
+                      <button
+                        onClick={() => setHomeFeaturedTab('air_cooler')}
+                        className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors cursor-pointer whitespace-nowrap ${
+                          homeFeaturedTab === 'air_cooler'
+                            ? 'bg-white text-slate-900 shadow-xs'
+                            : 'text-slate-600 hover:text-slate-900'
+                        }`}
+                      >
+                        {l('Quạt điều hòa', 'Air coolers')}
                       </button>
                     </div>
                   </div>
@@ -600,7 +595,7 @@ export default function App() {
         onRemoveItem={handleRemoveFromCart}
         onProceedToCheckout={() => setIsCheckoutOpen(true)}
         onAddUpsell={(p) => handleAddToCart(p, 1)}
-        upsellProducts={products.filter((p) => p.category === 'accessory')}
+        upsellProducts={products.filter((p) => p.category === 'vacuum' && !p.contactForPrice).slice(0, 2)}
       />
 
       {/* 3. Checkout Modal */}

@@ -106,7 +106,7 @@ export const ProductComparisonModal: React.FC<ProductComparisonModalProps> = ({
                           </button>
 
                           <div className="w-full aspect-4/3 rounded-xl overflow-hidden bg-white mb-2 p-2">
-                            <img src={p.image} alt={p.name} className="w-full h-full object-cover rounded-lg" />
+                            <img src={p.image} alt={p.name} className="w-full h-full object-contain rounded-lg" />
                           </div>
 
                           <div className="text-[10px] font-bold text-teal-700 uppercase mb-1">
@@ -117,16 +117,27 @@ export const ProductComparisonModal: React.FC<ProductComparisonModalProps> = ({
                           </h4>
 
                           <div className="text-sm font-extrabold text-slate-900 mb-3">
-                            {formatPrice(p.price)}
+                            {p.contactForPrice ? l('Liên hệ', 'Contact us') : formatPrice(p.price)}
                           </div>
 
-                          <button
-                            onClick={() => onAddToCart(p)}
-                            className="mt-auto py-2 px-3 bg-teal-700 hover:bg-teal-800 text-white rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors cursor-pointer shadow-xs"
-                          >
-                            <ShoppingBag className="w-3.5 h-3.5" />
-                            <span>{l('Mua ngay', 'Buy now')}</span>
-                          </button>
+                          {p.contactForPrice ? (
+                            <a
+                              href={p.sourceUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="mt-auto py-2 px-3 bg-teal-700 hover:bg-teal-800 text-white rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors cursor-pointer shadow-xs"
+                            >
+                              <span>{l('Hỏi giá', 'Get a quote')}</span>
+                            </a>
+                          ) : (
+                            <button
+                              onClick={() => onAddToCart(p)}
+                              className="mt-auto py-2 px-3 bg-teal-700 hover:bg-teal-800 text-white rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors cursor-pointer shadow-xs"
+                            >
+                              <ShoppingBag className="w-3.5 h-3.5" />
+                              <span>{l('Mua ngay', 'Buy now')}</span>
+                            </button>
+                          )}
                         </div>
                       </th>
                     ))}
@@ -140,11 +151,15 @@ export const ProductComparisonModal: React.FC<ProductComparisonModalProps> = ({
                     <td className="p-3 font-semibold text-slate-700 bg-slate-50/50">{l('Đánh giá thực tế', 'Customer rating')}</td>
                     {comparedProducts.map((p) => (
                       <td key={p.id} className="p-3 border-l border-slate-100">
-                        <div className="flex items-center gap-1 font-semibold text-amber-500">
-                          <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-                          <span>{p.rating} / 5.0</span>
-                          <span className="text-slate-400 text-[10px]">({p.reviewsCount})</span>
-                        </div>
+                        {p.reviewsCount > 0 ? (
+                          <div className="flex items-center gap-1 font-semibold text-amber-500">
+                            <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                            <span>{p.rating} / 5.0</span>
+                            <span className="text-slate-400 text-[10px]">({p.reviewsCount})</span>
+                          </div>
+                        ) : (
+                          '—'
+                        )}
                       </td>
                     ))}
                   </tr>
@@ -154,7 +169,7 @@ export const ProductComparisonModal: React.FC<ProductComparisonModalProps> = ({
                     <td className="p-3 font-semibold text-slate-700 bg-slate-50/50">{l('Thời hạn bảo hành', 'Warranty period')}</td>
                     {comparedProducts.map((p) => (
                       <td key={p.id} className="p-3 font-bold text-teal-800 border-l border-slate-100">
-                        {p.warrantyMonths} {l('Tháng (1 Đổi 1 trong 30 ngày)', 'months (1-for-1 within 30 days)')}
+                        {p.warrantyMonths ? `${p.warrantyMonths} ${l('Tháng (1 Đổi 1 trong 30 ngày)', 'months (1-for-1 within 30 days)')}` : '—'}
                       </td>
                     ))}
                   </tr>
@@ -164,10 +179,14 @@ export const ProductComparisonModal: React.FC<ProductComparisonModalProps> = ({
                     <td className="p-3 font-semibold text-slate-700 bg-slate-50/50">{l('Sao năng lượng', 'Energy stars')}</td>
                     {comparedProducts.map((p) => (
                       <td key={p.id} className="p-3 border-l border-slate-100">
-                        <span className="inline-flex items-center gap-1 text-emerald-700 font-bold">
-                          <Zap className="w-3.5 h-3.5" />
-                          {l('5 Sao (Tiết kiệm năng lượng)', '5 Stars (Energy saving)')}
-                        </span>
+                        {p.energyLabel ? (
+                          <span className="inline-flex items-center gap-1 text-emerald-700 font-bold">
+                            <Zap className="w-3.5 h-3.5" />
+                            {p.energyLabel.stars} {l('Sao', 'Stars')}
+                          </span>
+                        ) : (
+                          '—'
+                        )}
                       </td>
                     ))}
                   </tr>

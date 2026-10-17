@@ -29,7 +29,7 @@ export const CategoryGrid: React.FC<CategoryGridProps> = ({ onSelectCategory }) 
           </div>
         </ScrollFadeIn>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
           {CATEGORIES_CONFIG.map(translateCategory).map((cat, idx) => (
             <ScrollFadeIn
               key={cat.id}
@@ -47,7 +47,7 @@ export const CategoryGrid: React.FC<CategoryGridProps> = ({ onSelectCategory }) 
                   <img
                     src={cat.image}
                     alt={cat.name}
-                    className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500"
+                    className="w-full h-full object-contain group-hover:scale-108 transition-transform duration-500"
                     loading="lazy"
                   />
                 </div>
@@ -63,7 +63,7 @@ export const CategoryGrid: React.FC<CategoryGridProps> = ({ onSelectCategory }) 
                     {cat.subtitle}
                   </p>
                   <div className="text-[10px] font-semibold text-teal-700 mt-2">
-                    {cat.count}
+                    {cat.count} {l('sản phẩm', 'products')}
                   </div>
                 </div>
               </div>

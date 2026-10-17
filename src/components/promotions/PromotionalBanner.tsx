@@ -70,18 +70,18 @@ export const PromotionalBanner: React.FC<PromotionalBannerProps> = ({
           <div className="lg:col-span-7 space-y-5">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/20 border border-amber-400/30 text-amber-300 text-xs font-bold">
               <Flame className="w-4 h-4 text-amber-400 animate-pulse" />
-              <span>{l('SIÊU ĐẠI TIỆC MÙA HÈ 2026 · GIẢM ĐẾN 35%', 'SUMMER MEGA SALE 2026 · UP TO 35% OFF')}</span>
+              <span>{l('SIÊU ĐẠI TIỆC MÙA HÈ 2026 · MÃ GIẢM ĐẾN 500.000Đ', 'SUMMER MEGA SALE 2026 · CODES UP TO 500,000đ OFF')}</span>
             </div>
 
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black font-display tracking-tight text-white leading-tight">
-              {l('Lên Đời Quạt BLDC Tiết Kiệm 75% Điện', 'Upgrade to a BLDC Fan and Save 75% on Power')} <br />
+              {l('Mùa Hè Mát Lành Cùng Livotec', 'Stay Cool This Summer with Livotec')} <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-emerald-300 to-amber-200">
-                {l('Êm Tĩnh 13dB Cho Giấc Ngủ Trọn Vẹn', 'Whisper-Quiet 13dB for Perfect Sleep')}
+                {l('Quạt Cây · Quạt Điều Hòa · Điều Hòa Inverter', 'Standing Fans · Air Coolers · Inverter ACs')}
               </span>
             </h2>
 
             <p className="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-xl">
-              {l('Cơ hội nâng cấp không gian sống với công nghệ DC Inverter thế hệ mới. Đổi quạt cũ lấy quạt mới trợ giá ngay 300.000đ, miễn phí công lắp đặt tại nhà.', 'Upgrade your living space with new-generation DC Inverter technology. Trade in your old fan for a new one with an instant 300,000đ subsidy and free home installation.')}
+              {l('Nâng cấp không gian sống với thiết bị Livotec chính hãng. Đổi quạt cũ lấy quạt mới trợ giá ngay 300.000đ, miễn phí công lắp đặt tại nhà.', 'Upgrade your living space with genuine Livotec appliances. Trade in your old fan for a new one with an instant 300,000đ subsidy and free home installation.')}
             </p>
 
             {/* Countdown Clock */}
@@ -201,7 +201,7 @@ export const PromotionalBanner: React.FC<PromotionalBannerProps> = ({
                 onClick={onExploreProducts}
                 className="w-full sm:w-auto flex-1 py-3.5 px-6 rounded-2xl bg-white text-slate-950 hover:bg-slate-100 font-extrabold text-xs shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer"
               >
-                <span>{l('Khám phá bộ sưu tập quạt BLDC', 'Explore the BLDC fan collection')}</span>
+                <span>{l('Khám phá sản phẩm Livotec', 'Explore Livotec products')}</span>
                 <ArrowRight className="w-4 h-4 text-teal-700" />
               </button>
 

@@ -20,6 +20,7 @@ import {
   Wifi,
   Globe
 } from 'lucide-react';
+import { CATEGORIES_CONFIG } from '../../data/products';
 import { useLanguage } from '../../context/LanguageContext';
 
 interface HeaderProps {
@@ -51,7 +52,7 @@ export const Header: React.FC<HeaderProps> = ({
   onSelectProduct,
   allProducts,
 }) => {
-  const { language, setLanguage, t, l } = useLanguage();
+  const { language, setLanguage, t, l, translateCategory } = useLanguage();
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
   const [isSupportMenuOpen, setIsSupportMenuOpen] = useState(false);
   const [isAboutMenuOpen, setIsAboutMenuOpen] = useState(false);
@@ -164,7 +165,7 @@ export const Header: React.FC<HeaderProps> = ({
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 onFocus={() => setIsSearchFocused(true)}
-                placeholder={t('search.placeholder', 'Tìm kiếm quạt BLDC, điều hòa Inverter, bếp từ, máy hút mùi...')}
+                placeholder={t('search.placeholder', 'Tìm kiếm quạt cây, điều hòa Inverter, bình nước nóng, bếp từ...')}
                 className="w-full pl-10 pr-9 py-2.5 bg-slate-100/90 hover:bg-slate-100 focus:bg-white text-xs sm:text-sm rounded-xl border border-slate-200/60 focus:border-teal-500 focus:outline-hidden transition-all placeholder:text-slate-400 shadow-2xs"
               />
               <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-3 pointer-events-none" />
@@ -202,14 +203,14 @@ export const Header: React.FC<HeaderProps> = ({
                       <img
                         src={item.image}
                         alt={item.name}
-                        className="w-10 h-10 object-cover rounded-md bg-slate-100 shrink-0"
+                        className="w-10 h-10 object-contain rounded-md bg-slate-100 shrink-0"
                       />
                       <div className="flex-1 min-w-0">
                         <div className="text-xs font-semibold text-slate-900 truncate">
                           {item.name}
                         </div>
                         <div className="text-[11px] text-teal-700 font-bold">
-                          {new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(item.price)}
+                          {item.contactForPrice ? l('Liên hệ', 'Contact us') : new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(item.price)}
                         </div>
                       </div>
                     </div>
@@ -311,228 +312,40 @@ export const Header: React.FC<HeaderProps> = ({
                 {/* MEGA MENU DROPDOWN */}
                 {isMegaMenuOpen && (
                   <div className="absolute top-full left-0 w-[840px] bg-white rounded-2xl shadow-2xl border border-slate-200 p-6 grid grid-cols-3 gap-6 animate-in fade-in slide-in-from-top-2 duration-150 z-50">
-                    {/* Column 1: Quạt điện & Điều hòa */}
-                    <div className="space-y-4">
-                      <div>
-                        <div
-                          onClick={() => {
-                            onNavigate('products', { category: 'fan' });
-                            setIsMegaMenuOpen(false);
-                          }}
-                          className="font-bold text-slate-900 hover:text-teal-700 cursor-pointer text-sm flex items-center justify-between mb-2 group"
-                        >
-                          <span>{l('Quạt Điện Thông Minh', 'Smart Electric Fans')}</span>
-                          <span className="text-[11px] text-teal-600 font-normal group-hover:underline">{l('Xem tất cả', 'View all')}</span>
+                    {/* Columns 1-2: categories with a few products each */}
+                    <div className="col-span-2 grid grid-cols-2 gap-x-6 gap-y-4">
+                      {CATEGORIES_CONFIG.map(translateCategory).map((cat) => (
+                        <div key={cat.id}>
+                          <div
+                            onClick={() => {
+                              onNavigate('products', { category: cat.id });
+                              setIsMegaMenuOpen(false);
+                            }}
+                            className="font-bold text-slate-900 hover:text-teal-700 cursor-pointer text-sm flex items-center justify-between mb-1.5 group"
+                          >
+                            <span>{cat.name}</span>
+                            <span className="text-[11px] text-teal-600 font-normal group-hover:underline">{l('Xem tất cả', 'View all')}</span>
+                          </div>
+                          <ul className="space-y-1 text-xs text-slate-600">
+                            {allProducts
+                              .filter((p) => p.category === cat.id)
+                              .slice(0, 2)
+                              .map((p) => (
+                                <li key={p.id}>
+                                  <button
+                                    onClick={() => {
+                                      onSelectProduct(p);
+                                      setIsMegaMenuOpen(false);
+                                    }}
+                                    className="hover:text-teal-700 transition-colors w-full text-left py-0.5 truncate"
+                                  >
+                                    {p.name}
+                                  </button>
+                                </li>
+                              ))}
+                          </ul>
                         </div>
-                        <ul className="space-y-1.5 text-xs text-slate-600">
-                          <li>
-                            <button
-                              onClick={() => {
-                                onNavigate('products', { category: 'fan', subCategory: 'quat-cay' });
-                                setIsMegaMenuOpen(false);
-                              }}
-                              className="hover:text-teal-700 transition-colors w-full text-left py-0.5"
-                            >
-                              {l('Quạt cây BLDC SoftAir (CF-100B)', 'BLDC SoftAir standing fan (CF-100B)')}
-                            </button>
-                          </li>
-                          <li>
-                            <button
-                              onClick={() => {
-                                onNavigate('products', { category: 'fan', subCategory: 'quat-treo-tuong' });
-                                setIsMegaMenuOpen(false);
-                              }}
-                              className="hover:text-teal-700 transition-colors w-full text-left py-0.5"
-                            >
-                              {l('Quạt treo tường Silent-Wall', 'Silent-Wall wall fan')}
-                            </button>
-                          </li>
-                          <li>
-                            <button
-                              onClick={() => {
-                                onNavigate('products', { category: 'fan', subCategory: 'quat-san' });
-                                setIsMegaMenuOpen(false);
-                              }}
-                              className="hover:text-teal-700 transition-colors w-full text-left py-0.5"
-                            >
-                              {l('Quạt sàn tuần hoàn FB-180 Turbo', 'FB-180 Turbo floor air circulator')}
-                            </button>
-                          </li>
-                          <li>
-                            <button
-                              onClick={() => {
-                                onNavigate('products', { category: 'fan', subCategory: 'quat-thong-minh' });
-                                setIsMegaMenuOpen(false);
-                              }}
-                              className="hover:text-teal-700 transition-colors w-full text-left py-0.5"
-                            >
-                              {l('Quạt thông minh IoT WiFi', 'IoT WiFi smart fan')}
-                            </button>
-                          </li>
-                          <li>
-                            <button
-                              onClick={() => {
-                                onNavigate('products', { category: 'fan', subCategory: 'quat-tich-dien' });
-                                setIsMegaMenuOpen(false);
-                              }}
-                              className="hover:text-teal-700 transition-colors w-full text-left py-0.5"
-                            >
-                              {l('Quạt tích điện dã ngoại 15000mAh', '15000mAh rechargeable outdoor fan')}
-                            </button>
-                          </li>
-                        </ul>
-                      </div>
-
-                      <div className="pt-3 border-t border-slate-100">
-                        <div
-                          onClick={() => {
-                            onNavigate('products', { category: 'ac' });
-                            setIsMegaMenuOpen(false);
-                          }}
-                          className="font-bold text-slate-900 hover:text-teal-700 cursor-pointer text-sm flex items-center justify-between mb-2 group"
-                        >
-                          <span>{l('Điều Hòa Inverter', 'Inverter Air Conditioners')}</span>
-                          <span className="text-[11px] text-teal-600 font-normal group-hover:underline">{l('Xem tất cả', 'View all')}</span>
-                        </div>
-                        <ul className="space-y-1.5 text-xs text-slate-600">
-                          <li>
-                            <button
-                              onClick={() => {
-                                onNavigate('products', { category: 'ac', subCategory: 'dieu-hoa-9k' });
-                                setIsMegaMenuOpen(false);
-                              }}
-                              className="hover:text-teal-700 transition-colors w-full text-left py-0.5"
-                            >
-                              {l('Điều hòa 9000 BTU Inverter (Phòng <15m²)', '9000 BTU Inverter AC (rooms <15m²)')}
-                            </button>
-                          </li>
-                          <li>
-                            <button
-                              onClick={() => {
-                                onNavigate('products', { category: 'ac', subCategory: 'dieu-hoa-slim' });
-                                setIsMegaMenuOpen(false);
-                              }}
-                              className="hover:text-teal-700 transition-colors w-full text-left py-0.5"
-                            >
-                              {l('Điều hòa Slim v3 Siêu Mỏng 16.8cm', 'Slim v3 ultra-thin 16.8cm AC')}
-                            </button>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-
-                    {/* Column 2: Bếp & Hút mùi & Nước nóng */}
-                    <div className="space-y-4">
-                      <div>
-                        <div
-                          onClick={() => {
-                            onNavigate('products', { category: 'induction' });
-                            setIsMegaMenuOpen(false);
-                          }}
-                          className="font-bold text-slate-900 hover:text-teal-700 cursor-pointer text-sm flex items-center justify-between mb-2 group"
-                        >
-                          <span>{l('Bếp Từ Đôi & Đơn', 'Double & Single Induction Hobs')}</span>
-                          <span className="text-[11px] text-teal-600 font-normal group-hover:underline">{l('Xem tất cả', 'View all')}</span>
-                        </div>
-                        <ul className="space-y-1.5 text-xs text-slate-600">
-                          <li>
-                            <button
-                              onClick={() => {
-                                onNavigate('products', { category: 'induction', subCategory: 'bep-tu-doi' });
-                                setIsMegaMenuOpen(false);
-                              }}
-                              className="hover:text-teal-700 transition-colors w-full text-left py-0.5"
-                            >
-                              {l('Bếp từ đôi MasterChef IGBT Infineon Đức', 'MasterChef double hob, German Infineon IGBT')}
-                            </button>
-                          </li>
-                          <li>
-                            <button
-                              onClick={() => {
-                                onNavigate('products', { category: 'induction', subCategory: 'bep-tu-don' });
-                                setIsMegaMenuOpen(false);
-                              }}
-                              className="hover:text-teal-700 transition-colors w-full text-left py-0.5"
-                            >
-                              {l('Bếp từ đơn siêu mỏng Solo-Pro', 'Solo-Pro ultra-slim single hob')}
-                            </button>
-                          </li>
-                        </ul>
-                      </div>
-
-                      <div className="pt-3 border-t border-slate-100">
-                        <div
-                          onClick={() => {
-                            onNavigate('products', { category: 'hood' });
-                            setIsMegaMenuOpen(false);
-                          }}
-                          className="font-bold text-slate-900 hover:text-teal-700 cursor-pointer text-sm flex items-center justify-between mb-2 group"
-                        >
-                          <span>{l('Máy Hút Mùi Cảm Ứng', 'Touch-Control Range Hoods')}</span>
-                          <span className="text-[11px] text-teal-600 font-normal group-hover:underline">{l('Xem tất cả', 'View all')}</span>
-                        </div>
-                        <ul className="space-y-1.5 text-xs text-slate-600">
-                          <li>
-                            <button
-                              onClick={() => {
-                                onNavigate('products', { category: 'hood', subCategory: 'may-hut-mui-t' });
-                                setIsMegaMenuOpen(false);
-                              }}
-                              className="hover:text-teal-700 transition-colors w-full text-left py-0.5"
-                            >
-                              {l('Máy chữ T cảm biến vẫy tay WaveSensor', 'T-shape hood with WaveSensor gesture control')}
-                            </button>
-                          </li>
-                          <li>
-                            <button
-                              onClick={() => {
-                                onNavigate('products', { category: 'hood', subCategory: 'may-hut-mui-kinh-vat' });
-                                setIsMegaMenuOpen(false);
-                              }}
-                              className="hover:text-teal-700 transition-colors w-full text-left py-0.5"
-                            >
-                              {l('Máy kính vát SlopeCurved 1350m³/h', 'SlopeCurved angled glass hood 1350m³/h')}
-                            </button>
-                          </li>
-                        </ul>
-                      </div>
-
-                      <div className="pt-3 border-t border-slate-100">
-                        <div
-                          onClick={() => {
-                            onNavigate('products', { category: 'water_heater' });
-                            setIsMegaMenuOpen(false);
-                          }}
-                          className="font-bold text-slate-900 hover:text-teal-700 cursor-pointer text-sm flex items-center justify-between mb-2 group"
-                        >
-                          <span>{l('Bình Nước Nóng Titanium', 'Titanium Water Heaters')}</span>
-                          <span className="text-[11px] text-teal-600 font-normal group-hover:underline">{l('Xem tất cả', 'View all')}</span>
-                        </div>
-                        <ul className="space-y-1.5 text-xs text-slate-600">
-                          <li>
-                            <button
-                              onClick={() => {
-                                onNavigate('products', { category: 'water_heater', subCategory: 'binh-nuoc-nong-gian-tiep' });
-                                setIsMegaMenuOpen(false);
-                              }}
-                              className="hover:text-teal-700 transition-colors w-full text-left py-0.5"
-                            >
-                              {l('Bình gián tiếp 15L / 20L / 30L chống giật TSS', '15L / 20L / 30L storage heaters with TSS anti-shock')}
-                            </button>
-                          </li>
-                          <li>
-                            <button
-                              onClick={() => {
-                                onNavigate('products', { category: 'water_heater', subCategory: 'binh-nuoc-nong-truc-tiep' });
-                                setIsMegaMenuOpen(false);
-                              }}
-                              className="hover:text-teal-700 transition-colors w-full text-left py-0.5"
-                            >
-                              {l('Bình trực tiếp Turbo bơm trợ lực DC', 'Turbo direct heater with DC booster pump')}
-                            </button>
-                          </li>
-                        </ul>
-                      </div>
+                      ))}
                     </div>
 
                     {/* Column 3: Quick Tools & Featured Showcase */}

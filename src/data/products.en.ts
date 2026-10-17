@@ -15,371 +15,566 @@ export interface ProductEnOverride {
 }
 
 export const PRODUCTS_EN: Record<string, ProductEnOverride> = {
-  'cf-100b': {
-    name: 'Chillami Flow-100 BLDC Standing Fan',
-    tagline: 'Ultra-quiet 13dB brushless BLDC motor with SoftAir natural breeze technology',
-    features: [
-      'Brushless DC Inverter motor saves 70% electricity',
-      '24 adjustable speed levels with SoftAir natural breeze mode',
-      'Ultra-low 13dB noise – ideal for babies and the elderly to sleep',
-      'Smart off-timer up to 12 hours, remote control included',
-      'Aerodynamic 7-blade design for soft, gentle airflow without wind blast'
-    ],
+  'lio-666v': {
+    name: 'Livotec E-smart LIO-666V Double Induction Hob',
+    tagline: 'Genuine Livotec double induction hob',
+    features: [],
     specs: {
-      'Fan type': 'Standing fan',
-      'Power': '28W (ultra energy-saving)',
-      'Motor': 'DC Inverter (BLDC), 100% copper wiring',
-      'Speed levels': '24 levels + 3 wind modes',
-      'Blade diameter': '40 cm (7 aerodynamic blades)',
-      'Minimum noise': '13 dB',
-      'Remote control': 'Yes (multi-function remote + touch keys)',
-      'Timer': '0.5 – 12 hours',
-      'Height': 'Adjustable 90cm – 128cm',
-      'Origin': 'Chillami R&D Technology'
-    },
-    videoTitle: 'Chillami Flow-100 BLDC review: 13dB noise test and SoftAir airflow',
-    colorOptions: [
-      { name: 'Snow White' },
-      { name: 'Matte Black' },
-      { name: 'Titanium Grey' }
-    ],
-    variants: [
-      { name: 'Version', value: 'Standard Edition (24-speed remote)', badge: 'Most popular' },
-      { name: 'Version', value: '20H Backup Battery Edition (Power-outage proof)', badge: '10,000mAh battery' },
-      { name: 'Version', value: 'Smart WiFi AI Edition (App + voice control)', badge: 'Chillami IoT App' }
-    ],
-    energyLabel: {
-      standard: 'TCVN 7826:2015 (Ministry of Industry and Trade)',
-      efficiencyRatio: '2.95 m³/min.W (Top 5-star rating)',
-      monthlyEstCost: '~18,000đ – 25,000đ/month (12h/day)',
-      certifications: ['TCVN 7826:2015', 'Quacert Electrical Safety', 'ISO 9001:2015', 'EU RoHS', 'CE']
+      Brand: 'Livotec',
+      Model: 'LIO-666V',
+      Category: 'Induction hob',
+      'Cooking zones': '2'
     }
   },
-  'csw-80b': {
-    name: 'Chillami Silent-Wall BLDC Wall Fan',
-    tagline: 'Saves floor space, 120° 3D oscillation, smooth and vibration-free',
-    features: [
-      'Sturdy wall mount with anti-vibration rods that fully absorb oscillation',
-      'Extra-wide 120° oscillation with flexible tilt angle',
-      'New-generation BLDC motor runs cool, 24/7 continuous operation',
-      'Remote control works through walls up to 8 meters'
-    ],
+  'lid-888': {
+    name: 'Livotec LID-888 Double Induction-Infrared Hob',
+    tagline: 'Genuine Livotec double induction-infrared hob',
+    features: [],
     specs: {
-      'Fan type': 'Household wall fan',
-      'Power': '32W',
-      'Motor': 'BLDC with premium ball bearings',
-      'Speed levels': '12 soft wind levels',
-      'Noise': '16 dB',
-      'Control': 'Remote + auxiliary pull cord',
-      'Oscillation': 'Automatic 120°',
-      'Warranty': '24 months'
-    },
-    videoTitle: 'Install the Chillami Silent-Wall fan in just 5 minutes',
-    variants: [
-      { name: 'Color', value: 'White Cream' },
-      { name: 'Color', value: 'Modern Grey' }
-    ],
-    energyLabel: {
-      monthlyEstCost: '~20,000đ/month'
+      Brand: 'Livotec',
+      Model: 'LID-888',
+      Category: 'Induction hob',
+      'Cooking zones': '2',
+      'Hob type': 'Induction + infrared'
     }
   },
-  'fb-180': {
-    name: 'Chillami FB-180 Turbo Floor Air Circulator',
-    tagline: 'Circulates fresh air in air-conditioned rooms, 15m air throw, 3D multi-directional oscillation',
-    features: [
-      'Spiral vortex grille (Vortex Airflow) spreads air evenly across the room',
-      'Cools air-conditioned rooms twice as fast and removes temperature hot spots',
-      'Smart 3D oscillation: 90° vertical tilt and 90° horizontal swing',
-      'Compact modern design for tabletop or floor use'
-    ],
+  'lv-200': {
+    name: 'Livotec LV-200 Cordless Vacuum Cleaner',
+    tagline: 'Genuine Livotec cordless vacuum cleaner',
+    features: [],
     specs: {
-      'Fan type': 'Floor air circulator',
-      'Power': '38W',
-      'Air throw': 'Up to 15 meters',
-      'Oscillation': '3D multi-directional (horizontal + vertical)',
-      'Timer': '8 hours',
-      'Weight': '2.6 kg'
-    },
-    videoTitle: 'Testing the FB-180 Turbo Vortex airflow at 15m',
-    variants: [
-      { name: 'Configuration', value: 'Mechanical Knob Edition' },
-      { name: 'Configuration', value: '3D Electronic Touch + Remote Edition', badge: 'Recommended' }
-    ],
-    energyLabel: {
-      monthlyEstCost: '~24,000đ/month'
+      Brand: 'Livotec',
+      Model: 'LV-200',
+      Category: 'Vacuum cleaner',
+      Power: 'Cordless (battery)'
     }
   },
-  'csa-200x': {
-    name: 'Chillami Smart-Air IoT WiFi Smart Fan',
-    tagline: 'Smartphone app control, temperature sensor automatically adjusts wind speed',
-    features: [
-      'Built-in room temperature & humidity sensor automatically picks the best wind speed',
-      'WiFi control via the Chillami Smart Home app on iOS/Android',
-      'Works with Google Home and Amazon Alexa voice commands',
-      'Japanese BLDC motor with backup battery against sudden power cuts'
-    ],
+  'lv-100': {
+    name: 'Livotec LV-100 Cordless Vacuum Cleaner',
+    tagline: 'Genuine Livotec cordless vacuum cleaner',
+    features: [],
     specs: {
-      'Fan type': 'IoT smart standing fan',
-      'Connectivity': 'WiFi 2.4GHz + Bluetooth Mesh',
-      'Power': '30W',
-      'Sensor': 'High-precision thermo-hygrometer',
-      'Voice assistants': 'Google Assistant, Alexa, Apple Siri',
-      'Noise': '12 dB (night sleep mode)'
-    },
-    videoTitle: 'How to connect the Chillami Home app & voice control with the CSA-200X',
-    variants: [
-      { name: 'Version', value: 'Standard WiFi Edition (White)' },
-      { name: 'Version', value: 'Pro Edition + 24H Backup Battery (Dark Grey)', badge: 'Top of the line' }
-    ],
-    energyLabel: {
-      monthlyEstCost: '~19,000đ/month',
-      certifications: ['TCVN 7826:2015', 'Quacert', 'ISO 9001:2015', 'RoHS', 'CE', 'MIC Telecom Conformity']
+      Brand: 'Livotec',
+      Model: 'LV-100',
+      Category: 'Vacuum cleaner',
+      Power: 'Cordless (battery)'
     }
   },
-  'cpg-300': {
-    name: 'Chillami PowerGo-Pro 15000mAh Rechargeable Fan',
-    tagline: '15,000mAh lithium battery runs 28 hours non-stop, LED light, Type-C phone charging',
-    features: [
-      'The #1 solution for power outages and family picnics',
-      'Durable LiFePO4 lithium battery that resists degradation, auto cut-off when full',
-      'Type-C fast-charging output for your phone during power cuts',
-      '3-level emergency LED light, soft and gentle at night'
-    ],
+  'lv-99': {
+    name: 'Livotec LV-99 Cordless Vacuum Cleaner',
+    tagline: 'Genuine Livotec cordless vacuum cleaner',
+    features: [],
     specs: {
-      'Battery capacity': '15,000 mAh (safe LiFePO4)',
-      'Runtime': '8 hours (high speed) – 28 hours (medium speed)',
-      'Charging time': '3.5 hours via Type-C PD 30W',
-      'Output ports': 'USB-A 18W, Type-C 20W for smartphones',
-      'Weight': '1.8 kg'
-    },
-    videoTitle: 'Unboxing the PowerGo-Pro rechargeable fan: 28-hour battery runtime test',
-    variants: [
-      { name: 'Color & Battery', value: 'Military Olive – 15,000mAh' },
-      { name: 'Color & Battery', value: 'Safari White – 15,000mAh' },
-      { name: 'Color & Battery', value: 'Solar Upgrade 20,000mAh (with solar charging panel)', badge: 'Solar battery included' }
-    ],
-    energyLabel: {
-      efficiencyRatio: 'Safe, fire- and explosion-proof LiFePO4 battery',
-      monthlyEstCost: '~6,000đ/month',
-      certifications: ['TCVN 7826', 'Quacert', 'CE', 'RoHS', 'UN38.3 Air Transport Safety']
+      Brand: 'Livotec',
+      Model: 'LV-99',
+      Category: 'Vacuum cleaner',
+      Power: 'Cordless (battery)'
     }
   },
-  'cac-09eco': {
-    name: 'Chillami Eco-Inverter 9000 BTU Air Conditioner',
-    tagline: 'Health Guard anti-mold technology, pure cooling, 65% power savings with Eco-Inverter',
-    features: [
-      'Exclusive Health Guard technology kills bacteria and prevents mold in the indoor unit',
-      'Smart Full Inverter keeps temperature stable within ±0.5°C',
-      'Ag+ silver-ion antibacterial filter and PM2.5 fine dust mesh protect your lungs',
-      '4-step i-Clean self-cleaning indoor coil prevents dust build-up',
-      'Golden Fin gold-coated condenser resists salt-air corrosion',
-      'Free delivery and standard installation at your home'
-    ],
+  'lac-g62': {
+    name: 'Livotec LAC-G62 Evaporative Air Cooler',
+    tagline: 'Genuine Livotec evaporative air cooler',
+    features: [],
     specs: {
-      'Cooling capacity': '9000 BTU / 1.0 HP (rooms < 15m²)',
-      'Type': 'Cooling-only Inverter with Health Guard',
-      'Energy efficiency': 'CSPF 5.25 (5-star energy saving)',
-      'Refrigerant': 'New-generation eco-friendly R32',
-      'Indoor unit noise': 'Only 19 dB (super-quiet mode)',
-      'Copper piping': '100% inner-grooved for better heat exchange',
-      'Made at': 'Homihub factory (Hung Yen, Vietnam)',
-      'Warranty': '3 years unit, 5 years Inverter compressor with 1-for-1 replacement'
-    },
-    videoTitle: 'Free home delivery & installation process for the Chillami Eco-Inverter AC',
-    variants: [
-      { name: 'Capacity', value: '9000 BTU / 1.0 HP (rooms < 15m²)', badge: 'Small bedroom' },
-      { name: 'Capacity', value: '12000 BTU / 1.5 HP (rooms 15-22m²)', badge: 'Most popular' },
-      { name: 'Capacity', value: '18000 BTU / 2.0 HP (rooms 22-30m²)', badge: 'Large living room' }
-    ],
-    energyLabel: {
-      standard: 'TCVN 7830:2015 (Ministry of Industry and Trade)',
-      efficiencyRatio: 'CSPF 5.25 (Outstanding 5-star energy rating)',
-      monthlyEstCost: '~280,000đ – 360,000đ/month (8h/night)'
+      Brand: 'Livotec',
+      Model: 'LAC-G62',
+      Category: 'Evaporative air cooler'
     }
   },
-  'cac-09slim': {
-    name: 'Chillami Slim Series v3 Ultra-Thin Air Conditioner',
-    tagline: 'Minimalist Scandinavian design only 16.8cm thick, ceiling airflow avoids direct drafts',
-    features: [
-      'Elegant curved Slim design that complements premium apartment interiors',
-      'Smart dual louvers push air to the ceiling (Coanda Airflow) – no cold headaches',
-      'SmartEye presence sensor raises the temperature when you leave to save power',
-      'Hidden LED display under the front panel shows temperature discreetly'
-    ],
+  'lac-g60': {
+    name: 'Livotec LAC-G60 Evaporative Air Cooler',
+    tagline: 'Genuine Livotec evaporative air cooler',
+    features: [],
     specs: {
-      'Capacity': '9000 BTU Dual Inverter',
-      'Indoor unit thickness': '16.8 cm (slimmest in its class)',
-      'Airflow technology': 'Coanda ceiling airflow prevents chills',
-      'Air purification': 'Plasma AirPurifier negative ion generator',
-      'Warranty': '36 months official'
+      Brand: 'Livotec',
+      Model: 'LAC-G60',
+      Category: 'Evaporative air cooler'
     }
   },
-  'cic-2200d': {
-    name: 'Chillami MasterChef Dual-IGBT Double Induction Hob',
-    tagline: 'German Infineon IGBT power board, continuous low simmer at levels 1-3, beveled Kanger glass',
-    features: [
-      'Inverter technology simmers continuously at low heat – stews without burning',
-      'Kanger Ceramic glass withstands thermal shock up to 750°C, 4-edge diamond bevel resists scratches',
-      'Super-fast 2400W Booster for each cooking zone',
-      'ChildLock safety lock, spill sensor shuts off within 3 seconds'
-    ],
+  'lac-h66': {
+    name: 'Livotec LAC-H66 Evaporative Air Cooler',
+    tagline: 'Genuine Livotec evaporative air cooler',
+    features: [],
     specs: {
-      'Cooking zones': '2 independent induction zones',
-      'Total power': '4000W (2400W Booster per zone)',
-      'Power board': 'Infineon IGBT (Germany)',
-      'Control panel': 'Independent touch sliders with 9 heat levels',
-      'Glass size': '730 x 430 mm',
-      'Cut-out size': '680 x 390 mm',
-      'Safety features': 'Overheat cut-off, key lock, spill sensor'
+      Brand: 'Livotec',
+      Model: 'LAC-H66',
+      Category: 'Evaporative air cooler'
     }
   },
-  'cic-1000s': {
-    name: 'Chillami Solo-Pro Ultra-Slim Single Induction Hob',
-    tagline: 'Only 3.5cm thin, powerful 2200W, free premium 304 stainless steel hot pot included',
-    features: [
-      'Slim, light modern design – easy to store or take to hot pot parties',
-      'Double copper coil transfers heat fast and saves electricity',
-      'Tempered crystal glass wipes clean of grease with just a damp cloth'
-    ],
+  'lac-g66s': {
+    name: 'Livotec LAC-G66S Evaporative Air Cooler',
+    tagline: 'Genuine Livotec evaporative air cooler',
+    features: [],
     specs: {
-      'Power': '2200W',
-      'Thickness': '3.5 cm',
-      'Control': 'Touch & Slide',
-      'Weight': '2.2 kg',
-      'Free gift': 'Genuine 304 stainless steel hot pot'
+      Brand: 'Livotec',
+      Model: 'LAC-G66S',
+      Category: 'Evaporative air cooler'
     }
   },
-  'chh-90t': {
-    name: 'Chillami AirPure T-90 WaveSensor T-Shape Range Hood',
-    tagline: 'Touchless WaveSensor gesture control, storm-force 1200m³/h suction, sealed grease-proof motor',
-    features: [
-      'WaveSensor technology: wave left-right to switch on/off and change 3 suction levels with greasy hands',
-      'Powerful 1200 m³/h suction clears fish and frying smells in just 60 seconds',
-      'Sealed BLDC turbine motor resists grease build-up, lasts over 10 years',
-      'Removable 304 stainless steel filters are dishwasher-safe'
-    ],
+  'lac-h66s': {
+    name: 'Livotec LAC-H66S Evaporative Air Cooler',
+    tagline: 'Genuine Livotec evaporative air cooler',
+    features: [],
     specs: {
-      'Style': 'Modern European T-shape (900mm)',
-      'Suction power': '1200 m³/h',
-      'Motor': 'Sealed twin BLDC turbine, low-noise',
-      'Max noise': '< 52 dB (very quiet vs. ordinary hoods)',
-      'Control': 'Wave gesture sensor + touch keys',
-      'Lighting': 'Warm anti-glare LED bar 2 x 1.5W'
+      Brand: 'Livotec',
+      Model: 'LAC-H66S',
+      Category: 'Evaporative air cooler'
     }
   },
-  'chh-75k': {
-    name: 'Chillami SlopeCurved K-75 Angled Glass Range Hood',
-    tagline: 'Angled black glass keeps your head clear while cooking, smart auto-opening smoke flap',
-    features: [
-      '45-degree angled glass design gives more headroom for the cook',
-      'Glass flap automatically lifts open to capture smoke when switched on',
-      'Activated carbon filter plus flexible outdoor exhaust duct option'
-    ],
+  'lch-1597d': {
+    name: 'Livotec LCH-1597D Ceramic Heater',
+    tagline: 'Genuine Livotec ceramic heater',
+    features: [],
     specs: {
-      'Style': 'Elegant angled glass (750mm)',
-      'Suction power': '1350 m³/h',
-      'Noise': '49 dB',
-      'Smoke flap': 'Electronic auto-lift',
-      'Warranty': '36 months official'
+      Brand: 'Livotec',
+      Model: 'LCH-1597D',
+      Category: 'Ceramic heater',
+      'Heating element': 'Ceramic'
     }
   },
-  'cwh-20sq': {
-    name: 'Chillami Titanium-Shield 20L Square Water Heater',
-    tagline: 'Durable Titanium enamel with 10-year tank warranty, new-generation dual ELCB anti-shock, 72h heat retention',
-    features: [
-      'Micro-crystal Titanium enamel tank withstands 8 Bar water pressure, fully limescale-proof',
-      'Pure Incoloy 840 alloy heating element – durable, fast heating, scale-free',
-      'TSS dual safety system with electronic ELCB anti-shock and bipolar thermal cut-off relay',
-      'High-density SuperFoam insulation keeps water hot for 72 hours'
-    ],
+  'lch-2089t': {
+    name: 'Livotec LCH-2089T Ceramic Heater',
+    tagline: 'Genuine Livotec ceramic heater',
+    features: [],
     specs: {
-      'Capacity': '20 liters (for families of 2-3)',
-      'Power': '2500W',
-      'Style': 'Compact square for modern bathroom false ceilings',
-      'Display': 'LED light shows when water is ready',
-      'Anti-shock': 'Ultra-sensitive ELCB (cuts off in 0.01 seconds)',
-      'Warranty': '10 years tank, 3 years components'
-    },
-    variants: [
-      { name: 'Capacity', value: '15L (for 1-2 people)' },
-      { name: 'Capacity', value: '20L (for 2-3 people)' },
-      { name: 'Capacity', value: '30L (for 3-5 people)' }
-    ]
-  },
-  'cwh-45dir': {
-    name: 'Chillami Instant-Hot Turbo Direct Water Heater',
-    tagline: 'Instant hot water in 2 seconds, whisper-quiet DC booster pump for low pressure, 5-mode massage shower head',
-    features: [
-      'Whisper-quiet DC inverter booster pump triples water pressure for high-rise homes or weak supply',
-      'Instant heating with no waiting thanks to a 4500W copper heating element',
-      'Flow sensor cuts power automatically when water stops, preventing fire and explosion',
-      'Elegant chrome-plated shower set with 5 ionic massage spray modes'
-    ],
-    specs: {
-      'Heater type': 'Direct (instant) heating',
-      'Power': '4500W',
-      'Booster pump': 'Yes (quiet DC inverter pump)',
-      'Shower head': '5-jet antibacterial Ag+ shower head',
-      'Warranty': '24 months'
+      Brand: 'Livotec',
+      Model: 'LCH-2089T',
+      Category: 'Ceramic heater',
+      'Heating element': 'Ceramic'
     }
   },
-  'crf-01': {
-    name: 'Chillami Magic-Remote Smart Remote Control',
-    tagline: 'Compatible with all Chillami fan and AC models, wide-angle infrared signal',
-    features: [
-      'Soft rubber keys with antibacterial coating',
-      'Multi-directional infrared – no need to point directly at the device',
-      'Built-in mini display shows device status'
-    ],
+  'lch-2079t': {
+    name: 'Livotec LCH-2079T Ceramic Heater',
+    tagline: 'Genuine Livotec ceramic heater',
+    features: [],
     specs: {
-      'Compatibility': 'Chillami fan & air conditioner ranges',
-      'Battery': '2 AAA batteries (included)',
-      'Range': '8 – 10 meters'
+      Brand: 'Livotec',
+      Model: 'LCH-2079T',
+      Category: 'Ceramic heater',
+      'Heating element': 'Ceramic'
     }
   },
-  'cff-02': {
-    name: 'Activated Carbon Odor & Fine Dust Filter Set',
-    tagline: 'Removes 99.9% of range hood grease odors and harmful fumes',
-    features: [
-      'Made from high-density coconut shell activated carbon',
-      'Replace every 6-9 months to keep the best odor removal performance'
-    ],
+  'lhd-18iu': {
+    name: 'Livotec LHD-18IU Dehumidifier',
+    tagline: 'Genuine Livotec dehumidifier',
+    features: [],
     specs: {
-      'Packaging': 'Box of 2 round filters',
-      'Shelf life': '3 years with seal unopened'
+      Brand: 'Livotec',
+      Model: 'LHD-18IU',
+      Category: 'Dehumidifier'
+    }
+  },
+  'lhd-25ih': {
+    name: 'Livotec LHD-25IH Dehumidifier',
+    tagline: 'Genuine Livotec dehumidifier',
+    features: [],
+    specs: {
+      Brand: 'Livotec',
+      Model: 'LHD-25IH',
+      Category: 'Dehumidifier'
+    }
+  },
+  'lhd-36iu': {
+    name: 'Livotec LHD-36IU Dehumidifier',
+    tagline: 'Genuine Livotec dehumidifier',
+    features: [],
+    specs: {
+      Brand: 'Livotec',
+      Model: 'LHD-36IU',
+      Category: 'Dehumidifier'
+    }
+  },
+  'lwh-i30a26s': {
+    name: 'Livotec LWH-I30A26S 30L Storage Water Heater',
+    tagline: 'Genuine Livotec 30L storage water heater',
+    features: [],
+    specs: {
+      Brand: 'Livotec',
+      Model: 'LWH-I30A26S',
+      Category: 'Water heater',
+      Capacity: '30 liters',
+      'Heating type': 'Storage (indirect)'
+    }
+  },
+  'lwh-i30t26': {
+    name: 'Livotec LWH-I30T26 30L Storage Water Heater',
+    tagline: 'Genuine Livotec 30L storage water heater',
+    features: [],
+    specs: {
+      Brand: 'Livotec',
+      Model: 'LWH-I30T26',
+      Category: 'Water heater',
+      Capacity: '30 liters',
+      'Heating type': 'Storage (indirect)'
+    }
+  },
+  'lwh-i30b26': {
+    name: 'Livotec LWH-I30B26 30L Storage Water Heater',
+    tagline: 'Genuine Livotec 30L storage water heater',
+    features: [],
+    specs: {
+      Brand: 'Livotec',
+      Model: 'LWH-I30B26',
+      Category: 'Water heater',
+      Capacity: '30 liters',
+      'Heating type': 'Storage (indirect)'
+    }
+  },
+  'lwh-i30a25': {
+    name: 'Livotec LWH-I30A25 30L Storage Water Heater',
+    tagline: 'Genuine Livotec 30L storage water heater',
+    features: [],
+    specs: {
+      Brand: 'Livotec',
+      Model: 'LWH-I30A25',
+      Category: 'Water heater',
+      Capacity: '30 liters',
+      'Heating type': 'Storage (indirect)'
+    }
+  },
+  'lwh-i30x26': {
+    name: 'Livotec LWH-I30X26 30L Storage Water Heater',
+    tagline: 'Genuine Livotec 30L storage water heater',
+    features: [],
+    specs: {
+      Brand: 'Livotec',
+      Model: 'LWH-I30X26',
+      Category: 'Water heater',
+      Capacity: '30 liters',
+      'Heating type': 'Storage (indirect)'
+    }
+  },
+  'lwh-v15a26s': {
+    name: 'Livotec LWH-V15A26S 15L Storage Water Heater',
+    tagline: 'Genuine Livotec 15L storage water heater',
+    features: [],
+    specs: {
+      Brand: 'Livotec',
+      Model: 'LWH-V15A26S',
+      Category: 'Water heater',
+      Capacity: '15 liters',
+      'Heating type': 'Storage (indirect)'
+    }
+  },
+  'lwh-v15b26': {
+    name: 'Livotec LWH-V15B26 15L Storage Water Heater',
+    tagline: 'Genuine Livotec 15L storage water heater',
+    features: [],
+    specs: {
+      Brand: 'Livotec',
+      Model: 'LWH-V15B26',
+      Category: 'Water heater',
+      Capacity: '15 liters',
+      'Heating type': 'Storage (indirect)'
+    }
+  },
+  'lwh-v15t26': {
+    name: 'Livotec LWH-V15T26 15L Storage Water Heater',
+    tagline: 'Genuine Livotec 15L storage water heater',
+    features: [],
+    specs: {
+      Brand: 'Livotec',
+      Model: 'LWH-V15T26',
+      Category: 'Water heater',
+      Capacity: '15 liters',
+      'Heating type': 'Storage (indirect)'
+    }
+  },
+  'lwh-v15a25': {
+    name: 'Livotec LWH-V15A25 15L Storage Water Heater',
+    tagline: 'Genuine Livotec 15L storage water heater',
+    features: [],
+    specs: {
+      Brand: 'Livotec',
+      Model: 'LWH-V15A25',
+      Category: 'Water heater',
+      Capacity: '15 liters',
+      'Heating type': 'Storage (indirect)'
+    }
+  },
+  'lwh-v15x26': {
+    name: 'Livotec LWH-V15X26 15L Storage Water Heater',
+    tagline: 'Genuine Livotec 15L storage water heater',
+    features: [],
+    specs: {
+      Brand: 'Livotec',
+      Model: 'LWH-V15X26',
+      Category: 'Water heater',
+      Capacity: '15 liters',
+      'Heating type': 'Storage (indirect)'
+    }
+  },
+  'lwh-v20a25': {
+    name: 'Livotec LWH-V20A25 20L Storage Water Heater',
+    tagline: 'Genuine Livotec 20L storage water heater',
+    features: [],
+    specs: {
+      Brand: 'Livotec',
+      Model: 'LWH-V20A25',
+      Category: 'Water heater',
+      Capacity: '20 liters',
+      'Heating type': 'Storage (indirect)'
+    }
+  },
+  'lwh-i20a25': {
+    name: 'Livotec LWH-I20A25 20L Storage Water Heater',
+    tagline: 'Genuine Livotec 20L storage water heater',
+    features: [],
+    specs: {
+      Brand: 'Livotec',
+      Model: 'LWH-I20A25',
+      Category: 'Water heater',
+      Capacity: '20 liters',
+      'Heating type': 'Storage (indirect)'
+    }
+  },
+  'lwh-i20a26s': {
+    name: 'Livotec LWH-I20A26S 20L Storage Water Heater',
+    tagline: 'Genuine Livotec 20L storage water heater',
+    features: [],
+    specs: {
+      Brand: 'Livotec',
+      Model: 'LWH-I20A26S',
+      Category: 'Water heater',
+      Capacity: '20 liters',
+      'Heating type': 'Storage (indirect)'
+    }
+  },
+  'lwh-i20b26': {
+    name: 'Livotec LWH-I20B26 20L Storage Water Heater',
+    tagline: 'Genuine Livotec 20L storage water heater',
+    features: [],
+    specs: {
+      Brand: 'Livotec',
+      Model: 'LWH-I20B26',
+      Category: 'Water heater',
+      Capacity: '20 liters',
+      'Heating type': 'Storage (indirect)'
+    }
+  },
+  'lwh-i20t26': {
+    name: 'Livotec LWH-I20T26 20L Storage Water Heater',
+    tagline: 'Genuine Livotec 20L storage water heater',
+    features: [],
+    specs: {
+      Brand: 'Livotec',
+      Model: 'LWH-I20T26',
+      Category: 'Water heater',
+      Capacity: '20 liters',
+      'Heating type': 'Storage (indirect)'
+    }
+  },
+  'lwh-i20x26': {
+    name: 'Livotec LWH-I20X26 20L Storage Water Heater',
+    tagline: 'Genuine Livotec 20L storage water heater',
+    features: [],
+    specs: {
+      Brand: 'Livotec',
+      Model: 'LWH-I20X26',
+      Category: 'Water heater',
+      Capacity: '20 liters',
+      'Heating type': 'Storage (indirect)'
+    }
+  },
+  'lwh-v20a26s': {
+    name: 'Livotec LWH-V20A26S 20L Storage Water Heater',
+    tagline: 'Genuine Livotec 20L storage water heater',
+    features: [],
+    specs: {
+      Brand: 'Livotec',
+      Model: 'LWH-V20A26S',
+      Category: 'Water heater',
+      Capacity: '20 liters',
+      'Heating type': 'Storage (indirect)'
+    }
+  },
+  'lwh-v20b26': {
+    name: 'Livotec LWH-V20B26 20L Storage Water Heater',
+    tagline: 'Genuine Livotec 20L storage water heater',
+    features: [],
+    specs: {
+      Brand: 'Livotec',
+      Model: 'LWH-V20B26',
+      Category: 'Water heater',
+      Capacity: '20 liters',
+      'Heating type': 'Storage (indirect)'
+    }
+  },
+  'lwh-v20t26': {
+    name: 'Livotec LWH-V20T26 20L Storage Water Heater',
+    tagline: 'Genuine Livotec 20L storage water heater',
+    features: [],
+    specs: {
+      Brand: 'Livotec',
+      Model: 'LWH-V20T26',
+      Category: 'Water heater',
+      Capacity: '20 liters',
+      'Heating type': 'Storage (indirect)'
+    }
+  },
+  'lwh-v20x26': {
+    name: 'Livotec LWH-V20X26 20L Storage Water Heater',
+    tagline: 'Genuine Livotec 20L storage water heater',
+    features: [],
+    specs: {
+      Brand: 'Livotec',
+      Model: 'LWH-V20X26',
+      Category: 'Water heater',
+      Capacity: '20 liters',
+      'Heating type': 'Storage (indirect)'
+    }
+  },
+  'sb-616': {
+    name: 'Livotec SB-616 Standing Fan',
+    tagline: 'Genuine Livotec standing fan',
+    features: [],
+    specs: {
+      Brand: 'Livotec',
+      Model: 'SB-616',
+      Category: 'Standing fan'
+    }
+  },
+  's-420': {
+    name: 'Livotec S-420 Standing Fan',
+    tagline: 'Genuine Livotec standing fan',
+    features: [],
+    specs: {
+      Brand: 'Livotec',
+      Model: 'S-420',
+      Category: 'Standing fan'
+    }
+  },
+  's-400': {
+    name: 'Livotec S-400 Standing Fan',
+    tagline: 'Genuine Livotec standing fan',
+    features: [],
+    specs: {
+      Brand: 'Livotec',
+      Model: 'S-400',
+      Category: 'Standing fan'
+    }
+  },
+  's-300': {
+    name: 'Livotec S-300 Standing Fan',
+    tagline: 'Genuine Livotec standing fan',
+    features: [],
+    specs: {
+      Brand: 'Livotec',
+      Model: 'S-300',
+      Category: 'Standing fan'
+    }
+  },
+  's-150b': {
+    name: 'Livotec S-150B Standing Fan',
+    tagline: 'Genuine Livotec standing fan',
+    features: [],
+    specs: {
+      Brand: 'Livotec',
+      Model: 'S-150B',
+      Category: 'Standing fan'
+    }
+  },
+  's-200': {
+    name: 'Livotec S-200 Standing Fan',
+    tagline: 'Genuine Livotec standing fan',
+    features: [],
+    specs: {
+      Brand: 'Livotec',
+      Model: 'S-200',
+      Category: 'Standing fan'
+    }
+  },
+  's-100': {
+    name: 'Livotec S-100 Standing Fan',
+    tagline: 'Genuine Livotec standing fan',
+    features: [],
+    specs: {
+      Brand: 'Livotec',
+      Model: 'S-100',
+      Category: 'Standing fan'
+    }
+  },
+  dhv12i: {
+    name: 'Livotec DHV12I Inverter Air Conditioner (Cooling Only)',
+    tagline: 'Genuine Livotec one-way Inverter air conditioner',
+    features: [],
+    specs: {
+      Brand: 'Livotec',
+      Model: 'DHV12I',
+      Category: 'Air conditioner',
+      Technology: 'Inverter',
+      Function: 'Cooling only'
+    }
+  },
+  'dhv10-8i': {
+    name: 'Livotec DHV10.8I Inverter Air Conditioner (Cooling Only)',
+    tagline: 'Genuine Livotec one-way Inverter air conditioner',
+    features: [],
+    specs: {
+      Brand: 'Livotec',
+      Model: 'DHV10.8I',
+      Category: 'Air conditioner',
+      Technology: 'Inverter',
+      Function: 'Cooling only'
+    }
+  },
+  dhv09i: {
+    name: 'Livotec DHV09I Inverter Air Conditioner (Cooling Only)',
+    tagline: 'Genuine Livotec one-way Inverter air conditioner',
+    features: [],
+    specs: {
+      Brand: 'Livotec',
+      Model: 'DHV09I',
+      Category: 'Air conditioner',
+      Technology: 'Inverter',
+      Function: 'Cooling only'
+    }
+  },
+  dhv12j: {
+    name: 'Livotec DHV12J Inverter Air Conditioner (Cooling Only)',
+    tagline: 'Genuine Livotec one-way Inverter air conditioner',
+    features: [],
+    specs: {
+      Brand: 'Livotec',
+      Model: 'DHV12J',
+      Category: 'Air conditioner',
+      Technology: 'Inverter',
+      Function: 'Cooling only'
+    }
+  },
+  'dhv10-8j': {
+    name: 'Livotec DHV10.8J Inverter Air Conditioner (Cooling Only)',
+    tagline: 'Genuine Livotec one-way Inverter air conditioner',
+    features: [],
+    specs: {
+      Brand: 'Livotec',
+      Model: 'DHV10.8J',
+      Category: 'Air conditioner',
+      Technology: 'Inverter',
+      Function: 'Cooling only'
+    }
+  },
+  dhv09j: {
+    name: 'Livotec DHV09J Inverter Air Conditioner (Cooling Only)',
+    tagline: 'Genuine Livotec one-way Inverter air conditioner',
+    features: [],
+    specs: {
+      Brand: 'Livotec',
+      Model: 'DHV09J',
+      Category: 'Air conditioner',
+      Technology: 'Inverter',
+      Function: 'Cooling only'
     }
   }
 };
 
 export const CATEGORIES_CONFIG_EN: Record<string, { name: string; subtitle: string; subcategories: string[] }> = {
-  fan: {
-    name: 'Electric Fans',
-    subtitle: 'Ultra-quiet BLDC motor & SoftAir',
-    subcategories: ['All fans', 'Standing fans', 'Wall fans', 'FB-180 floor fan', 'Energy-saving BLDC fans', 'IoT smart fans', 'Rechargeable fans']
-  },
-  ac: {
-    name: 'Air Conditioners',
-    subtitle: 'Eco Inverter & Coanda ceiling airflow',
-    subcategories: ['All air conditioners', '9000 BTU', '12000 BTU', 'Slim Series v3', 'Series v5']
-  },
-  induction: {
-    name: 'Induction Hobs',
-    subtitle: 'German IGBT board for gentle simmering',
-    subcategories: ['All induction hobs', 'Built-in double hobs', 'Single hobs']
-  },
-  hood: {
-    name: 'Range Hoods',
-    subtitle: 'WaveSensor gesture control',
-    subcategories: ['All range hoods', 'Modern T-shape', 'Elegant angled glass']
-  },
-  water_heater: {
-    name: 'Water Heaters',
-    subtitle: 'Anti-corrosion Titanium enamel & ELCB',
-    subcategories: ['All water heaters', 'Storage 15L/20L/30L', 'Direct Turbo heaters']
-  },
-  accessory: {
-    name: 'Accessories & Parts',
-    subtitle: 'Genuine Chillami spare parts',
-    subcategories: ['All parts', 'Smart remotes', 'Activated carbon filters']
-  }
+  fan: { name: 'Standing Fans', subtitle: 'Genuine Livotec standing fans', subcategories: [] },
+  ac: { name: 'Air Conditioners', subtitle: 'One-way Inverter air conditioners', subcategories: [] },
+  air_cooler: { name: 'Air Coolers', subtitle: 'Evaporative cooling', subcategories: [] },
+  water_heater: { name: 'Water Heaters', subtitle: '15L / 20L / 30L storage heaters', subcategories: [] },
+  induction: { name: 'Induction Hobs', subtitle: 'Double induction & induction-infrared hobs', subcategories: [] },
+  dehumidifier: { name: 'Dehumidifiers', subtitle: 'Keep damp and mold at bay', subcategories: [] },
+  heater: { name: 'Heaters', subtitle: 'Warm ceramic heating for winter', subcategories: [] },
+  vacuum: { name: 'Vacuum Cleaners', subtitle: 'Cordless vacuum cleaners', subcategories: [] }
 };

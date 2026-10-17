@@ -50,11 +50,11 @@ export const ROOM_SOLUTIONS = [
     title: 'Giải Pháp Phòng Ngủ',
     tagline: 'Giấc ngủ sâu tĩnh lặng, nhiệt độ êm dịu, không khô họng',
     image: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=800&q=80',
-    recommendedProducts: ['cf-100b', 'cac-09slim'],
+    recommendedProducts: ['dhv09i', 's-400', 'lhd-18iu'],
     tips: [
-      'Nên chọn quạt động cơ BLDC với độ ồn dưới 20dB để tránh ảnh hưởng giấc ngủ REM.',
-      'Điều hòa nên dùng dòng Slim Coanda thổi gió trần, tránh thổi trực tiếp vào vùng đầu và ngực.',
-      'Cài đặt chế độ Sleep Curve tự tăng 1°C sau mỗi 2 tiếng để chống lạnh lúc rạng sáng.'
+      'Phòng dưới 15m² thường phù hợp điều hòa 9.000 BTU; phòng 15–20m² nên chọn 12.000 BTU.',
+      'Đặt quạt cây cách giường khoảng 1,5–2m và dùng mức gió nhẹ khi ngủ.',
+      'Mùa nồm, dùng máy hút ẩm giữ độ ẩm phòng khoảng 50–60% để hạn chế nấm mốc.'
     ]
   },
   {
@@ -62,21 +62,22 @@ export const ROOM_SOLUTIONS = [
     title: 'Giải Pháp Phòng Khách',
     tagline: 'Không gian mở thanh lịch, luồng khí tươi tuần hoàn mát mẻ',
     image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80',
-    recommendedProducts: ['cac-09eco', 'fb-180', 'csa-200x'],
+    recommendedProducts: ['dhv12i', 'lac-g62', 's-300'],
     tips: [
-      'Kết hợp quạt tuần hoàn lốc xoáy FB-180 cùng điều hòa phòng khách giúp nhiệt độ mát đều khắp phòng chỉ trong 3 phút.',
-      'Sử dụng quạt thông minh IoT kết nối WiFi điều khiển từ xa trước khi về nhà.'
+      'Kết hợp quạt cây hoặc quạt điều hòa với điều hòa giúp không khí lưu thông đều khắp phòng.',
+      'Quạt điều hòa làm mát hiệu quả nhất khi phòng thông thoáng, có cửa sổ mở.'
     ]
   },
   {
     id: 'kitchen',
     title: 'Giải Pháp Nhà Bếp',
-    tagline: 'Bếp sạch thoáng không mùi dầu mỡ, nấu ăn thảnh thơi',
+    tagline: 'Nấu ăn nhanh gọn, căn bếp luôn sạch sẽ',
     image: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=800&q=80',
-    recommendedProducts: ['cic-2200d', 'chh-90t'],
+    recommendedProducts: ['lio-666v', 'lid-888', 'lv-99'],
     tips: [
-      'Máy hút mùi cảm biến vẫy tay WaveSensor giúp bật máy mà không lo dính dầu mỡ lên phím.',
-      'Bếp từ đôi công nghệ sôi lăn tăn mức nhỏ giúp món kho đậm vị truyền thống.'
+      'Bếp từ đôi nấu được hai món cùng lúc; cần dùng nồi chảo có đáy nhiễm từ.',
+      'Bếp điện từ có vùng hồng ngoại dùng được cả nồi không nhiễm từ.',
+      'Máy hút bụi không dây giúp dọn nhanh khu vực bếp và bàn ăn.'
     ]
   },
   {
@@ -84,10 +85,10 @@ export const ROOM_SOLUTIONS = [
     title: 'Giải Pháp Phòng Tắm',
     tagline: 'Nước nóng ấm áp an toàn tuyệt đối, thư giãn sảng khoái',
     image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80',
-    recommendedProducts: ['cwh-20sq', 'cwh-45dir'],
+    recommendedProducts: ['lwh-v15a26s', 'lwh-i30a26s', 'lch-1597d'],
     tips: [
-      'Bình chứa tráng men Titanium bảo hành 10 năm thích hợp nguồn nước nhiễm phèn hoặc vôi.',
-      'Hệ thống an toàn kép TSS và chống giật ELCB điện tử ngắt điện ngay khi có rò rỉ dưới 0.01s.'
+      'Gia đình 1–2 người phù hợp bình 15L; 2–3 người chọn 20L; 3–5 người chọn 30L.',
+      'Mùa đông, máy sưởi gốm giúp phòng tắm ấm hơn; đặt máy xa khu vực có nước.'
     ]
   }
 ];
@@ -95,8 +96,8 @@ export const ROOM_SOLUTIONS = [
 export const INITIAL_WARRANTIES = [
   {
     serialNumber: 'CLM-FAN-2026-8899',
-    productName: 'Quạt Cây Chillami Flow-100 BLDC',
-    model: 'CF-100B',
+    productName: 'Quạt cây Livotec S-400',
+    model: 'S-400',
     customerName: 'Nguyễn Văn Minh',
     customerPhone: '0912345678',
     customerEmail: 'minh.nguyen@example.com',
@@ -107,8 +108,8 @@ export const INITIAL_WARRANTIES = [
   },
   {
     serialNumber: 'CLM-AC-2026-1234',
-    productName: 'Điều Hòa Chillami Eco-Inverter 9000 BTU',
-    model: 'CAC-09ECO',
+    productName: 'Điều hòa một chiều Livotec DHV09I Inverter',
+    model: 'DHV09I',
     customerName: 'Trần Thị Thu Hà',
     customerPhone: '0987654321',
     customerEmail: 'ha.tran@example.com',

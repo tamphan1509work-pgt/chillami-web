@@ -15,15 +15,11 @@ import {
   Sparkles,
   QrCode
 } from 'lucide-react';
+import { PRODUCTS } from '../../data/products';
 import { useLanguage } from '../../context/LanguageContext';
 
-// Warranty records keep the Vietnamese product/dealer names they were registered with
+// Warranty records keep the Vietnamese dealer names they were registered with
 const WARRANTY_TEXT_EN: Record<string, string> = {
-  'Quạt Cây Chillami Flow-100 BLDC': 'Chillami Flow-100 BLDC Standing Fan',
-  'Điều Hòa Chillami Eco-Inverter 9000 BTU': 'Chillami Eco-Inverter 9000 BTU Air Conditioner',
-  'Bếp Từ Đôi Chillami MasterChef Dual-IGBT': 'Chillami MasterChef Dual-IGBT Double Induction Hob',
-  'Máy Hút Mùi Chữ T Chillami AirPure T-90': 'Chillami AirPure T-90 T-Shape Range Hood',
-  'Bình Nước Nóng Chillami Titanium-Shield 20L': 'Chillami Titanium-Shield 20L Water Heater',
   'Mua trực tiếp tại Website Chillami': 'Bought directly on the Chillami website',
   'Mua trực tiếp tại Website Chillami (D2C)': 'Bought directly on the Chillami website (D2C)',
   'Chillami Flagship Store Hà Nội': 'Chillami Flagship Store Hanoi',
@@ -38,15 +34,19 @@ interface WarrantyHubProps {
 }
 
 export const WarrantyHub: React.FC<WarrantyHubProps> = ({ onClose }) => {
-  const { l, language } = useLanguage();
+  const { l, language, translateProduct } = useLanguage();
   const wt = (text: string) => (language === 'en' ? WARRANTY_TEXT_EN[text] ?? text : text);
+  const productLabel = (record: WarrantyRecord) => {
+    const product = PRODUCTS.find((p) => p.model === record.model);
+    return product ? translateProduct(product).name : record.productName;
+  };
   const [activeTab, setActiveTab] = useState<'activate' | 'lookup' | 'book-repair' | 'policy'>('activate');
   const [warranties, setWarranties] = useState<WarrantyRecord[]>(INITIAL_WARRANTIES);
 
   // Activate Form State
   const [serialInput, setSerialInput] = useState('');
-  const [productNameInput, setProductNameInput] = useState('Quạt Cây Chillami Flow-100 BLDC');
-  const [modelInput, setModelInput] = useState('CF-100B');
+  const [productNameInput, setProductNameInput] = useState(PRODUCTS[0].name);
+  const [modelInput, setModelInput] = useState(PRODUCTS[0].model);
   const [customerName, setCustomerName] = useState('');
   const [customerPhone, setCustomerPhone] = useState('');
   const [dealerName, setDealerName] = useState('Chillami Flagship Store Hà Nội');
@@ -199,7 +199,7 @@ export const WarrantyHub: React.FC<WarrantyHubProps> = ({ onClose }) => {
                     <span>{l('Kích hoạt bảo hành điện tử thành công!', 'E-warranty activated successfully!')}</span>
                   </div>
                   <div className="pl-7 space-y-1">
-                    <div>{l('Thiết bị:', 'Appliance:')} <strong>{wt(activateSuccess.productName)}</strong> ({activateSuccess.model})</div>
+                    <div>{l('Thiết bị:', 'Appliance:')} <strong>{productLabel(activateSuccess)}</strong> ({activateSuccess.model})</div>
                     <div>{l('Số Serial:', 'Serial number:')} <strong>{activateSuccess.serialNumber}</strong></div>
                     <div>{l('Khách hàng:', 'Customer:')} <strong>{activateSuccess.customerName}</strong> ({activateSuccess.customerPhone})</div>
                     <div>{l('Hạn bảo hành đến:', 'Warranty valid until:')} <strong>{activateSuccess.warrantyExpiry}</strong> {l('(Chính hãng 24 tháng)', '(24-month official warranty)')}</div>
@@ -234,22 +234,20 @@ export const WarrantyHub: React.FC<WarrantyHubProps> = ({ onClose }) => {
                       {l('Dòng sản phẩm: *', 'Product line: *')}
                     </label>
                     <select
-                      value={productNameInput}
+                      value={modelInput}
                       onChange={(e) => {
-                        setProductNameInput(e.target.value);
-                        if (e.target.value.includes('Quạt Cây')) setModelInput('CF-100B');
-                        else if (e.target.value.includes('Điều Hòa')) setModelInput('CAC-09ECO');
-                        else if (e.target.value.includes('Bếp Từ')) setModelInput('CIC-2200D');
-                        else if (e.target.value.includes('Hút Mùi')) setModelInput('CHH-90T');
-                        else setModelInput('CWH-20SQ');
+                        const product = PRODUCTS.find((p) => p.model === e.target.value);
+                        if (!product) return;
+                        setModelInput(product.model);
+                        setProductNameInput(product.name);
                       }}
                       className="w-full px-3 py-2.5 rounded-xl border border-slate-300 focus:border-teal-600 focus:outline-hidden"
                     >
-                      <option value="Quạt Cây Chillami Flow-100 BLDC">{wt('Quạt Cây Chillami Flow-100 BLDC')}</option>
-                      <option value="Điều Hòa Chillami Eco-Inverter 9000 BTU">{wt('Điều Hòa Chillami Eco-Inverter 9000 BTU')}</option>
-                      <option value="Bếp Từ Đôi Chillami MasterChef Dual-IGBT">{wt('Bếp Từ Đôi Chillami MasterChef Dual-IGBT')}</option>
-                      <option value="Máy Hút Mùi Chữ T Chillami AirPure T-90">{wt('Máy Hút Mùi Chữ T Chillami AirPure T-90')}</option>
-                      <option value="Bình Nước Nóng Chillami Titanium-Shield 20L">{wt('Bình Nước Nóng Chillami Titanium-Shield 20L')}</option>
+                      {PRODUCTS.map((p) => (
+                        <option key={p.id} value={p.model}>
+                          {translateProduct(p).name}
+                        </option>
+                      ))}
                     </select>
                   </div>
 
@@ -360,7 +358,7 @@ export const WarrantyHub: React.FC<WarrantyHubProps> = ({ onClose }) => {
                     <div className="p-6 rounded-2xl bg-teal-50 border border-teal-200 text-xs space-y-4">
                       <div className="flex items-center justify-between pb-3 border-b border-teal-200/60">
                         <span className="font-extrabold text-teal-900 text-sm">
-                          {wt(lookupResult.productName)}
+                          {productLabel(lookupResult)}
                         </span>
                         <span className="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold text-[11px] border border-emerald-300">
                           {l('ĐANG TRONG HẠN BẢO HÀNH', 'UNDER WARRANTY')}

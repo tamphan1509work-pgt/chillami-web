@@ -1,14 +1,16 @@
 export interface Product {
   id: string;
   name: string;
+  brand?: string;
   model: string;
-  category: 'fan' | 'ac' | 'induction' | 'hood' | 'water_heater' | 'accessory';
+  category: 'fan' | 'ac' | 'air_cooler' | 'induction' | 'water_heater' | 'dehumidifier' | 'heater' | 'vacuum';
   subCategory: string; // e.g. 'quat-cay', 'quat-treo-tuong', 'quat-bldc', 'dieu-hoa-9k', etc.
-  price: number;
+  price: number; // 0 when contactForPrice
   originalPrice: number;
+  contactForPrice?: boolean;
   discountPercent?: number;
   rating: number;
-  reviewsCount: number;
+  reviewsCount: number; // 0 = no reviews yet, rating hidden
   image: string;
   gallery: string[];
   inStock: boolean;
@@ -20,7 +22,8 @@ export interface Product {
   specs: Record<string, string>;
   powerWatt?: number;
   energyRating?: number; // 1-5 stars
-  warrantyMonths: number;
+  warrantyMonths?: number;
+  sourceUrl?: string; // product page on homichi.com
   variants?: {
     name: string;
     value: string;

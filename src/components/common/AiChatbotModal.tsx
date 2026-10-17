@@ -31,6 +31,9 @@ interface Message {
   };
 }
 
+const byIds = (products: Product[], ids: string[]) =>
+  ids.map((id) => products.find((p) => p.id === id)).filter(Boolean) as Product[];
+
 interface AiChatbotModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -50,8 +53,11 @@ export const AiChatbotModal: React.FC<AiChatbotModalProps> = ({
   onNavigate,
   onOpenSmartGuide,
 }) => {
-  const { l, translateProduct } = useLanguage();
-  const welcomeText = l('Xin chào! Em là Chillami AI Assistant 🤖\n\nEm có thể hỗ trợ quý khách:\n• Tư vấn chọn quạt BLDC, điều hòa Inverter phù hợp diện tích phòng\n• Hướng dẫn kết nối App Chillami Home & WiFi 2.4GHz\n• Giải đáp về nhãn năng lượng 5 sao & độ ồn siêu êm 13dB\n• Chính sách bảo hành vàng 1 đổi 1 trong 30 ngày\n\nQuý khách đang quan tâm đến thiết bị nào ạ?', 'Hello! I\'m the Chillami AI Assistant 🤖\n\nI can help you with:\n• Choosing a BLDC fan or Inverter AC that suits your room size\n• Connecting the Chillami Home app & 2.4GHz WiFi\n• Questions about 5-star energy labels & ultra-quiet 13dB operation\n• Our gold 30-day 1-for-1 replacement warranty\n\nWhich appliance are you interested in?');
+  const { l, translateProduct, formatCurrency } = useLanguage();
+  const welcomeText = l(
+    'Xin chào! Em là Chillami AI Assistant 🤖\n\nEm có thể hỗ trợ quý khách:\n• Tư vấn chọn điều hòa, quạt, bình nước nóng phù hợp diện tích & nhu cầu\n• Báo giá nhanh các sản phẩm Livotec chính hãng\n• Hướng dẫn kết nối App Chillami Home & WiFi 2.4GHz\n• Chính sách bảo hành vàng 1 đổi 1 trong 30 ngày\n\nQuý khách đang quan tâm đến thiết bị nào ạ?',
+    'Hello! I\'m the Chillami AI Assistant 🤖\n\nI can help you with:\n• Choosing an air conditioner, fan or water heater for your room and needs\n• Quick prices for genuine Livotec products\n• Connecting the Chillami Home app & 2.4GHz WiFi\n• Our gold 30-day 1-for-1 replacement warranty\n\nWhich appliance are you interested in?'
+  );
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 'welcome',
@@ -65,11 +71,11 @@ export const AiChatbotModal: React.FC<AiChatbotModalProps> = ({
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const quickQuestions = [
-    l('Quạt BLDC tiết kiệm điện hơn quạt thường thế nào?', 'How much power does a BLDC fan save vs. a regular fan?'),
-    l('Tư vấn quạt siêu êm cho phòng ngủ có em bé', 'Recommend an ultra-quiet fan for a baby\'s bedroom'),
-    l('Hướng dẫn kết nối WiFi quạt thông minh', 'How do I connect a smart fan to WiFi?'),
-    l('Chính sách bảo hành 1 đổi 1 trong 30 ngày', '30-day 1-for-1 warranty policy'),
+    l('Thiết bị nào giúp tiết kiệm điện?', 'Which appliances help save power?'),
+    l('Tư vấn thiết bị cho phòng ngủ', 'Recommend appliances for a bedroom'),
     l('Điều hòa nào phù hợp phòng 15m²?', 'Which air conditioner suits a 15m² room?'),
+    l('Máy hút bụi không dây giá bao nhiêu?', 'How much are the cordless vacuum cleaners?'),
+    l('Chính sách bảo hành 1 đổi 1 trong 30 ngày', '30-day 1-for-1 warranty policy'),
   ];
 
   const scrollToBottom = () => {
@@ -108,15 +114,17 @@ export const AiChatbotModal: React.FC<AiChatbotModalProps> = ({
     const q = query.toLowerCase();
     const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
-    // 1. BLDC vs AC / Tiết kiệm điện / Nhãn năng lượng
-    if (q.includes('bldc') || q.includes('tiết kiệm') || q.includes('năng lượng') || q.includes('bao nhiêu số điện') || q.includes('so sánh') || /sav|energy|power|compar/.test(q)) {
-      const bldcFan = products.find((p) => p.id === 'cf-100b') || products[0];
+    // 1. Energy saving
+    if (q.includes('tiết kiệm') || q.includes('năng lượng') || q.includes('số điện') || /sav|energy|power/.test(q)) {
       return {
         id: Date.now().toString(),
         sender: 'assistant',
-        text: l('Quạt động cơ BLDC (DC Inverter không chổi than) của Chillami có các ưu điểm vượt trội:\n\n1. Tiết kiệm tới 75% điện năng: Công suất chỉ 28W (so với quạt AC truyền thống 65W–75W). Chạy 12 tiếng mỗi ngày chỉ tốn ~18.000đ – 25.000đ tiền điện mỗi tháng!\n2. Siêu tĩnh lặng 13dB: Không ma sát chổi than, không phát nhiệt, êm hơn tiếng lá rơi.\n3. 24 cấp độ gió: Điều chỉnh mượt mà theo ý muốn thay vì chỉ 3 số cứng nhắc.\n4. Đạt chuẩn năng lượng 5 Sao TCVN 7826:2015 của Bộ Công Thương.', 'Chillami\'s BLDC (brushless DC Inverter) fans offer outstanding advantages:\n\n1. Up to 75% power savings: only 28W (vs. 65W–75W for traditional AC-motor fans). Running 12 hours a day costs just ~18,000đ – 25,000đ per month!\n2. Ultra-quiet 13dB: no brush friction, no heat, quieter than falling leaves.\n3. 24 speed levels: smooth adjustment to your liking instead of just 3 fixed speeds.\n4. 5-star energy rating under TCVN 7826:2015 from the Ministry of Industry and Trade.'),
+        text: l(
+          'Để tiết kiệm điện, quý khách có thể tham khảo:\n\n• Điều hòa Livotec dòng Inverter: máy nén biến tần chạy ổn định, hạn chế bật/tắt liên tục so với máy thường.\n• Quạt cây hoặc quạt điều hòa Livotec cho những ngày chỉ cần làm mát nhẹ.\n\nThông số chi tiết của từng model có trên trang sản phẩm ạ!',
+          'To save electricity, consider:\n\n• Livotec Inverter air conditioners: the variable-speed compressor runs steadily instead of constantly switching on and off like non-Inverter units.\n• Livotec standing fans or air coolers for days that only need light cooling.\n\nDetailed specs for each model are on the product pages!'
+        ),
         timestamp: time,
-        suggestedProducts: [bldcFan],
+        suggestedProducts: byIds(products, ['dhv09i', 's-400']),
       };
     }
 
@@ -134,40 +142,44 @@ export const AiChatbotModal: React.FC<AiChatbotModalProps> = ({
       };
     }
 
-    // 3. Tư vấn phòng ngủ / em bé / êm ái
-    if (q.includes('phòng ngủ') || q.includes('em bé') || q.includes('trẻ') || q.includes('êm') || q.includes('độ ồn') || /bedroom|baby|child|quiet|noise/.test(q)) {
-      const flowFan = products.find((p) => p.id === 'cf-100b');
-      const smartFan = products.find((p) => p.id === 'csa-200x');
+    // 3. Bedroom advice
+    if (q.includes('phòng ngủ') || q.includes('em bé') || q.includes('trẻ') || q.includes('êm') || /bedroom|baby|child|quiet/.test(q)) {
       return {
         id: Date.now().toString(),
         sender: 'assistant',
-        text: l('Đối với phòng ngủ, đặc biệt là gia đình có trẻ nhỏ hoặc người lớn tuổi, Chillami khuyến nghị 2 mẫu quạt tối ưu:\n\n• Quạt Cây Chillami Flow-100 BLDC (CF-100B): Độ ồn 13dB ở chế độ ngủ SoftAir, gió thổi mềm mại không gây khô họng, không bạt hơi.\n• Quạt Thông Minh CSA-200X: Tự động điều chỉnh cấp gió theo nhiệt độ phòng ban đêm, có chế độ hẹn giờ và điều khiển qua giọng nói.', 'For bedrooms, especially in homes with young children or elderly people, Chillami recommends 2 ideal fans:\n\n• Chillami Flow-100 BLDC Standing Fan (CF-100B): 13dB in SoftAir sleep mode, with a soft breeze that won\'t dry your throat or blast you.\n• CSA-200X Smart Fan: automatically adjusts wind speed to the room temperature at night, with timer and voice control.'),
+        text: l(
+          'Cho phòng ngủ, quý khách có thể tham khảo:\n\n• Quạt cây Livotec (S-300, S-400…) cho làm mát nhẹ nhàng.\n• Điều hòa Livotec Inverter cho phòng nhỏ.\n• Máy hút ẩm Livotec giúp phòng khô thoáng mùa nồm.',
+          'For a bedroom, consider:\n\n• Livotec standing fans (S-300, S-400…) for gentle cooling.\n• A Livotec Inverter air conditioner for small rooms.\n• A Livotec dehumidifier to keep the room dry in humid seasons.'
+        ),
         timestamp: time,
-        suggestedProducts: [flowFan, smartFan].filter(Boolean) as Product[],
+        suggestedProducts: byIds(products, ['s-400', 'dhv09i', 'lhd-18iu']),
       };
     }
 
-    // 4. Mất điện / Tích điện / Dã ngoại
-    if (q.includes('mất điện') || q.includes('tích điện') || q.includes('pin') || q.includes('dã ngoại') || /outage|battery|rechargeable|camping|outdoor/.test(q)) {
-      const batteryFan = products.find((p) => p.id === 'cpg-300');
+    // 4. Cordless vacuum cleaners (prices from the catalog)
+    if (q.includes('hút bụi') || q.includes('dọn') || /vacuum|clean/.test(q)) {
+      const vacuums = products.filter((p) => p.category === 'vacuum');
+      const lines = vacuums
+        .map((p) => `• ${p.name}: ${p.contactForPrice ? l('liên hệ', 'contact us') : formatCurrency(p.price)}`)
+        .join('\n');
       return {
         id: Date.now().toString(),
         sender: 'assistant',
-        text: l('Chillami có dòng Quạt Tích Điện PowerGo-Pro (CPG-300) trang bị pin Lithium LiFePO4 15.000mAh:\n\n• Thời gian dùng liên tục tới 28 giờ (gió vừa) hoặc 8 giờ (gió cực mạnh).\n• Có đèn LED cứu hộ ban đêm.\n• Cổng sạc Type-C và cổng USB 18W sạc ngược cho điện thoại khi mất điện.\n• Pin thế hệ mới chống chai và an toàn chống cháy nổ tuyệt đối.', 'Chillami\'s PowerGo-Pro rechargeable fan (CPG-300) has a 15,000mAh LiFePO4 lithium battery:\n\n• Runs continuously for up to 28 hours (medium speed) or 8 hours (max speed).\n• Built-in emergency LED night light.\n• Type-C charging plus an 18W USB port to charge your phone during power cuts.\n• New-generation battery that resists degradation and is completely fire- and explosion-safe.'),
+        text: l(`Máy hút bụi không dây Livotec hiện có:\n\n${lines}`, `Current Livotec cordless vacuum cleaners:\n\n${lines}`),
         timestamp: time,
-        suggestedProducts: batteryFan ? [batteryFan] : [],
+        suggestedProducts: vacuums.filter((p) => !p.contactForPrice),
       };
     }
 
     // 5. Điều hòa Inverter / Chọn công suất phòng
     if (q.includes('điều hòa') || q.includes('lạnh') || q.includes('btu') || q.includes('inverter') || q.includes('15m') || /air con|conditioner|cooling/.test(q)) {
-      const acProduct = products.find((p) => p.category === 'ac');
+      const acProducts = byIds(products, ['dhv09i', 'dhv12i']);
       return {
         id: Date.now().toString(),
         sender: 'assistant',
-        text: l('Quy chuẩn chọn công suất điều hòa chuẩn kỹ thuật:\n• Phòng dưới 15m²: Chọn 9.000 BTU (1.0 HP)\n• Phòng 15m² – 22m²: Chọn 12.000 BTU (1.5 HP)\n• Phòng 22m² – 30m²: Chọn 18.000 BTU (2.0 HP)\n\nDòng Điều Hòa Chillami Eco-Inverter CAC-09ECO đạt chuẩn tiết kiệm CSPF 5.25 (5 sao), có công nghệ Health Guard diệt khuẩn nấm mốc và miễn phí 100% công lắp đặt tận nhà!', 'Technical guide to choosing AC capacity:\n• Rooms under 15m²: 9,000 BTU (1.0 HP)\n• Rooms 15m² – 22m²: 12,000 BTU (1.5 HP)\n• Rooms 22m² – 30m²: 18,000 BTU (2.0 HP)\n\nThe Chillami Eco-Inverter CAC-09ECO is rated CSPF 5.25 (5 stars), features Health Guard anti-bacterial and anti-mold technology, and comes with 100% free home installation!'),
+        text: l('Quy chuẩn chọn công suất điều hòa chuẩn kỹ thuật:\n• Phòng dưới 15m²: Chọn 9.000 BTU (1.0 HP)\n• Phòng 15m² – 22m²: Chọn 12.000 BTU (1.5 HP)\n• Phòng 22m² – 30m²: Chọn 18.000 BTU (2.0 HP)\n\nĐiều hòa một chiều Livotec Inverter có nhiều model (DHV09I, DHV10.8I, DHV12I, DHV09J, DHV10.8J, DHV12J); quý khách xem giá và chi tiết từng model trên trang sản phẩm. Chillami miễn phí công lắp đặt tiêu chuẩn tại nhà!', 'Technical guide to choosing AC capacity:\n• Rooms under 15m²: 9,000 BTU (1.0 HP)\n• Rooms 15m² – 22m²: 12,000 BTU (1.5 HP)\n• Rooms 22m² – 30m²: 18,000 BTU (2.0 HP)\n\nLivotec one-way Inverter air conditioners come in several models (DHV09I, DHV10.8I, DHV12I, DHV09J, DHV10.8J, DHV12J); see prices and details on each product page. Chillami includes free standard home installation!'),
         timestamp: time,
-        suggestedProducts: acProduct ? [acProduct] : [],
+        suggestedProducts: acProducts,
       };
     }
 
@@ -182,13 +194,13 @@ export const AiChatbotModal: React.FC<AiChatbotModalProps> = ({
     }
 
     // Default friendly assistant fallback
-    const bestSellers = products.filter((p) => p.isBestSeller).slice(0, 2);
+    const bestSellers = byIds(products, ['s-400', 'dhv09i']);
     return {
       id: Date.now().toString(),
       sender: 'assistant',
       text: l(
-        `Dạ, về yêu cầu "${query}", Chillami luôn có các dòng sản phẩm tối ưu công nghệ cho ngôi nhà của quý khách. Quý khách có thể xem nhanh các thiết bị bán chạy nhất bên dưới hoặc chọn các câu hỏi gợi ý để em giải đáp chi tiết hơn nhé!`,
-        `About "${query}": Chillami has technology-optimized products for every home. Take a quick look at our best sellers below, or pick one of the suggested questions for a more detailed answer!`
+        `Dạ, về yêu cầu "${query}", Chillami luôn có các dòng sản phẩm tối ưu công nghệ cho ngôi nhà của quý khách. Quý khách có thể xem nhanh một số sản phẩm nổi bật bên dưới hoặc chọn các câu hỏi gợi ý để em giải đáp chi tiết hơn nhé!`,
+        `About "${query}": Chillami has technology-optimized products for every home. Take a quick look at some featured products below, or pick one of the suggested questions for a more detailed answer!`
       ),
       timestamp: time,
       suggestedProducts: bestSellers,
@@ -300,7 +312,7 @@ export const AiChatbotModal: React.FC<AiChatbotModalProps> = ({
                         <img
                           src={p.image}
                           alt={p.name}
-                          className="w-14 h-14 object-cover rounded-lg bg-slate-50 shrink-0"
+                          className="w-14 h-14 object-contain rounded-lg bg-slate-50 shrink-0"
                         />
                         <div className="flex-1 min-w-0">
                           <div className="text-xs font-bold text-slate-900 truncate">{translateProduct(p).name}</div>

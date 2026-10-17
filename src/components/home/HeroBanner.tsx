@@ -6,14 +6,23 @@ import {
   ArrowRight,
   Calculator,
   Sparkles,
-  VolumeX,
   CheckCircle2,
   ChevronRight
 } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
+import { PRODUCTS, CATEGORIES_CONFIG } from '../../data/products';
+
+type HeroCategory = 'fan' | 'ac' | 'water_heater' | 'air_cooler';
+
+const HERO_FEATURED: Record<HeroCategory, string> = {
+  fan: 's-400',
+  ac: 'dhv12i',
+  water_heater: 'lwh-i30a26s',
+  air_cooler: 'lac-g62',
+};
 
 interface HeroBannerProps {
-  onExploreProducts: () => void;
+  onExploreProducts: (category?: string) => void;
   onOpenBtuCalc: () => void;
 }
 
@@ -21,57 +30,23 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
   onExploreProducts,
   onOpenBtuCalc,
 }) => {
-  const { language, t, l } = useLanguage();
-  const [activeTab, setActiveTab] = useState<'bldc' | 'inverter' | 'igbt' | 'titanium'>('bldc');
+  const { language, t, l, translateProduct, translateCategory, formatCurrency } = useLanguage();
+  const [activeTab, setActiveTab] = useState<HeroCategory>('fan');
 
-  const highlights = {
-    bldc: {
-      badge: language === 'vi' ? 'Công nghệ độc quyền' : 'Proprietary Tech',
-      title: language === 'vi' ? 'Quạt BLDC SoftAir 13dB' : 'BLDC SoftAir 13dB Fan',
-      desc: language === 'vi'
-        ? 'Động cơ một chiều không chổi than 100% dây đồng, 24 cấp độ gió tự nhiên, vận hành siêu tĩnh lặng bảo vệ giấc ngủ.'
-        : 'Brushless DC motor with 100% pure copper winding, 24 natural wind levels, ultra-quiet operation protecting sleep.',
-      stat: language === 'vi' ? 'Tiết kiệm 70%' : 'Save 70%',
-      statLabel: language === 'vi' ? 'Điện năng tiêu thụ' : 'Power Consumption',
-      image: 'https://images.unsplash.com/photo-1594910069352-7010f3c55c70?auto=format&fit=crop&w=1200&q=80',
-      actionLabel: language === 'vi' ? 'Xem Quạt BLDC' : 'View BLDC Fans',
-    },
-    inverter: {
-      badge: language === 'vi' ? 'Kiến trúc tối giản' : 'Minimalist Design',
-      title: language === 'vi' ? 'Điều Hòa Slim Inverter 16.8cm' : 'Slim Inverter AC 16.8cm',
-      desc: language === 'vi'
-        ? 'Thiết kế siêu mỏng thanh lịch kết hợp luồng gió Coanda thổi trần, làm lạnh dịu mát không gây khô da hay buốt đầu.'
-        : 'Ultra-slim elegant design paired with Coanda ceiling airflow, gentle cooling without drying skin or head chills.',
-      stat: 'CSPF 5.25',
-      statLabel: language === 'vi' ? 'Chuẩn 5 sao năng lượng' : '5-Star Energy Rating',
-      image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1200&q=80',
-      actionLabel: language === 'vi' ? 'Xem Điều Hòa Inverter' : 'View Inverter AC',
-    },
-    igbt: {
-      badge: language === 'vi' ? 'Linh kiện Infineon Đức' : 'German Infineon IGBT',
-      title: language === 'vi' ? 'Bếp Từ Đôi MasterChef IGBT' : 'MasterChef Induction Hob',
-      desc: language === 'vi'
-        ? 'Công nghệ sôi lăn tăn liên tục mức 1-3 không ngắt quãng, mặt kính Kanger vát kim cương chịu nhiệt 750°C.'
-        : 'Continuous low-simmer boiling without pulsing, diamond-beveled Kanger glass heat resistant to 750°C.',
-      stat: '4000W',
-      statLabel: language === 'vi' ? 'Booster đun siêu tốc' : 'Super-Fast Booster',
-      image: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=1200&q=80',
-      actionLabel: language === 'vi' ? 'Xem Bếp Từ Đôi' : 'View Induction Hobs',
-    },
-    titanium: {
-      badge: language === 'vi' ? 'Bảo hành bình chứa 10 năm' : '10-Year Tank Warranty',
-      title: language === 'vi' ? 'Bình Nước Nóng Men Titanium' : 'Titanium Water Heater',
-      desc: language === 'vi'
-        ? 'Chống ăn mòn tuyệt đối, cọc đốt Incoloy 840 truyền nhiệt nhanh, hệ thống chống giật ELCB kép an toàn tuyệt đối.'
-        : 'Zero corrosion, Incoloy 840 rapid heating element, dual ELCB anti-shock protection for ultimate safety.',
-      stat: language === 'vi' ? '72 Giờ' : '72 Hours',
-      statLabel: language === 'vi' ? 'Giữ nhiệt chuẩn SuperFoam' : 'SuperFoam Heat Retention',
-      image: 'https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=1200&q=80',
-      actionLabel: language === 'vi' ? 'Xem Bình Nóng Lạnh' : 'View Water Heaters',
-    },
+  // Showcase built from the real catalog: featured product image and lowest listed price per category
+  const featured = translateProduct(PRODUCTS.find((p) => p.id === HERO_FEATURED[activeTab])!);
+  const category = translateCategory(CATEGORIES_CONFIG.find((c) => c.id === activeTab)!);
+  const prices = PRODUCTS.filter((p) => p.category === activeTab && !p.contactForPrice).map((p) => p.price);
+  const current = {
+    badge: `${category.count} ${l('sản phẩm', 'products')}`,
+    title: category.name,
+    desc: featured.name,
+    stat: prices.length ? formatCurrency(Math.min(...prices)) : l('Liên hệ', 'Contact us'),
+    statLabel: prices.length ? l('Giá chỉ từ', 'Starting from') : l('Báo giá theo yêu cầu', 'Quote on request'),
+    image: featured.gallery[0] ?? featured.image,
+    fallbackImage: featured.image,
+    actionLabel: l(`Xem ${category.name.toLowerCase()}`, `View ${category.name.toLowerCase()}`),
   };
-
-  const current = highlights[activeTab];
 
   return (
     <section className="relative bg-gradient-to-b from-teal-950 via-slate-900 to-slate-950 text-white overflow-hidden">
@@ -124,20 +99,21 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
             </h1>
 
             <p className="text-base sm:text-lg text-slate-300 font-normal leading-relaxed max-w-2xl">
-              {language === 'vi'
-                ? 'Hệ sinh thái thiết bị điện gia dụng Chillami: Động cơ BLDC không chổi than 13dB, Điều hòa Inverter thổi trần, Bếp từ IGBT sôi liu riu và Bình nóng lạnh men Titanium an toàn tuyệt đối.'
-                : 'Chillami smart ecosystem: Brushless BLDC 13dB fans, Coanda ceiling Inverter ACs, German IGBT induction hobs, and Titanium water heaters.'}
+              {l(
+                'Thiết bị điện gia dụng Livotec chính hãng: quạt cây, điều hòa Inverter, quạt điều hòa, bình nước nóng, bếp từ, máy hút ẩm, máy sưởi và máy hút bụi.',
+                'Genuine Livotec home appliances: standing fans, Inverter air conditioners, air coolers, water heaters, induction hobs, dehumidifiers, heaters and vacuum cleaners.'
+              )}
             </p>
 
             {/* Quick Metrics / USPs */}
             <div className="grid grid-cols-3 gap-4 py-3 max-w-lg">
               <div className="border-l-2 border-teal-500 pl-3">
-                <div className="text-xl sm:text-2xl font-bold text-white tracking-tight">13 dB</div>
-                <div className="text-xs text-slate-400">{language === 'vi' ? 'Siêu êm phòng ngủ' : 'Bedroom quiet'}</div>
+                <div className="text-xl sm:text-2xl font-bold text-white tracking-tight">{PRODUCTS.length}</div>
+                <div className="text-xs text-slate-400">{l('Sản phẩm chính hãng', 'Genuine products')}</div>
               </div>
               <div className="border-l-2 border-teal-500 pl-3">
-                <div className="text-xl sm:text-2xl font-bold text-white tracking-tight">-70%</div>
-                <div className="text-xs text-slate-400">{language === 'vi' ? 'Tiết kiệm điện năng' : 'Power saving'}</div>
+                <div className="text-xl sm:text-2xl font-bold text-white tracking-tight">{CATEGORIES_CONFIG.length}</div>
+                <div className="text-xs text-slate-400">{l('Danh mục thiết bị', 'Product categories')}</div>
               </div>
               <div className="border-l-2 border-teal-500 pl-3">
                 <div className="text-xl sm:text-2xl font-bold text-white tracking-tight">{language === 'vi' ? '1 Đổi 1' : '1 to 1'}</div>
@@ -148,7 +124,7 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
             {/* Action Buttons */}
             <div className="flex flex-wrap items-center gap-3 pt-2">
               <button
-                onClick={onExploreProducts}
+                onClick={() => onExploreProducts()}
                 className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold text-sm shadow-lg shadow-teal-500/20 transition-all cursor-pointer"
               >
                 <span>{language === 'vi' ? 'Khám phá sản phẩm' : 'Explore Products'}</span>
@@ -188,50 +164,53 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
               <div className="grid grid-cols-4 gap-1 p-1 bg-slate-900/80 rounded-xl mb-4 text-xs font-semibold">
                 <button
                   type="button"
-                  onClick={() => setActiveTab('bldc')}
+                  onClick={() => setActiveTab('fan')}
                   className={`py-2 px-1 text-center rounded-lg transition-colors cursor-pointer ${
-                    activeTab === 'bldc' ? 'bg-teal-700 text-white shadow-xs' : 'text-slate-400 hover:text-white'
+                    activeTab === 'fan' ? 'bg-teal-700 text-white shadow-xs' : 'text-slate-400 hover:text-white'
                   }`}
                 >
-                  {language === 'vi' ? 'Quạt BLDC' : 'BLDC Fan'}
+                  {language === 'vi' ? 'Quạt Cây' : 'Fans'}
                 </button>
                 <button
                   type="button"
-                  onClick={() => setActiveTab('inverter')}
+                  onClick={() => setActiveTab('ac')}
                   className={`py-2 px-1 text-center rounded-lg transition-colors cursor-pointer ${
-                    activeTab === 'inverter' ? 'bg-teal-700 text-white shadow-xs' : 'text-slate-400 hover:text-white'
+                    activeTab === 'ac' ? 'bg-teal-700 text-white shadow-xs' : 'text-slate-400 hover:text-white'
                   }`}
                 >
                   {language === 'vi' ? 'Điều Hòa' : 'Air Con'}
                 </button>
                 <button
                   type="button"
-                  onClick={() => setActiveTab('igbt')}
+                  onClick={() => setActiveTab('water_heater')}
                   className={`py-2 px-1 text-center rounded-lg transition-colors cursor-pointer ${
-                    activeTab === 'igbt' ? 'bg-teal-700 text-white shadow-xs' : 'text-slate-400 hover:text-white'
-                  }`}
-                >
-                  {language === 'vi' ? 'Bếp Từ' : 'Induction'}
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setActiveTab('titanium')}
-                  className={`py-2 px-1 text-center rounded-lg transition-colors cursor-pointer ${
-                    activeTab === 'titanium' ? 'bg-teal-700 text-white shadow-xs' : 'text-slate-400 hover:text-white'
+                    activeTab === 'water_heater' ? 'bg-teal-700 text-white shadow-xs' : 'text-slate-400 hover:text-white'
                   }`}
                 >
                   {language === 'vi' ? 'Bình Nước' : 'Water Heat'}
                 </button>
+                <button
+                  type="button"
+                  onClick={() => setActiveTab('air_cooler')}
+                  className={`py-2 px-1 text-center rounded-lg transition-colors cursor-pointer ${
+                    activeTab === 'air_cooler' ? 'bg-teal-700 text-white shadow-xs' : 'text-slate-400 hover:text-white'
+                  }`}
+                >
+                  {language === 'vi' ? 'Quạt ĐH' : 'Air Cooler'}
+                </button>
               </div>
 
               {/* Showcase Image with Stat Overlay */}
-              <div className="relative w-full aspect-16/10 rounded-2xl overflow-hidden bg-slate-900 mb-4 group">
+              <div className="relative w-full aspect-16/10 rounded-2xl overflow-hidden bg-white mb-4 group">
                 <img
+                  key={current.image}
                   src={current.image}
-                  alt={current.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  alt={current.desc}
+                  onError={(e) => {
+                    if (e.currentTarget.src !== current.fallbackImage) e.currentTarget.src = current.fallbackImage;
+                  }}
+                  className="w-full h-full object-contain p-3 group-hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent" />
 
                 <div className="absolute bottom-3 left-3 right-3 flex items-end justify-between">
                   <div className="bg-slate-900/90 backdrop-blur-md px-3 py-1.5 rounded-xl border border-slate-700">
@@ -252,11 +231,11 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
 
               <div className="pt-4 mt-4 border-t border-slate-700/60 flex items-center justify-between">
                 <span className="text-xs text-slate-400 flex items-center gap-1">
-                  <VolumeX className="w-3.5 h-3.5 text-teal-400" />
-                  {l('Chuẩn vận hành êm ái', 'Whisper-quiet operation standard')}
+                  <ShieldCheck className="w-3.5 h-3.5 text-teal-400" />
+                  {l('Chính hãng Livotec', 'Genuine Livotec')}
                 </span>
                 <button
-                  onClick={onExploreProducts}
+                  onClick={() => onExploreProducts(activeTab)}
                   className="inline-flex items-center gap-1 text-xs font-bold text-teal-400 hover:text-teal-300 transition-colors"
                 >
                   <span>{current.actionLabel}</span>

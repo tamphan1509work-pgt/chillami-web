@@ -100,7 +100,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                   <img
                     src={item.product.image}
                     alt={translateProduct(item.product).name}
-                    className="w-16 h-16 rounded-xl object-cover bg-white shrink-0"
+                    className="w-16 h-16 rounded-xl object-contain bg-white shrink-0"
                   />
 
                   <div className="flex-1 min-w-0">
@@ -177,7 +177,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                           <img
                             src={up.image}
                             alt={up.name}
-                            className="w-9 h-9 rounded-lg object-cover bg-slate-100 shrink-0"
+                            className="w-9 h-9 rounded-lg object-contain bg-slate-100 shrink-0"
                           />
                           <div className="min-w-0">
                             <div className="text-xs font-semibold text-slate-900 truncate">

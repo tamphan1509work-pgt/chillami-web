@@ -1,5 +1,6 @@
 import React from 'react';
 import { Logo } from '../common/Logo';
+import { CATEGORIES_CONFIG } from '../../data/products';
 import {
   PhoneCall,
   Mail,
@@ -31,7 +32,7 @@ export const Footer: React.FC<FooterProps> = ({
   onOpenBtuCalc,
   onOpenPolicy,
 }) => {
-  const { l } = useLanguage();
+  const { l, translateCategory } = useLanguage();
   return (
     <footer className="bg-slate-900 text-slate-300 pt-16 pb-12 border-t border-slate-800">
       {/* 1. TOP TRUST & REASSURANCE BANNER (KHÔNG TRÙNG LẶP VỚI CHILLAMI CARE) */}
@@ -115,54 +116,16 @@ export const Footer: React.FC<FooterProps> = ({
               {l('Sản Phẩm', 'Products')}
             </h5>
             <ul className="space-y-2 text-xs">
-              <li>
-                <button
-                  onClick={() => onNavigate('products', { category: 'fan' })}
-                  className="hover:text-teal-400 transition-colors"
-                >
-                  {l('Quạt điện BLDC', 'BLDC electric fans')}
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => onNavigate('products', { category: 'ac' })}
-                  className="hover:text-teal-400 transition-colors"
-                >
-                  {l('Điều hòa Eco-Inverter', 'Eco-Inverter air conditioners')}
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => onNavigate('products', { category: 'induction' })}
-                  className="hover:text-teal-400 transition-colors"
-                >
-                  {l('Bếp từ đôi MasterChef', 'MasterChef double induction hobs')}
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => onNavigate('products', { category: 'hood' })}
-                  className="hover:text-teal-400 transition-colors"
-                >
-                  {l('Máy hút mùi cảm ứng', 'Touch-control range hoods')}
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => onNavigate('products', { category: 'water_heater' })}
-                  className="hover:text-teal-400 transition-colors"
-                >
-                  {l('Bình nước nóng Titanium', 'Titanium water heaters')}
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => onNavigate('products', { category: 'accessory' })}
-                  className="hover:text-teal-400 transition-colors"
-                >
-                  {l('Phụ kiện & Linh kiện', 'Accessories & Parts')}
-                </button>
-              </li>
+              {CATEGORIES_CONFIG.map(translateCategory).map((cat) => (
+                <li key={cat.id}>
+                  <button
+                    onClick={() => onNavigate('products', { category: cat.id })}
+                    className="hover:text-teal-400 transition-colors"
+                  >
+                    {cat.name}
+                  </button>
+                </li>
+              ))}
             </ul>
           </div>
 

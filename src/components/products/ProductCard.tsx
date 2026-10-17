@@ -65,7 +65,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         <img
           src={product.image}
           alt={product.name}
-          className="w-full h-full object-cover object-center rounded-xl group-hover:scale-105 transition-transform duration-500"
+          className="w-full h-full object-contain object-center rounded-xl group-hover:scale-105 transition-transform duration-500"
           loading="lazy"
         />
         {/* Subtle quick view overlay */}
@@ -84,8 +84,18 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           <span className="font-medium text-teal-700 uppercase tracking-wide text-[10px]">
             {product.model}
           </span>
-          <span aria-hidden="true" className="text-slate-300">·</span>
-          <span>{l('Bảo hành', 'Warranty')} {product.warrantyMonths}{l('T', 'M')}</span>
+          {product.brand && (
+            <>
+              <span aria-hidden="true" className="text-slate-300">·</span>
+              <span>{product.brand}</span>
+            </>
+          )}
+          {product.warrantyMonths && (
+            <>
+              <span aria-hidden="true" className="text-slate-300">·</span>
+              <span>{l('Bảo hành', 'Warranty')} {product.warrantyMonths}{l('T', 'M')}</span>
+            </>
+          )}
           {product.powerWatt && (
             <>
               <span aria-hidden="true" className="text-slate-300">·</span>
@@ -123,11 +133,15 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 
         {/* Rating and price row */}
         <div className="pt-2 border-t border-slate-100 flex items-center justify-between mb-3">
-          <div className="flex items-center gap-1 text-xs text-amber-500 font-medium">
-            <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-            <span>{product.rating}</span>
-            <span className="text-slate-400 text-[11px]">({product.reviewsCount})</span>
-          </div>
+          {product.reviewsCount > 0 ? (
+            <div className="flex items-center gap-1 text-xs text-amber-500 font-medium">
+              <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+              <span>{product.rating}</span>
+              <span className="text-slate-400 text-[11px]">({product.reviewsCount})</span>
+            </div>
+          ) : (
+            <span className="text-[11px] text-slate-500">{l('Chính hãng', 'Genuine')}</span>
+          )}
           <span className="text-[11px] text-emerald-700 font-medium flex items-center gap-0.5">
             <Zap className="w-3 h-3" />
             {l('Free lắp đặt', 'Free installation')}
@@ -138,7 +152,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         <div className="flex items-end justify-between gap-2 mt-auto">
           <div>
             <div className="text-base sm:text-lg font-bold text-slate-900 tracking-tight">
-              {formatPrice(product.price)}
+              {product.contactForPrice ? l('Liên hệ', 'Contact us') : formatPrice(product.price)}
             </div>
             {product.originalPrice > product.price && (
               <div className="text-xs text-slate-400 line-through">
@@ -147,14 +161,25 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             )}
           </div>
 
-          <button
-            type="button"
-            onClick={() => onAddToCart(product)}
-            className="inline-flex items-center gap-1.5 px-3 py-2 sm:px-3.5 sm:py-2 bg-teal-700 hover:bg-teal-800 active:bg-teal-900 text-white text-xs font-semibold rounded-xl shadow-xs hover:shadow-md transition-all shrink-0 cursor-pointer"
-          >
-            <ShoppingBag className="w-3.5 h-3.5" />
-            <span>{l('Mua ngay', 'Buy now')}</span>
-          </button>
+          {product.contactForPrice ? (
+            <a
+              href={product.sourceUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3 py-2 sm:px-3.5 sm:py-2 bg-teal-700 hover:bg-teal-800 active:bg-teal-900 text-white text-xs font-semibold rounded-xl shadow-xs hover:shadow-md transition-all shrink-0 cursor-pointer"
+            >
+              <span>{l('Hỏi giá', 'Get a quote')}</span>
+            </a>
+          ) : (
+            <button
+              type="button"
+              onClick={() => onAddToCart(product)}
+              className="inline-flex items-center gap-1.5 px-3 py-2 sm:px-3.5 sm:py-2 bg-teal-700 hover:bg-teal-800 active:bg-teal-900 text-white text-xs font-semibold rounded-xl shadow-xs hover:shadow-md transition-all shrink-0 cursor-pointer"
+            >
+              <ShoppingBag className="w-3.5 h-3.5" />
+              <span>{l('Mua ngay', 'Buy now')}</span>
+            </button>
+          )}
         </div>
       </div>
     </div>

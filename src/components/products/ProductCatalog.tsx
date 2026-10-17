@@ -84,7 +84,8 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
       if (promotionOnly && !p.isPromotion && !(p.discountPercent && p.discountPercent > 0)) {
         return false;
       }
-      // Price range
+      // Price range (contact-for-price products only show without a price filter)
+      if (priceRange !== 'all' && p.contactForPrice) return false;
       if (priceRange === '<2m' && p.price >= 2000000) return false;
       if (priceRange === '2-5m' && (p.price < 2000000 || p.price > 5000000)) return false;
       if (priceRange === '5-10m' && (p.price < 5000000 || p.price > 10000000)) return false;
@@ -115,6 +116,10 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
     return [...filteredProducts].sort((a, b) => {
       if (sortBy === 'popular') return (b.reviewsCount || 0) - (a.reviewsCount || 0);
       if (sortBy === 'discount') return (b.discountPercent || 0) - (a.discountPercent || 0);
+      // Contact-for-price products go last in both price orders
+      if ((sortBy === 'price-asc' || sortBy === 'price-desc') && a.contactForPrice !== b.contactForPrice) {
+        return a.contactForPrice ? 1 : -1;
+      }
       if (sortBy === 'price-asc') return a.price - b.price;
       if (sortBy === 'price-desc') return b.price - a.price;
       if (sortBy === 'rating') return b.rating - a.rating;
@@ -230,44 +235,6 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
                 <span>{l('Sẵn hàng', 'In stock')}</span>
               </button>
 
-              {/* Hàng mới về toggle */}
-              <button
-                onClick={() => setNewOnly(!newOnly)}
-                className={`px-3 py-1.5 rounded-lg border text-xs font-medium transition-all cursor-pointer flex items-center gap-1.5 ${
-                  newOnly
-                    ? 'bg-indigo-50 border-indigo-600 text-indigo-800'
-                    : 'bg-white border-slate-200 text-slate-600 hover:border-slate-300'
-                }`}
-              >
-                <div
-                  className={`w-3.5 h-3.5 rounded border flex items-center justify-center ${
-                    newOnly ? 'bg-indigo-600 border-indigo-600 text-white' : 'border-slate-300'
-                  }`}
-                >
-                  {newOnly && <Check className="w-2.5 h-2.5" />}
-                </div>
-                <span>{l('Hàng mới về', 'New arrivals')}</span>
-              </button>
-
-              {/* Khuyến mãi HOT */}
-              <button
-                onClick={() => setPromotionOnly(!promotionOnly)}
-                className={`px-3 py-1.5 rounded-lg border text-xs font-medium transition-all cursor-pointer flex items-center gap-1.5 ${
-                  promotionOnly
-                    ? 'bg-rose-50 border-rose-600 text-rose-800'
-                    : 'bg-white border-slate-200 text-slate-600 hover:border-slate-300'
-                }`}
-              >
-                <div
-                  className={`w-3.5 h-3.5 rounded border flex items-center justify-center ${
-                    promotionOnly ? 'bg-rose-600 border-rose-600 text-white' : 'border-slate-300'
-                  }`}
-                >
-                  {promotionOnly && <Check className="w-2.5 h-2.5" />}
-                </div>
-                <span>{l('Khuyến mãi HOT', 'HOT deals')}</span>
-              </button>
-
               {/* Price filter dropdown */}
               <select
                 value={priceRange}
@@ -281,19 +248,6 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
                 <option value=">10m">{l('Trên 10 triệu', 'Over 10 million VND')}</option>
               </select>
 
-              {/* Technology filter dropdown */}
-              <select
-                value={selectedTech}
-                onChange={(e) => setSelectedTech(e.target.value)}
-                className="px-3 py-1.5 rounded-lg border border-slate-200 bg-white text-xs font-medium text-slate-700 focus:outline-hidden focus:border-teal-500 cursor-pointer"
-              >
-                <option value="all">{l('Công nghệ & Động cơ (Tất cả)', 'Technology & Motor (All)')}</option>
-                <option value="bldc">{l('Động cơ BLDC không chổi than', 'Brushless BLDC motor')}</option>
-                <option value="inverter">{l('Biến tần Inverter Eco', 'Eco Inverter')}</option>
-                <option value="igbt">{l('Mạch công suất kép IGBT Đức', 'German dual IGBT power board')}</option>
-                <option value="titanium">{l('Men Titanium 10 năm', '10-year Titanium enamel')}</option>
-                <option value="iot">{l('Kết nối App & WiFi IoT', 'App & WiFi IoT connectivity')}</option>
-              </select>
             </div>
 
             {/* Right: Sắp xếp theo (Phổ biến · Khuyến mãi HOT · Giá Thấp – Cao · Giá Cao – Thấp) */}

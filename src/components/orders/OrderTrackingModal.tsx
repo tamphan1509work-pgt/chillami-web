@@ -19,7 +19,7 @@ const ORDER_TEXT_EN: Record<string, string> = {
   'Đã đặt hàng thành công': 'Order placed successfully',
   'Hệ thống đã nhận thanh toán qua VietQR.': 'Payment received via VietQR.',
   'Kho xuất hàng & Kiểm định': 'Dispatched from warehouse & inspected',
-  'Kiểm tra động cơ BLDC và dán tem kích hoạt bảo hành điện tử.': 'BLDC motor checked and e-warranty activation sticker applied.',
+  'Kiểm tra sản phẩm và dán tem kích hoạt bảo hành điện tử.': 'Product checked and e-warranty activation sticker applied.',
   'Kỹ thuật viên đang giao & lắp đặt': 'Technician delivering & installing',
   'KTV Trần Đình Dũng đang di chuyển đến địa chỉ.': 'Technician Tran Dinh Dung is on the way to your address.',
   'Bàn giao thiết bị': 'Appliance handover',

@@ -32,9 +32,12 @@ export const PromotionsView: React.FC<PromotionsViewProps> = ({
   const { l } = useLanguage();
   const [copiedCode, setCopiedCode] = useState<string | null>(null);
 
-  const promoProducts = products.filter(
+  const discounted = products.filter(
     (p) => p.isPromotion || (p.discountPercent && p.discountPercent > 0)
   );
+  // Without discounted items, show priced products that the vouchers above apply to
+  const hasDiscounts = discounted.length > 0;
+  const promoProducts = hasDiscounts ? discounted : products.filter((p) => !p.contactForPrice).slice(0, 8);
 
   const vouchers = [
     {
@@ -46,7 +49,7 @@ export const PromotionsView: React.FC<PromotionsViewProps> = ({
     {
       code: 'COMBOVIP',
       discount: l('Giảm 500.000 đ', '500,000đ off'),
-      condition: l('Khi mua combo Điều hòa + Quạt BLDC', 'With an AC + BLDC fan combo'),
+      condition: l('Khi mua combo Điều hòa + Quạt cây', 'With an AC + standing fan combo'),
       expiry: l('Hạn dùng: 31/12/2026', 'Valid until: 31/12/2026'),
     },
     {
@@ -77,7 +80,7 @@ export const PromotionsView: React.FC<PromotionsViewProps> = ({
               {l('Đại Tiệc Mùa Hè: Sống Mát Lành, Không Lo Hóa Đơn Điện', 'Summer Sale: Stay Cool Without Worrying About Power Bills')}
             </h1>
             <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-              {l('Trợ giá trực tiếp lên đến 30% cho toàn bộ dòng Quạt BLDC SoftAir, Điều hòa Inverter thế hệ mới. Miễn phí công lắp đặt tiêu chuẩn trị giá 500.000 đ.', 'Direct discounts of up to 30% on the entire BLDC SoftAir fan and new-generation Inverter AC ranges. Free standard installation worth 500,000đ.')}
+              {l('Ưu đãi mùa hè cho quạt cây, quạt điều hòa và điều hòa Inverter Livotec. Miễn phí công lắp đặt tiêu chuẩn trị giá 500.000 đ.', 'Summer offers on Livotec standing fans, air coolers and Inverter air conditioners. Free standard installation worth 500,000đ.')}
             </p>
           </div>
         </div>
@@ -139,7 +142,7 @@ export const PromotionsView: React.FC<PromotionsViewProps> = ({
                 {l('Thu Cũ Đổi Mới Thiết Bị Gia Dụng', 'Trade In Your Old Appliances')}
               </h4>
               <p className="text-xs text-slate-500 mt-1">
-                {l('Chillami thu mua quạt cũ, điều hòa cũ mọi thương hiệu với mức trợ giá lên đến 1.500.000 đ khi lên đời dòng BLDC.', 'Chillami buys back old fans and air conditioners of any brand with a subsidy of up to 1,500,000đ when you upgrade to BLDC.')}
+                {l('Chillami thu mua quạt cũ, điều hòa cũ mọi thương hiệu với mức trợ giá lên đến 1.500.000 đ khi mua sản phẩm mới.', 'Chillami buys back old fans and air conditioners of any brand with a subsidy of up to 1,500,000đ when you buy a new product.')}
               </p>
             </div>
           </div>
@@ -167,10 +170,15 @@ export const PromotionsView: React.FC<PromotionsViewProps> = ({
           <div className="flex items-center justify-between mb-6">
             <div>
               <h3 className="text-lg font-bold text-slate-900">
-                {l('Sản Phẩm Đang Khuyến Mại Nổi Bật', 'Featured Products on Sale')} ({promoProducts.length})
+                {hasDiscounts
+                  ? l('Sản Phẩm Đang Khuyến Mại Nổi Bật', 'Featured Products on Sale')
+                  : l('Sản Phẩm Áp Dụng Mã Giảm Giá', 'Products Eligible for Discount Codes')}{' '}
+                ({promoProducts.length})
               </h3>
               <p className="text-xs text-slate-500 mt-0.5">
-                {l('Áp dụng số lượng có hạn trong tháng ra mắt', 'Limited quantities during launch month')}
+                {hasDiscounts
+                  ? l('Áp dụng số lượng có hạn trong tháng ra mắt', 'Limited quantities during launch month')
+                  : l('Nhập mã giảm giá ở bước thanh toán', 'Enter a discount code at checkout')}
               </p>
             </div>
           </div>

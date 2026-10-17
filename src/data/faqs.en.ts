@@ -46,33 +46,34 @@ export const ROOM_SOLUTIONS_EN: Record<string, { title: string; tagline: string;
     title: 'Bedroom Solutions',
     tagline: 'Deep, quiet sleep with gentle temperatures and no dry throat',
     tips: [
-      'Choose a BLDC fan with noise below 20dB so it does not disturb REM sleep.',
-      'Pick a Slim Coanda air conditioner that blows air toward the ceiling, not directly at your head and chest.',
-      'Use the Sleep Curve mode, which raises the temperature by 1°C every 2 hours to avoid early-morning chills.'
+      'Rooms under 15m² usually suit a 9,000 BTU air conditioner; 15–20m² rooms need 12,000 BTU.',
+      'Place a standing fan about 1.5–2m from the bed and use a low speed while sleeping.',
+      'In humid seasons, a dehumidifier keeping humidity around 50–60% helps prevent mold.'
     ]
   },
   living: {
     title: 'Living Room Solutions',
     tagline: 'Elegant open space with cool, fresh circulating air',
     tips: [
-      'Pair the FB-180 vortex circulator with your living room AC to cool the whole room evenly in just 3 minutes.',
-      'Use an IoT WiFi smart fan to switch it on remotely before you get home.'
+      'Pairing a standing fan or air cooler with your air conditioner spreads cool air evenly across the room.',
+      'Evaporative air coolers work best in well-ventilated rooms with a window open.'
     ]
   },
   kitchen: {
     title: 'Kitchen Solutions',
-    tagline: 'A clean, airy kitchen free of grease smells for relaxed cooking',
+    tagline: 'Quick cooking and an always-clean kitchen',
     tips: [
-      'The WaveSensor gesture-controlled range hood switches on without getting grease on the buttons.',
-      'A double induction hob with gentle low-level simmering keeps traditional braised dishes rich in flavor.'
+      'A double induction hob cooks two dishes at once; use pans with a magnetic base.',
+      'An induction-infrared hob\'s infrared zone also works with non-magnetic cookware.',
+      'A cordless vacuum cleaner makes quick work of the kitchen and dining area.'
     ]
   },
   bathroom: {
     title: 'Bathroom Solutions',
     tagline: 'Warm water with complete safety for a refreshing, relaxing bath',
     tips: [
-      'A Titanium enamel tank with a 10-year warranty suits water with high alum or lime content.',
-      'The TSS dual safety system and electronic ELCB anti-shock cut power within 0.01s of any leakage.'
+      'Families of 1–2 suit a 15L heater; 2–3 people a 20L; 3–5 people a 30L.',
+      'In winter a ceramic heater keeps the bathroom warm; keep it away from water.'
     ]
   }
 };

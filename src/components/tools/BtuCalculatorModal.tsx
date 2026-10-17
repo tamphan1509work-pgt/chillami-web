@@ -74,11 +74,12 @@ export const BtuCalculatorModal: React.FC<BtuCalculatorModalProps> = ({
       recommendedCategory = 'dieu-hoa-18k';
     }
 
-    // Find best match in Chillami products
-    let matchingProduct = acProducts.find((p) => {
-      if (roundedBtu <= 9500) return p.model === 'CAC-09ECO' || p.model === 'CAC-09SLIM';
-      return p.model === 'CAC-09ECO'; // default fallback
-    }) || acProducts[0];
+    // Smallest priced AC whose capacity covers the need; capacity is read from the
+    // model number (DHV09 = 9,000 BTU, DHV10.8 = 10,800 BTU, DHV12 = 12,000 BTU)
+    const capacityBtu = (model: string) => parseFloat(model.replace(/^\D+/, '')) * 1000;
+    const matchingProduct = acProducts
+      .filter((p) => !p.contactForPrice && capacityBtu(p.model) >= roundedBtu)
+      .sort((a, b) => capacityBtu(a.model) - capacityBtu(b.model) || a.price - b.price)[0];
 
     return {
       rawBtu: Math.round(btu),
@@ -324,20 +325,20 @@ export const BtuCalculatorModal: React.FC<BtuCalculatorModalProps> = ({
                 {calculatedResult.matchingProduct && (
                   <div className="bg-white text-slate-900 rounded-2xl p-4 shadow-lg space-y-3">
                     <span className="text-[10px] font-bold text-teal-700 uppercase tracking-wide">
-                      {l('Model Chillami được đề xuất:', 'Recommended Chillami model:')}
+                      {l('Model được đề xuất:', 'Recommended model:')}
                     </span>
                     <div className="flex gap-3 items-center">
                       <img
                         src={calculatedResult.matchingProduct.image}
                         alt={calculatedResult.matchingProduct.name}
-                        className="w-16 h-16 rounded-xl object-cover bg-slate-100 shrink-0"
+                        className="w-16 h-16 rounded-xl object-contain bg-slate-100 shrink-0"
                       />
                       <div>
                         <h4 className="text-xs font-bold text-slate-900 line-clamp-1">
                           {calculatedResult.matchingProduct.name}
                         </h4>
                         <div className="text-xs text-slate-500">
-                          {calculatedResult.matchingProduct.model} {l('· 5 sao năng lượng', '· 5-star energy rating')}
+                          {calculatedResult.matchingProduct.model}
                         </div>
                         <div className="text-sm font-extrabold text-teal-700 mt-1">
                           {new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(

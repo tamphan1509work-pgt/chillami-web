@@ -136,11 +136,11 @@ export const RoomSolutionsSection: React.FC<RoomSolutionsSectionProps> = ({
                     <img
                       src={p.image}
                       alt={p.name}
-                      className="w-16 h-16 rounded-xl object-cover bg-slate-50 shrink-0"
+                      className="w-16 h-16 rounded-xl object-contain bg-slate-50 shrink-0"
                     />
                     <div>
                       <span className="text-[10px] font-bold text-teal-700 uppercase">
-                        {p.model} · {p.powerWatt ? `${p.powerWatt}W` : 'Inverter'}
+                        {p.model}{p.brand ? ` · ${p.brand}` : ''}
                       </span>
                       <h4 className="text-xs sm:text-sm font-bold text-slate-900 line-clamp-1 hover:text-teal-700">
                         {p.name}
@@ -154,7 +154,7 @@ export const RoomSolutionsSection: React.FC<RoomSolutionsSectionProps> = ({
                   <div className="flex items-center justify-between sm:justify-end gap-4 w-full sm:w-auto shrink-0 pt-2 sm:pt-0 border-t sm:border-t-0 border-slate-100">
                     <div className="text-right">
                       <div className="text-sm font-extrabold text-slate-900">
-                        {formatPrice(p.price)}
+                        {p.contactForPrice ? l('Liên hệ', 'Contact us') : formatPrice(p.price)}
                       </div>
                       {p.originalPrice > p.price && (
                         <div className="text-[11px] text-slate-400 line-through">
@@ -163,13 +163,24 @@ export const RoomSolutionsSection: React.FC<RoomSolutionsSectionProps> = ({
                       )}
                     </div>
 
-                    <button
-                      type="button"
-                      onClick={() => onAddToCart(p)}
-                      className="py-2 px-3.5 bg-teal-700 hover:bg-teal-800 text-white rounded-xl text-xs font-bold transition-colors cursor-pointer shadow-xs whitespace-nowrap"
-                    >
-                      {l('Thêm vào giỏ', 'Add to cart')}
-                    </button>
+                    {p.contactForPrice ? (
+                      <a
+                        href={p.sourceUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="py-2 px-3.5 bg-teal-700 hover:bg-teal-800 text-white rounded-xl text-xs font-bold transition-colors cursor-pointer shadow-xs whitespace-nowrap"
+                      >
+                        {l('Hỏi giá', 'Get a quote')}
+                      </a>
+                    ) : (
+                      <button
+                        type="button"
+                        onClick={() => onAddToCart(p)}
+                        className="py-2 px-3.5 bg-teal-700 hover:bg-teal-800 text-white rounded-xl text-xs font-bold transition-colors cursor-pointer shadow-xs whitespace-nowrap"
+                      >
+                        {l('Thêm vào giỏ', 'Add to cart')}
+                      </button>
+                    )}
                   </div>
                 </div>
               ))}

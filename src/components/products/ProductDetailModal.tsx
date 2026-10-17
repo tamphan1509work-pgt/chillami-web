@@ -22,6 +22,7 @@ import {
   Palette,
   Maximize2
 } from 'lucide-react';
+import { CATEGORIES_CONFIG } from '../../data/products';
 import { useLanguage } from '../../context/LanguageContext';
 
 interface ProductDetailModalProps {
@@ -41,10 +42,10 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
   isCompared,
   onOpenOrderNow,
 }) => {
-  const { l, language } = useLanguage();
+  const { l, language, translateCategory } = useLanguage();
   if (!product) return null;
 
-  const [activeImage, setActiveImage] = useState(product.image);
+  const [activeImage, setActiveImage] = useState(product.gallery[0] ?? product.image);
   const [selectedVariant, setSelectedVariant] = useState(
     product.variants && product.variants.length > 0 ? product.variants[0].value : ''
   );
@@ -59,7 +60,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 
   // Reset when product changes
   useEffect(() => {
-    setActiveImage(product.image);
+    setActiveImage(product.gallery[0] ?? product.image);
     setSelectedVariant(product.variants && product.variants.length > 0 ? product.variants[0].value : '');
     setSelectedColor(product.colorOptions && product.colorOptions.length > 0 ? product.colorOptions[0].name : '');
     setQuantity(1);
@@ -100,7 +101,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
           <div className="flex items-center gap-2 text-xs text-slate-500 overflow-hidden">
             <span className="font-bold text-teal-800 uppercase tracking-wider">CHILLAMI</span>
             <ChevronRight className="w-3.5 h-3.5 text-slate-400 shrink-0" />
-            <span className="capitalize">{product.category === 'fan' ? l('Quạt Điện', 'Electric Fan') : product.category === 'ac' ? l('Điều Hòa', 'Air Conditioner') : l('Thiết Bị', 'Appliance')}</span>
+            <span className="capitalize">{translateCategory(CATEGORIES_CONFIG.find((c) => c.id === product.category) ?? CATEGORIES_CONFIG[0]).name}</span>
             <ChevronRight className="w-3.5 h-3.5 text-slate-400 shrink-0" />
             <span className="font-semibold text-slate-800 truncate">{product.model}</span>
           </div>
@@ -123,7 +124,9 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                 <img
                   src={activeImage}
                   alt={product.name}
-                  className="w-full h-full object-cover rounded-xl transition-all duration-300"
+                  // Full-size image URLs are guessed from the thumbnail; fall back to the thumbnail if missing
+                  onError={() => activeImage !== product.image && setActiveImage(product.image)}
+                  className="w-full h-full object-contain rounded-xl transition-all duration-300"
                 />
 
                 {/* Badges container */}
@@ -163,13 +166,14 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                         activeImage === img ? 'border-teal-700 ring-2 ring-teal-600/30' : 'border-slate-200 hover:border-slate-300'
                       }`}
                     >
-                      <img src={img} alt={`Thumb ${idx + 1}`} className="w-full h-full object-cover" />
+                      <img src={img} alt={`Thumb ${idx + 1}`} className="w-full h-full object-contain" />
                     </button>
                   ))}
                 </div>
               )}
 
               {/* Energy Label & Quality Seals Box */}
+              {product.energyLabel && (
               <div className="p-3.5 rounded-2xl bg-gradient-to-r from-emerald-50/70 via-teal-50/50 to-blue-50/70 border border-emerald-100 space-y-2">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
@@ -202,6 +206,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                   </span>
                 </div>
               </div>
+              )}
 
               {/* Tech Commitment Badges */}
               <div className="grid grid-cols-3 gap-2.5 pt-1">
@@ -217,7 +222,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                 </div>
                 <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-100 flex flex-col items-center text-center">
                   <ShieldCheck className="w-4 h-4 text-teal-700 mb-1" />
-                  <span className="text-[11px] font-bold text-slate-900">{l('Bảo Hành', 'Warranty')} {product.warrantyMonths}{l('T', 'M')}</span>
+                  <span className="text-[11px] font-bold text-slate-900">{product.warrantyMonths ? `${l('Bảo Hành', 'Warranty')} ${product.warrantyMonths}${l('T', 'M')}` : l('Bảo Hành Chính Hãng', 'Official Warranty')}</span>
                   <span className="text-[10px] text-slate-500">{l('E-Warranty số hóa', 'Digital E-Warranty')}</span>
                 </div>
               </div>
@@ -230,7 +235,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                 <div className="flex items-center gap-2 text-xs text-slate-500 mb-1">
                   <span className="font-bold text-teal-700 tracking-wider">MODEL: {product.model}</span>
                   <span aria-hidden="true" className="text-slate-300">·</span>
-                  <span>{l('Chính Hãng Chillami', 'Genuine Chillami')}</span>
+                  <span>{l('Chính Hãng', 'Genuine')} {product.brand ?? 'Chillami'}</span>
                   <span aria-hidden="true" className="text-slate-300">·</span>
                   <span className="text-emerald-700 font-medium">{l('Sẵn hàng', 'In stock')}</span>
                 </div>
@@ -239,6 +244,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                   {product.name}
                 </h2>
 
+                {product.reviewsCount > 0 && (
                 <div className="flex items-center gap-3 mb-4">
                   <div className="flex items-center gap-1 text-xs text-amber-500 font-semibold">
                     <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
@@ -251,12 +257,13 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                     {l('Động cơ BLDC êm 13dB', 'Quiet 13dB BLDC motor')}
                   </span>
                 </div>
+                )}
 
                 {/* Price Box */}
                 <div className="p-4 rounded-2xl bg-teal-50/70 border border-teal-100 mb-5 flex items-baseline justify-between">
                   <div>
                     <div className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-                      {formatPrice(currentPrice)}
+                      {product.contactForPrice ? l('Liên hệ', 'Contact us') : formatPrice(currentPrice)}
                     </div>
                     {product.originalPrice > product.price && (
                       <div className="text-xs text-slate-500 line-through mt-0.5">
@@ -369,6 +376,16 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 
               {/* Quantity & CTA buttons */}
               <div className="pt-4 border-t border-slate-100 space-y-3">
+                {product.contactForPrice ? (
+                  <a
+                    href={product.sourceUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full py-3 px-4 rounded-xl bg-teal-700 hover:bg-teal-800 text-white text-xs font-bold shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
+                  >
+                    {l('Liên hệ để nhận báo giá', 'Contact us for a quote')}
+                  </a>
+                ) : (
                 <div className="flex items-center gap-3">
                   <div className="flex items-center border border-slate-200 rounded-xl bg-white p-1">
                     <button
@@ -401,6 +418,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                     <span>{l('Mua ngay', 'Buy now')}</span>
                   </button>
                 </div>
+                )}
 
                 <div className="flex items-center justify-between pt-1">
                   <button
@@ -413,6 +431,19 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                     <span>{isCompared ? l('Đã thêm vào so sánh', 'Added to comparison') : l('So sánh với sản phẩm khác', 'Compare with other products')}</span>
                   </button>
 
+                  {product.sourceUrl && (
+                    <a
+                      href={product.sourceUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-xs font-medium text-slate-500 hover:text-teal-700"
+                    >
+                      <ChevronRight className="w-4 h-4" />
+                      <span>{l('Xem trên Homichi.com', 'View on Homichi.com')}</span>
+                    </a>
+                  )}
+
+                  {product.manualDownloadUrl && (
                   <button
                     onClick={handleDownloadManual}
                     className="inline-flex items-center gap-1.5 text-xs font-medium text-slate-500 hover:text-teal-700 cursor-pointer"
@@ -420,6 +451,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                     <FileDown className="w-4 h-4" />
                     <span>{downloadSuccess ? l('✓ Đã tải HDSD (PDF)', '✓ Manual downloaded (PDF)') : l('Tải tài liệu HDSD (PDF)', 'Download user manual (PDF)')}</span>
                   </button>
+                  )}
                 </div>
               </div>
             </div>
@@ -440,6 +472,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                 )}
               </button>
 
+{product.features.length > 0 && (
               <button
                 onClick={() => setActiveTab('features')}
                 className={`text-xs sm:text-sm font-bold pb-2 transition-colors relative cursor-pointer whitespace-nowrap ${
@@ -451,8 +484,10 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                   <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-teal-700 rounded-full" />
                 )}
               </button>
+              )}
 
               {/* Energy Label Tab */}
+{product.energyLabel && (
               <button
                 onClick={() => setActiveTab('energy')}
                 className={`text-xs sm:text-sm font-bold pb-2 transition-colors relative cursor-pointer flex items-center gap-1.5 whitespace-nowrap ${
@@ -465,8 +500,10 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                   <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-emerald-600 rounded-full" />
                 )}
               </button>
+              )}
 
               {/* Video Tab */}
+{product.videoUrl && (
               <button
                 onClick={() => setActiveTab('video')}
                 className={`text-xs sm:text-sm font-bold pb-2 transition-colors relative cursor-pointer flex items-center gap-1.5 whitespace-nowrap ${
@@ -479,7 +516,9 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                   <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-rose-600 rounded-full" />
                 )}
               </button>
+              )}
 
+{product.reviewsCount > 0 && (
               <button
                 onClick={() => setActiveTab('reviews')}
                 className={`text-xs sm:text-sm font-bold pb-2 transition-colors relative cursor-pointer whitespace-nowrap ${
@@ -491,6 +530,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                   <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-teal-700 rounded-full" />
                 )}
               </button>
+              )}
             </div>
 
             {/* TAB 1: SPECS TABLE */}
