@@ -6,6 +6,10 @@ import {defineConfig} from 'vite';
 export default defineConfig(() => {
   return {
     plugins: [react(), tailwindcss()],
+    build: {
+      // Embed the Roboto font files in the CSS: the artifact preview blocks separately served fonts
+      assetsInlineLimit: (filePath: string) => (filePath.endsWith('.woff2') ? true : undefined),
+    },
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),
