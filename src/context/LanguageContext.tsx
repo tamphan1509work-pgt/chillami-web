@@ -1,5 +1,7 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { Product } from '../types';
+import { PRODUCTS } from '../data/products';
+import { PRODUCTS_EN, CATEGORIES_CONFIG_EN } from '../data/products.en';
 
 export type Language = 'vi' | 'en';
 
@@ -8,8 +10,11 @@ interface LanguageContextType {
   setLanguage: (lang: Language) => void;
   toggleLanguage: () => void;
   t: (key: string, fallback?: string) => string;
+  l: (vi: string, en: string) => string;
   translateProduct: (product: Product) => Product;
   translateProducts: (products: Product[]) => Product[];
+  translateVariant: (product: Product, value?: string) => string | undefined;
+  translateCategory: <T extends { id: string; name: string; subtitle: string; subcategories: string[] }>(cat: T) => T;
   formatCurrency: (amount: number) => string;
 }
 
@@ -424,142 +429,6 @@ const translations: Record<Language, Record<string, string>> = {
   }
 };
 
-// English product translation overrides
-const PRODUCT_EN_TRANSLATIONS: Record<string, Partial<Product>> = {
-  'cf-100b': {
-    name: 'Chillami Flow-100 BLDC Standing Fan',
-    tagline: 'Brushless BLDC motor ultra-quiet 13dB, SoftAir natural breeze technology',
-    features: [
-      'Brushless DC Inverter motor saves 70% electricity',
-      '24 flexible speed levels with SoftAir natural wind mode',
-      'Ultra-low 13dB noise level - ideal for baby and senior sleep',
-      'Smart 12-hour off-timer with multifunction remote control',
-      'Aerodynamic 7-blade design delivers soft and smooth airflow'
-    ],
-  },
-  'csw-80b': {
-    name: 'Chillami SoftWind-80 BLDC Pedestal Fan',
-    tagline: 'Dual height 70-100cm, ultra-light portable with 3D oscillation',
-    features: [
-      'Dual-purpose standing and table height adjustment (70cm - 100cm)',
-      'Brushless DC motor 22W whisper-quiet 15dB',
-      '3D 4-way oscillation (Horizontal 90°, Vertical 60°)',
-      'Touch control panel + magnetic remote dock on back',
-      'Sleep mode automatically lowers wind speed every 30 minutes'
-    ]
-  },
-  'fb-180': {
-    name: 'Chillami FloorBreeze-180 BLDC Floor Fan',
-    tagline: 'High-velocity floor circulation fan, turbine airflow reaches 15 meters',
-    features: [
-      'Spiral turbine casing projects air column up to 15m away',
-      'Brushless BLDC motor 35W with 32 fine speed gradations',
-      'Vertical 90° flip angle for full-room air convection',
-      'Compact floor design suitable for living rooms and cafes'
-    ]
-  },
-  'csa-200x': {
-    name: 'Chillami AirCirc-200X BLDC Ceiling Circulator',
-    tagline: 'Omnidirectional 360° ceiling fan, air-conditioner booster circulator',
-    features: [
-      'Continuous 360° omnidirectional air dispersal eliminates room hot spots',
-      'Cuts AC cooling time by 50% and electricity cost by 30%',
-      'Smart WiFi smartphone app connectivity + wireless RF remote',
-      'Slim ceiling profile 18cm, easy standard ceiling grid mounting'
-    ]
-  },
-  'cpg-300': {
-    name: 'Chillami PowerGo-Pro 15000mAh Rechargeable Fan',
-    tagline: 'Outdoor & blackout fan, up to 36 hours continuous runtime',
-    features: [
-      'Huge 15000mAh Lithium polymer battery, runs 8 to 36 hours',
-      'USB-C 18W fast charging + doubles as phone power bank',
-      'Weather-resistant casing with integrated 3-level warm LED camping lantern',
-      'Whisper-quiet BLDC motor for tent, travel and power outages'
-    ]
-  },
-  'cac-09eco': {
-    name: 'Chillami Eco-Cool 9000BTU Inverter Wall AC',
-    tagline: 'Slim profile 16.8cm, Coanda ceiling cooling, 5-Star Energy CSPF 5.85',
-    features: [
-      'Full DC Inverter with smart AI Eco power-saving sensor',
-      'Coanda ceiling airflow prevents direct cold drafts on skin',
-      'Plasma-Air active sterilization filters PM2.5 dust and allergens',
-      'Ultra-quiet indoor unit 18dB for uninterrupted restful sleep'
-    ]
-  },
-  'cac-12eco': {
-    name: 'Chillami Eco-Cool 12000BTU Inverter Wall AC',
-    tagline: 'High-efficiency 1.5HP AC for rooms 15–22 m², rapid 30s cooling',
-    features: [
-      'Rapid cooling down to 21°C within 30 seconds',
-      'Dual-rotor DC compressor with GoldFin corrosion resistance',
-      'Smart WiFi App Chillami Home temperature scheduling',
-      'Highest energy efficiency rating CSPF 6.10'
-    ]
-  },
-  'cac-18eco': {
-    name: 'Chillami Master-Cool 18000BTU Inverter AC',
-    tagline: 'High-power 2.0HP for open living rooms and master suites 22–32 m²',
-    features: [
-      'Powerful 2.0HP capacity covering large living spaces',
-      'Wide-angle 4D airflow louvers with 12m air throw',
-      'Smart humidity control maintained at optimal 55%-65%',
-      'Self-cleaning FrostWash technology purges internal coils'
-    ]
-  },
-  'cih-4000': {
-    name: 'Chillami MasterChef Dual Induction Hob 4000W',
-    tagline: 'German Infineon IGBT, continuous low-simmer boiling without pulsing',
-    features: [
-      'Continuous low heat levels 1-3 without on/off cycling',
-      'Kanger diamond-beveled crystal glass with 750°C heat resistance',
-      'Dual independent slide touch sliders with 9 precise power levels',
-      'Auto-shutoff spill detection and child safety lock'
-    ]
-  },
-  'cih-2200': {
-    name: 'Chillami UltraSlim Single Induction Hob 2200W',
-    tagline: 'Slim profile 3.8cm, Japanese NEG ceramic glass, 10 heat levels',
-    features: [
-      'Ultra-slim portable design 3.8cm, lightweight and modern',
-      'Japanese NEG ceramic glass scratch and shock resistant',
-      'Electromagnetic coil with double-layer copper winding',
-      'Quiet turbo cooling fan 32dB'
-    ]
-  },
-  'crh-700': {
-    name: 'Chillami WhisperAir Range Hood 70cm',
-    tagline: 'Gesture wave control, turbo suction 1200m³/h, dual activated carbon',
-    features: [
-      'Touchless infrared wave sensor control to power on and change speed',
-      'High-velocity brushless turbine motor with 1200m³/h airflow',
-      'Dual multi-layer aluminum mesh + activated carbon odor filters',
-      'Noise damping insulation keeps operating sound below 52dB'
-    ]
-  },
-  'cwh-30t': {
-    name: 'Chillami Titanium Safe 30L Storage Water Heater',
-    tagline: 'Titanium enameled inner tank, Incoloy 840 heating element, dual TSS',
-    features: [
-      'Titanium enamel coating prevents limestone deposits and tank corrosion',
-      'Incoloy 840 rapid heating element transfers heat 25% faster',
-      'Dual TSS & ELCB anti-shock system cuts power in 0.01 seconds',
-      'High-density SuperFoam retains heat up to 72 hours'
-    ]
-  },
-  'cwh-20s': {
-    name: 'Chillami Slim 20L Horizontal Storage Water Heater',
-    tagline: 'Compact horizontal design fits low false ceilings, digital LED display',
-    features: [
-      'Horizontal compact profile fits narrow false ceiling spaces',
-      'Real-time water temperature digital LED display',
-      'Antibacterial silver-ion Ag+ inlet purifies bathing water',
-      '10-year official warranty on internal tank'
-    ]
-  }
-};
-
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
@@ -594,19 +463,44 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
     return fallback || key;
   };
 
-  const translateProduct = (product: Product): Product => {
+  // Inline translation for text that has no dictionary key
+  const l = (vi: string, en: string): string => (language === 'en' ? en : vi);
+
+  // Always rebuild from the Vietnamese source so objects saved in another language (cart, orders) follow the switch
+  const translateProduct = (input: Product): Product => {
+    const product = PRODUCTS.find((p) => p.id === input.id) ?? input;
     if (language === 'vi') return product;
-    const override = PRODUCT_EN_TRANSLATIONS[product.id];
+    const override = PRODUCTS_EN[product.id];
     if (!override) return product;
     return {
       ...product,
-      ...override,
+      name: override.name,
+      tagline: override.tagline,
+      features: override.features,
+      specs: override.specs,
+      videoTitle: override.videoTitle ?? product.videoTitle,
+      variants: product.variants?.map((v, i) => ({ ...v, ...override.variants?.[i] })),
+      colorOptions: product.colorOptions?.map((c, i) => ({ ...c, ...override.colorOptions?.[i] })),
+      energyLabel: product.energyLabel && { ...product.energyLabel, ...override.energyLabel },
     };
   };
 
-  const translateProducts = (products: Product[]): Product[] => {
-    if (language === 'vi') return products;
-    return products.map(translateProduct);
+  const translateProducts = (products: Product[]): Product[] => products.map(translateProduct);
+
+  // Cart items keep the variant value chosen at add time; show it in the current language (matched by sku position)
+  const translateVariant = (input: Product, value?: string): string | undefined => {
+    if (!value) return value;
+    const product = PRODUCTS.find((p) => p.id === input.id) ?? input;
+    const override = PRODUCTS_EN[product.id];
+    const idx = product.variants?.findIndex((v, i) => v.value === value || override?.variants?.[i]?.value === value) ?? -1;
+    if (idx < 0) return value;
+    return language === 'en' ? override?.variants?.[idx]?.value ?? value : product.variants![idx].value;
+  };
+
+  const translateCategory = <T extends { id: string; name: string; subtitle: string; subcategories: string[] }>(cat: T): T => {
+    if (language === 'vi') return cat;
+    const override = CATEGORIES_CONFIG_EN[cat.id];
+    return override ? { ...cat, ...override } : cat;
   };
 
   const formatCurrency = (amount: number): string => {
@@ -626,6 +520,10 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
 
   useEffect(() => {
     document.documentElement.lang = language;
+    document.title = l(
+      'Chillami - Thiết Bị Điện Gia Dụng Cao Cấp | Thông Minh & Tiết Kiệm Năng Lượng',
+      'Chillami - Premium Home Appliances | Smart & Energy-Efficient'
+    );
   }, [language]);
 
   return (
@@ -634,8 +532,11 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
       setLanguage,
       toggleLanguage,
       t,
+      l,
       translateProduct,
       translateProducts,
+      translateVariant,
+      translateCategory,
       formatCurrency
     }}>
       {children}

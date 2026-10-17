@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { DEALERS, ONLINE_PARTNERS } from '../../data/dealers';
+import { DEALER_TEXT_EN } from '../../data/dealers.en';
 import { Dealer } from '../../types';
 import {
   MapPin,
@@ -13,8 +14,11 @@ import {
   Store,
   Building2
 } from 'lucide-react';
+import { useLanguage } from '../../context/LanguageContext';
 
 export const DealerLocator: React.FC = () => {
+  const { l, language } = useLanguage();
+  const dt = (text: string) => (language === 'en' ? DEALER_TEXT_EN[text] ?? text : text);
   const [selectedProvince, setSelectedProvince] = useState<string>('all');
   const [activeDealer, setActiveDealer] = useState<Dealer>(DEALERS[0]);
 
@@ -31,13 +35,13 @@ export const DealerLocator: React.FC = () => {
         <div className="text-center max-w-2xl mx-auto mb-10">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-teal-100 text-teal-800 text-xs font-bold mb-3">
             <MapPin className="w-4 h-4 text-teal-700" />
-            <span>Hệ thống mạng lưới phân phối toàn quốc</span>
+            <span>{l('Hệ thống mạng lưới phân phối toàn quốc', 'Nationwide distribution network')}</span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight font-display">
-            Tìm Showroom & Nơi Mua Hàng Chillami
+            {l('Tìm Showroom & Nơi Mua Hàng Chillami', 'Find a Chillami Showroom & Store')}
           </h1>
           <p className="text-xs sm:text-sm text-slate-500 mt-2">
-            Trải nghiệm trực tiếp độ êm của quạt BLDC, luồng gió điều hòa thổi trần và nhận tư vấn chuyên sâu từ chuyên gia Chillami.
+            {l('Trải nghiệm trực tiếp độ êm của quạt BLDC, luồng gió điều hòa thổi trần và nhận tư vấn chuyên sâu từ chuyên gia Chillami.', 'Experience the quietness of BLDC fans and ceiling-directed AC airflow in person, and get in-depth advice from Chillami experts.')}
           </p>
         </div>
 
@@ -53,7 +57,7 @@ export const DealerLocator: React.FC = () => {
                   : 'bg-white text-slate-600 hover:text-slate-900 border border-slate-200'
               }`}
             >
-              {prov === 'all' ? 'Tất cả khu vực' : prov}
+              {prov === 'all' ? l('Tất cả khu vực', 'All regions') : dt(prov)}
             </button>
           ))}
         </div>
@@ -63,7 +67,7 @@ export const DealerLocator: React.FC = () => {
           {/* Left Column: Stores List (5 cols) */}
           <div className="lg:col-span-5 space-y-4 max-h-[600px] overflow-y-auto pr-2">
             <div className="text-xs text-slate-500 font-semibold mb-2">
-              Tìm thấy {filteredDealers.length} địa điểm tại {selectedProvince === 'all' ? 'toàn quốc' : selectedProvince}:
+              {l('Tìm thấy', 'Found')} {filteredDealers.length} {l('địa điểm tại', 'locations in')} {selectedProvince === 'all' ? l('toàn quốc', 'all of Vietnam') : dt(selectedProvince)}:
             </div>
 
             {filteredDealers.map((dealer) => (
@@ -78,12 +82,12 @@ export const DealerLocator: React.FC = () => {
               >
                 <div className="flex items-start justify-between gap-2 mb-2">
                   <span className="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded bg-teal-50 text-teal-800 border border-teal-200">
-                    {dealer.type}
+                    {dt(dealer.type)}
                   </span>
                   {dealer.hasParking && (
                     <span className="text-[10px] text-slate-400 flex items-center gap-1">
                       <Car className="w-3 h-3 text-teal-600" />
-                      Có chỗ đỗ ô tô
+                      {l('Có chỗ đỗ ô tô', 'Car parking')}
                     </span>
                   )}
                 </div>
@@ -104,14 +108,14 @@ export const DealerLocator: React.FC = () => {
                   </div>
                   <div className="flex items-center gap-2">
                     <Clock className="w-3.5 h-3.5 text-teal-600" />
-                    <span>{dealer.openHours}</span>
+                    <span>{dt(dealer.openHours)}</span>
                   </div>
                 </div>
 
                 <div className="flex flex-wrap gap-1.5 mt-3 pt-2">
                   {dealer.badges.map((b, i) => (
                     <span key={i} className="text-[10px] text-slate-600 bg-slate-100 px-2 py-0.5 rounded-md">
-                      {b}
+                      {dt(b)}
                     </span>
                   ))}
                 </div>
@@ -145,7 +149,7 @@ export const DealerLocator: React.FC = () => {
             <div className="p-6 bg-slate-50 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
                 <div className="text-[11px] font-bold text-teal-700 uppercase">
-                  Địa điểm đang chọn:
+                  {l('Địa điểm đang chọn:', 'Selected location:')}
                 </div>
                 <div className="text-base font-extrabold text-slate-900 mt-0.5">
                   {activeDealer.name}
@@ -161,16 +165,16 @@ export const DealerLocator: React.FC = () => {
                   className="px-4 py-2.5 bg-white border border-slate-200 hover:border-slate-300 text-slate-800 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-colors"
                 >
                   <PhoneCall className="w-3.5 h-3.5 text-teal-700" />
-                  <span>Gọi Hotline</span>
+                  <span>{l('Gọi Hotline', 'Call hotline')}</span>
                 </a>
 
                 <button
                   type="button"
-                  onClick={() => alert(`Chỉ đường tới: ${activeDealer.address}`)}
+                  onClick={() => alert(l(`Chỉ đường tới: ${activeDealer.address}`, `Directions to: ${activeDealer.address}`))}
                   className="px-4 py-2.5 bg-teal-700 hover:bg-teal-800 text-white rounded-xl text-xs font-bold flex items-center gap-1.5 transition-colors cursor-pointer shadow-xs"
                 >
                   <Navigation className="w-3.5 h-3.5" />
-                  <span>Chỉ đường</span>
+                  <span>{l('Chỉ đường', 'Directions')}</span>
                 </button>
               </div>
             </div>
@@ -180,12 +184,12 @@ export const DealerLocator: React.FC = () => {
         {/* Online Channels: Shopee Mall, LazMall, TikTok Shop */}
         <div className="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8">
           <div className="max-w-2xl mb-6">
-            <span className="text-xs font-bold text-teal-700 uppercase">Mua sắm trực tuyến</span>
+            <span className="text-xs font-bold text-teal-700 uppercase">{l('Mua sắm trực tuyến', 'Online shopping')}</span>
             <h2 className="text-xl font-bold text-slate-900 mt-0.5">
-              Gian Hàng Chính Hãng Trên Các Sàn Thương Mại Điện Tử
+              {l('Gian Hàng Chính Hãng Trên Các Sàn Thương Mại Điện Tử', 'Official Stores on E-commerce Marketplaces')}
             </h2>
             <p className="text-xs text-slate-500 mt-1">
-              Cam kết 100% hàng mới chính hãng, hỗ trợ freeship extra và đầy đủ quyền lợi bảo hành điện tử.
+              {l('Cam kết 100% hàng mới chính hãng, hỗ trợ freeship extra và đầy đủ quyền lợi bảo hành điện tử.', '100% new genuine products guaranteed, extra free shipping and full e-warranty benefits.')}
             </p>
           </div>
 
@@ -201,7 +205,7 @@ export const DealerLocator: React.FC = () => {
                 <div>
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-[10px] font-bold text-teal-800 bg-teal-50 px-2 py-0.5 rounded-md">
-                      {partner.badge}
+                      {dt(partner.badge)}
                     </span>
                     <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-teal-700 transition-colors" />
                   </div>
@@ -209,11 +213,11 @@ export const DealerLocator: React.FC = () => {
                     {partner.name}
                   </h3>
                   <p className="text-xs text-slate-500 mt-1">
-                    {partner.desc}
+                    {dt(partner.desc)}
                   </p>
                 </div>
                 <div className="mt-4 pt-3 border-t border-slate-100 text-xs font-bold text-teal-700 flex items-center gap-1">
-                  <span>Ghé thăm gian hàng</span>
+                  <span>{l('Ghé thăm gian hàng', 'Visit store')}</span>
                   <ExternalLink className="w-3 h-3" />
                 </div>
               </a>

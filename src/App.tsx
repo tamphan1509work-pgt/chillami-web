@@ -31,14 +31,18 @@ import { AiChatbotModal } from './components/common/AiChatbotModal';
 import { SmartConnectGuideView } from './components/smart/SmartConnectGuideView';
 import { PromotionalBanner } from './components/promotions/PromotionalBanner';
 import { GitCompare, ArrowRight, ShieldCheck, Zap, Sparkles } from 'lucide-react';
+import { useLanguage } from './context/LanguageContext';
 
 export default function App() {
+  const { l, language, translateProducts, translateProduct } = useLanguage();
+  const products = React.useMemo(() => translateProducts(PRODUCTS), [language]);
+
   // Navigation View State
   const [currentView, setCurrentView] = useState<string>('home');
   const [selectedCatalogCategory, setSelectedCatalogCategory] = useState<string>('all');
   const [selectedCatalogSubCategory, setSelectedCatalogSubCategory] = useState<string>('');
   const [isViewTransitioning, setIsViewTransitioning] = useState<boolean>(false);
-  const [transitionMessage, setTransitionMessage] = useState<string>('Đang tải dữ liệu Chillami...');
+  const [transitionMessage, setTransitionMessage] = useState<string>('');
 
   // Cart State with LocalStorage
   const [cartItems, setCartItems] = useState<CartItem[]>(() => {
@@ -148,14 +152,14 @@ export default function App() {
     }
 
     // Contextual loading message
-    let msg = 'Đang tải dữ liệu...';
-    if (view === 'products') msg = 'Đang tải danh mục thiết bị điện gia dụng...';
-    else if (view === 'promotions') msg = 'Đang cập nhật chương trình ưu đãi mùa hè...';
-    else if (view === 'solutions') msg = 'Đang tính toán giải pháp theo không gian sống...';
-    else if (view === 'dealers') msg = 'Đang định vị hệ thống Showroom & Đại lý gần nhất...';
-    else if (view === 'faqs') msg = 'Đang tải trung tâm hướng dẫn & cẩm nang...';
-    else if (view === 'smart-connect') msg = 'Đang tải trung tâm kết nối thông minh & App...';
-    else if (view === 'home') msg = 'Đang tải trang chủ Chillami...';
+    let msg = l('Đang tải dữ liệu...', 'Loading data...');
+    if (view === 'products') msg = l('Đang tải danh mục thiết bị điện gia dụng...', 'Loading home appliance catalog...');
+    else if (view === 'promotions') msg = l('Đang cập nhật chương trình ưu đãi mùa hè...', 'Updating summer promotions...');
+    else if (view === 'solutions') msg = l('Đang tính toán giải pháp theo không gian sống...', 'Calculating solutions for your living space...');
+    else if (view === 'dealers') msg = l('Đang định vị hệ thống Showroom & Đại lý gần nhất...', 'Locating the nearest showrooms & dealers...');
+    else if (view === 'faqs') msg = l('Đang tải trung tâm hướng dẫn & cẩm nang...', 'Loading help center & guides...');
+    else if (view === 'smart-connect') msg = l('Đang tải trung tâm kết nối thông minh & App...', 'Loading smart connect & app center...');
+    else if (view === 'home') msg = l('Đang tải trang chủ Chillami...', 'Loading Chillami home page...');
 
     setTransitionMessage(msg);
     setIsViewTransitioning(true);
@@ -225,7 +229,7 @@ export default function App() {
       setComparedProductIds(comparedProductIds.filter((id) => id !== product.id));
     } else {
       if (comparedProductIds.length >= 4) {
-        alert('Quý khách có thể so sánh tối đa 4 sản phẩm cùng lúc.');
+        alert(l('Quý khách có thể so sánh tối đa 4 sản phẩm cùng lúc.', 'You can compare up to 4 products at a time.'));
         return;
       }
       setComparedProductIds([...comparedProductIds, product.id]);
@@ -233,25 +237,25 @@ export default function App() {
   };
 
   const comparedProducts = comparedProductIds
-    .map((id) => PRODUCTS.find((p) => p.id === id))
+    .map((id) => products.find((p) => p.id === id))
     .filter(Boolean) as Product[];
 
   // Filtered featured products on home
   const homeFeaturedProducts = React.useMemo(() => {
     if (homeFeaturedTab === 'bestseller') {
-      return PRODUCTS.filter((p) => p.isBestSeller).slice(0, 8);
+      return products.filter((p) => p.isBestSeller).slice(0, 8);
     }
     if (homeFeaturedTab === 'bldc') {
-      return PRODUCTS.filter(
+      return products.filter(
         (p) =>
-          p.features.some((f) => f.toLowerCase().includes('bldc') || f.toLowerCase().includes('không chổi than'))
+          p.features.some((f) => /bldc|không chổi than|brushless/i.test(f))
       ).slice(0, 8);
     }
     if (homeFeaturedTab === 'new') {
-      return PRODUCTS.filter((p) => p.isNew || p.discountPercent).slice(0, 8);
+      return products.filter((p) => p.isNew || p.discountPercent).slice(0, 8);
     }
-    return PRODUCTS.filter((p) => p.category === 'ac').slice(0, 8);
-  }, [homeFeaturedTab]);
+    return products.filter((p) => p.category === 'ac').slice(0, 8);
+  }, [homeFeaturedTab, products]);
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-50 text-slate-800">
@@ -268,7 +272,7 @@ export default function App() {
         onOpenBenchmark={() => setIsBenchmarkOpen(true)}
         onOpenBtuCalc={() => setIsBtuCalcOpen(true)}
         onSelectProduct={(p) => setSelectedDetailProduct(p)}
-        allProducts={PRODUCTS}
+        allProducts={products}
       />
 
       {/* MAIN VIEW CONTENT */}
@@ -304,10 +308,10 @@ export default function App() {
                   <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
                     <div>
                       <div className="text-xs font-bold uppercase tracking-wider text-teal-700 mb-1">
-                        Thiết bị nổi bật
+                        {l('Thiết bị nổi bật', 'Featured Appliances')}
                       </div>
                       <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight font-display">
-                        Sản Phẩm Được Tin Dùng Nhất
+                        {l('Sản Phẩm Được Tin Dùng Nhất', 'Most Trusted Products')}
                       </h2>
                     </div>
 
@@ -321,7 +325,7 @@ export default function App() {
                             : 'text-slate-600 hover:text-slate-900'
                         }`}
                       >
-                        Bán chạy nhất
+                        {l('Bán chạy nhất', 'Best Sellers')}
                       </button>
                       <button
                         onClick={() => setHomeFeaturedTab('bldc')}
@@ -331,7 +335,7 @@ export default function App() {
                             : 'text-slate-600 hover:text-slate-900'
                         }`}
                       >
-                        Động cơ BLDC siêu êm
+                        {l('Động cơ BLDC siêu êm', 'Ultra-quiet BLDC Motors')}
                       </button>
                       <button
                         onClick={() => setHomeFeaturedTab('new')}
@@ -341,7 +345,7 @@ export default function App() {
                             : 'text-slate-600 hover:text-slate-900'
                         }`}
                       >
-                        Mới ra mắt 2026
+                        {l('Mới ra mắt 2026', 'New for 2026')}
                       </button>
                       <button
                         onClick={() => setHomeFeaturedTab('ac')}
@@ -351,7 +355,7 @@ export default function App() {
                             : 'text-slate-600 hover:text-slate-900'
                         }`}
                       >
-                        Điều hòa Inverter
+                        {l('Điều hòa Inverter', 'Inverter ACs')}
                       </button>
                     </div>
                   </div>
@@ -374,7 +378,7 @@ export default function App() {
                       onClick={() => handleNavigate('products')}
                       className="inline-flex items-center gap-2 px-6 py-3 bg-white hover:bg-slate-100 text-slate-900 font-bold rounded-xl border border-slate-300 text-xs shadow-xs transition-colors cursor-pointer"
                     >
-                      <span>Khám phá sản phẩm</span>
+                      <span>{l('Khám phá sản phẩm', 'Explore products')}</span>
                       <ArrowRight className="w-4 h-4 text-teal-700" />
                     </button>
                   </div>
@@ -387,7 +391,7 @@ export default function App() {
 
             {/* 5. Room Solutions Section */}
             <RoomSolutionsSection
-              allProducts={PRODUCTS}
+              allProducts={products}
               onOpenDetail={(p) => setSelectedDetailProduct(p)}
               onAddToCart={(p) => handleAddToCart(p)}
             />
@@ -401,13 +405,13 @@ export default function App() {
                     <div className="space-y-2 max-w-2xl">
                       <span className="text-xs font-bold uppercase tracking-wider text-teal-300 flex items-center gap-1.5">
                         <ShieldCheck className="w-4 h-4 text-teal-300" />
-                        Đặc quyền dịch vụ vàng Chillami Care
+                        {l('Đặc quyền dịch vụ vàng Chillami Care', 'Chillami Care Gold Service Privileges')}
                       </span>
                       <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-display tracking-tight text-white">
-                        An Tâm Tuyệt Đối Với Hệ Thống Hậu Mãi Chính Hãng
+                        {l('An Tâm Tuyệt Đối Với Hệ Thống Hậu Mãi Chính Hãng', 'Complete Peace of Mind with Official After-Sales Service')}
                       </h3>
                       <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                        Chillami cam kết mang đến tiêu chuẩn dịch vụ vượt trội: giao hàng & lắp đặt tận nhà nhanh chóng, chính sách 1 đổi 1 minh bạch và hệ sinh thái bảo hành điện tử E-Warranty hiện đại.
+                        {l('Chillami cam kết mang đến tiêu chuẩn dịch vụ vượt trội: giao hàng & lắp đặt tận nhà nhanh chóng, chính sách 1 đổi 1 minh bạch và hệ sinh thái bảo hành điện tử E-Warranty hiện đại.', 'Chillami is committed to outstanding service: fast home delivery & installation, a transparent 1-for-1 replacement policy and a modern E-Warranty digital warranty ecosystem.')}
                       </p>
                     </div>
 
@@ -416,7 +420,7 @@ export default function App() {
                         onClick={() => handleNavigate('products')}
                         className="px-6 py-3.5 bg-teal-400 hover:bg-teal-300 text-slate-950 font-bold rounded-xl text-xs shadow-lg transition-all cursor-pointer flex items-center gap-2"
                       >
-                        <span>Khám phá sản phẩm</span>
+                        <span>{l('Khám phá sản phẩm', 'Explore products')}</span>
                         <ArrowRight className="w-4 h-4" />
                       </button>
                       <button
@@ -424,7 +428,7 @@ export default function App() {
                         className="px-5 py-3.5 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-xl text-xs border border-white/20 transition-all cursor-pointer flex items-center gap-2"
                       >
                         <ShieldCheck className="w-4 h-4 text-teal-300" />
-                        <span>Tra cứu bảo hành E-Warranty</span>
+                        <span>{l('Tra cứu bảo hành E-Warranty', 'E-Warranty Lookup')}</span>
                       </button>
                     </div>
                   </div>
@@ -435,9 +439,9 @@ export default function App() {
                         <div className="w-12 h-12 rounded-xl bg-teal-500/20 text-teal-300 flex items-center justify-center font-bold">
                           🚚
                         </div>
-                        <h4 className="text-sm font-bold text-white">Miễn Phí Giao & Lắp Đặt 2H</h4>
+                        <h4 className="text-sm font-bold text-white">{l('Miễn Phí Giao & Lắp Đặt 2H', 'Free 2H Delivery & Installation')}</h4>
                         <p className="text-xs text-slate-300 leading-relaxed">
-                          Miễn 100% công lắp đặt tiêu chuẩn tại nhà bởi kỹ sư chính hãng có tay nghề cao.
+                          {l('Miễn 100% công lắp đặt tiêu chuẩn tại nhà bởi kỹ sư chính hãng có tay nghề cao.', '100% free standard home installation by highly skilled official engineers.')}
                         </p>
                       </div>
                     </ScrollFadeIn>
@@ -447,9 +451,9 @@ export default function App() {
                         <div className="w-12 h-12 rounded-xl bg-teal-500/20 text-teal-300 flex items-center justify-center font-bold">
                           🔄
                         </div>
-                        <h4 className="text-sm font-bold text-white">1 Đổi 1 Trong 30 Ngày</h4>
+                        <h4 className="text-sm font-bold text-white">{l('1 Đổi 1 Trong 30 Ngày', '1-for-1 Replacement in 30 Days')}</h4>
                         <p className="text-xs text-slate-300 leading-relaxed">
-                          Phát sinh bất kỳ lỗi kỹ thuật nào từ nhà sản xuất sẽ được đổi ngay máy mới nguyên seal tại nhà.
+                          {l('Phát sinh bất kỳ lỗi kỹ thuật nào từ nhà sản xuất sẽ được đổi ngay máy mới nguyên seal tại nhà.', 'Any manufacturing defect gets an immediate brand-new sealed replacement at your home.')}
                         </p>
                       </div>
                     </ScrollFadeIn>
@@ -459,9 +463,9 @@ export default function App() {
                         <div className="w-12 h-12 rounded-xl bg-teal-500/20 text-teal-300 flex items-center justify-center font-bold">
                           🛡️
                         </div>
-                        <h4 className="text-sm font-bold text-white">Bảo Hành Tới 10 Năm</h4>
+                        <h4 className="text-sm font-bold text-white">{l('Bảo Hành Tới 10 Năm', 'Up to 10-Year Warranty')}</h4>
                         <p className="text-xs text-slate-300 leading-relaxed">
-                          Bình chứa tráng men Titanium bảo hành 10 năm; máy nén Inverter và động cơ BLDC bảo hành 5 năm.
+                          {l('Bình chứa tráng men Titanium bảo hành 10 năm; máy nén Inverter và động cơ BLDC bảo hành 5 năm.', '10-year warranty on Titanium enamel tanks; 5 years on Inverter compressors and BLDC motors.')}
                         </p>
                       </div>
                     </ScrollFadeIn>
@@ -471,9 +475,9 @@ export default function App() {
                         <div className="w-12 h-12 rounded-xl bg-teal-500/20 text-teal-300 flex items-center justify-center font-bold">
                           📱
                         </div>
-                        <h4 className="text-sm font-bold text-white">E-Warranty Số Hóa 100%</h4>
+                        <h4 className="text-sm font-bold text-white">{l('E-Warranty Số Hóa 100%', '100% Digital E-Warranty')}</h4>
                         <p className="text-xs text-slate-300 leading-relaxed">
-                          Kích hoạt bằng số Serial máy hoặc SĐT, lưu trữ đám mây không lo mất hóa đơn giấy.
+                          {l('Kích hoạt bằng số Serial máy hoặc SĐT, lưu trữ đám mây không lo mất hóa đơn giấy.', 'Activate with the serial number or phone number, stored in the cloud – no more lost paper receipts.')}
                         </p>
                       </div>
                     </ScrollFadeIn>
@@ -487,7 +491,7 @@ export default function App() {
         {/* VIEW 2: PRODUCTS CATALOG (PLP) */}
         {currentView === 'products' && (
           <ProductCatalog
-            products={PRODUCTS}
+            products={products}
             initialCategory={selectedCatalogCategory}
             initialSubCategory={selectedCatalogSubCategory}
             onOpenDetail={(p) => setSelectedDetailProduct(p)}
@@ -501,7 +505,7 @@ export default function App() {
         {/* VIEW 3: PROMOTIONS */}
         {currentView === 'promotions' && (
           <PromotionsView
-            products={PRODUCTS}
+            products={products}
             onOpenDetail={(p) => setSelectedDetailProduct(p)}
             onAddToCart={(p) => handleAddToCart(p)}
             onToggleCompare={(p) => handleToggleCompare(p)}
@@ -513,7 +517,7 @@ export default function App() {
         {currentView === 'solutions' && (
           <div className="py-8 bg-white min-h-screen">
             <RoomSolutionsSection
-              allProducts={PRODUCTS}
+              allProducts={products}
               onOpenDetail={(p) => setSelectedDetailProduct(p)}
               onAddToCart={(p) => handleAddToCart(p)}
             />
@@ -556,7 +560,7 @@ export default function App() {
         <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 bg-slate-900/95 backdrop-blur-md text-white rounded-2xl px-5 py-3 shadow-2xl border border-slate-700 flex items-center gap-4 animate-in slide-in-from-bottom-5">
           <div className="flex items-center gap-2 text-xs font-semibold">
             <GitCompare className="w-4 h-4 text-teal-400" />
-            <span>Đã chọn <strong>{comparedProductIds.length}</strong> sản phẩm để so sánh</span>
+            <span>{l('Đã chọn', 'Selected')} <strong>{comparedProductIds.length}</strong> {l('sản phẩm để so sánh', 'products to compare')}</span>
           </div>
 
           <div className="flex items-center gap-2">
@@ -564,13 +568,13 @@ export default function App() {
               onClick={() => setIsCompareOpen(true)}
               className="px-3.5 py-1.5 bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold rounded-lg text-xs transition-colors cursor-pointer"
             >
-              Xem bảng so sánh
+              {l('Xem bảng so sánh', 'View comparison')}
             </button>
             <button
               onClick={() => setComparedProductIds([])}
               className="text-xs text-slate-400 hover:text-white"
             >
-              Xóa
+              {l('Xóa', 'Clear')}
             </button>
           </div>
         </div>
@@ -579,7 +583,7 @@ export default function App() {
       {/* ALL MODALS */}
       {/* 1. Product Detail PDP */}
       <ProductDetailModal
-        product={selectedDetailProduct}
+        product={selectedDetailProduct && translateProduct(selectedDetailProduct)}
         onClose={() => setSelectedDetailProduct(null)}
         onAddToCart={(p, qty, v) => handleAddToCart(p, qty, v)}
         onToggleCompare={(p) => handleToggleCompare(p)}
@@ -596,7 +600,7 @@ export default function App() {
         onRemoveItem={handleRemoveFromCart}
         onProceedToCheckout={() => setIsCheckoutOpen(true)}
         onAddUpsell={(p) => handleAddToCart(p, 1)}
-        upsellProducts={PRODUCTS.filter((p) => p.category === 'accessory')}
+        upsellProducts={products.filter((p) => p.category === 'accessory')}
       />
 
       {/* 3. Checkout Modal */}
@@ -631,7 +635,7 @@ export default function App() {
       {isBtuCalcOpen && (
         <BtuCalculatorModal
           onClose={() => setIsBtuCalcOpen(false)}
-          acProducts={PRODUCTS.filter((p) => p.category === 'ac')}
+          acProducts={products.filter((p) => p.category === 'ac')}
           onSelectProduct={(p) => setSelectedDetailProduct(p)}
           onAddToCart={(p) => handleAddToCart(p)}
         />
@@ -707,7 +711,7 @@ export default function App() {
       <AiChatbotModal
         isOpen={isAiChatOpen}
         onClose={() => setIsAiChatOpen(false)}
-        allProducts={PRODUCTS}
+        allProducts={products}
         onSelectProduct={(p) => setSelectedDetailProduct(p)}
         onAddToCart={(p) => handleAddToCart(p)}
         onNavigate={handleNavigate}

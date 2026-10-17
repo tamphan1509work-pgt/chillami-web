@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FAQS } from '../../data/faqs';
+import { FAQS_EN } from '../../data/faqs.en';
 import {
   HelpCircle,
   Search,
@@ -10,8 +11,10 @@ import {
   ShieldCheck,
   CheckCircle2
 } from 'lucide-react';
+import { useLanguage } from '../../context/LanguageContext';
 
 export const FaqsView: React.FC = () => {
+  const { l, language } = useLanguage();
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [openFaqIds, setOpenFaqIds] = useState<string[]>(['f1', 'f2']);
@@ -24,7 +27,7 @@ export const FaqsView: React.FC = () => {
     }
   };
 
-  const filteredFaqs = FAQS.filter((f) => {
+  const filteredFaqs = (language === 'en' ? FAQS_EN : FAQS).filter((f) => {
     if (selectedCategory !== 'all' && f.category !== selectedCategory) return false;
     if (searchQuery.trim()) {
       const q = searchQuery.toLowerCase();
@@ -40,13 +43,13 @@ export const FaqsView: React.FC = () => {
         <div className="text-center max-w-xl mx-auto">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-teal-100 text-teal-800 text-xs font-bold mb-3">
             <HelpCircle className="w-4 h-4 text-teal-700" />
-            <span>Trung tâm giải đáp thắc mắc</span>
+            <span>{l('Trung tâm giải đáp thắc mắc', 'Help center')}</span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight font-display">
-            Câu Hỏi Thường Gặp (FAQ) & Cẩm Nang Sử Dụng
+            {l('Câu Hỏi Thường Gặp (FAQ) & Cẩm Nang Sử Dụng', 'Frequently Asked Questions (FAQ) & User Guides')}
           </h1>
           <p className="text-xs sm:text-sm text-slate-500 mt-2">
-            Giải đáp mọi thắc mắc về chính sách mua hàng, quy trình giao lắp, kích hoạt bảo hành điện tử và công nghệ thiết bị Chillami.
+            {l('Giải đáp mọi thắc mắc về chính sách mua hàng, quy trình giao lắp, kích hoạt bảo hành điện tử và công nghệ thiết bị Chillami.', 'Answers to all your questions about purchasing, delivery and installation, e-warranty activation and Chillami technology.')}
           </p>
         </div>
 
@@ -56,7 +59,7 @@ export const FaqsView: React.FC = () => {
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Tìm kiếm câu hỏi (VD: lắp đặt, bảo hành, động cơ BLDC...)"
+            placeholder={l('Tìm kiếm câu hỏi (VD: lắp đặt, bảo hành, động cơ BLDC...)', 'Search questions (e.g. installation, warranty, BLDC motor...)')}
             className="w-full pl-10 pr-4 py-3 bg-white rounded-2xl border border-slate-300 focus:border-teal-600 focus:outline-hidden text-xs shadow-xs"
           />
           <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5 pointer-events-none" />
@@ -65,11 +68,11 @@ export const FaqsView: React.FC = () => {
         {/* Category Filter Tabs */}
         <div className="flex items-center justify-center gap-2 overflow-x-auto pb-1 text-xs font-semibold">
           {[
-            { id: 'all', label: 'Tất cả chủ đề' },
-            { id: 'mua-hang', label: 'Mua hàng & Thanh toán' },
-            { id: 'lap-dat', label: 'Vận chuyển & Lắp đặt' },
-            { id: 'bao-hanh', label: 'Chính sách bảo hành' },
-            { id: 'cong-nghe', label: 'Công nghệ BLDC & Inverter' },
+            { id: 'all', label: l('Tất cả chủ đề', 'All topics') },
+            { id: 'mua-hang', label: l('Mua hàng & Thanh toán', 'Purchasing & Payment') },
+            { id: 'lap-dat', label: l('Vận chuyển & Lắp đặt', 'Delivery & Installation') },
+            { id: 'bao-hanh', label: l('Chính sách bảo hành', 'Warranty policy') },
+            { id: 'cong-nghe', label: l('Công nghệ BLDC & Inverter', 'BLDC & Inverter technology') },
           ].map((cat) => (
             <button
               key={cat.id}
@@ -89,7 +92,7 @@ export const FaqsView: React.FC = () => {
         <div className="space-y-3">
           {filteredFaqs.length === 0 ? (
             <div className="bg-white rounded-2xl p-8 text-center text-xs text-slate-500 border border-slate-200">
-              Không tìm thấy câu hỏi phù hợp. Quý khách vui lòng gọi hotline <strong>1900 8899</strong> để được hỗ trợ trực tiếp.
+              {l('Không tìm thấy câu hỏi phù hợp. Quý khách vui lòng gọi hotline', 'No matching questions found. Please call our hotline')} <strong>1900 8899</strong> {l('để được hỗ trợ trực tiếp.', 'for direct support.')}
             </div>
           ) : (
             filteredFaqs.map((faq) => {
@@ -129,10 +132,10 @@ export const FaqsView: React.FC = () => {
         <div className="bg-teal-900 text-white rounded-3xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
           <div className="space-y-1 text-center sm:text-left">
             <h3 className="text-base sm:text-lg font-bold">
-              Bạn vẫn còn câu hỏi chưa được giải đáp?
+              {l('Bạn vẫn còn câu hỏi chưa được giải đáp?', 'Still have unanswered questions?')}
             </h3>
             <p className="text-xs text-teal-200">
-              Đội ngũ chuyên viên kỹ thuật Chillami sẵn sàng hỗ trợ bạn 24/7.
+              {l('Đội ngũ chuyên viên kỹ thuật Chillami sẵn sàng hỗ trợ bạn 24/7.', 'Chillami\'s technical specialists are ready to help you 24/7.')}
             </p>
           </div>
 
@@ -142,7 +145,7 @@ export const FaqsView: React.FC = () => {
               className="px-4 py-2.5 bg-teal-400 hover:bg-teal-300 text-slate-950 font-bold rounded-xl text-xs flex items-center gap-2 transition-colors"
             >
               <PhoneCall className="w-4 h-4" />
-              <span>Gọi 1900 8899</span>
+              <span>{l('Gọi 1900 8899', 'Call 1900 8899')}</span>
             </a>
 
             <a

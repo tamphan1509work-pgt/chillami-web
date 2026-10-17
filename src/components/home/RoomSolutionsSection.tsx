@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { ROOM_SOLUTIONS } from '../../data/faqs';
+import { ROOM_SOLUTIONS_EN } from '../../data/faqs.en';
 import { Product } from '../../types';
 import { Check, ArrowRight, Sparkles, Bed, Sofa, Utensils, Bath } from 'lucide-react';
 import { ScrollFadeIn } from '../common/ScrollFadeIn';
+import { useLanguage } from '../../context/LanguageContext';
 
 interface RoomSolutionsSectionProps {
   allProducts: Product[];
@@ -15,6 +17,7 @@ export const RoomSolutionsSection: React.FC<RoomSolutionsSectionProps> = ({
   onOpenDetail,
   onAddToCart,
 }) => {
+  const { l, language } = useLanguage();
   const [activeSpaceId, setActiveSpaceId] = useState<'bedroom' | 'living' | 'kitchen' | 'bathroom'>('bedroom');
 
   const icons = {
@@ -24,7 +27,10 @@ export const RoomSolutionsSection: React.FC<RoomSolutionsSectionProps> = ({
     bathroom: Bath,
   };
 
-  const currentSpace = ROOM_SOLUTIONS.find((s) => s.id === activeSpaceId) || ROOM_SOLUTIONS[0];
+  const spaces = ROOM_SOLUTIONS.map((space) =>
+    language === 'en' ? { ...space, ...ROOM_SOLUTIONS_EN[space.id] } : space
+  );
+  const currentSpace = spaces.find((s) => s.id === activeSpaceId) || spaces[0];
   const Icon = icons[activeSpaceId];
 
   // Resolve matching products
@@ -43,21 +49,21 @@ export const RoomSolutionsSection: React.FC<RoomSolutionsSectionProps> = ({
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
             <div>
               <span className="text-xs font-bold uppercase tracking-wider text-teal-700">
-                Tư vấn thiết kế & giải pháp chuyên sâu
+                {l('Tư vấn thiết kế & giải pháp chuyên sâu', 'In-depth design advice & solutions')}
               </span>
               <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mt-1 font-display">
-                Giải Pháp Thiết Bị Theo Từng Không Gian Sống
+                {l('Giải Pháp Thiết Bị Theo Từng Không Gian Sống', 'Appliance Solutions for Every Living Space')}
               </h2>
             </div>
             <p className="text-xs sm:text-sm text-slate-500 max-w-md">
-              Mỗi căn phòng có đặc thù nhiệt học và yêu cầu tiếng ồn riêng biệt. Chillami thiết kế combo tối ưu cho từng khu vực trong ngôi nhà.
+              {l('Mỗi căn phòng có đặc thù nhiệt học và yêu cầu tiếng ồn riêng biệt. Chillami thiết kế combo tối ưu cho từng khu vực trong ngôi nhà.', 'Every room has its own thermal profile and noise requirements. Chillami designs the optimal combo for each area of your home.')}
             </p>
           </div>
         </ScrollFadeIn>
 
         {/* Space Selector Tabs */}
         <div className="flex items-center gap-2 overflow-x-auto pb-2 mb-8">
-          {ROOM_SOLUTIONS.map((space) => {
+          {spaces.map((space) => {
             const SpaceIcon = icons[space.id as keyof typeof icons];
             const isActive = activeSpaceId === space.id;
             return (
@@ -90,7 +96,7 @@ export const RoomSolutionsSection: React.FC<RoomSolutionsSectionProps> = ({
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
               <div className="absolute bottom-4 left-4 right-4 text-white">
                 <span className="text-[11px] font-bold text-teal-300 uppercase">
-                  Không gian tiêu chuẩn
+                  {l('Không gian tiêu chuẩn', 'Standard space')}
                 </span>
                 <h3 className="text-xl font-bold font-display">{currentSpace.title}</h3>
                 <p className="text-xs text-slate-200 mt-0.5">{currentSpace.tagline}</p>
@@ -100,7 +106,7 @@ export const RoomSolutionsSection: React.FC<RoomSolutionsSectionProps> = ({
             <div className="space-y-2 text-xs text-slate-600 bg-white p-4 rounded-2xl border border-slate-200/60">
               <div className="font-bold text-slate-900 flex items-center gap-1.5 mb-1">
                 <Sparkles className="w-4 h-4 text-teal-700" />
-                <span>Lời khuyên từ chuyên gia Chillami:</span>
+                <span>{l('Lời khuyên từ chuyên gia Chillami:', 'Advice from Chillami experts:')}</span>
               </div>
               {currentSpace.tips.map((tip, idx) => (
                 <div key={idx} className="flex items-start gap-2">
@@ -114,7 +120,7 @@ export const RoomSolutionsSection: React.FC<RoomSolutionsSectionProps> = ({
           {/* Right Column: Matching Products List (7 cols) */}
           <div className="lg:col-span-7 space-y-4">
             <div className="text-xs font-bold uppercase tracking-wider text-teal-800">
-              Thiết bị Chillami lý tưởng cho {currentSpace.title.toLowerCase()}:
+              {l('Thiết bị Chillami lý tưởng cho', 'Ideal Chillami appliances for')} {currentSpace.title.toLowerCase()}:
             </div>
 
             <div className="space-y-3">
@@ -162,7 +168,7 @@ export const RoomSolutionsSection: React.FC<RoomSolutionsSectionProps> = ({
                       onClick={() => onAddToCart(p)}
                       className="py-2 px-3.5 bg-teal-700 hover:bg-teal-800 text-white rounded-xl text-xs font-bold transition-colors cursor-pointer shadow-xs whitespace-nowrap"
                     >
-                      Thêm vào giỏ
+                      {l('Thêm vào giỏ', 'Add to cart')}
                     </button>
                   </div>
                 </div>

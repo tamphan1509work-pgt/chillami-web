@@ -23,6 +23,7 @@ import {
   RefreshCw,
   Check
 } from 'lucide-react';
+import { useLanguage } from '../../context/LanguageContext';
 
 interface SmartConnectGuideViewProps {
   onExploreSmartFans?: () => void;
@@ -31,6 +32,7 @@ interface SmartConnectGuideViewProps {
 export const SmartConnectGuideView: React.FC<SmartConnectGuideViewProps> = ({
   onExploreSmartFans,
 }) => {
+  const { l } = useLanguage();
   // Simulator State
   const [simulatorStep, setSimulatorStep] = useState<'idle' | 'scanning' | 'found' | 'connecting' | 'connected'>('idle');
   const [simPower, setSimPower] = useState(true);
@@ -73,20 +75,20 @@ export const SmartConnectGuideView: React.FC<SmartConnectGuideViewProps> = ({
 
   const faqs = [
     {
-      q: 'Tại sao quạt chỉ hỗ trợ mạng WiFi 2.4GHz mà không nhận 5GHz?',
-      a: 'Băng tần WiFi 2.4GHz có tầm phủ sóng xa gấp 3 lần và khả năng xuyên tường vượt trội so với 5GHz, đảm bảo quạt luôn giữ kết nối ổn định dù đặt ở bất kỳ góc nào trong nhà. Hầu hết các modem WiFi hiện nay đều phát song song cả 2 băng tần (Dual-band). Khi kết nối lần đầu, bạn chỉ cần chọn tên WiFi 2.4GHz của nhà mình.',
+      q: l('Tại sao quạt chỉ hỗ trợ mạng WiFi 2.4GHz mà không nhận 5GHz?', 'Why does the fan only support 2.4GHz WiFi and not 5GHz?'),
+      a: l('Băng tần WiFi 2.4GHz có tầm phủ sóng xa gấp 3 lần và khả năng xuyên tường vượt trội so với 5GHz, đảm bảo quạt luôn giữ kết nối ổn định dù đặt ở bất kỳ góc nào trong nhà. Hầu hết các modem WiFi hiện nay đều phát song song cả 2 băng tần (Dual-band). Khi kết nối lần đầu, bạn chỉ cần chọn tên WiFi 2.4GHz của nhà mình.', 'The 2.4GHz band reaches 3 times farther and penetrates walls far better than 5GHz, so the fan stays reliably connected wherever it is in your home. Most routers today broadcast both bands at once (dual-band). When pairing for the first time, simply choose your home\'s 2.4GHz WiFi name.'),
     },
     {
-      q: 'Làm thế nào để reset cài đặt WiFi khi đổi modem hoặc đổi mật khẩu nhà?',
-      a: 'Trên thân quạt hoặc remote, nhấn và giữ nút nguồn/WiFi trong 5 - 7 giây cho đến khi quạt phát ra tiếng "Bíp" và đèn báo WiFi bắt đầu nhấp nháy nhanh. Lúc này quạt đã trở về trạng thái ghép nối ban đầu.',
+      q: l('Làm thế nào để reset cài đặt WiFi khi đổi modem hoặc đổi mật khẩu nhà?', 'How do I reset the WiFi settings after changing my router or password?'),
+      a: l('Trên thân quạt hoặc remote, nhấn và giữ nút nguồn/WiFi trong 5 - 7 giây cho đến khi quạt phát ra tiếng "Bíp" và đèn báo WiFi bắt đầu nhấp nháy nhanh. Lúc này quạt đã trở về trạng thái ghép nối ban đầu.', 'On the fan or remote, press and hold the Power/WiFi button for 5 - 7 seconds until the fan beeps and the WiFi light starts blinking rapidly. The fan is now back in its initial pairing mode.'),
     },
     {
-      q: 'Tôi có thể điều khiển quạt khi không có ở nhà (dùng 4G/5G) được không?',
-      a: 'Hoàn toàn được! Ứng dụng Chillami Home kết nối qua máy chủ đám mây Cloud tốc độ cao. Dù bạn đang ở công ty hay đi du lịch, chỉ cần điện thoại có kết nối 4G/5G/WiFi là có thể bật quạt trước khi về nhà hoặc kiểm tra xem quạt ở nhà đã tắt chưa.',
+      q: l('Tôi có thể điều khiển quạt khi không có ở nhà (dùng 4G/5G) được không?', 'Can I control the fan when I\'m away from home (over 4G/5G)?'),
+      a: l('Hoàn toàn được! Ứng dụng Chillami Home kết nối qua máy chủ đám mây Cloud tốc độ cao. Dù bạn đang ở công ty hay đi du lịch, chỉ cần điện thoại có kết nối 4G/5G/WiFi là có thể bật quạt trước khi về nhà hoặc kiểm tra xem quạt ở nhà đã tắt chưa.', 'Absolutely! The Chillami Home app connects through high-speed cloud servers. Whether you\'re at work or traveling, as long as your phone has 4G/5G/WiFi you can switch the fan on before you get home or check whether it\'s been turned off.'),
     },
     {
-      q: 'Quạt Chillami có tương thích với Google Home và Apple Siri không?',
-      a: 'Có. Trong ứng dụng Chillami Home, vào mục "Cài đặt tài khoản" > "Liên kết bên thứ ba", bạn có thể liên kết nhanh với Google Assistant, Apple Siri Shortcuts hoặc Amazon Alexa để ra lệnh bằng giọng nói tiếng Việt dễ dàng.',
+      q: l('Quạt Chillami có tương thích với Google Home và Apple Siri không?', 'Are Chillami fans compatible with Google Home and Apple Siri?'),
+      a: l('Có. Trong ứng dụng Chillami Home, vào mục "Cài đặt tài khoản" > "Liên kết bên thứ ba", bạn có thể liên kết nhanh với Google Assistant, Apple Siri Shortcuts hoặc Amazon Alexa để ra lệnh bằng giọng nói tiếng Việt dễ dàng.', 'Yes. In the Chillami Home app, go to "Account settings" > "Third-party links" to quickly link Google Assistant, Apple Siri Shortcuts or Amazon Alexa and control it easily by voice.'),
     },
   ];
 
@@ -104,18 +106,18 @@ export const SmartConnectGuideView: React.FC<SmartConnectGuideViewProps> = ({
             <div className="lg:col-span-7 space-y-6">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-500/20 border border-teal-400/30 text-teal-300 text-xs font-semibold">
                 <Wifi className="w-3.5 h-3.5 animate-pulse text-teal-300" />
-                <span>Hệ Sinh Thái Thông Minh Chillami Home v3.2</span>
+                <span>{l('Hệ Sinh Thái Thông Minh Chillami Home v3.2', 'Chillami Home v3.2 Smart Ecosystem')}</span>
               </div>
 
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight font-display text-white leading-tight">
-                Điều Khiển Ngôi Nhà Mát Lành <br className="hidden sm:inline" />
+                {l('Điều Khiển Ngôi Nhà Mát Lành', 'Control Your Cool, Comfortable Home')} <br className="hidden sm:inline" />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-emerald-300 to-teal-100">
-                  Chỉ Với Một Chạm Trên Điện Thoại
+                  {l('Chỉ Với Một Chạm Trên Điện Thoại', 'With a Single Tap on Your Phone')}
                 </span>
               </h1>
 
               <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl">
-                Ứng dụng <strong>Chillami Home</strong> cho phép bạn tùy chỉnh 24 cấp độ gió, hẹn giờ thông minh, tự động điều hòa nhiệt độ theo thời tiết thực tế và điều khiển giọng nói qua Google Assistant, Siri, Alexa.
+                {l('Ứng dụng', 'The')} <strong>Chillami Home</strong> {l('cho phép bạn tùy chỉnh 24 cấp độ gió, hẹn giờ thông minh, tự động điều hòa nhiệt độ theo thời tiết thực tế và điều khiển giọng nói qua Google Assistant, Siri, Alexa.', 'app lets you fine-tune 24 wind speeds, set smart timers, automatically adjust to real-time weather and use voice control via Google Assistant, Siri and Alexa.')}
               </p>
 
               {/* Download Buttons Badges */}
@@ -126,13 +128,13 @@ export const SmartConnectGuideView: React.FC<SmartConnectGuideViewProps> = ({
                     href="#download-ios"
                     onClick={(e) => {
                       e.preventDefault();
-                      alert('Đang chuyển hướng đến Apple App Store để tải Chillami Home...');
+                      alert(l('Đang chuyển hướng đến Apple App Store để tải Chillami Home...', 'Redirecting to the Apple App Store to download Chillami Home...'));
                     }}
                     className="flex items-center gap-3 px-5 py-3 rounded-2xl bg-white text-slate-950 hover:bg-slate-100 transition-all shadow-lg hover:shadow-xl cursor-pointer group"
                   >
                     <Apple className="w-7 h-7 text-slate-950 shrink-0" />
                     <div className="text-left">
-                      <div className="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Tải trên</div>
+                      <div className="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">{l('Tải trên', 'Download on the')}</div>
                       <div className="text-xs sm:text-sm font-bold tracking-tight">App Store</div>
                     </div>
                   </a>
@@ -142,13 +144,13 @@ export const SmartConnectGuideView: React.FC<SmartConnectGuideViewProps> = ({
                     href="#download-android"
                     onClick={(e) => {
                       e.preventDefault();
-                      alert('Đang chuyển hướng đến Google Play Store để tải Chillami Home...');
+                      alert(l('Đang chuyển hướng đến Google Play Store để tải Chillami Home...', 'Redirecting to the Google Play Store to download Chillami Home...'));
                     }}
                     className="flex items-center gap-3 px-5 py-3 rounded-2xl bg-white text-slate-950 hover:bg-slate-100 transition-all shadow-lg hover:shadow-xl cursor-pointer group"
                   >
                     <Smartphone className="w-7 h-7 text-teal-700 shrink-0" />
                     <div className="text-left">
-                      <div className="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Khám phá trên</div>
+                      <div className="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">{l('Khám phá trên', 'Get it on')}</div>
                       <div className="text-xs sm:text-sm font-bold tracking-tight">Google Play</div>
                     </div>
                   </a>
@@ -159,24 +161,24 @@ export const SmartConnectGuideView: React.FC<SmartConnectGuideViewProps> = ({
                     className="flex items-center gap-2 px-4 py-3 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/20 text-white transition-all text-xs font-semibold cursor-pointer"
                   >
                     <Download className="w-4 h-4 text-teal-300" />
-                    <span>{copiedLink ? '✓ Đã sao chép link APK' : 'Tải file APK trực tiếp'}</span>
+                    <span>{copiedLink ? l('✓ Đã sao chép link APK', '✓ APK link copied') : l('Tải file APK trực tiếp', 'Download APK directly')}</span>
                   </button>
                 </div>
 
                 <div className="flex items-center gap-4 text-xs text-slate-400">
                   <span className="flex items-center gap-1">
                     <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-                    Miễn phí 100%
+                    {l('Miễn phí 100%', '100% free')}
                   </span>
                   <span>·</span>
                   <span className="flex items-center gap-1">
                     <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-                    Hỗ trợ iOS 14.0+ & Android 8.0+
+                    {l('Hỗ trợ iOS 14.0+ & Android 8.0+', 'Supports iOS 14.0+ & Android 8.0+')}
                   </span>
                   <span>·</span>
                   <span className="flex items-center gap-1">
                     <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-                    Bảo mật đám mây 2 lớp
+                    {l('Bảo mật đám mây 2 lớp', '2-layer cloud security')}
                   </span>
                 </div>
               </div>
@@ -191,12 +193,12 @@ export const SmartConnectGuideView: React.FC<SmartConnectGuideViewProps> = ({
                       C
                     </div>
                     <div>
-                      <div className="text-xs font-bold text-white">Quét Mã Tải Ứng Dụng</div>
-                      <div className="text-[10px] text-slate-300">Tự động nhận diện hệ điều hành</div>
+                      <div className="text-xs font-bold text-white">{l('Quét Mã Tải Ứng Dụng', 'Scan to Download the App')}</div>
+                      <div className="text-[10px] text-slate-300">{l('Tự động nhận diện hệ điều hành', 'Detects your operating system automatically')}</div>
                     </div>
                   </div>
                   <span className="text-[10px] font-bold text-teal-300 bg-teal-500/20 px-2 py-0.5 rounded-full">
-                    Phiên bản 3.2.0
+                    {l('Phiên bản 3.2.0', 'Version 3.2.0')}
                   </span>
                 </div>
 
@@ -206,12 +208,12 @@ export const SmartConnectGuideView: React.FC<SmartConnectGuideViewProps> = ({
                     <QrCode className="w-36 h-36 text-slate-900" />
                   </div>
                   <div className="text-xs text-slate-600 font-medium leading-tight">
-                    Mở <strong>Camera điện thoại</strong> hoặc ứng dụng <strong>Zalo</strong> để quét mã tải ngay
+                    {l('Mở', 'Open your')} <strong>{l('Camera điện thoại', 'phone camera')}</strong> {l('hoặc ứng dụng', 'or the')} <strong>Zalo</strong> {l('để quét mã tải ngay', 'app to scan and download now')}
                   </div>
                 </div>
 
                 <div className="text-[11px] text-slate-300 text-center leading-relaxed">
-                  Đã có hơn <strong>50.000+</strong> gia đình kết nối thiết bị Chillami thông minh trên toàn quốc.
+                  {l('Đã có hơn', 'More than')} <strong>50.000+</strong> {l('gia đình kết nối thiết bị Chillami thông minh trên toàn quốc.', 'families nationwide have connected Chillami smart appliances.')}
                 </div>
               </div>
             </div>
@@ -224,13 +226,13 @@ export const SmartConnectGuideView: React.FC<SmartConnectGuideViewProps> = ({
         <div className="bg-white rounded-3xl shadow-xl border border-slate-200/90 p-6 sm:p-10 space-y-8">
           <div className="text-center max-w-2xl mx-auto space-y-2">
             <span className="text-xs font-bold uppercase tracking-wider text-teal-700">
-              QUY TRÌNH KẾT NỐI ĐƠN GIẢN
+              {l('QUY TRÌNH KẾT NỐI ĐƠN GIẢN', 'SIMPLE PAIRING PROCESS')}
             </span>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight font-display">
-              4 Bước Kết Nối Quạt Thông Minh Trong 60 Giây
+              {l('4 Bước Kết Nối Quạt Thông Minh Trong 60 Giây', 'Pair Your Smart Fan in 4 Steps Within 60 Seconds')}
             </h2>
             <p className="text-xs sm:text-sm text-slate-500">
-              Công nghệ Bluetooth Mesh + WiFi 2.4GHz tự động nhận diện thiết bị nhanh chóng mà không cần cấu hình phức tạp.
+              {l('Công nghệ Bluetooth Mesh + WiFi 2.4GHz tự động nhận diện thiết bị nhanh chóng mà không cần cấu hình phức tạp.', 'Bluetooth Mesh + 2.4GHz WiFi detects devices quickly without complicated setup.')}
             </p>
           </div>
 
@@ -242,13 +244,13 @@ export const SmartConnectGuideView: React.FC<SmartConnectGuideViewProps> = ({
                 1
               </div>
               <h3 className="text-sm font-bold text-slate-900 group-hover:text-teal-700 transition-colors">
-                Bật Bluetooth & WiFi 2.4G
+                {l('Bật Bluetooth & WiFi 2.4G', 'Turn on Bluetooth & 2.4G WiFi')}
               </h3>
               <p className="text-xs text-slate-600 leading-relaxed">
-                Đảm bảo điện thoại của bạn đang kết nối với mạng WiFi băng tần 2.4GHz tại gia đình và đã bật định vị Bluetooth.
+                {l('Đảm bảo điện thoại của bạn đang kết nối với mạng WiFi băng tần 2.4GHz tại gia đình và đã bật định vị Bluetooth.', 'Make sure your phone is connected to your home 2.4GHz WiFi network and Bluetooth/location is turned on.')}
               </p>
               <div className="text-[10px] font-semibold text-teal-700 bg-teal-50 p-2 rounded-lg">
-                💡 Mẹo: Tạm thời tắt 5GHz nếu router phát gộp 1 tên sóng.
+                {l('💡 Mẹo: Tạm thời tắt 5GHz nếu router phát gộp 1 tên sóng.', '💡 Tip: Temporarily disable 5GHz if your router uses one name for both bands.')}
               </div>
             </div>
 
@@ -258,13 +260,13 @@ export const SmartConnectGuideView: React.FC<SmartConnectGuideViewProps> = ({
                 2
               </div>
               <h3 className="text-sm font-bold text-slate-900 group-hover:text-teal-700 transition-colors">
-                Nhấn Giữ Nút WiFi 5 Giây
+                {l('Nhấn Giữ Nút WiFi 5 Giây', 'Hold the WiFi Button for 5 Seconds')}
               </h3>
               <p className="text-xs text-slate-600 leading-relaxed">
-                Cắm nguồn quạt Chillami. Nhấn và giữ phím biểu tượng WiFi trên thân quạt trong 5 giây cho đến khi đèn LED nhấp nháy liên tục.
+                {l('Cắm nguồn quạt Chillami. Nhấn và giữ phím biểu tượng WiFi trên thân quạt trong 5 giây cho đến khi đèn LED nhấp nháy liên tục.', 'Plug in your Chillami fan. Press and hold the WiFi key on the fan for 5 seconds until the LED blinks continuously.')}
               </p>
               <div className="text-[10px] font-semibold text-teal-700 bg-teal-50 p-2 rounded-lg">
-                🔔 Quạt sẽ phát âm báo "Bíp" xác nhận vào chế độ Pairing.
+                {l('🔔 Quạt sẽ phát âm báo "Bíp" xác nhận vào chế độ Pairing.', '🔔 The fan beeps to confirm it has entered pairing mode.')}
               </div>
             </div>
 
@@ -274,13 +276,13 @@ export const SmartConnectGuideView: React.FC<SmartConnectGuideViewProps> = ({
                 3
               </div>
               <h3 className="text-sm font-bold text-slate-900 group-hover:text-teal-700 transition-colors">
-                Mở App & Thêm Thiết Bị
+                {l('Mở App & Thêm Thiết Bị', 'Open the App & Add Device')}
               </h3>
               <p className="text-xs text-slate-600 leading-relaxed">
-                Mở ứng dụng <strong>Chillami Home</strong>, nhấn nút dấu "+" (Thêm thiết bị). App sẽ tự động phát hiện quạt qua Bluetooth và đồng bộ WiFi.
+                {l('Mở ứng dụng', 'Open the')} <strong>Chillami Home</strong>, {l('nhấn nút dấu "+" (Thêm thiết bị). App sẽ tự động phát hiện quạt qua Bluetooth và đồng bộ WiFi.', 'app and tap "+" (Add device). The app automatically finds the fan via Bluetooth and syncs WiFi.')}
               </p>
               <div className="text-[10px] font-semibold text-teal-700 bg-teal-50 p-2 rounded-lg">
-                ⚡ Quá trình đồng bộ cấu hình chỉ mất khoảng 10 giây.
+                {l('⚡ Quá trình đồng bộ cấu hình chỉ mất khoảng 10 giây.', '⚡ Syncing the configuration takes only about 10 seconds.')}
               </div>
             </div>
 
@@ -290,13 +292,13 @@ export const SmartConnectGuideView: React.FC<SmartConnectGuideViewProps> = ({
                 4
               </div>
               <h3 className="text-sm font-bold text-slate-900 group-hover:text-teal-700 transition-colors">
-                Đặt Tên Phòng & Tận Hưởng
+                {l('Đặt Tên Phòng & Tận Hưởng', 'Name the Room & Enjoy')}
               </h3>
               <p className="text-xs text-slate-600 leading-relaxed">
-                Đặt tên cho quạt (Ví dụ: "Quạt Phòng Ngủ", "Quạt Bé Yêu"), liên kết với Google Assistant hoặc Siri để ra lệnh giọng nói tiện lợi.
+                {l('Đặt tên cho quạt (Ví dụ: "Quạt Phòng Ngủ", "Quạt Bé Yêu"), liên kết với Google Assistant hoặc Siri để ra lệnh giọng nói tiện lợi.', 'Name your fan (e.g. "Bedroom Fan", "Baby\'s Fan") and link it with Google Assistant or Siri for convenient voice commands.')}
               </p>
               <div className="text-[10px] font-semibold text-teal-700 bg-teal-50 p-2 rounded-lg">
-                🎉 Hoàn tất! Quạt đã sẵn sàng điều khiển từ mọi nơi.
+                {l('🎉 Hoàn tất! Quạt đã sẵn sàng điều khiển từ mọi nơi.', '🎉 Done! Your fan is ready to be controlled from anywhere.')}
               </div>
             </div>
           </div>
@@ -310,13 +312,13 @@ export const SmartConnectGuideView: React.FC<SmartConnectGuideViewProps> = ({
             <div className="space-y-1">
               <span className="text-xs font-bold uppercase tracking-wider text-teal-300 flex items-center gap-1.5">
                 <Sparkles className="w-4 h-4 text-amber-300" />
-                Trình Mô Phỏng Tương Tác
+                {l('Trình Mô Phỏng Tương Tác', 'Interactive Simulator')}
               </span>
               <h2 className="text-2xl sm:text-3xl font-extrabold font-display tracking-tight text-white">
-                Thử Nghiệm Ghép Nối Ảo & Điều Khiển Quạt Ngay Trên Màn Hình
+                {l('Thử Nghiệm Ghép Nối Ảo & Điều Khiển Quạt Ngay Trên Màn Hình', 'Try Virtual Pairing & Fan Control Right on Screen')}
               </h2>
               <p className="text-xs sm:text-sm text-slate-300">
-                Trải nghiệm giao diện điều khiển thực tế của ứng dụng Chillami Home mà không cần thiết bị thật.
+                {l('Trải nghiệm giao diện điều khiển thực tế của ứng dụng Chillami Home mà không cần thiết bị thật.', 'Experience the real Chillami Home control interface without a physical device.')}
               </p>
             </div>
 
@@ -326,7 +328,7 @@ export const SmartConnectGuideView: React.FC<SmartConnectGuideViewProps> = ({
                 className="px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded-xl text-xs font-semibold border border-white/20 transition-all flex items-center gap-2 cursor-pointer w-fit"
               >
                 <RefreshCw className="w-3.5 h-3.5" />
-                <span>Thử lại từ đầu</span>
+                <span>{l('Thử lại từ đầu', 'Start over')}</span>
               </button>
             )}
           </div>
@@ -356,16 +358,16 @@ export const SmartConnectGuideView: React.FC<SmartConnectGuideViewProps> = ({
                         <Wifi className="w-8 h-8 animate-pulse" />
                       </div>
                       <div className="space-y-1">
-                        <div className="text-sm font-bold text-white">Thêm Thiết Bị Mới</div>
+                        <div className="text-sm font-bold text-white">{l('Thêm Thiết Bị Mới', 'Add New Device')}</div>
                         <p className="text-xs text-slate-400">
-                          Bấm nút bên dưới để quét tìm quạt Chillami qua Bluetooth
+                          {l('Bấm nút bên dưới để quét tìm quạt Chillami qua Bluetooth', 'Tap the button below to scan for Chillami fans via Bluetooth')}
                         </p>
                       </div>
                       <button
                         onClick={handleStartSimulation}
                         className="px-6 py-3 bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold rounded-xl text-xs shadow-lg transition-transform hover:scale-105 cursor-pointer w-full"
                       >
-                        Bắt đầu quét thiết bị
+                        {l('Bắt đầu quét thiết bị', 'Start scanning')}
                       </button>
                     </div>
                   )}
@@ -379,7 +381,7 @@ export const SmartConnectGuideView: React.FC<SmartConnectGuideViewProps> = ({
                           <Wifi className="w-6 h-6 text-teal-200" />
                         </div>
                       </div>
-                      <div className="text-xs font-bold text-teal-300">Đang tìm kiếm thiết bị xung quanh...</div>
+                      <div className="text-xs font-bold text-teal-300">{l('Đang tìm kiếm thiết bị xung quanh...', 'Searching for nearby devices...')}</div>
                       <div className="text-[11px] text-slate-400">Bluetooth BLE Scanning active</div>
                     </div>
                   )}
@@ -388,7 +390,7 @@ export const SmartConnectGuideView: React.FC<SmartConnectGuideViewProps> = ({
                   {simulatorStep === 'found' && (
                     <div className="my-auto space-y-4 py-4 animate-in fade-in">
                       <div className="text-xs font-bold text-emerald-400 text-center">
-                        ✓ Đã tìm thấy 1 thiết bị Chillami!
+                        {l('✓ Đã tìm thấy 1 thiết bị Chillami!', '✓ Found 1 Chillami device!')}
                       </div>
 
                       <div className="p-4 rounded-2xl bg-slate-800/90 border border-teal-500/50 space-y-3">
@@ -401,7 +403,7 @@ export const SmartConnectGuideView: React.FC<SmartConnectGuideViewProps> = ({
                           <div>
                             <div className="text-xs font-bold text-white">Chillami Flow-100 BLDC</div>
                             <div className="text-[10px] text-slate-400 font-mono">MAC: 4A:2F:8C:99:E1</div>
-                            <div className="text-[10px] text-emerald-400 font-semibold mt-0.5">Sóng WiFi: Tốt (-42 dBm)</div>
+                            <div className="text-[10px] text-emerald-400 font-semibold mt-0.5">{l('Sóng WiFi: Tốt (-42 dBm)', 'WiFi signal: Good (-42 dBm)')}</div>
                           </div>
                         </div>
 
@@ -409,7 +411,7 @@ export const SmartConnectGuideView: React.FC<SmartConnectGuideViewProps> = ({
                           onClick={handlePairDevice}
                           className="w-full py-2.5 bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold rounded-xl text-xs transition-colors cursor-pointer"
                         >
-                          Ghép nối thiết bị ngay
+                          {l('Ghép nối thiết bị ngay', 'Pair device now')}
                         </button>
                       </div>
                     </div>
@@ -419,8 +421,8 @@ export const SmartConnectGuideView: React.FC<SmartConnectGuideViewProps> = ({
                   {simulatorStep === 'connecting' && (
                     <div className="my-auto text-center space-y-4 py-8">
                       <div className="w-12 h-12 border-3 border-teal-400 border-t-transparent rounded-full animate-spin mx-auto" />
-                      <div className="text-xs font-bold text-white">Đang gửi cấu hình mạng WiFi...</div>
-                      <div className="text-[11px] text-slate-400">Đồng bộ mã hóa bảo mật đám mây</div>
+                      <div className="text-xs font-bold text-white">{l('Đang gửi cấu hình mạng WiFi...', 'Sending WiFi configuration...')}</div>
+                      <div className="text-[11px] text-slate-400">{l('Đồng bộ mã hóa bảo mật đám mây', 'Syncing cloud security encryption')}</div>
                     </div>
                   )}
 
@@ -432,9 +434,9 @@ export const SmartConnectGuideView: React.FC<SmartConnectGuideViewProps> = ({
                         <div>
                           <div className="text-xs font-bold text-white flex items-center gap-1.5">
                             <span className="w-2 h-2 rounded-full bg-emerald-400 inline-block animate-pulse" />
-                            Quạt Cây Phòng Ngủ Master
+                            {l('Quạt Cây Phòng Ngủ Master', 'Master Bedroom Standing Fan')}
                           </div>
-                          <div className="text-[10px] text-teal-300 font-medium">Đang chạy · Động cơ BLDC êm 13dB</div>
+                          <div className="text-[10px] text-teal-300 font-medium">{l('Đang chạy · Động cơ BLDC êm 13dB', 'Running · Quiet 13dB BLDC motor')}</div>
                         </div>
 
                         <button
@@ -442,7 +444,7 @@ export const SmartConnectGuideView: React.FC<SmartConnectGuideViewProps> = ({
                           className={`p-2.5 rounded-xl transition-all cursor-pointer ${
                             simPower ? 'bg-teal-500 text-slate-950 shadow-md' : 'bg-slate-800 text-slate-400'
                           }`}
-                          title="Bật/Tắt nguồn quạt"
+                          title={l('Bật/Tắt nguồn quạt', 'Fan power on/off')}
                         >
                           <Power className="w-4 h-4 font-bold" />
                         </button>
@@ -455,10 +457,10 @@ export const SmartConnectGuideView: React.FC<SmartConnectGuideViewProps> = ({
                             <div className="flex items-center justify-between text-xs">
                               <span className="text-slate-400 flex items-center gap-1">
                                 <Wind className="w-3.5 h-3.5 text-teal-400" />
-                                Tốc độ gió:
+                                {l('Tốc độ gió:', 'Wind speed:')}
                               </span>
                               <strong className="text-teal-300 text-sm font-bold">
-                                Cấp {simSpeed} / 24
+                                {l('Cấp', 'Level')} {simSpeed} / 24
                               </strong>
                             </div>
 
@@ -472,8 +474,8 @@ export const SmartConnectGuideView: React.FC<SmartConnectGuideViewProps> = ({
                             />
 
                             <div className="flex justify-between text-[10px] text-slate-500 font-mono">
-                              <span>1 (Gió thoảng)</span>
-                              <span>12 (Gió mát)</span>
+                              <span>{l('1 (Gió thoảng)', '1 (Light breeze)')}</span>
+                              <span>{l('12 (Gió mát)', '12 (Cool breeze)')}</span>
                               <span>24 (Turbo)</span>
                             </div>
                           </div>
@@ -488,7 +490,7 @@ export const SmartConnectGuideView: React.FC<SmartConnectGuideViewProps> = ({
                                   : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
                               }`}
                             >
-                              Gió Tự Nhiên
+                              {l('Gió Tự Nhiên', 'Natural Breeze')}
                             </button>
                             <button
                               onClick={() => setSimMode('sleep')}
@@ -498,7 +500,7 @@ export const SmartConnectGuideView: React.FC<SmartConnectGuideViewProps> = ({
                                   : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
                               }`}
                             >
-                              Ngủ Đêm 13dB
+                              {l('Ngủ Đêm 13dB', '13dB Night Sleep')}
                             </button>
                             <button
                               onClick={() => setSimMode('normal')}
@@ -508,7 +510,7 @@ export const SmartConnectGuideView: React.FC<SmartConnectGuideViewProps> = ({
                                   : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
                               }`}
                             >
-                              Tiêu Chuẩn
+                              {l('Tiêu Chuẩn', 'Standard')}
                             </button>
                           </div>
 
@@ -523,18 +525,18 @@ export const SmartConnectGuideView: React.FC<SmartConnectGuideViewProps> = ({
                               }`}
                             >
                               <RotateCw className={`w-3.5 h-3.5 ${simOscillate ? 'animate-spin [animation-duration:4s]' : ''}`} />
-                              <span>{simOscillate ? 'Quay 3D 120° (Bật)' : 'Đứng yên'}</span>
+                              <span>{simOscillate ? l('Quay 3D 120° (Bật)', '3D 120° oscillation (On)') : l('Đứng yên', 'Stationary')}</span>
                             </button>
 
                             <div className="p-2.5 rounded-xl border border-slate-700 bg-slate-800 text-slate-300 flex items-center justify-center gap-1.5 text-xs">
                               <Clock className="w-3.5 h-3.5 text-teal-400" />
-                              <span>Hẹn giờ 8H</span>
+                              <span>{l('Hẹn giờ 8H', '8H timer')}</span>
                             </div>
                           </div>
                         </>
                       ) : (
                         <div className="py-12 text-center text-xs text-slate-500">
-                          Quạt đang tắt nguồn. Nhấn biểu tượng nguồn ở góc trên để bật quạt.
+                          {l('Quạt đang tắt nguồn. Nhấn biểu tượng nguồn ở góc trên để bật quạt.', 'The fan is off. Tap the power icon at the top to turn it on.')}
                         </div>
                       )}
                     </div>
@@ -542,10 +544,10 @@ export const SmartConnectGuideView: React.FC<SmartConnectGuideViewProps> = ({
 
                   {/* App Bottom Navigation */}
                   <div className="pt-3 border-t border-slate-800 flex items-center justify-around text-[10px] text-slate-500">
-                    <span className="text-teal-400 font-bold">Trang chủ</span>
-                    <span>Phòng ngủ</span>
-                    <span>Tự động hóa</span>
-                    <span>Tài khoản</span>
+                    <span className="text-teal-400 font-bold">{l('Trang chủ', 'Home')}</span>
+                    <span>{l('Phòng ngủ', 'Bedroom')}</span>
+                    <span>{l('Tự động hóa', 'Automation')}</span>
+                    <span>{l('Tài khoản', 'Account')}</span>
                   </div>
                 </div>
               </div>
@@ -555,10 +557,10 @@ export const SmartConnectGuideView: React.FC<SmartConnectGuideViewProps> = ({
             <div className="lg:col-span-6 space-y-6">
               <div className="space-y-3">
                 <h3 className="text-xl sm:text-2xl font-bold text-white font-display">
-                  Những Đặc Quyền Khi Sử Dụng Quạt Thông Minh Chillami
+                  {l('Những Đặc Quyền Khi Sử Dụng Quạt Thông Minh Chillami', 'Perks of Using a Chillami Smart Fan')}
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                  Quạt thông minh Chillami được tích hợp vi xử lý 32-bit tốc độ cao và cảm biến vi khí hậu, giúp tự động tối ưu tốc độ gió theo nhiệt độ phòng thực tế mà không cần bạn phải thức giấc giữa đêm để chỉnh quạt.
+                  {l('Quạt thông minh Chillami được tích hợp vi xử lý 32-bit tốc độ cao và cảm biến vi khí hậu, giúp tự động tối ưu tốc độ gió theo nhiệt độ phòng thực tế mà không cần bạn phải thức giấc giữa đêm để chỉnh quạt.', 'Chillami smart fans have a fast 32-bit processor and microclimate sensors that automatically optimize wind speed to the actual room temperature, so you never have to wake up at night to adjust the fan.')}
                 </p>
               </div>
 
@@ -568,9 +570,9 @@ export const SmartConnectGuideView: React.FC<SmartConnectGuideViewProps> = ({
                     <Moon className="w-4 h-4" />
                   </div>
                   <div>
-                    <div className="font-bold text-white text-sm">Chế độ ngủ SleepAir tự động giảm tốc</div>
+                    <div className="font-bold text-white text-sm">{l('Chế độ ngủ SleepAir tự động giảm tốc', 'SleepAir mode slows down automatically')}</div>
                     <div className="text-slate-300 text-xs mt-0.5 leading-relaxed">
-                      Nhiệt độ cơ thể giảm dần về sáng sớm; quạt sẽ tự động hạ cấp độ gió sau mỗi 2 giờ để bảo vệ cổ họng và giấc ngủ của trẻ nhỏ.
+                      {l('Nhiệt độ cơ thể giảm dần về sáng sớm; quạt sẽ tự động hạ cấp độ gió sau mỗi 2 giờ để bảo vệ cổ họng và giấc ngủ của trẻ nhỏ.', 'Body temperature drops toward early morning; the fan automatically lowers its speed every 2 hours to protect children\'s throats and sleep.')}
                     </div>
                   </div>
                 </div>
@@ -580,9 +582,9 @@ export const SmartConnectGuideView: React.FC<SmartConnectGuideViewProps> = ({
                     <Zap className="w-4 h-4" />
                   </div>
                   <div>
-                    <div className="font-bold text-white text-sm">Tự động hóa thông minh (Smart Scene)</div>
+                    <div className="font-bold text-white text-sm">{l('Tự động hóa thông minh (Smart Scene)', 'Smart automation (Smart Scene)')}</div>
                     <div className="text-slate-300 text-xs mt-0.5 leading-relaxed">
-                      Cài đặt kịch bản: Tự động bật quạt khi bạn về đến nhà, hoặc tự tắt khi cả nhà rời đi để tiết kiệm điện tối đa.
+                      {l('Cài đặt kịch bản: Tự động bật quạt khi bạn về đến nhà, hoặc tự tắt khi cả nhà rời đi để tiết kiệm điện tối đa.', 'Set up scenes: switch the fan on automatically when you get home, or off when everyone leaves, to save as much power as possible.')}
                     </div>
                   </div>
                 </div>
@@ -592,9 +594,9 @@ export const SmartConnectGuideView: React.FC<SmartConnectGuideViewProps> = ({
                     <ShieldCheck className="w-4 h-4" />
                   </div>
                   <div>
-                    <div className="font-bold text-white text-sm">Bảo mật dữ liệu đám mây chuẩn AES-128</div>
+                    <div className="font-bold text-white text-sm">{l('Bảo mật dữ liệu đám mây chuẩn AES-128', 'AES-128 cloud data security')}</div>
                     <div className="text-slate-300 text-xs mt-0.5 leading-relaxed">
-                      Toàn bộ lệnh điều khiển được mã hóa đầu cuối, máy chủ đặt tại Việt Nam cho phản hồi cực nhanh dưới 0.1 giây.
+                      {l('Toàn bộ lệnh điều khiển được mã hóa đầu cuối, máy chủ đặt tại Việt Nam cho phản hồi cực nhanh dưới 0.1 giây.', 'All control commands are end-to-end encrypted, with servers in Vietnam for ultra-fast responses under 0.1 seconds.')}
                     </div>
                   </div>
                 </div>
@@ -606,7 +608,7 @@ export const SmartConnectGuideView: React.FC<SmartConnectGuideViewProps> = ({
                     onClick={onExploreSmartFans}
                     className="inline-flex items-center gap-2 px-6 py-3 bg-teal-400 hover:bg-teal-300 text-slate-950 font-bold rounded-xl text-xs transition-colors cursor-pointer"
                   >
-                    <span>Xem các mẫu quạt thông minh IoT WiFi</span>
+                    <span>{l('Xem các mẫu quạt thông minh IoT WiFi', 'View IoT WiFi smart fan models')}</span>
                     <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>
@@ -620,13 +622,13 @@ export const SmartConnectGuideView: React.FC<SmartConnectGuideViewProps> = ({
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 space-y-6">
         <div className="text-center space-y-1.5">
           <span className="text-xs font-bold uppercase tracking-wider text-teal-700">
-            HỖ TRỢ KỸ THUẬT
+            {l('HỖ TRỢ KỸ THUẬT', 'TECHNICAL SUPPORT')}
           </span>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 font-display">
-            Giải Đáp Thắc Mắc Khi Kết Nối WiFi & App
+            {l('Giải Đáp Thắc Mắc Khi Kết Nối WiFi & App', 'WiFi & App Pairing FAQ')}
           </h2>
           <p className="text-xs text-slate-500">
-            Nếu gặp khó khăn trong quá trình ghép nối, vui lòng tham khảo các hướng dẫn sau hoặc liên hệ Hotline 1900 8899
+            {l('Nếu gặp khó khăn trong quá trình ghép nối, vui lòng tham khảo các hướng dẫn sau hoặc liên hệ Hotline 1900 8899', 'If you have trouble pairing, see the guidance below or call our hotline 1900 8899')}
           </p>
         </div>
 

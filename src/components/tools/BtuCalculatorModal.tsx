@@ -12,6 +12,7 @@ import {
   Sparkles,
   ArrowRight
 } from 'lucide-react';
+import { useLanguage } from '../../context/LanguageContext';
 
 interface BtuCalculatorModalProps {
   onClose: () => void;
@@ -26,6 +27,7 @@ export const BtuCalculatorModal: React.FC<BtuCalculatorModalProps> = ({
   onSelectProduct,
   onAddToCart,
 }) => {
+  const { l } = useLanguage();
   const [area, setArea] = useState<number>(14); // m2
   const [ceilingHeight, setCeilingHeight] = useState<number>(3.0); // meters
   const [roomType, setRoomType] = useState<'bedroom' | 'living' | 'kitchen'>('bedroom');
@@ -98,10 +100,10 @@ export const BtuCalculatorModal: React.FC<BtuCalculatorModalProps> = ({
             </div>
             <div>
               <h3 className="text-base font-bold text-slate-900">
-                Công Cụ Tính Công Suất Điều Hòa (BTU) Chuẩn Xác
+                {l('Công Cụ Tính Công Suất Điều Hòa (BTU) Chuẩn Xác', 'Accurate Air Conditioner Capacity (BTU) Calculator')}
               </h3>
               <p className="text-xs text-slate-500">
-                Tối ưu hóa theo diện tích m², hướng nắng và đặc thù nhà ở tại Việt Nam
+                {l('Tối ưu hóa theo diện tích m², hướng nắng và đặc thù nhà ở tại Việt Nam', 'Optimized for floor area, sun exposure and typical Vietnamese homes')}
               </p>
             </div>
           </div>
@@ -124,7 +126,7 @@ export const BtuCalculatorModal: React.FC<BtuCalculatorModalProps> = ({
                 <div className="flex justify-between items-center text-xs font-bold text-slate-900 mb-2">
                   <span className="flex items-center gap-1.5">
                     <Maximize2 className="w-3.5 h-3.5 text-teal-700" />
-                    Diện tích sàn phòng:
+                    {l('Diện tích sàn phòng:', 'Floor area:')}
                   </span>
                   <span className="text-sm font-extrabold text-teal-800 bg-teal-50 px-2.5 py-0.5 rounded-lg border border-teal-200">
                     {area} m² ({Math.round(area * ceilingHeight)} m³)
@@ -140,17 +142,17 @@ export const BtuCalculatorModal: React.FC<BtuCalculatorModalProps> = ({
                   className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-teal-700"
                 />
                 <div className="flex justify-between text-[11px] text-slate-400 mt-1">
-                  <span>8 m² (Phòng trọ/nhỏ)</span>
-                  <span>20 m² (Chung cư vừa)</span>
-                  <span>45 m² (Phòng khách rộng)</span>
+                  <span>{l('8 m² (Phòng trọ/nhỏ)', '8 m² (Small room)')}</span>
+                  <span>{l('20 m² (Chung cư vừa)', '20 m² (Mid-size apartment)')}</span>
+                  <span>{l('45 m² (Phòng khách rộng)', '45 m² (Large living room)')}</span>
                 </div>
               </div>
 
               {/* 2. Chiều cao trần */}
               <div>
                 <div className="flex justify-between items-center text-xs font-bold text-slate-900 mb-2">
-                  <span>Chiều cao trần:</span>
-                  <span className="text-xs font-bold text-slate-700">{ceilingHeight} mét</span>
+                  <span>{l('Chiều cao trần:', 'Ceiling height:')}</span>
+                  <span className="text-xs font-bold text-slate-700">{ceilingHeight} {l('mét', 'meters')}</span>
                 </div>
                 <div className="grid grid-cols-3 gap-2">
                   {[2.8, 3.2, 3.8].map((h) => (
@@ -164,7 +166,7 @@ export const BtuCalculatorModal: React.FC<BtuCalculatorModalProps> = ({
                           : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300'
                       }`}
                     >
-                      {h} m {h === 2.8 ? '(Trần thấp)' : h === 3.2 ? '(Tiêu chuẩn)' : '(Trần cao/thông)'}
+                      {h} m {h === 2.8 ? l('(Trần thấp)', '(Low ceiling)') : h === 3.2 ? l('(Tiêu chuẩn)', '(Standard)') : l('(Trần cao/thông)', '(High/open ceiling)')}
                     </button>
                   ))}
                 </div>
@@ -173,7 +175,7 @@ export const BtuCalculatorModal: React.FC<BtuCalculatorModalProps> = ({
               {/* 3. Loại không gian phòng */}
               <div>
                 <label className="block text-xs font-bold text-slate-900 mb-2">
-                  Loại không gian sử dụng:
+                  {l('Loại không gian sử dụng:', 'Room type:')}
                 </label>
                 <div className="grid grid-cols-3 gap-2">
                   <button
@@ -185,8 +187,8 @@ export const BtuCalculatorModal: React.FC<BtuCalculatorModalProps> = ({
                         : 'border-slate-200 bg-white text-slate-700'
                     }`}
                   >
-                    <div>Phòng ngủ</div>
-                    <div className="text-[10px] text-slate-400 mt-0.5">Êm ái tĩnh lặng</div>
+                    <div>{l('Phòng ngủ', 'Bedroom')}</div>
+                    <div className="text-[10px] text-slate-400 mt-0.5">{l('Êm ái tĩnh lặng', 'Calm and quiet')}</div>
                   </button>
                   <button
                     type="button"
@@ -197,8 +199,8 @@ export const BtuCalculatorModal: React.FC<BtuCalculatorModalProps> = ({
                         : 'border-slate-200 bg-white text-slate-700'
                     }`}
                   >
-                    <div>Phòng khách</div>
-                    <div className="text-[10px] text-slate-400 mt-0.5">Mở cửa nhiều</div>
+                    <div>{l('Phòng khách', 'Living room')}</div>
+                    <div className="text-[10px] text-slate-400 mt-0.5">{l('Mở cửa nhiều', 'Doors often open')}</div>
                   </button>
                   <button
                     type="button"
@@ -209,8 +211,8 @@ export const BtuCalculatorModal: React.FC<BtuCalculatorModalProps> = ({
                         : 'border-slate-200 bg-white text-slate-700'
                     }`}
                   >
-                    <div>Bếp / Cửa hàng</div>
-                    <div className="text-[10px] text-slate-400 mt-0.5">Tỏa nhiệt lớn</div>
+                    <div>{l('Bếp / Cửa hàng', 'Kitchen / Shop')}</div>
+                    <div className="text-[10px] text-slate-400 mt-0.5">{l('Tỏa nhiệt lớn', 'High heat output')}</div>
                   </button>
                 </div>
               </div>
@@ -218,7 +220,7 @@ export const BtuCalculatorModal: React.FC<BtuCalculatorModalProps> = ({
               {/* 4. Hướng nắng & Môi trường */}
               <div>
                 <label className="block text-xs font-bold text-slate-900 mb-2">
-                  Mức độ tiếp xúc ánh nắng mặt trời:
+                  {l('Mức độ tiếp xúc ánh nắng mặt trời:', 'Sun exposure:')}
                 </label>
                 <div className="grid grid-cols-3 gap-2">
                   <button
@@ -230,8 +232,8 @@ export const BtuCalculatorModal: React.FC<BtuCalculatorModalProps> = ({
                         : 'border-slate-200 text-slate-600'
                     }`}
                   >
-                    <div className="font-bold">Mát mẻ / Hướng Đông</div>
-                    <div className="text-[10px] text-slate-500">Nắng nhẹ</div>
+                    <div className="font-bold">{l('Mát mẻ / Hướng Đông', 'Cool / East-facing')}</div>
+                    <div className="text-[10px] text-slate-500">{l('Nắng nhẹ', 'Mild sun')}</div>
                   </button>
                   <button
                     type="button"
@@ -242,8 +244,8 @@ export const BtuCalculatorModal: React.FC<BtuCalculatorModalProps> = ({
                         : 'border-slate-200 text-slate-600'
                     }`}
                   >
-                    <div className="font-bold text-amber-800">Hướng Tây / Cửa kính</div>
-                    <div className="text-[10px] text-amber-600">Nắng chiều gay gắt</div>
+                    <div className="font-bold text-amber-800">{l('Hướng Tây / Cửa kính', 'West-facing / Glass windows')}</div>
+                    <div className="text-[10px] text-amber-600">{l('Nắng chiều gay gắt', 'Harsh afternoon sun')}</div>
                   </button>
                   <button
                     type="button"
@@ -254,8 +256,8 @@ export const BtuCalculatorModal: React.FC<BtuCalculatorModalProps> = ({
                         : 'border-slate-200 text-slate-600'
                     }`}
                   >
-                    <div className="font-bold text-rose-800">Tầng áp mái / Tôn</div>
-                    <div className="text-[10px] text-rose-600">Hấp thụ nhiệt cao</div>
+                    <div className="font-bold text-rose-800">{l('Tầng áp mái / Tôn', 'Top floor / Metal roof')}</div>
+                    <div className="text-[10px] text-rose-600">{l('Hấp thụ nhiệt cao', 'High heat absorption')}</div>
                   </button>
                 </div>
               </div>
@@ -265,9 +267,9 @@ export const BtuCalculatorModal: React.FC<BtuCalculatorModalProps> = ({
                 <div className="flex justify-between items-center text-xs font-bold text-slate-900 mb-2">
                   <span className="flex items-center gap-1.5">
                     <Users className="w-3.5 h-3.5 text-teal-700" />
-                    Số lượng người thường xuyên trong phòng:
+                    {l('Số lượng người thường xuyên trong phòng:', 'Usual number of people in the room:')}
                   </span>
-                  <span className="text-xs font-bold text-slate-700">{occupants} người</span>
+                  <span className="text-xs font-bold text-slate-700">{occupants} {l('người', 'people')}</span>
                 </div>
                 <div className="flex gap-2">
                   {[1, 2, 4, 6].map((num) => (
@@ -281,7 +283,7 @@ export const BtuCalculatorModal: React.FC<BtuCalculatorModalProps> = ({
                           : 'border-slate-200 bg-white text-slate-700'
                       }`}
                     >
-                      {num === 6 ? '6+ người' : `${num} người`}
+                      {num === 6 ? l('6+ người', '6+ people') : `${num} ${l('người', 'people')}`}
                     </button>
                   ))}
                 </div>
@@ -293,27 +295,27 @@ export const BtuCalculatorModal: React.FC<BtuCalculatorModalProps> = ({
               <div>
                 <div className="flex items-center gap-2 text-xs text-teal-300 font-bold uppercase tracking-wider mb-2">
                   <Sparkles className="w-4 h-4 text-teal-300" />
-                  Kết quả phân tích nhiệt học
+                  {l('Kết quả phân tích nhiệt học', 'Thermal analysis result')}
                 </div>
 
                 <div className="text-3xl font-extrabold tracking-tight text-white mb-1">
                   {calculatedResult.recommendedHp}
                 </div>
                 <div className="text-xs text-teal-200 mb-4">
-                  Công suất tối ưu: ~<strong>{calculatedResult.recommendedBtu.toLocaleString()} BTU/h</strong>
+                  {l('Công suất tối ưu:', 'Optimal capacity:')} ~<strong>{calculatedResult.recommendedBtu.toLocaleString()} BTU/h</strong>
                 </div>
 
                 <div className="p-3.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/10 space-y-2 mb-6 text-xs text-slate-200">
                   <div className="flex items-center justify-between">
-                    <span>Thể tích phòng:</span>
+                    <span>{l('Thể tích phòng:', 'Room volume:')}</span>
                     <strong className="text-white">{Math.round(area * ceilingHeight)} m³</strong>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span>Tỷ lệ tiết kiệm điện:</span>
+                    <span>{l('Tỷ lệ tiết kiệm điện:', 'Power savings rate:')}</span>
                     <strong className="text-teal-300">Eco-Inverter 65%</strong>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span>Tiết kiệm tiền điện/năm:</span>
+                    <span>{l('Tiết kiệm tiền điện/năm:', 'Electricity savings/year:')}</span>
                     <strong className="text-amber-300">{calculatedResult.estimatedSavingYear}</strong>
                   </div>
                 </div>
@@ -322,7 +324,7 @@ export const BtuCalculatorModal: React.FC<BtuCalculatorModalProps> = ({
                 {calculatedResult.matchingProduct && (
                   <div className="bg-white text-slate-900 rounded-2xl p-4 shadow-lg space-y-3">
                     <span className="text-[10px] font-bold text-teal-700 uppercase tracking-wide">
-                      Model Chillami được đề xuất:
+                      {l('Model Chillami được đề xuất:', 'Recommended Chillami model:')}
                     </span>
                     <div className="flex gap-3 items-center">
                       <img
@@ -335,7 +337,7 @@ export const BtuCalculatorModal: React.FC<BtuCalculatorModalProps> = ({
                           {calculatedResult.matchingProduct.name}
                         </h4>
                         <div className="text-xs text-slate-500">
-                          {calculatedResult.matchingProduct.model} · 5 sao năng lượng
+                          {calculatedResult.matchingProduct.model} {l('· 5 sao năng lượng', '· 5-star energy rating')}
                         </div>
                         <div className="text-sm font-extrabold text-teal-700 mt-1">
                           {new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(
@@ -354,7 +356,7 @@ export const BtuCalculatorModal: React.FC<BtuCalculatorModalProps> = ({
                         className="flex-1 py-2 px-3 bg-teal-700 hover:bg-teal-800 text-white rounded-xl text-xs font-bold transition-colors cursor-pointer flex items-center justify-center gap-1.5 shadow-xs"
                       >
                         <ShoppingBag className="w-3.5 h-3.5" />
-                        <span>Đặt mua ngay</span>
+                        <span>{l('Đặt mua ngay', 'Order now')}</span>
                       </button>
                       <button
                         onClick={() => {
@@ -363,7 +365,7 @@ export const BtuCalculatorModal: React.FC<BtuCalculatorModalProps> = ({
                         }}
                         className="py-2 px-3 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-xl text-xs font-semibold transition-colors cursor-pointer"
                       >
-                        Chi tiết
+                        {l('Chi tiết', 'Details')}
                       </button>
                     </div>
                   </div>
@@ -372,7 +374,7 @@ export const BtuCalculatorModal: React.FC<BtuCalculatorModalProps> = ({
 
               <div className="text-[11px] text-teal-200/80 pt-4 border-t border-white/10 flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-teal-400 shrink-0" />
-                <span>Bao trọn gói ống đồng tiêu chuẩn và công lắp đặt chính hãng</span>
+                <span>{l('Bao trọn gói ống đồng tiêu chuẩn và công lắp đặt chính hãng', 'Includes standard copper piping and official installation')}</span>
               </div>
             </div>
           </div>

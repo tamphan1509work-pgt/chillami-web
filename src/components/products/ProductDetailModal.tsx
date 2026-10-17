@@ -22,6 +22,7 @@ import {
   Palette,
   Maximize2
 } from 'lucide-react';
+import { useLanguage } from '../../context/LanguageContext';
 
 interface ProductDetailModalProps {
   product: Product | null;
@@ -40,6 +41,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
   isCompared,
   onOpenOrderNow,
 }) => {
+  const { l, language } = useLanguage();
   if (!product) return null;
 
   const [activeImage, setActiveImage] = useState(product.image);
@@ -63,7 +65,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
     setQuantity(1);
     setActiveTab('specs');
     setIsPlayingVideo(false);
-  }, [product.id]);
+  }, [product.id, language]);
 
   // If a variant is selected, adjust price
   const currentPrice = React.useMemo(() => {
@@ -98,7 +100,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
           <div className="flex items-center gap-2 text-xs text-slate-500 overflow-hidden">
             <span className="font-bold text-teal-800 uppercase tracking-wider">CHILLAMI</span>
             <ChevronRight className="w-3.5 h-3.5 text-slate-400 shrink-0" />
-            <span className="capitalize">{product.category === 'fan' ? 'Quạt Điện' : product.category === 'ac' ? 'Điều Hòa' : 'Thiết Bị'}</span>
+            <span className="capitalize">{product.category === 'fan' ? l('Quạt Điện', 'Electric Fan') : product.category === 'ac' ? l('Điều Hòa', 'Air Conditioner') : l('Thiết Bị', 'Appliance')}</span>
             <ChevronRight className="w-3.5 h-3.5 text-slate-400 shrink-0" />
             <span className="font-semibold text-slate-800 truncate">{product.model}</span>
           </div>
@@ -106,7 +108,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
           <button
             onClick={onClose}
             className="p-2 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors cursor-pointer"
-            aria-label="Đóng"
+            aria-label={l('Đóng', 'Close')}
           >
             <X className="w-5 h-5" />
           </button>
@@ -128,12 +130,12 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                 <div className="absolute top-3 left-3 flex items-center gap-2 pointer-events-none">
                   {product.discountPercent && (
                     <span className="px-2.5 py-1 text-xs font-bold text-white bg-rose-600 rounded-lg shadow-sm">
-                      Tiết kiệm {product.discountPercent}%
+                      {l('Tiết kiệm', 'Save')} {product.discountPercent}%
                     </span>
                   )}
                   {product.isNew && (
                     <span className="px-2.5 py-1 text-xs font-bold text-white bg-teal-700 rounded-lg shadow-sm">
-                      Mới
+                      {l('Mới', 'New')}
                     </span>
                   )}
                 </div>
@@ -145,7 +147,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                     className="absolute bottom-3 right-3 px-3 py-1.5 bg-slate-900/90 hover:bg-teal-700 text-white rounded-xl shadow-lg backdrop-blur-xs text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
                   >
                     <Play className="w-3.5 h-3.5 fill-white" />
-                    <span>Xem video review {product.videoDuration && `(${product.videoDuration})`}</span>
+                    <span>{l('Xem video review', 'Watch video review')} {product.videoDuration && `(${product.videoDuration})`}</span>
                   </button>
                 )}
               </div>
@@ -173,16 +175,16 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                   <div className="flex items-center gap-2">
                     <Award className="w-5 h-5 text-emerald-700" />
                     <span className="text-xs font-bold text-slate-900">
-                      Chứng nhận tiêu chuẩn năng lượng & an toàn
+                      {l('Chứng nhận tiêu chuẩn năng lượng & an toàn', 'Energy & safety certification')}
                     </span>
                   </div>
                   <span className="text-[10px] font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded-md">
-                    Cấp 5 Sao
+                    {l('Cấp 5 Sao', '5-Star Rating')}
                   </span>
                 </div>
 
                 <div className="text-[11px] text-slate-600 leading-relaxed">
-                  Đạt chuẩn <strong>TCVN 7826:2015</strong> và kiểm định chất lượng <strong>Quacert</strong>. Động cơ DC Inverter tiết kiệm đến <strong>75%</strong> điện năng so với quạt cơ thông thường.
+                  {l('Đạt chuẩn', 'Meets')} <strong>TCVN 7826:2015</strong> {l('và kiểm định chất lượng', 'and certified by')} <strong>Quacert</strong>{l('. Động cơ DC Inverter tiết kiệm đến', '. The DC Inverter motor saves up to')} <strong>75%</strong> {l('điện năng so với quạt cơ thông thường.', 'electricity compared to conventional fans.')}
                 </div>
 
                 <div className="flex flex-wrap gap-1.5 pt-1">
@@ -190,13 +192,13 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                     TCVN 7826:2015
                   </span>
                   <span className="text-[10px] font-semibold text-slate-700 bg-white px-2 py-0.5 rounded border border-slate-200">
-                    Quacert An Toàn
+                    {l('Quacert An Toàn', 'Quacert Safety')}
                   </span>
                   <span className="text-[10px] font-semibold text-slate-700 bg-white px-2 py-0.5 rounded border border-slate-200">
                     ISO 9001:2015
                   </span>
                   <span className="text-[10px] font-semibold text-slate-700 bg-white px-2 py-0.5 rounded border border-slate-200">
-                    RoHS Chuẩn EU
+                    {l('RoHS Chuẩn EU', 'EU RoHS')}
                   </span>
                 </div>
               </div>
@@ -205,18 +207,18 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
               <div className="grid grid-cols-3 gap-2.5 pt-1">
                 <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-100 flex flex-col items-center text-center">
                   <Truck className="w-4 h-4 text-teal-700 mb-1" />
-                  <span className="text-[11px] font-bold text-slate-900">Giao & Lắp 2H</span>
-                  <span className="text-[10px] text-slate-500">Miễn phí tại nhà</span>
+                  <span className="text-[11px] font-bold text-slate-900">{l('Giao & Lắp 2H', '2H Delivery & Install')}</span>
+                  <span className="text-[10px] text-slate-500">{l('Miễn phí tại nhà', 'Free at home')}</span>
                 </div>
                 <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-100 flex flex-col items-center text-center">
                   <RotateCcw className="w-4 h-4 text-teal-700 mb-1" />
-                  <span className="text-[11px] font-bold text-slate-900">1 Đổi 1 Trong 30N</span>
-                  <span className="text-[10px] text-slate-500">Máy mới nguyên seal</span>
+                  <span className="text-[11px] font-bold text-slate-900">{l('1 Đổi 1 Trong 30N', '1-for-1 within 30 days')}</span>
+                  <span className="text-[10px] text-slate-500">{l('Máy mới nguyên seal', 'Brand-new sealed unit')}</span>
                 </div>
                 <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-100 flex flex-col items-center text-center">
                   <ShieldCheck className="w-4 h-4 text-teal-700 mb-1" />
-                  <span className="text-[11px] font-bold text-slate-900">Bảo Hành {product.warrantyMonths}T</span>
-                  <span className="text-[10px] text-slate-500">E-Warranty số hóa</span>
+                  <span className="text-[11px] font-bold text-slate-900">{l('Bảo Hành', 'Warranty')} {product.warrantyMonths}{l('T', 'M')}</span>
+                  <span className="text-[10px] text-slate-500">{l('E-Warranty số hóa', 'Digital E-Warranty')}</span>
                 </div>
               </div>
             </div>
@@ -228,9 +230,9 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                 <div className="flex items-center gap-2 text-xs text-slate-500 mb-1">
                   <span className="font-bold text-teal-700 tracking-wider">MODEL: {product.model}</span>
                   <span aria-hidden="true" className="text-slate-300">·</span>
-                  <span>Chính Hãng Chillami</span>
+                  <span>{l('Chính Hãng Chillami', 'Genuine Chillami')}</span>
                   <span aria-hidden="true" className="text-slate-300">·</span>
-                  <span className="text-emerald-700 font-medium">Sẵn hàng</span>
+                  <span className="text-emerald-700 font-medium">{l('Sẵn hàng', 'In stock')}</span>
                 </div>
 
                 <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight font-display mb-2">
@@ -241,12 +243,12 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                   <div className="flex items-center gap-1 text-xs text-amber-500 font-semibold">
                     <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
                     <span>{product.rating}</span>
-                    <span className="text-slate-400 font-normal">({product.reviewsCount} đánh giá xác thực)</span>
+                    <span className="text-slate-400 font-normal">({product.reviewsCount} {l('đánh giá xác thực', 'verified reviews')})</span>
                   </div>
                   <span className="text-slate-300">|</span>
                   <span className="text-xs text-teal-700 font-medium flex items-center gap-1">
                     <Zap className="w-3.5 h-3.5" />
-                    Động cơ BLDC êm 13dB
+                    {l('Động cơ BLDC êm 13dB', 'Quiet 13dB BLDC motor')}
                   </span>
                 </div>
 
@@ -258,13 +260,13 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                     </div>
                     {product.originalPrice > product.price && (
                       <div className="text-xs text-slate-500 line-through mt-0.5">
-                        Giá niêm yết: {formatPrice(product.originalPrice)}
+                        {l('Giá niêm yết:', 'List price:')} {formatPrice(product.originalPrice)}
                       </div>
                     )}
                   </div>
 
                   <span className="text-xs font-bold text-teal-900 bg-teal-100/90 px-3 py-1 rounded-lg">
-                    Đã gồm VAT & Công lắp 0đ
+                    {l('Đã gồm VAT & Công lắp 0đ', 'VAT included & free installation')}
                   </span>
                 </div>
 
@@ -275,9 +277,9 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                     <div className="flex items-center justify-between text-xs">
                       <span className="font-bold text-slate-900 flex items-center gap-1">
                         <Palette className="w-3.5 h-3.5 text-teal-700" />
-                        Màu sắc: <strong className="text-teal-800">{selectedColor}</strong>
+                        {l('Màu sắc:', 'Color:')} <strong className="text-teal-800">{selectedColor}</strong>
                       </span>
-                      <span className="text-[11px] text-slate-500">{product.colorOptions.length} màu</span>
+                      <span className="text-[11px] text-slate-500">{product.colorOptions.length} {l('màu', 'colors')}</span>
                     </div>
 
                     <div className="flex items-center gap-3">
@@ -307,9 +309,9 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                   <div className="mb-5 space-y-2">
                     <div className="flex items-center justify-between text-xs">
                       <span className="font-bold text-slate-900">
-                        Chọn phiên bản & cấu hình:
+                        {l('Chọn phiên bản & cấu hình:', 'Choose version & configuration:')}
                       </span>
-                      <span className="text-[11px] text-teal-700 font-semibold">Bảo hành chính hãng 100%</span>
+                      <span className="text-[11px] text-teal-700 font-semibold">{l('Bảo hành chính hãng 100%', '100% official warranty')}</span>
                     </div>
 
                     <div className="space-y-2">
@@ -332,14 +334,14 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                                 </span>
                               )}
                             </div>
-                            <div className="text-[11px] text-slate-500">Mã SKU: {v.sku}</div>
+                            <div className="text-[11px] text-slate-500">{l('Mã SKU:', 'SKU:')} {v.sku}</div>
                           </div>
 
                           <div className="text-right">
                             <div className="text-teal-700 font-extrabold text-sm">{formatPrice(v.price)}</div>
                             {selectedVariant === v.value && (
                               <div className="text-[10px] text-teal-600 font-semibold flex items-center justify-end gap-1">
-                                <Check className="w-3 h-3" /> Đang chọn
+                                <Check className="w-3 h-3" /> {l('Đang chọn', 'Selected')}
                               </div>
                             )}
                           </div>
@@ -389,14 +391,14 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                     className="flex-1 py-3 px-4 rounded-xl border border-teal-700 text-teal-800 hover:bg-teal-50 text-xs font-bold transition-all flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <ShoppingBag className="w-4 h-4 text-teal-700" />
-                    <span>Thêm vào giỏ</span>
+                    <span>{l('Thêm vào giỏ', 'Add to cart')}</span>
                   </button>
 
                   <button
                     onClick={() => onOpenOrderNow(product, quantity, selectedVariant)}
                     className="flex-1 py-3 px-4 rounded-xl bg-teal-700 hover:bg-teal-800 active:bg-teal-900 text-white text-xs font-bold shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
                   >
-                    <span>Mua ngay</span>
+                    <span>{l('Mua ngay', 'Buy now')}</span>
                   </button>
                 </div>
 
@@ -408,7 +410,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                     }`}
                   >
                     <GitCompare className="w-4 h-4 text-teal-700" />
-                    <span>{isCompared ? 'Đã thêm vào so sánh' : 'So sánh với sản phẩm khác'}</span>
+                    <span>{isCompared ? l('Đã thêm vào so sánh', 'Added to comparison') : l('So sánh với sản phẩm khác', 'Compare with other products')}</span>
                   </button>
 
                   <button
@@ -416,7 +418,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                     className="inline-flex items-center gap-1.5 text-xs font-medium text-slate-500 hover:text-teal-700 cursor-pointer"
                   >
                     <FileDown className="w-4 h-4" />
-                    <span>{downloadSuccess ? '✓ Đã tải HDSD (PDF)' : 'Tải tài liệu HDSD (PDF)'}</span>
+                    <span>{downloadSuccess ? l('✓ Đã tải HDSD (PDF)', '✓ Manual downloaded (PDF)') : l('Tải tài liệu HDSD (PDF)', 'Download user manual (PDF)')}</span>
                   </button>
                 </div>
               </div>
@@ -432,7 +434,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                   activeTab === 'specs' ? 'text-teal-800' : 'text-slate-500 hover:text-slate-900'
                 }`}
               >
-                Thông Số Kỹ Thuật
+                {l('Thông Số Kỹ Thuật', 'Specifications')}
                 {activeTab === 'specs' && (
                   <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-teal-700 rounded-full" />
                 )}
@@ -444,7 +446,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                   activeTab === 'features' ? 'text-teal-800' : 'text-slate-500 hover:text-slate-900'
                 }`}
               >
-                Đặc Điểm Nổi Bật
+                {l('Đặc Điểm Nổi Bật', 'Key Features')}
                 {activeTab === 'features' && (
                   <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-teal-700 rounded-full" />
                 )}
@@ -458,7 +460,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                 }`}
               >
                 <Award className="w-4 h-4 text-emerald-600" />
-                <span>Nhãn Năng Lượng & Chứng Nhận</span>
+                <span>{l('Nhãn Năng Lượng & Chứng Nhận', 'Energy Label & Certificates')}</span>
                 {activeTab === 'energy' && (
                   <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-emerald-600 rounded-full" />
                 )}
@@ -472,7 +474,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                 }`}
               >
                 <Play className="w-3.5 h-3.5 fill-current text-rose-600" />
-                <span>Video Trải Nghiệm</span>
+                <span>{l('Video Trải Nghiệm', 'Hands-on Video')}</span>
                 {activeTab === 'video' && (
                   <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-rose-600 rounded-full" />
                 )}
@@ -484,7 +486,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                   activeTab === 'reviews' ? 'text-teal-800' : 'text-slate-500 hover:text-slate-900'
                 }`}
               >
-                Đánh Giá ({product.reviewsCount})
+                {l('Đánh Giá', 'Reviews')} ({product.reviewsCount})
                 {activeTab === 'reviews' && (
                   <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-teal-700 rounded-full" />
                 )}
@@ -518,10 +520,10 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
             {activeTab === 'features' && (
               <div className="space-y-4 text-xs text-slate-700 leading-relaxed bg-slate-50 rounded-2xl p-6 border border-slate-200/80">
                 <h4 className="font-bold text-sm text-slate-900">
-                  Tại sao nên chọn {product.name}?
+                  {l('Tại sao nên chọn', 'Why choose')} {product.name}?
                 </h4>
                 <p>
-                  Thiết bị được thiết kế dựa trên thói quen sinh hoạt và không gian sống của gia đình Việt hiện đại. Động cơ tối ưu điện năng, hệ thống an toàn đa tầng và vật liệu tuyển chọn giúp thiết bị hoạt động êm ái, bền bỉ qua nhiều năm.
+                  {l('Thiết bị được thiết kế dựa trên thói quen sinh hoạt và không gian sống của gia đình Việt hiện đại. Động cơ tối ưu điện năng, hệ thống an toàn đa tầng và vật liệu tuyển chọn giúp thiết bị hoạt động êm ái, bền bỉ qua nhiều năm.', 'Designed around the daily habits and living spaces of modern Vietnamese families. An energy-optimized motor, multi-layer safety system and carefully selected materials keep it running quietly and reliably for years.')}
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
                   {product.features.map((feat, i) => (
@@ -542,7 +544,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                   <div className="p-6 rounded-2xl bg-gradient-to-br from-emerald-600 to-teal-700 text-white relative overflow-hidden shadow-lg flex flex-col justify-between">
                     <div className="space-y-3">
                       <div className="text-[11px] font-bold uppercase tracking-wider text-emerald-200">
-                        NHÃN NĂNG LƯỢNG BỘ CÔNG THƯƠNG
+                        {l('NHÃN NĂNG LƯỢNG BỘ CÔNG THƯƠNG', 'MINISTRY OF INDUSTRY AND TRADE ENERGY LABEL')}
                       </div>
 
                       <div className="flex items-center gap-1 text-amber-300">
@@ -552,16 +554,16 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                       </div>
 
                       <div className="text-2xl font-black tracking-tight">
-                        CẤP 5 SAO CAO NHẤT
+                        {l('CẤP 5 SAO CAO NHẤT', 'TOP 5-STAR RATING')}
                       </div>
 
                       <p className="text-xs text-emerald-100 leading-relaxed">
-                        Đạt tiêu chuẩn quốc gia TCVN 7826:2015 về hiệu suất năng lượng của thiết bị gia dụng tại Việt Nam.
+                        {l('Đạt tiêu chuẩn quốc gia TCVN 7826:2015 về hiệu suất năng lượng của thiết bị gia dụng tại Việt Nam.', 'Meets Vietnam\'s national standard TCVN 7826:2015 for household appliance energy efficiency.')}
                       </p>
                     </div>
 
                     <div className="mt-6 pt-4 border-t border-emerald-500/60 flex items-center justify-between text-xs">
-                      <span>Hiệu suất tối đa:</span>
+                      <span>{l('Hiệu suất tối đa:', 'Maximum efficiency:')}</span>
                       <strong className="text-amber-200 text-sm">
                         {product.energyLabel?.efficiencyRatio || '2.95 m³/min.W'}
                       </strong>
@@ -573,36 +575,36 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                     <div className="flex items-center justify-between">
                       <h4 className="text-sm font-bold text-slate-900 flex items-center gap-2">
                         <Zap className="w-4 h-4 text-amber-500" />
-                        Bảng Tính Tiền Điện & Tiết Kiệm Năng Lượng
+                        {l('Bảng Tính Tiền Điện & Tiết Kiệm Năng Lượng', 'Electricity Cost & Energy Savings Calculator')}
                       </h4>
                       <span className="text-xs text-emerald-700 font-bold bg-emerald-50 px-2.5 py-1 rounded-lg">
-                        Tiết kiệm ~75% điện năng
+                        {l('Tiết kiệm ~75% điện năng', 'Save ~75% electricity')}
                       </span>
                     </div>
 
                     <div className="grid grid-cols-2 gap-4 pt-2">
                       <div className="p-4 rounded-xl bg-slate-50 border border-slate-200">
-                        <div className="text-xs text-slate-500 mb-1">Quạt điện thường (AC Motor 65W)</div>
-                        <div className="text-lg font-bold text-slate-700">~68.000đ - 85.000đ</div>
-                        <div className="text-[11px] text-slate-400 mt-1">Chi phí ước tính / tháng (12h/ngày)</div>
+                        <div className="text-xs text-slate-500 mb-1">{l('Quạt điện thường (AC Motor 65W)', 'Conventional fan (AC Motor 65W)')}</div>
+                        <div className="text-lg font-bold text-slate-700">{l('~68.000đ - 85.000đ', '~68,000đ - 85,000đ')}</div>
+                        <div className="text-[11px] text-slate-400 mt-1">{l('Chi phí ước tính / tháng (12h/ngày)', 'Estimated cost / month (12h/day)')}</div>
                       </div>
 
                       <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-200">
                         <div className="text-xs text-emerald-800 font-semibold mb-1">Chillami BLDC DC Inverter (28W)</div>
-                        <div className="text-lg font-bold text-emerald-900">~18.000đ - 25.000đ</div>
-                        <div className="text-[11px] text-emerald-700 font-medium mt-1">Chỉ tốn ~600đ mỗi ngày!</div>
+                        <div className="text-lg font-bold text-emerald-900">{l('~18.000đ - 25.000đ', '~18,000đ - 25,000đ')}</div>
+                        <div className="text-[11px] text-emerald-700 font-medium mt-1">{l('Chỉ tốn ~600đ mỗi ngày!', 'Only ~600đ per day!')}</div>
                       </div>
                     </div>
 
                     {/* Official Certifications Badges */}
                     <div className="pt-3 border-t border-slate-100">
-                      <div className="text-xs font-bold text-slate-800 mb-2">Chứng chỉ chất lượng đã được cấp:</div>
+                      <div className="text-xs font-bold text-slate-800 mb-2">{l('Chứng chỉ chất lượng đã được cấp:', 'Quality certificates awarded:')}</div>
                       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
                         <div className="p-2.5 rounded-lg bg-slate-50 border border-slate-200/70 flex items-center gap-2">
                           <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
                           <div>
                             <div className="font-bold text-slate-800 text-[11px]">TCVN 7826</div>
-                            <div className="text-[10px] text-slate-500">Hiệu suất 5 sao</div>
+                            <div className="text-[10px] text-slate-500">{l('Hiệu suất 5 sao', '5-star efficiency')}</div>
                           </div>
                         </div>
 
@@ -610,7 +612,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                           <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
                           <div>
                             <div className="font-bold text-slate-800 text-[11px]">Quacert</div>
-                            <div className="text-[10px] text-slate-500">An toàn điện lực</div>
+                            <div className="text-[10px] text-slate-500">{l('An toàn điện lực', 'Electrical safety')}</div>
                           </div>
                         </div>
 
@@ -618,7 +620,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                           <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
                           <div>
                             <div className="font-bold text-slate-800 text-[11px]">ISO 9001:2015</div>
-                            <div className="text-[10px] text-slate-500">Hệ thống chất lượng</div>
+                            <div className="text-[10px] text-slate-500">{l('Hệ thống chất lượng', 'Quality management')}</div>
                           </div>
                         </div>
 
@@ -626,7 +628,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                           <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
                           <div>
                             <div className="font-bold text-slate-800 text-[11px]">CE & RoHS</div>
-                            <div className="text-[10px] text-slate-500">Chuẩn châu Âu</div>
+                            <div className="text-[10px] text-slate-500">{l('Chuẩn châu Âu', 'European standard')}</div>
                           </div>
                         </div>
                       </div>
@@ -642,10 +644,10 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                   <div>
                     <h4 className="text-sm font-bold text-slate-900">
-                      {product.videoTitle || `Video đánh giá thực tế & thử nghiệm ${product.name}`}
+                      {product.videoTitle || l(`Video đánh giá thực tế & thử nghiệm ${product.name}`, `Hands-on review & test video: ${product.name}`)}
                     </h4>
                     <p className="text-xs text-slate-500">
-                      Xem thực tế góc quay 360°, test độ ồn 13dB và hướng dẫn kết nối thông minh
+                      {l('Xem thực tế góc quay 360°, test độ ồn 13dB và hướng dẫn kết nối thông minh', 'See it in 360°, a 13dB noise test and the smart pairing guide')}
                     </p>
                   </div>
 
@@ -657,7 +659,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                         activeVideoDemo === 'noise' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-600'
                       }`}
                     >
-                      Độ ồn 13dB
+                      {l('Độ ồn 13dB', '13dB noise')}
                     </button>
                     <button
                       onClick={() => setActiveVideoDemo('unboxing')}
@@ -665,7 +667,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                         activeVideoDemo === 'unboxing' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-600'
                       }`}
                     >
-                      Mở hộp & Lắp ráp
+                      {l('Mở hộp & Lắp ráp', 'Unboxing & Assembly')}
                     </button>
                     <button
                       onClick={() => setActiveVideoDemo('iot')}
@@ -673,7 +675,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                         activeVideoDemo === 'iot' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-600'
                       }`}
                     >
-                      Điều khiển App
+                      {l('Điều khiển App', 'App control')}
                     </button>
                   </div>
                 </div>
@@ -693,13 +695,13 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                   <div className="absolute top-4 left-4 bg-slate-950/80 backdrop-blur-md px-3.5 py-2 rounded-xl border border-slate-700/70 text-white space-y-1">
                     <div className="flex items-center gap-2 text-xs font-mono text-teal-300">
                       <Volume2 className="w-4 h-4 text-teal-400 animate-pulse" />
-                      <span>ĐO ĐỘ ỒN PHÒNG THỬ NGHIỆM</span>
+                      <span>{l('ĐO ĐỘ ỒN PHÒNG THỬ NGHIỆM', 'LAB NOISE MEASUREMENT')}</span>
                     </div>
                     <div className="text-xl font-mono font-bold text-white flex items-baseline gap-1">
                       {isPlayingVideo ? '13.2' : '12.8'} <span className="text-xs text-slate-400">dB(A)</span>
                     </div>
                     <div className="text-[10px] text-emerald-400 font-sans">
-                      Êm hơn tiếng lá rơi (20dB) · Tuyệt đối không rung lắc
+                      {l('Êm hơn tiếng lá rơi (20dB) · Tuyệt đối không rung lắc', 'Quieter than falling leaves (20dB) · Absolutely no wobble')}
                     </div>
                   </div>
 
@@ -709,7 +711,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                       <button
                         onClick={() => setIsPlayingVideo(true)}
                         className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-teal-500/90 hover:bg-teal-400 text-slate-950 flex items-center justify-center shadow-2xl transition-transform hover:scale-110 cursor-pointer pl-1 group"
-                        aria-label="Phát video"
+                        aria-label={l('Phát video', 'Play video')}
                       >
                         <Play className="w-8 h-8 sm:w-10 sm:h-10 fill-slate-950 group-hover:scale-105 transition-transform" />
                       </button>
@@ -717,7 +719,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                       <button
                         onClick={() => setIsPlayingVideo(false)}
                         className="w-14 h-14 rounded-full bg-slate-900/80 hover:bg-slate-900 text-white flex items-center justify-center shadow-lg transition-transform hover:scale-105 cursor-pointer"
-                        aria-label="Tạm dừng"
+                        aria-label={l('Tạm dừng', 'Pause')}
                       >
                         <Pause className="w-6 h-6 fill-white" />
                       </button>
@@ -740,7 +742,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                           onClick={() => setIsPlayingVideo(!isPlayingVideo)}
                           className="hover:text-teal-400 cursor-pointer font-bold"
                         >
-                          {isPlayingVideo ? 'Tạm dừng' : 'Phát'}
+                          {isPlayingVideo ? l('Tạm dừng', 'Pause') : l('Phát', 'Play')}
                         </button>
                         <span className="text-slate-400 font-mono">
                           {isPlayingVideo ? '02:40 / 04:15' : '00:00 / 04:15'}
@@ -749,7 +751,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 
                       <div className="flex items-center gap-3 text-slate-400 text-[11px]">
                         <span className="text-teal-400 font-semibold">HD 1080p 60fps</span>
-                        <span>Âm thanh trường thực</span>
+                        <span>{l('Âm thanh trường thực', 'Real ambient sound')}</span>
                       </div>
                     </div>
                   </div>
@@ -757,16 +759,16 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 text-xs">
                   <div className="p-3 bg-slate-50 rounded-xl border border-slate-200">
-                    <div className="font-bold text-slate-900 mb-0.5">1. Khẩu độ gió khí động học</div>
-                    <div className="text-slate-600 text-[11px]">Cánh 7 lá vát nghiêng 23 độ tạo gió xoắn mềm không bạt mặt.</div>
+                    <div className="font-bold text-slate-900 mb-0.5">{l('1. Khẩu độ gió khí động học', '1. Aerodynamic air aperture')}</div>
+                    <div className="text-slate-600 text-[11px]">{l('Cánh 7 lá vát nghiêng 23 độ tạo gió xoắn mềm không bạt mặt.', '7 blades angled at 23 degrees create a soft swirling breeze that never blasts your face.')}</div>
                   </div>
                   <div className="p-3 bg-slate-50 rounded-xl border border-slate-200">
-                    <div className="font-bold text-slate-900 mb-0.5">2. Bạc đạn Bearing cao cấp</div>
-                    <div className="text-slate-600 text-[11px]">Triệt tiêu ma sát, hoạt động liên tục 10.000 giờ không phát nóng.</div>
+                    <div className="font-bold text-slate-900 mb-0.5">{l('2. Bạc đạn Bearing cao cấp', '2. Premium ball bearings')}</div>
+                    <div className="text-slate-600 text-[11px]">{l('Triệt tiêu ma sát, hoạt động liên tục 10.000 giờ không phát nóng.', 'Eliminates friction, runs 10,000 hours continuously without overheating.')}</div>
                   </div>
                   <div className="p-3 bg-slate-50 rounded-xl border border-slate-200">
-                    <div className="font-bold text-slate-900 mb-0.5">3. Thao tác lắp ráp 3 phút</div>
-                    <div className="text-slate-600 text-[11px]">Khóa cài thông minh tháo lắp vệ sinh bằng tay không cần kìm vít.</div>
+                    <div className="font-bold text-slate-900 mb-0.5">{l('3. Thao tác lắp ráp 3 phút', '3. 3-minute assembly')}</div>
+                    <div className="text-slate-600 text-[11px]">{l('Khóa cài thông minh tháo lắp vệ sinh bằng tay không cần kìm vít.', 'Smart clips let you take it apart for cleaning by hand – no tools needed.')}</div>
                   </div>
                 </div>
               </div>
@@ -778,7 +780,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                 <div className="p-4 bg-teal-50/50 rounded-2xl border border-teal-100 flex items-center justify-between">
                   <div>
                     <div className="text-2xl font-extrabold text-slate-900">{product.rating} / 5.0</div>
-                    <div className="text-xs text-slate-500">Dựa trên {product.reviewsCount} khách hàng đã mua và kích hoạt bảo hành</div>
+                    <div className="text-xs text-slate-500">{l('Dựa trên', 'Based on')} {product.reviewsCount} {l('khách hàng đã mua và kích hoạt bảo hành', 'customers who bought and activated their warranty')}</div>
                   </div>
                   <div className="flex text-amber-400">
                     {[1, 2, 3, 4, 5].map((s) => (
@@ -790,8 +792,8 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                 <div className="space-y-3">
                   <div className="p-4 rounded-xl border border-slate-200 bg-white space-y-1.5">
                     <div className="flex items-center justify-between text-xs">
-                      <span className="font-bold text-slate-900">Anh Tuấn (Hà Nội)</span>
-                      <span className="text-slate-400">2 ngày trước · Đã mua hàng</span>
+                      <span className="font-bold text-slate-900">{l('Anh Tuấn (Hà Nội)', 'Mr. Tuan (Hanoi)')}</span>
+                      <span className="text-slate-400">{l('2 ngày trước · Đã mua hàng', '2 days ago · Verified purchase')}</span>
                     </div>
                     <div className="flex text-amber-400">
                       {[1, 2, 3, 4, 5].map((s) => (
@@ -799,14 +801,14 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                       ))}
                     </div>
                     <p className="text-xs text-slate-600">
-                      Giao hàng rất nhanh, thợ đến lắp đặt cẩn thận và hướng dẫn kích hoạt bảo hành điện tử ngay trên điện thoại. Quạt chạy cực êm ban đêm không nghe thấy tiếng gió rít.
+                      {l('Giao hàng rất nhanh, thợ đến lắp đặt cẩn thận và hướng dẫn kích hoạt bảo hành điện tử ngay trên điện thoại. Quạt chạy cực êm ban đêm không nghe thấy tiếng gió rít.', 'Very fast delivery; the technician installed it carefully and showed me how to activate the e-warranty on my phone. The fan is extremely quiet at night – no whistling at all.')}
                     </p>
                   </div>
 
                   <div className="p-4 rounded-xl border border-slate-200 bg-white space-y-1.5">
                     <div className="flex items-center justify-between text-xs">
-                      <span className="font-bold text-slate-900">Chị Hoàng Lan (TP.HCM)</span>
-                      <span className="text-slate-400">1 tuần trước · Đã mua hàng</span>
+                      <span className="font-bold text-slate-900">{l('Chị Hoàng Lan (TP.HCM)', 'Ms. Hoang Lan (HCMC)')}</span>
+                      <span className="text-slate-400">{l('1 tuần trước · Đã mua hàng', '1 week ago · Verified purchase')}</span>
                     </div>
                     <div className="flex text-amber-400">
                       {[1, 2, 3, 4, 5].map((s) => (
@@ -814,7 +816,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                       ))}
                     </div>
                     <p className="text-xs text-slate-600">
-                      Thiết kế tối giản rất hợp với căn hộ chung cư mới của nhà mình. Cảm biến rất nhạy, tiết kiệm điện rõ rệt.
+                      {l('Thiết kế tối giản rất hợp với căn hộ chung cư mới của nhà mình. Cảm biến rất nhạy, tiết kiệm điện rõ rệt.', 'The minimalist design suits our new apartment perfectly. The sensor is very responsive and the power savings are obvious.')}
                     </p>
                   </div>
                 </div>

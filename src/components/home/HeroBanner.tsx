@@ -21,7 +21,7 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
   onExploreProducts,
   onOpenBtuCalc,
 }) => {
-  const { language, t } = useLanguage();
+  const { language, t, l } = useLanguage();
   const [activeTab, setActiveTab] = useState<'bldc' | 'inverter' | 'igbt' | 'titanium'>('bldc');
 
   const highlights = {
@@ -253,7 +253,7 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
               <div className="pt-4 mt-4 border-t border-slate-700/60 flex items-center justify-between">
                 <span className="text-xs text-slate-400 flex items-center gap-1">
                   <VolumeX className="w-3.5 h-3.5 text-teal-400" />
-                  Chuẩn vận hành êm ái
+                  {l('Chuẩn vận hành êm ái', 'Whisper-quiet operation standard')}
                 </span>
                 <button
                   onClick={onExploreProducts}

@@ -11,6 +11,7 @@ import {
   Truck,
   Sparkles
 } from 'lucide-react';
+import { useLanguage } from '../../context/LanguageContext';
 
 interface CartDrawerProps {
   isOpen: boolean;
@@ -33,6 +34,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
   onAddUpsell,
   upsellProducts,
 }) => {
+  const { l, translateProduct, translateVariant } = useLanguage();
   if (!isOpen) return null;
 
   const totalAmount = items.reduce(
@@ -52,7 +54,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
           <div className="flex items-center gap-2">
             <ShoppingBag className="w-5 h-5 text-teal-700" />
             <h3 className="text-base font-bold text-slate-900">
-              Giỏ Hàng Của Bạn ({items.reduce((s, i) => s + i.quantity, 0)})
+              {l('Giỏ Hàng Của Bạn', 'Your Cart')} ({items.reduce((s, i) => s + i.quantity, 0)})
             </h3>
           </div>
 
@@ -68,7 +70,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
         <div className="bg-teal-50 px-6 py-2.5 border-b border-teal-100 flex items-center gap-2 text-xs text-teal-900">
           <Truck className="w-4 h-4 text-teal-700 shrink-0" />
           <span>
-            Đơn hàng của bạn <strong>được miễn phí giao & lắp đặt tiêu chuẩn</strong>!
+            {l('Đơn hàng của bạn', 'Your order')} <strong>{l('được miễn phí giao & lắp đặt tiêu chuẩn', 'qualifies for free standard delivery & installation')}</strong>!
           </span>
         </div>
 
@@ -77,15 +79,15 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
           {items.length === 0 ? (
             <div className="py-20 text-center">
               <ShoppingBag className="w-16 h-16 text-slate-200 mx-auto mb-3" />
-              <h4 className="text-sm font-bold text-slate-800">Giỏ hàng đang trống</h4>
+              <h4 className="text-sm font-bold text-slate-800">{l('Giỏ hàng đang trống', 'Your cart is empty')}</h4>
               <p className="text-xs text-slate-500 mt-1 max-w-xs mx-auto">
-                Hãy khám phá các thiết bị điện gia dụng thông minh của Chillami và thêm vào giỏ.
+                {l('Hãy khám phá các thiết bị điện gia dụng thông minh của Chillami và thêm vào giỏ.', 'Explore Chillami\'s smart home appliances and add them to your cart.')}
               </p>
               <button
                 onClick={onClose}
                 className="mt-4 px-4 py-2 bg-teal-700 hover:bg-teal-800 text-white rounded-xl text-xs font-bold transition-colors cursor-pointer"
               >
-                Tiếp tục mua sắm
+                {l('Tiếp tục mua sắm', 'Continue shopping')}
               </button>
             </div>
           ) : (
@@ -97,17 +99,17 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                 >
                   <img
                     src={item.product.image}
-                    alt={item.product.name}
+                    alt={translateProduct(item.product).name}
                     className="w-16 h-16 rounded-xl object-cover bg-white shrink-0"
                   />
 
                   <div className="flex-1 min-w-0">
                     <h4 className="text-xs font-bold text-slate-900 truncate">
-                      {item.product.name}
+                      {translateProduct(item.product).name}
                     </h4>
                     {item.selectedVariant && (
                       <div className="text-[11px] text-teal-700 font-medium">
-                        Phân loại: {item.selectedVariant}
+                        {l('Phân loại:', 'Option:')} {translateVariant(item.product, item.selectedVariant)}
                       </div>
                     )}
                     <div className="text-xs font-bold text-slate-900 mt-0.5">
@@ -149,7 +151,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                       <button
                         onClick={() => onRemoveItem(item.product.id, item.selectedVariant)}
                         className="text-slate-400 hover:text-rose-600 transition-colors p-1"
-                        title="Xóa"
+                        title={l('Xóa', 'Remove')}
                       >
                         <Trash2 className="w-3.5 h-3.5" />
                       </button>
@@ -163,7 +165,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                 <div className="pt-4 border-t border-slate-200 mt-4">
                   <div className="flex items-center gap-1.5 text-xs font-bold text-slate-900 mb-2">
                     <Sparkles className="w-3.5 h-3.5 text-teal-700" />
-                    <span>Thường được mua kèm cùng thiết bị:</span>
+                    <span>{l('Thường được mua kèm cùng thiết bị:', 'Frequently bought together:')}</span>
                   </div>
                   <div className="space-y-2">
                     {upsellProducts.slice(0, 2).map((up) => (
@@ -190,7 +192,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                           onClick={() => onAddUpsell(up)}
                           className="px-2.5 py-1 bg-teal-50 hover:bg-teal-100 text-teal-800 text-[11px] font-bold rounded-lg transition-colors cursor-pointer shrink-0"
                         >
-                          + Thêm
+                          {l('+ Thêm', '+ Add')}
                         </button>
                       </div>
                     ))}
@@ -206,15 +208,15 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
           <div className="p-6 border-t border-slate-200 bg-slate-50/80 space-y-4">
             <div className="space-y-1.5 text-xs">
               <div className="flex justify-between text-slate-500">
-                <span>Tạm tính ({items.length} món):</span>
+                <span>{l('Tạm tính', 'Subtotal')} ({items.length} {l('món):', 'items):')}</span>
                 <span>{formatPrice(totalAmount)}</span>
               </div>
               <div className="flex justify-between text-slate-500">
-                <span>Phí vận chuyển & Lắp đặt:</span>
-                <span className="text-emerald-700 font-semibold">Miễn phí 100%</span>
+                <span>{l('Phí vận chuyển & Lắp đặt:', 'Delivery & installation:')}</span>
+                <span className="text-emerald-700 font-semibold">{l('Miễn phí 100%', '100% free')}</span>
               </div>
               <div className="flex justify-between text-base font-extrabold text-slate-900 pt-2 border-t border-slate-200">
-                <span>Tổng thanh toán:</span>
+                <span>{l('Tổng thanh toán:', 'Total:')}</span>
                 <span className="text-teal-800 tracking-tight">{formatPrice(totalAmount)}</span>
               </div>
             </div>
@@ -226,13 +228,13 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
               }}
               className="w-full py-3.5 bg-teal-700 hover:bg-teal-800 text-white font-bold rounded-xl shadow-md transition-all cursor-pointer flex items-center justify-center gap-2 text-sm"
             >
-              <span>Tiến hành đặt hàng</span>
+              <span>{l('Tiến hành đặt hàng', 'Proceed to checkout')}</span>
               <ArrowRight className="w-4 h-4" />
             </button>
 
             <div className="flex items-center justify-center gap-2 text-[11px] text-slate-400">
               <ShieldCheck className="w-3.5 h-3.5 text-teal-600" />
-              <span>Bảo mật giao dịch SSL · Kiểm tra hàng trước khi trả tiền</span>
+              <span>{l('Bảo mật giao dịch SSL · Kiểm tra hàng trước khi trả tiền', 'SSL-secured checkout · Inspect before you pay')}</span>
             </div>
           </div>
         )}

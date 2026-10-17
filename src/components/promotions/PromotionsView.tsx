@@ -12,6 +12,7 @@ import {
   Sparkles,
   ArrowRight
 } from 'lucide-react';
+import { useLanguage } from '../../context/LanguageContext';
 
 interface PromotionsViewProps {
   products: Product[];
@@ -28,6 +29,7 @@ export const PromotionsView: React.FC<PromotionsViewProps> = ({
   onToggleCompare,
   comparedProductIds,
 }) => {
+  const { l } = useLanguage();
   const [copiedCode, setCopiedCode] = useState<string | null>(null);
 
   const promoProducts = products.filter(
@@ -37,21 +39,21 @@ export const PromotionsView: React.FC<PromotionsViewProps> = ({
   const vouchers = [
     {
       code: 'CHILLAMI2026',
-      discount: 'Giảm 200.000 đ',
-      condition: 'Cho đơn hàng từ 2.000.000 đ',
-      expiry: 'Hạn dùng: 31/12/2026',
+      discount: l('Giảm 200.000 đ', '200,000đ off'),
+      condition: l('Cho đơn hàng từ 2.000.000 đ', 'For orders from 2,000,000đ'),
+      expiry: l('Hạn dùng: 31/12/2026', 'Valid until: 31/12/2026'),
     },
     {
       code: 'COMBOVIP',
-      discount: 'Giảm 500.000 đ',
-      condition: 'Khi mua combo Điều hòa + Quạt BLDC',
-      expiry: 'Hạn dùng: 31/12/2026',
+      discount: l('Giảm 500.000 đ', '500,000đ off'),
+      condition: l('Khi mua combo Điều hòa + Quạt BLDC', 'With an AC + BLDC fan combo'),
+      expiry: l('Hạn dùng: 31/12/2026', 'Valid until: 31/12/2026'),
     },
     {
       code: 'FREESHIP2H',
-      discount: 'Miễn phí lắp đặt',
-      condition: 'Bao trọn vật tư tiêu chuẩn',
-      expiry: 'Áp dụng tự động',
+      discount: l('Miễn phí lắp đặt', 'Free installation'),
+      condition: l('Bao trọn vật tư tiêu chuẩn', 'All standard materials included'),
+      expiry: l('Áp dụng tự động', 'Applied automatically'),
     },
   ];
 
@@ -69,13 +71,13 @@ export const PromotionsView: React.FC<PromotionsViewProps> = ({
           <div className="relative z-10 max-w-2xl space-y-4">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-500/20 text-rose-300 font-bold text-xs border border-rose-500/30">
               <Flame className="w-4 h-4 text-rose-400" />
-              Chương trình ưu đãi độc quyền 2026
+              {l('Chương trình ưu đãi độc quyền 2026', 'Exclusive 2026 promotions')}
             </span>
             <h1 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight font-display">
-              Đại Tiệc Mùa Hè: Sống Mát Lành, Không Lo Hóa Đơn Điện
+              {l('Đại Tiệc Mùa Hè: Sống Mát Lành, Không Lo Hóa Đơn Điện', 'Summer Sale: Stay Cool Without Worrying About Power Bills')}
             </h1>
             <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-              Trợ giá trực tiếp lên đến 30% cho toàn bộ dòng Quạt BLDC SoftAir, Điều hòa Inverter thế hệ mới. Miễn phí công lắp đặt tiêu chuẩn trị giá 500.000 đ.
+              {l('Trợ giá trực tiếp lên đến 30% cho toàn bộ dòng Quạt BLDC SoftAir, Điều hòa Inverter thế hệ mới. Miễn phí công lắp đặt tiêu chuẩn trị giá 500.000 đ.', 'Direct discounts of up to 30% on the entire BLDC SoftAir fan and new-generation Inverter AC ranges. Free standard installation worth 500,000đ.')}
             </p>
           </div>
         </div>
@@ -85,7 +87,7 @@ export const PromotionsView: React.FC<PromotionsViewProps> = ({
           <div className="flex items-center gap-2 mb-4">
             <Tag className="w-5 h-5 text-teal-700" />
             <h3 className="text-base font-bold text-slate-900">
-              Mã Giảm Giá Độc Quyền Khi Mua Online
+              {l('Mã Giảm Giá Độc Quyền Khi Mua Online', 'Exclusive Online Discount Codes')}
             </h3>
           </div>
 
@@ -109,7 +111,7 @@ export const PromotionsView: React.FC<PromotionsViewProps> = ({
                   {copiedCode === v.code ? (
                     <>
                       <Check className="w-3.5 h-3.5 text-teal-700" />
-                      <span>Đã chép</span>
+                      <span>{l('Đã chép', 'Copied')}</span>
                     </>
                   ) : (
                     <>
@@ -131,13 +133,13 @@ export const PromotionsView: React.FC<PromotionsViewProps> = ({
             </div>
             <div>
               <span className="text-[10px] font-bold text-amber-700 uppercase">
-                Chính sách Trade-in
+                {l('Chính sách Trade-in', 'Trade-in policy')}
               </span>
               <h4 className="text-base font-bold text-slate-900 mt-0.5">
-                Thu Cũ Đổi Mới Thiết Bị Gia Dụng
+                {l('Thu Cũ Đổi Mới Thiết Bị Gia Dụng', 'Trade In Your Old Appliances')}
               </h4>
               <p className="text-xs text-slate-500 mt-1">
-                Chillami thu mua quạt cũ, điều hòa cũ mọi thương hiệu với mức trợ giá lên đến 1.500.000 đ khi lên đời dòng BLDC.
+                {l('Chillami thu mua quạt cũ, điều hòa cũ mọi thương hiệu với mức trợ giá lên đến 1.500.000 đ khi lên đời dòng BLDC.', 'Chillami buys back old fans and air conditioners of any brand with a subsidy of up to 1,500,000đ when you upgrade to BLDC.')}
               </p>
             </div>
           </div>
@@ -148,13 +150,13 @@ export const PromotionsView: React.FC<PromotionsViewProps> = ({
             </div>
             <div>
               <span className="text-[10px] font-bold text-teal-700 uppercase">
-                Gói Combo Tân Gia
+                {l('Gói Combo Tân Gia', 'Housewarming Combo')}
               </span>
               <h4 className="text-base font-bold text-slate-900 mt-0.5">
-                Trọn Bộ Bếp & Hút Mùi & Bình Nóng Lạnh
+                {l('Trọn Bộ Bếp & Hút Mùi & Bình Nóng Lạnh', 'Complete Hob, Range Hood & Water Heater Set')}
               </h4>
               <p className="text-xs text-slate-500 mt-1">
-                Giảm thêm 10% trên tổng hóa đơn khi mua trọn bộ thiết bị nhà mới kèm quà tặng bộ nồi lẩu inox 304 cao cấp.
+                {l('Giảm thêm 10% trên tổng hóa đơn khi mua trọn bộ thiết bị nhà mới kèm quà tặng bộ nồi lẩu inox 304 cao cấp.', 'Get an extra 10% off the total when you buy the full new-home set, plus a free premium 304 stainless steel hot pot.')}
               </p>
             </div>
           </div>
@@ -165,10 +167,10 @@ export const PromotionsView: React.FC<PromotionsViewProps> = ({
           <div className="flex items-center justify-between mb-6">
             <div>
               <h3 className="text-lg font-bold text-slate-900">
-                Sản Phẩm Đang Khuyến Mại Nổi Bật ({promoProducts.length})
+                {l('Sản Phẩm Đang Khuyến Mại Nổi Bật', 'Featured Products on Sale')} ({promoProducts.length})
               </h3>
               <p className="text-xs text-slate-500 mt-0.5">
-                Áp dụng số lượng có hạn trong tháng ra mắt
+                {l('Áp dụng số lượng có hạn trong tháng ra mắt', 'Limited quantities during launch month')}
               </p>
             </div>
           </div>

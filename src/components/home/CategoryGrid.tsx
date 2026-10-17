@@ -2,12 +2,14 @@ import React from 'react';
 import { CATEGORIES_CONFIG } from '../../data/products';
 import { ArrowUpRight } from 'lucide-react';
 import { ScrollFadeIn } from '../common/ScrollFadeIn';
+import { useLanguage } from '../../context/LanguageContext';
 
 interface CategoryGridProps {
   onSelectCategory: (categoryId: string) => void;
 }
 
 export const CategoryGrid: React.FC<CategoryGridProps> = ({ onSelectCategory }) => {
+  const { l, translateCategory } = useLanguage();
   return (
     <section className="py-12 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -15,20 +17,20 @@ export const CategoryGrid: React.FC<CategoryGridProps> = ({ onSelectCategory }) 
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
             <div>
               <div className="text-xs font-bold uppercase tracking-wider text-teal-700 mb-1">
-                Hệ sinh thái thiết bị điện gia dụng
+                {l('Hệ sinh thái thiết bị điện gia dụng', 'Home appliance ecosystem')}
               </div>
               <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight font-display">
-                Danh Mục Sản Phẩm Chillami
+                {l('Danh Mục Sản Phẩm Chillami', 'Chillami Product Categories')}
               </h2>
             </div>
             <p className="text-xs sm:text-sm text-slate-500 max-w-md">
-              Mỗi thiết bị đều được nghiên cứu và nhiệt đới hóa hoàn hảo cho khí hậu nóng ẩm tại Việt Nam.
+              {l('Mỗi thiết bị đều được nghiên cứu và nhiệt đới hóa hoàn hảo cho khí hậu nóng ẩm tại Việt Nam.', 'Every appliance is engineered and fully tropicalized for Vietnam\'s hot and humid climate.')}
             </p>
           </div>
         </ScrollFadeIn>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-          {CATEGORIES_CONFIG.map((cat, idx) => (
+          {CATEGORIES_CONFIG.map(translateCategory).map((cat, idx) => (
             <ScrollFadeIn
               key={cat.id}
               direction="up"

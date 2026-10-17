@@ -16,6 +16,7 @@ import {
   Volume2
 } from 'lucide-react';
 import { LoadingSpinner } from '../common/LoadingSpinner';
+import { useLanguage } from '../../context/LanguageContext';
 
 interface ProductCatalogProps {
   products: Product[];
@@ -38,6 +39,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
   comparedProductIds,
   onOpenBtuCalc,
 }) => {
+  const { l, translateCategory } = useLanguage();
   const [selectedCategory, setSelectedCategory] = useState<string>(initialCategory || 'all');
   const [inStockOnly, setInStockOnly] = useState(false);
   const [newOnly, setNewOnly] = useState(false);
@@ -89,7 +91,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
       if (priceRange === '>10m' && p.price <= 10000000) return false;
 
       // Technology filter
-      if (selectedTech === 'bldc' && !p.features.some((f) => f.toLowerCase().includes('bldc') || f.toLowerCase().includes('không chổi than'))) return false;
+      if (selectedTech === 'bldc' && !p.features.some((f) => /bldc|không chổi than|brushless/i.test(f))) return false;
       if (selectedTech === 'inverter' && !p.name.toLowerCase().includes('inverter') && !p.features.some((f) => f.toLowerCase().includes('inverter'))) return false;
       if (selectedTech === 'igbt' && !p.tagline.toLowerCase().includes('igbt') && !p.name.toLowerCase().includes('igbt')) return false;
       if (selectedTech === 'titanium' && !p.tagline.toLowerCase().includes('titanium') && !p.name.toLowerCase().includes('titanium')) return false;
@@ -148,15 +150,15 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div>
               <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-teal-700 mb-2">
-                <span>Trang Hub Sản Phẩm Chính Hãng</span>
+                <span>{l('Trang Hub Sản Phẩm Chính Hãng', 'Official Product Hub')}</span>
                 <span className="text-slate-300">·</span>
-                <span>Bảo Hành 1 Đổi 1 Tại Nhà</span>
+                <span>{l('Bảo Hành 1 Đổi 1 Tại Nhà', '1-for-1 Home Replacement Warranty')}</span>
               </div>
               <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight font-display">
-                Tất Cả Thiết Bị Điện Gia Dụng Chillami
+                {l('Tất Cả Thiết Bị Điện Gia Dụng Chillami', 'All Chillami Home Appliances')}
               </h1>
               <p className="text-xs sm:text-sm text-slate-500 mt-2 max-w-2xl leading-relaxed">
-                Được thiết kế tối giản chuẩn phong cách Scandinavian hiện đại, vận hành bền bỉ với công nghệ Inverter và BLDC siêu êm 13dB.
+                {l('Được thiết kế tối giản chuẩn phong cách Scandinavian hiện đại, vận hành bền bỉ với công nghệ Inverter và BLDC siêu êm 13dB.', 'Minimalist modern Scandinavian design with durable operation powered by Inverter and ultra-quiet 13dB BLDC technology.')}
               </p>
             </div>
 
@@ -166,7 +168,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
                 className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-teal-50 hover:bg-teal-100 text-teal-800 text-xs font-bold border border-teal-200 transition-colors cursor-pointer"
               >
                 <Zap className="w-4 h-4 text-teal-600" />
-                <span>Công cụ tính BTU Điều Hòa</span>
+                <span>{l('Công cụ tính BTU Điều Hòa', 'AC BTU calculator')}</span>
               </button>
             </div>
           </div>
@@ -181,9 +183,9 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
                   : 'bg-slate-100 text-slate-600 hover:text-slate-900 hover:bg-slate-200'
               }`}
             >
-              Tất cả ({products.length})
+              {l('Tất cả', 'All')} ({products.length})
             </button>
-            {CATEGORIES_CONFIG.map((cat) => (
+            {CATEGORIES_CONFIG.map(translateCategory).map((cat) => (
               <button
                 key={cat.id}
                 onClick={() => handleCategorySelect(cat.id)}
@@ -206,7 +208,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
             <div className="flex flex-wrap items-center gap-2 text-xs">
               <span className="font-bold text-slate-900 flex items-center gap-1.5 mr-1">
                 <SlidersHorizontal className="w-3.5 h-3.5 text-teal-700" />
-                Chọn theo tiêu chí:
+                {l('Chọn theo tiêu chí:', 'Filter by:')}
               </span>
 
               {/* Sẵn hàng toggle */}
@@ -225,7 +227,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
                 >
                   {inStockOnly && <Check className="w-2.5 h-2.5" />}
                 </div>
-                <span>Sẵn hàng</span>
+                <span>{l('Sẵn hàng', 'In stock')}</span>
               </button>
 
               {/* Hàng mới về toggle */}
@@ -244,7 +246,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
                 >
                   {newOnly && <Check className="w-2.5 h-2.5" />}
                 </div>
-                <span>Hàng mới về</span>
+                <span>{l('Hàng mới về', 'New arrivals')}</span>
               </button>
 
               {/* Khuyến mãi HOT */}
@@ -263,7 +265,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
                 >
                   {promotionOnly && <Check className="w-2.5 h-2.5" />}
                 </div>
-                <span>Khuyến mãi HOT</span>
+                <span>{l('Khuyến mãi HOT', 'HOT deals')}</span>
               </button>
 
               {/* Price filter dropdown */}
@@ -272,11 +274,11 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
                 onChange={(e) => setPriceRange(e.target.value)}
                 className="px-3 py-1.5 rounded-lg border border-slate-200 bg-white text-xs font-medium text-slate-700 focus:outline-hidden focus:border-teal-500 cursor-pointer"
               >
-                <option value="all">Xem theo giá (Tất cả)</option>
-                <option value="<2m">Dưới 2 triệu</option>
-                <option value="2-5m">Từ 2 - 5 triệu</option>
-                <option value="5-10m">Từ 5 - 10 triệu</option>
-                <option value=">10m">Trên 10 triệu</option>
+                <option value="all">{l('Xem theo giá (Tất cả)', 'Price range (All)')}</option>
+                <option value="<2m">{l('Dưới 2 triệu', 'Under 2 million VND')}</option>
+                <option value="2-5m">{l('Từ 2 - 5 triệu', '2 - 5 million VND')}</option>
+                <option value="5-10m">{l('Từ 5 - 10 triệu', '5 - 10 million VND')}</option>
+                <option value=">10m">{l('Trên 10 triệu', 'Over 10 million VND')}</option>
               </select>
 
               {/* Technology filter dropdown */}
@@ -285,18 +287,18 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
                 onChange={(e) => setSelectedTech(e.target.value)}
                 className="px-3 py-1.5 rounded-lg border border-slate-200 bg-white text-xs font-medium text-slate-700 focus:outline-hidden focus:border-teal-500 cursor-pointer"
               >
-                <option value="all">Công nghệ & Động cơ (Tất cả)</option>
-                <option value="bldc">Động cơ BLDC không chổi than</option>
-                <option value="inverter">Biến tần Inverter Eco</option>
-                <option value="igbt">Mạch công suất kép IGBT Đức</option>
-                <option value="titanium">Men Titanium 10 năm</option>
-                <option value="iot">Kết nối App & WiFi IoT</option>
+                <option value="all">{l('Công nghệ & Động cơ (Tất cả)', 'Technology & Motor (All)')}</option>
+                <option value="bldc">{l('Động cơ BLDC không chổi than', 'Brushless BLDC motor')}</option>
+                <option value="inverter">{l('Biến tần Inverter Eco', 'Eco Inverter')}</option>
+                <option value="igbt">{l('Mạch công suất kép IGBT Đức', 'German dual IGBT power board')}</option>
+                <option value="titanium">{l('Men Titanium 10 năm', '10-year Titanium enamel')}</option>
+                <option value="iot">{l('Kết nối App & WiFi IoT', 'App & WiFi IoT connectivity')}</option>
               </select>
             </div>
 
             {/* Right: Sắp xếp theo (Phổ biến · Khuyến mãi HOT · Giá Thấp – Cao · Giá Cao – Thấp) */}
             <div className="flex items-center gap-2 text-xs ml-auto">
-              <span className="text-slate-500 font-medium">Sắp xếp theo:</span>
+              <span className="text-slate-500 font-medium">{l('Sắp xếp theo:', 'Sort by:')}</span>
               <div className="flex items-center bg-slate-100 p-1 rounded-xl">
                 <button
                   type="button"
@@ -305,7 +307,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
                     sortBy === 'popular' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-600 hover:text-slate-900'
                   }`}
                 >
-                  Phổ biến
+                  {l('Phổ biến', 'Popular')}
                 </button>
                 <button
                   type="button"
@@ -314,7 +316,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
                     sortBy === 'discount' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-600 hover:text-slate-900'
                   }`}
                 >
-                  Khuyến mãi
+                  {l('Khuyến mãi', 'Deals')}
                 </button>
                 <button
                   type="button"
@@ -323,7 +325,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
                     sortBy === 'price-asc' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-600 hover:text-slate-900'
                   }`}
                 >
-                  Giá Thấp - Cao
+                  {l('Giá Thấp - Cao', 'Price: Low - High')}
                 </button>
                 <button
                   type="button"
@@ -332,7 +334,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
                     sortBy === 'price-desc' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-600 hover:text-slate-900'
                   }`}
                 >
-                  Giá Cao - Thấp
+                  {l('Giá Cao - Thấp', 'Price: High - Low')}
                 </button>
               </div>
             </div>
@@ -342,20 +344,20 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
           {hasActiveFilters && (
             <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
               <div className="flex items-center gap-2 flex-wrap">
-                <span>Đang hiển thị <strong>{sortedProducts.length}</strong> sản phẩm phù hợp:</span>
+                <span>{l('Đang hiển thị', 'Showing')} <strong>{sortedProducts.length}</strong> {l('sản phẩm phù hợp:', 'matching products:')}</span>
                 {selectedCategory !== 'all' && (
                   <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-teal-50 text-teal-800 text-[11px] font-medium">
-                    Danh mục: {CATEGORIES_CONFIG.find((c) => c.id === selectedCategory)?.name}
+                    {l('Danh mục:', 'Category:')} {CATEGORIES_CONFIG.map(translateCategory).find((c) => c.id === selectedCategory)?.name}
                   </span>
                 )}
                 {priceRange !== 'all' && (
                   <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-slate-100 text-slate-700 text-[11px] font-medium">
-                    Mức giá: {priceRange}
+                    {l('Mức giá:', 'Price:')} {priceRange}
                   </span>
                 )}
                 {selectedTech !== 'all' && (
                   <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-slate-100 text-slate-700 text-[11px] font-medium">
-                    Công nghệ: {selectedTech.toUpperCase()}
+                    {l('Công nghệ:', 'Technology:')} {selectedTech.toUpperCase()}
                   </span>
                 )}
               </div>
@@ -365,7 +367,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
                 className="inline-flex items-center gap-1 text-xs font-semibold text-rose-600 hover:text-rose-700 hover:underline cursor-pointer"
               >
                 <RefreshCw className="w-3 h-3" />
-                <span>Xóa bộ lọc</span>
+                <span>{l('Xóa bộ lọc', 'Clear filters')}</span>
               </button>
             </div>
           )}
@@ -374,20 +376,20 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
         {/* PRODUCTS GRID */}
         {isFiltering ? (
           <div className="bg-white rounded-3xl border border-slate-200/80 p-20 text-center flex items-center justify-center">
-            <LoadingSpinner message="Đang lọc danh sách thiết bị Chillami..." size="md" />
+            <LoadingSpinner message={l('Đang lọc danh sách thiết bị Chillami...', 'Filtering Chillami appliances...')} size="md" />
           </div>
         ) : sortedProducts.length === 0 ? (
           <div className="bg-white rounded-2xl border border-slate-200 p-12 text-center max-w-lg mx-auto">
             <Filter className="w-10 h-10 text-slate-300 mx-auto mb-3" />
-            <h3 className="text-base font-bold text-slate-900">Không tìm thấy sản phẩm nào</h3>
+            <h3 className="text-base font-bold text-slate-900">{l('Không tìm thấy sản phẩm nào', 'No products found')}</h3>
             <p className="text-xs text-slate-500 mt-1">
-              Vui lòng thử bỏ bớt bộ lọc hoặc chọn mức giá khác để xem các thiết bị Chillami.
+              {l('Vui lòng thử bỏ bớt bộ lọc hoặc chọn mức giá khác để xem các thiết bị Chillami.', 'Try removing some filters or choosing a different price range to see Chillami appliances.')}
             </p>
             <button
               onClick={resetAllFilters}
               className="mt-4 px-4 py-2 bg-teal-700 hover:bg-teal-800 text-white rounded-xl text-xs font-semibold transition-colors"
             >
-              Xóa toàn bộ bộ lọc
+              {l('Xóa toàn bộ bộ lọc', 'Clear all filters')}
             </button>
           </div>
         ) : (

@@ -11,6 +11,7 @@ import {
   Truck,
   RotateCcw
 } from 'lucide-react';
+import { useLanguage } from '../../context/LanguageContext';
 
 interface PromotionalBannerProps {
   onExploreProducts: () => void;
@@ -21,6 +22,7 @@ export const PromotionalBanner: React.FC<PromotionalBannerProps> = ({
   onExploreProducts,
   onExplorePromotions,
 }) => {
+  const { l } = useLanguage();
   const [copiedCode, setCopiedCode] = useState<string | null>(null);
 
   // Live Countdown Timer (e.g. ends in 2 days, 14 hours, 32 mins, 40 secs)
@@ -68,25 +70,25 @@ export const PromotionalBanner: React.FC<PromotionalBannerProps> = ({
           <div className="lg:col-span-7 space-y-5">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/20 border border-amber-400/30 text-amber-300 text-xs font-bold">
               <Flame className="w-4 h-4 text-amber-400 animate-pulse" />
-              <span>SIÊU ĐẠI TIỆC MÙA HÈ 2026 · GIẢM ĐẾN 35%</span>
+              <span>{l('SIÊU ĐẠI TIỆC MÙA HÈ 2026 · GIẢM ĐẾN 35%', 'SUMMER MEGA SALE 2026 · UP TO 35% OFF')}</span>
             </div>
 
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black font-display tracking-tight text-white leading-tight">
-              Lên Đời Quạt BLDC Tiết Kiệm 75% Điện <br />
+              {l('Lên Đời Quạt BLDC Tiết Kiệm 75% Điện', 'Upgrade to a BLDC Fan and Save 75% on Power')} <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-emerald-300 to-amber-200">
-                Êm Tĩnh 13dB Cho Giấc Ngủ Trọn Vẹn
+                {l('Êm Tĩnh 13dB Cho Giấc Ngủ Trọn Vẹn', 'Whisper-Quiet 13dB for Perfect Sleep')}
               </span>
             </h2>
 
             <p className="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-xl">
-              Cơ hội nâng cấp không gian sống với công nghệ DC Inverter thế hệ mới. Đổi quạt cũ lấy quạt mới trợ giá ngay 300.000đ, miễn phí công lắp đặt tại nhà.
+              {l('Cơ hội nâng cấp không gian sống với công nghệ DC Inverter thế hệ mới. Đổi quạt cũ lấy quạt mới trợ giá ngay 300.000đ, miễn phí công lắp đặt tại nhà.', 'Upgrade your living space with new-generation DC Inverter technology. Trade in your old fan for a new one with an instant 300,000đ subsidy and free home installation.')}
             </p>
 
             {/* Countdown Clock */}
             <div className="space-y-2 pt-1">
               <div className="text-xs text-slate-400 flex items-center gap-1.5 font-medium">
                 <Clock className="w-3.5 h-3.5 text-teal-400" />
-                <span>Ưu đãi chớp nhoáng kết thúc sau:</span>
+                <span>{l('Ưu đãi chớp nhoáng kết thúc sau:', 'Flash deal ends in:')}</span>
               </div>
 
               <div className="flex items-center gap-2 sm:gap-3 text-center">
@@ -94,7 +96,7 @@ export const PromotionalBanner: React.FC<PromotionalBannerProps> = ({
                   <div className="text-lg sm:text-2xl font-black text-amber-300 font-mono">
                     {String(timeLeft.days).padStart(2, '0')}
                   </div>
-                  <div className="text-[10px] text-slate-300 uppercase tracking-wider font-semibold">Ngày</div>
+                  <div className="text-[10px] text-slate-300 uppercase tracking-wider font-semibold">{l('Ngày', 'Days')}</div>
                 </div>
 
                 <span className="text-lg font-bold text-slate-500">:</span>
@@ -103,7 +105,7 @@ export const PromotionalBanner: React.FC<PromotionalBannerProps> = ({
                   <div className="text-lg sm:text-2xl font-black text-amber-300 font-mono">
                     {String(timeLeft.hours).padStart(2, '0')}
                   </div>
-                  <div className="text-[10px] text-slate-300 uppercase tracking-wider font-semibold">Giờ</div>
+                  <div className="text-[10px] text-slate-300 uppercase tracking-wider font-semibold">{l('Giờ', 'Hours')}</div>
                 </div>
 
                 <span className="text-lg font-bold text-slate-500">:</span>
@@ -112,7 +114,7 @@ export const PromotionalBanner: React.FC<PromotionalBannerProps> = ({
                   <div className="text-lg sm:text-2xl font-black text-amber-300 font-mono">
                     {String(timeLeft.minutes).padStart(2, '0')}
                   </div>
-                  <div className="text-[10px] text-slate-300 uppercase tracking-wider font-semibold">Phút</div>
+                  <div className="text-[10px] text-slate-300 uppercase tracking-wider font-semibold">{l('Phút', 'Mins')}</div>
                 </div>
 
                 <span className="text-lg font-bold text-slate-500">:</span>
@@ -121,7 +123,7 @@ export const PromotionalBanner: React.FC<PromotionalBannerProps> = ({
                   <div className="text-lg sm:text-2xl font-black text-teal-300 font-mono">
                     {String(timeLeft.seconds).padStart(2, '0')}
                   </div>
-                  <div className="text-[10px] text-slate-300 uppercase tracking-wider font-semibold">Giây</div>
+                  <div className="text-[10px] text-slate-300 uppercase tracking-wider font-semibold">{l('Giây', 'Secs')}</div>
                 </div>
               </div>
             </div>
@@ -134,12 +136,12 @@ export const PromotionalBanner: React.FC<PromotionalBannerProps> = ({
               <div className="space-y-1">
                 <div className="flex items-center gap-2">
                   <span className="text-xs font-black text-amber-300 bg-amber-500/20 px-2 py-0.5 rounded border border-amber-400/30">
-                    GIẢM 300.000đ
+                    {l('GIẢM 300.000đ', '300,000đ OFF')}
                   </span>
-                  <span className="text-[11px] text-slate-300">Đơn từ 1.800.000đ</span>
+                  <span className="text-[11px] text-slate-300">{l('Đơn từ 1.800.000đ', 'Orders from 1,800,000đ')}</span>
                 </div>
                 <div className="text-xs text-slate-200">
-                  Mã: <strong className="font-mono text-white text-sm">CHILLAMI2026</strong>
+                  {l('Mã:', 'Code:')} <strong className="font-mono text-white text-sm">CHILLAMI2026</strong>
                 </div>
               </div>
 
@@ -150,12 +152,12 @@ export const PromotionalBanner: React.FC<PromotionalBannerProps> = ({
                 {copiedCode === 'CHILLAMI2026' ? (
                   <>
                     <Check className="w-3.5 h-3.5" />
-                    <span>Đã lưu!</span>
+                    <span>{l('Đã lưu!', 'Saved!')}</span>
                   </>
                 ) : (
                   <>
                     <Copy className="w-3.5 h-3.5" />
-                    <span>Sao chép</span>
+                    <span>{l('Sao chép', 'Copy')}</span>
                   </>
                 )}
               </button>
@@ -166,12 +168,12 @@ export const PromotionalBanner: React.FC<PromotionalBannerProps> = ({
               <div className="space-y-1">
                 <div className="flex items-center gap-2">
                   <span className="text-xs font-black text-teal-300 bg-teal-500/20 px-2 py-0.5 rounded border border-teal-400/30">
-                    GIẢM 500.000đ
+                    {l('GIẢM 500.000đ', '500,000đ OFF')}
                   </span>
-                  <span className="text-[11px] text-slate-300">Đơn Điều Hòa / Bếp từ</span>
+                  <span className="text-[11px] text-slate-300">{l('Đơn Điều Hòa / Bếp từ', 'AC / induction hob orders')}</span>
                 </div>
                 <div className="text-xs text-slate-200">
-                  Mã: <strong className="font-mono text-white text-sm">COOLSUMMER</strong>
+                  {l('Mã:', 'Code:')} <strong className="font-mono text-white text-sm">COOLSUMMER</strong>
                 </div>
               </div>
 
@@ -182,12 +184,12 @@ export const PromotionalBanner: React.FC<PromotionalBannerProps> = ({
                 {copiedCode === 'COOLSUMMER' ? (
                   <>
                     <Check className="w-3.5 h-3.5" />
-                    <span>Đã lưu!</span>
+                    <span>{l('Đã lưu!', 'Saved!')}</span>
                   </>
                 ) : (
                   <>
                     <Copy className="w-3.5 h-3.5" />
-                    <span>Sao chép</span>
+                    <span>{l('Sao chép', 'Copy')}</span>
                   </>
                 )}
               </button>
@@ -199,7 +201,7 @@ export const PromotionalBanner: React.FC<PromotionalBannerProps> = ({
                 onClick={onExploreProducts}
                 className="w-full sm:w-auto flex-1 py-3.5 px-6 rounded-2xl bg-white text-slate-950 hover:bg-slate-100 font-extrabold text-xs shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer"
               >
-                <span>Khám phá bộ sưu tập quạt BLDC</span>
+                <span>{l('Khám phá bộ sưu tập quạt BLDC', 'Explore the BLDC fan collection')}</span>
                 <ArrowRight className="w-4 h-4 text-teal-700" />
               </button>
 
@@ -208,7 +210,7 @@ export const PromotionalBanner: React.FC<PromotionalBannerProps> = ({
                   onClick={onExplorePromotions}
                   className="w-full sm:w-auto py-3.5 px-5 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-semibold text-xs border border-white/20 transition-all cursor-pointer"
                 >
-                  Xem thêm ưu đãi
+                  {l('Xem thêm ưu đãi', 'See more deals')}
                 </button>
               )}
             </div>

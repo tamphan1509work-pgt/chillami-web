@@ -1,6 +1,7 @@
 import React from 'react';
 import { Product } from '../../types';
 import { Star, Eye, ShoppingBag, GitCompare, Check, Zap } from 'lucide-react';
+import { useLanguage } from '../../context/LanguageContext';
 
 interface ProductCardProps {
   product: Product;
@@ -17,6 +18,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   onToggleCompare,
   isCompared,
 }) => {
+  const { l } = useLanguage();
   const formatPrice = (amount: number) => {
     return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(amount);
   };
@@ -32,7 +34,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         )}
         {product.isNew && (
           <span className="inline-flex items-center px-2 py-0.5 text-[11px] font-bold text-white bg-teal-700 rounded-md shadow-xs">
-            Mới
+            {l('Mới', 'New')}
           </span>
         )}
       </div>
@@ -49,8 +51,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             ? 'bg-teal-700 text-white shadow-md ring-2 ring-teal-600'
             : 'bg-white/90 backdrop-blur-xs text-slate-600 hover:text-teal-700 hover:bg-white shadow-xs border border-slate-200/60'
         }`}
-        title={isCompared ? 'Bỏ khỏi so sánh' : 'Thêm vào so sánh'}
-        aria-label="So sánh sản phẩm"
+        title={isCompared ? l('Bỏ khỏi so sánh', 'Remove from comparison') : l('Thêm vào so sánh', 'Add to comparison')}
+        aria-label={l('So sánh sản phẩm', 'Compare product')}
       >
         <GitCompare className="w-4 h-4" />
       </button>
@@ -70,7 +72,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         <div className="absolute inset-0 bg-slate-900/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
           <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/95 text-xs font-semibold text-slate-800 shadow-md">
             <Eye className="w-3.5 h-3.5 text-teal-700" />
-            Xem nhanh
+            {l('Xem nhanh', 'Quick view')}
           </span>
         </div>
       </div>
@@ -83,7 +85,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             {product.model}
           </span>
           <span aria-hidden="true" className="text-slate-300">·</span>
-          <span>Bảo hành {product.warrantyMonths}T</span>
+          <span>{l('Bảo hành', 'Warranty')} {product.warrantyMonths}{l('T', 'M')}</span>
           {product.powerWatt && (
             <>
               <span aria-hidden="true" className="text-slate-300">·</span>
@@ -128,7 +130,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           </div>
           <span className="text-[11px] text-emerald-700 font-medium flex items-center gap-0.5">
             <Zap className="w-3 h-3" />
-            Free lắp đặt
+            {l('Free lắp đặt', 'Free installation')}
           </span>
         </div>
 
@@ -151,7 +153,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             className="inline-flex items-center gap-1.5 px-3 py-2 sm:px-3.5 sm:py-2 bg-teal-700 hover:bg-teal-800 active:bg-teal-900 text-white text-xs font-semibold rounded-xl shadow-xs hover:shadow-md transition-all shrink-0 cursor-pointer"
           >
             <ShoppingBag className="w-3.5 h-3.5" />
-            <span>Mua ngay</span>
+            <span>{l('Mua ngay', 'Buy now')}</span>
           </button>
         </div>
       </div>

@@ -23,7 +23,7 @@ export const FloatingContactWidget: React.FC<FloatingContactWidgetProps> = ({
   onOpenAiChat,
   onOpenSmartGuide,
 }) => {
-  const { language, t } = useLanguage();
+  const { language, t, l } = useLanguage();
   const [isExpanded, setIsExpanded] = useState(true);
   const [showHotlinePopup, setShowHotlinePopup] = useState(false);
   const [copiedPhone, setCopiedPhone] = useState(false);
@@ -41,14 +41,14 @@ export const FloatingContactWidget: React.FC<FloatingContactWidgetProps> = ({
     <>
       {/* Floating Buttons Stack at Bottom Right */}
       <aside 
-        aria-label="Kênh liên hệ và hỗ trợ trực tuyến"
+        aria-label={l('Kênh liên hệ và hỗ trợ trực tuyến', 'Contact and online support channels')}
         className="fixed bottom-5 right-4 sm:bottom-6 sm:right-6 z-40 flex flex-col items-end gap-2.5 pointer-events-auto"
       >
         {/* Hotline Quick Call Popup */}
         {showHotlinePopup && (
           <div 
             role="dialog"
-            aria-label="Thông tin Hotline Chillami"
+            aria-label={l('Thông tin Hotline Chillami', 'Chillami hotline information')}
             className="mb-2 w-72 bg-white rounded-2xl shadow-2xl border border-slate-200 p-4 animate-in slide-in-from-bottom-3 duration-200"
           >
             <div className="flex items-center justify-between pb-2.5 border-b border-slate-100 mb-3">
@@ -58,13 +58,13 @@ export const FloatingContactWidget: React.FC<FloatingContactWidgetProps> = ({
                 </div>
                 <div>
                   <h3 className="text-xs font-bold text-slate-900">Hotline Chillami</h3>
-                  <div className="text-[10px] text-emerald-600 font-medium">Hoạt động 8:00 - 21:00</div>
+                  <div className="text-[10px] text-emerald-600 font-medium">{l('Hoạt động 8:00 - 21:00', 'Open 8:00 - 21:00')}</div>
                 </div>
               </div>
               <button
                 onClick={() => setShowHotlinePopup(false)}
                 className="text-slate-400 hover:text-slate-600 p-1 rounded-lg cursor-pointer"
-                aria-label="Đóng popup hotline"
+                aria-label={l('Đóng popup hotline', 'Close hotline popup')}
               >
                 <X className="w-4 h-4" />
               </button>
@@ -76,10 +76,10 @@ export const FloatingContactWidget: React.FC<FloatingContactWidgetProps> = ({
                 className="flex items-center justify-between p-2.5 rounded-xl bg-teal-50 hover:bg-teal-100/80 text-teal-900 transition-colors group"
               >
                 <div>
-                  <div className="text-[10px] text-teal-700 font-semibold">Tổng đài chính hãng (Miễn phí)</div>
+                  <div className="text-[10px] text-teal-700 font-semibold">{l('Tổng đài chính hãng (Miễn phí)', 'Official hotline (Toll-free)')}</div>
                   <div className="font-extrabold text-sm text-teal-950">{hotlinePrimary}</div>
                 </div>
-                <span className="text-[11px] font-bold text-teal-700 group-hover:underline">Gọi ngay</span>
+                <span className="text-[11px] font-bold text-teal-700 group-hover:underline">{l('Gọi ngay', 'Call now')}</span>
               </a>
 
               <a
@@ -87,10 +87,10 @@ export const FloatingContactWidget: React.FC<FloatingContactWidgetProps> = ({
                 className="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-800 transition-colors group"
               >
                 <div>
-                  <div className="text-[10px] text-slate-500 font-semibold">Tư vấn kỹ thuật & Zalo</div>
+                  <div className="text-[10px] text-slate-500 font-semibold">{l('Tư vấn kỹ thuật & Zalo', 'Technical advice & Zalo')}</div>
                   <div className="font-extrabold text-xs text-slate-900">{hotlineMobile}</div>
                 </div>
-                <span className="text-[11px] font-bold text-slate-600 group-hover:underline">Gọi ngay</span>
+                <span className="text-[11px] font-bold text-slate-600 group-hover:underline">{l('Gọi ngay', 'Call now')}</span>
               </a>
 
               <button
@@ -100,12 +100,12 @@ export const FloatingContactWidget: React.FC<FloatingContactWidgetProps> = ({
                 {copiedPhone ? (
                   <>
                     <Check className="w-3.5 h-3.5 text-emerald-600" />
-                    <span className="text-emerald-700 font-semibold">Đã chép số vào bộ nhớ đệm!</span>
+                    <span className="text-emerald-700 font-semibold">{l('Đã chép số vào bộ nhớ đệm!', 'Number copied to clipboard!')}</span>
                   </>
                 ) : (
                   <>
                     <Copy className="w-3.5 h-3.5" />
-                    <span>Sao chép số điện thoại</span>
+                    <span>{l('Sao chép số điện thoại', 'Copy phone number')}</span>
                   </>
                 )}
               </button>
@@ -120,7 +120,7 @@ export const FloatingContactWidget: React.FC<FloatingContactWidgetProps> = ({
             <button
               onClick={onOpenAiChat}
               className="group relative flex items-center gap-2.5 p-2 sm:px-3.5 sm:py-2.5 bg-gradient-to-r from-teal-700 via-teal-800 to-slate-900 hover:from-teal-600 hover:to-slate-800 text-white rounded-full sm:rounded-2xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all cursor-pointer border border-teal-400/40"
-              title="Chat với AI Chillami"
+              title={l('Chat với AI Chillami', 'Chat with Chillami AI')}
             >
               <div className="relative">
                 <Bot className="w-5 h-5 text-teal-200" />
@@ -147,7 +147,7 @@ export const FloatingContactWidget: React.FC<FloatingContactWidgetProps> = ({
               target="_blank"
               rel="noopener noreferrer"
               className="group relative flex items-center gap-2.5 p-2 sm:px-3.5 sm:py-2 bg-[#0068ff] hover:bg-[#0055d4] text-white rounded-full sm:rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all cursor-pointer"
-              title="Chat qua Zalo OA chính thức"
+              title={l('Chat qua Zalo OA chính thức', 'Chat via the official Zalo OA')}
             >
               <div className="w-5 h-5 rounded-md bg-white text-[#0068ff] font-black text-xs flex items-center justify-center shrink-0">
                 Z
@@ -169,7 +169,7 @@ export const FloatingContactWidget: React.FC<FloatingContactWidgetProps> = ({
               target="_blank"
               rel="noopener noreferrer"
               className="group relative flex items-center gap-2.5 p-2 sm:px-3.5 sm:py-2 bg-gradient-to-tr from-[#0084ff] via-[#aa3fff] to-[#ff5983] hover:opacity-95 text-white rounded-full sm:rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all cursor-pointer"
-              title="Nhắn tin qua Facebook Messenger"
+              title={l('Nhắn tin qua Facebook Messenger', 'Message us on Facebook Messenger')}
             >
               <MessageCircle className="w-5 h-5" />
               <div className="hidden sm:flex flex-col items-start text-left">
@@ -185,7 +185,7 @@ export const FloatingContactWidget: React.FC<FloatingContactWidgetProps> = ({
             <button
               onClick={() => setShowHotlinePopup(!showHotlinePopup)}
               className="group relative flex items-center gap-2.5 p-2 sm:px-3.5 sm:py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full sm:rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all cursor-pointer"
-              title="Gọi Hotline miễn phí cước"
+              title={l('Gọi Hotline miễn phí cước', 'Call the toll-free hotline')}
             >
               <PhoneCall className="w-5 h-5 animate-bounce [animation-duration:2.5s]" />
               <div className="hidden sm:flex flex-col items-start text-left">
@@ -205,17 +205,17 @@ export const FloatingContactWidget: React.FC<FloatingContactWidgetProps> = ({
         <button
           onClick={() => setIsExpanded(!isExpanded)}
           className="p-1.5 rounded-full bg-slate-800/80 hover:bg-slate-900 text-slate-300 hover:text-white shadow-md text-[10px] transition-colors cursor-pointer flex items-center gap-1 px-2.5 backdrop-blur-xs"
-          title={isExpanded ? 'Thu gọn nút liên hệ' : 'Mở rộng nút liên hệ'}
+          title={isExpanded ? l('Thu gọn nút liên hệ', 'Collapse contact buttons') : l('Mở rộng nút liên hệ', 'Expand contact buttons')}
         >
           {isExpanded ? (
             <>
               <ChevronDown className="w-3.5 h-3.5" />
-              <span className="text-[10px]">Thu gọn</span>
+              <span className="text-[10px]">{l('Thu gọn', 'Collapse')}</span>
             </>
           ) : (
             <>
               <ChevronUp className="w-3.5 h-3.5 text-teal-400" />
-              <span className="text-[10px] font-bold text-white">Liên hệ (Zalo, AI, Hotline)</span>
+              <span className="text-[10px] font-bold text-white">{l('Liên hệ (Zalo, AI, Hotline)', 'Contact (Zalo, AI, Hotline)')}</span>
             </>
           )}
         </button>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { SnowflakeIcon } from './Logo';
+import { useLanguage } from '../../context/LanguageContext';
 
 interface LoadingSpinnerProps {
   fullScreen?: boolean;
@@ -10,10 +11,12 @@ interface LoadingSpinnerProps {
 
 export const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
   fullScreen = false,
-  message = 'Đang tải dữ liệu thiết bị Chillami...',
+  message,
   size = 'md',
   className = '',
 }) => {
+  const { l } = useLanguage();
+  const text = message ?? l('Đang tải dữ liệu thiết bị Chillami...', 'Loading Chillami appliance data...');
   const iconSizes = {
     sm: 24,
     md: 40,
@@ -42,13 +45,13 @@ export const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
       </div>
 
       {/* Message Label */}
-      {message && (
+      {text && (
         <div className="flex flex-col items-center text-center mt-1">
           <span className="text-xs font-semibold text-slate-700 tracking-wide">
-            {message}
+            {text}
           </span>
           <span className="text-[10px] text-teal-700 font-medium mt-0.5 animate-pulse">
-            Công nghệ siêu êm & tiết kiệm năng lượng
+            {l('Công nghệ siêu êm & tiết kiệm năng lượng', 'Ultra-quiet & energy-saving technology')}
           </span>
         </div>
       )}

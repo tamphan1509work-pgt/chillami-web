@@ -12,6 +12,7 @@ import {
   CreditCard,
   Award
 } from 'lucide-react';
+import { useLanguage } from '../../context/LanguageContext';
 
 interface FooterProps {
   onNavigate: (view: string, payload?: any) => void;
@@ -30,6 +31,7 @@ export const Footer: React.FC<FooterProps> = ({
   onOpenBtuCalc,
   onOpenPolicy,
 }) => {
+  const { l } = useLanguage();
   return (
     <footer className="bg-slate-900 text-slate-300 pt-16 pb-12 border-t border-slate-800">
       {/* 1. TOP TRUST & REASSURANCE BANNER (KHÔNG TRÙNG LẶP VỚI CHILLAMI CARE) */}
@@ -40,8 +42,8 @@ export const Footer: React.FC<FooterProps> = ({
               <Award className="w-5 h-5" />
             </div>
             <div>
-              <h4 className="text-sm font-semibold text-white">Chuẩn Châu Âu & ISO 9001</h4>
-              <p className="text-xs text-slate-400 mt-0.5">Chip IGBT Infineon Đức, 100% động cơ đồng nguyên chất</p>
+              <h4 className="text-sm font-semibold text-white">{l('Chuẩn Châu Âu & ISO 9001', 'European Standards & ISO 9001')}</h4>
+              <p className="text-xs text-slate-400 mt-0.5">{l('Chip IGBT Infineon Đức, 100% động cơ đồng nguyên chất', 'German Infineon IGBT chips, 100% pure copper motors')}</p>
             </div>
           </div>
 
@@ -50,8 +52,8 @@ export const Footer: React.FC<FooterProps> = ({
               <MapPin className="w-5 h-5" />
             </div>
             <div>
-              <h4 className="text-sm font-semibold text-white">Mạng lưới 250+ điểm bán</h4>
-              <p className="text-xs text-slate-400 mt-0.5">Trải nghiệm thực tế tại Showroom & đại lý trên toàn quốc</p>
+              <h4 className="text-sm font-semibold text-white">{l('Mạng lưới 250+ điểm bán', '250+ points of sale')}</h4>
+              <p className="text-xs text-slate-400 mt-0.5">{l('Trải nghiệm thực tế tại Showroom & đại lý trên toàn quốc', 'Hands-on experience at showrooms & dealers nationwide')}</p>
             </div>
           </div>
 
@@ -60,8 +62,8 @@ export const Footer: React.FC<FooterProps> = ({
               <CreditCard className="w-5 h-5" />
             </div>
             <div>
-              <h4 className="text-sm font-semibold text-white">Thanh toán & Trả góp 0%</h4>
-              <p className="text-xs text-slate-400 mt-0.5">Quét VietQR tức thì, COD, thẻ quốc tế và trả góp 0% lãi suất</p>
+              <h4 className="text-sm font-semibold text-white">{l('Thanh toán & Trả góp 0%', 'Payment & 0% Installments')}</h4>
+              <p className="text-xs text-slate-400 mt-0.5">{l('Quét VietQR tức thì, COD, thẻ quốc tế và trả góp 0% lãi suất', 'Instant VietQR, COD, international cards and 0% interest installments')}</p>
             </div>
           </div>
 
@@ -70,8 +72,8 @@ export const Footer: React.FC<FooterProps> = ({
               <PhoneCall className="w-5 h-5" />
             </div>
             <div>
-              <h4 className="text-sm font-semibold text-white">Tổng đài kỹ thuật 1900 8899</h4>
-              <p className="text-xs text-slate-400 mt-0.5">Chuyên gia tư vấn 24/7, tiếp nhận và hỗ trợ tức thì</p>
+              <h4 className="text-sm font-semibold text-white">{l('Tổng đài kỹ thuật 1900 8899', 'Technical hotline 1900 8899')}</h4>
+              <p className="text-xs text-slate-400 mt-0.5">{l('Chuyên gia tư vấn 24/7, tiếp nhận và hỗ trợ tức thì', '24/7 expert advisors with instant support')}</p>
             </div>
           </div>
         </div>
@@ -84,25 +86,25 @@ export const Footer: React.FC<FooterProps> = ({
           <div className="col-span-2 space-y-4">
             <Logo iconSize={36} color="#2dd4bf" textColor="#ffffff" />
             <p className="text-xs text-slate-400 leading-relaxed max-w-sm">
-              Chillami - Thương hiệu thiết bị điện gia dụng thế hệ mới tiên phong ứng dụng công nghệ động cơ BLDC không chổi than, Inverter tiết kiệm điện và chuẩn hóa độ ồn tĩnh lặng cho gia đình Việt.
+              {l('Chillami - Thương hiệu thiết bị điện gia dụng thế hệ mới tiên phong ứng dụng công nghệ động cơ BLDC không chổi than, Inverter tiết kiệm điện và chuẩn hóa độ ồn tĩnh lặng cho gia đình Việt.', 'Chillami – a new-generation home appliance brand pioneering brushless BLDC motors, energy-saving Inverter technology and whisper-quiet noise standards for Vietnamese families.')}
             </p>
 
             <div className="space-y-2 text-xs text-slate-400 pt-2">
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4 text-teal-400 shrink-0" />
-                <span>Trụ sở chính: Tầng 12, Tòa nhà Chillami Tower, Cầu Giấy, Hà Nội</span>
+                <span>{l('Trụ sở chính: Tầng 12, Tòa nhà Chillami Tower, Cầu Giấy, Hà Nội', 'Head office: 12th Floor, Chillami Tower, Cau Giay, Hanoi')}</span>
               </div>
               <div className="flex items-center gap-2">
                 <PhoneCall className="w-4 h-4 text-teal-400 shrink-0" />
-                <span>Tổng đài CSKH & Bảo hành: <strong>1900 8899</strong> (24/7)</span>
+                <span>{l('Tổng đài CSKH & Bảo hành:', 'Customer care & warranty hotline:')} <strong>1900 8899</strong> (24/7)</span>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-teal-400 shrink-0" />
-                <span>Email hỗ trợ: cskh@chillami.vn</span>
+                <span>{l('Email hỗ trợ: cskh@chillami.vn', 'Support email: cskh@chillami.vn')}</span>
               </div>
               <div className="flex items-center gap-2">
                 <Clock className="w-4 h-4 text-teal-400 shrink-0" />
-                <span>Giờ làm việc showroom: 08:00 - 21:30 hàng ngày</span>
+                <span>{l('Giờ làm việc showroom: 08:00 - 21:30 hàng ngày', 'Showroom hours: 08:00 - 21:30 daily')}</span>
               </div>
             </div>
           </div>
@@ -110,7 +112,7 @@ export const Footer: React.FC<FooterProps> = ({
           {/* Col 1: Sản phẩm */}
           <div>
             <h5 className="text-xs font-bold uppercase tracking-wider text-white mb-4">
-              Sản Phẩm
+              {l('Sản Phẩm', 'Products')}
             </h5>
             <ul className="space-y-2 text-xs">
               <li>
@@ -118,7 +120,7 @@ export const Footer: React.FC<FooterProps> = ({
                   onClick={() => onNavigate('products', { category: 'fan' })}
                   className="hover:text-teal-400 transition-colors"
                 >
-                  Quạt điện BLDC
+                  {l('Quạt điện BLDC', 'BLDC electric fans')}
                 </button>
               </li>
               <li>
@@ -126,7 +128,7 @@ export const Footer: React.FC<FooterProps> = ({
                   onClick={() => onNavigate('products', { category: 'ac' })}
                   className="hover:text-teal-400 transition-colors"
                 >
-                  Điều hòa Eco-Inverter
+                  {l('Điều hòa Eco-Inverter', 'Eco-Inverter air conditioners')}
                 </button>
               </li>
               <li>
@@ -134,7 +136,7 @@ export const Footer: React.FC<FooterProps> = ({
                   onClick={() => onNavigate('products', { category: 'induction' })}
                   className="hover:text-teal-400 transition-colors"
                 >
-                  Bếp từ đôi MasterChef
+                  {l('Bếp từ đôi MasterChef', 'MasterChef double induction hobs')}
                 </button>
               </li>
               <li>
@@ -142,7 +144,7 @@ export const Footer: React.FC<FooterProps> = ({
                   onClick={() => onNavigate('products', { category: 'hood' })}
                   className="hover:text-teal-400 transition-colors"
                 >
-                  Máy hút mùi cảm ứng
+                  {l('Máy hút mùi cảm ứng', 'Touch-control range hoods')}
                 </button>
               </li>
               <li>
@@ -150,7 +152,7 @@ export const Footer: React.FC<FooterProps> = ({
                   onClick={() => onNavigate('products', { category: 'water_heater' })}
                   className="hover:text-teal-400 transition-colors"
                 >
-                  Bình nước nóng Titanium
+                  {l('Bình nước nóng Titanium', 'Titanium water heaters')}
                 </button>
               </li>
               <li>
@@ -158,7 +160,7 @@ export const Footer: React.FC<FooterProps> = ({
                   onClick={() => onNavigate('products', { category: 'accessory' })}
                   className="hover:text-teal-400 transition-colors"
                 >
-                  Phụ kiện & Linh kiện
+                  {l('Phụ kiện & Linh kiện', 'Accessories & Parts')}
                 </button>
               </li>
             </ul>
@@ -167,37 +169,37 @@ export const Footer: React.FC<FooterProps> = ({
           {/* Col 2: Tư vấn & Công cụ */}
           <div>
             <h5 className="text-xs font-bold uppercase tracking-wider text-white mb-4">
-              Tư Vấn & Công Cụ
+              {l('Tư Vấn & Công Cụ', 'Advice & Tools')}
             </h5>
             <ul className="space-y-2 text-xs">
               <li>
                 <button onClick={onOpenBtuCalc} className="hover:text-teal-400 transition-colors text-left">
-                  Tính BTU Điều Hòa Chuẩn
+                  {l('Tính BTU Điều Hòa Chuẩn', 'Accurate AC BTU calculator')}
                 </button>
               </li>
               <li>
                 <button onClick={() => onNavigate('smart-connect')} className="hover:text-teal-400 transition-colors text-left text-teal-300 font-medium flex items-center gap-1">
-                  <span>📱 Kết nối thiết bị & Tải App</span>
+                  <span>{l('📱 Kết nối thiết bị & Tải App', '📱 Pair devices & Download app')}</span>
                 </button>
               </li>
               <li>
                 <button onClick={() => onNavigate('solutions')} className="hover:text-teal-400 transition-colors text-left">
-                  Giải pháp theo không gian
+                  {l('Giải pháp theo không gian', 'Solutions by space')}
                 </button>
               </li>
               <li>
                 <button onClick={() => onNavigate('faqs')} className="hover:text-teal-400 transition-colors text-left">
-                  Mẹo sử dụng & Bảo quản
+                  {l('Mẹo sử dụng & Bảo quản', 'Usage & care tips')}
                 </button>
               </li>
               <li>
                 <button onClick={() => onNavigate('technology')} className="hover:text-teal-400 transition-colors text-left">
-                  Công nghệ BLDC & Inverter
+                  {l('Công nghệ BLDC & Inverter', 'BLDC & Inverter technology')}
                 </button>
               </li>
               <li>
                 <button onClick={onOpenOrderTracking} className="hover:text-teal-400 transition-colors text-left text-teal-300 font-medium">
-                  Tra cứu tiến độ đơn hàng
+                  {l('Tra cứu tiến độ đơn hàng', 'Track order progress')}
                 </button>
               </li>
             </ul>
@@ -206,32 +208,32 @@ export const Footer: React.FC<FooterProps> = ({
           {/* Col 3: Hậu mãi & Bảo hành */}
           <div>
             <h5 className="text-xs font-bold uppercase tracking-wider text-white mb-4">
-              Hỗ Trợ & Hậu Mãi
+              {l('Hỗ Trợ & Hậu Mãi', 'Support & After-Sales')}
             </h5>
             <ul className="space-y-2 text-xs">
               <li>
                 <button onClick={onOpenWarranty} className="hover:text-teal-400 transition-colors text-left">
-                  Kích hoạt bảo hành điện tử
+                  {l('Kích hoạt bảo hành điện tử', 'Activate e-warranty')}
                 </button>
               </li>
               <li>
                 <button onClick={onOpenWarranty} className="hover:text-teal-400 transition-colors text-left">
-                  Tra cứu hạn bảo hành
+                  {l('Tra cứu hạn bảo hành', 'Check warranty period')}
                 </button>
               </li>
               <li>
                 <button onClick={onOpenWarranty} className="hover:text-teal-400 transition-colors text-left">
-                  Đặt lịch kỹ thuật viên tại nhà
+                  {l('Đặt lịch kỹ thuật viên tại nhà', 'Book a home technician')}
                 </button>
               </li>
               <li>
                 <button onClick={() => onNavigate('dealers')} className="hover:text-teal-400 transition-colors text-left">
-                  Hệ thống showroom & đại lý
+                  {l('Hệ thống showroom & đại lý', 'Showrooms & dealers')}
                 </button>
               </li>
               <li>
                 <button onClick={() => onNavigate('faqs')} className="hover:text-teal-400 transition-colors text-left">
-                  Câu hỏi thường gặp (FAQ)
+                  {l('Câu hỏi thường gặp (FAQ)', 'Frequently asked questions (FAQ)')}
                 </button>
               </li>
             </ul>
@@ -240,32 +242,32 @@ export const Footer: React.FC<FooterProps> = ({
           {/* Col 4: Hợp tác B2B & Chính sách */}
           <div>
             <h5 className="text-xs font-bold uppercase tracking-wider text-white mb-4">
-              Chính Sách & B2B
+              {l('Chính Sách & B2B', 'Policies & B2B')}
             </h5>
             <ul className="space-y-2 text-xs">
               <li>
                 <button onClick={() => onNavigate('b2b')} className="hover:text-teal-400 transition-colors text-left">
-                  Trở thành đại lý cấp 1
+                  {l('Trở thành đại lý cấp 1', 'Become a tier-1 dealer')}
                 </button>
               </li>
               <li>
                 <button onClick={() => onNavigate('b2b')} className="hover:text-teal-400 transition-colors text-left">
-                  Khách hàng dự án công trình
+                  {l('Khách hàng dự án công trình', 'Project & construction clients')}
                 </button>
               </li>
               <li>
                 <button onClick={() => onOpenPolicy('delivery')} className="hover:text-teal-400 transition-colors text-left">
-                  Chính sách giao & lắp đặt
+                  {l('Chính sách giao & lắp đặt', 'Delivery & installation policy')}
                 </button>
               </li>
               <li>
                 <button onClick={() => onOpenPolicy('returns')} className="hover:text-teal-400 transition-colors text-left">
-                  Chính sách đổi trả 30 ngày
+                  {l('Chính sách đổi trả 30 ngày', '30-day return policy')}
                 </button>
               </li>
               <li>
                 <button onClick={() => onOpenPolicy('privacy')} className="hover:text-teal-400 transition-colors text-left">
-                  Chính sách bảo mật
+                  {l('Chính sách bảo mật', 'Privacy policy')}
                 </button>
               </li>
             </ul>
@@ -278,7 +280,7 @@ export const Footer: React.FC<FooterProps> = ({
         <div className="flex flex-wrap items-center gap-4 text-xs text-slate-400">
           <span className="flex items-center gap-1.5 font-medium text-slate-300">
             <Award className="w-4 h-4 text-amber-400" />
-            Chứng nhận chất lượng:
+            {l('Chứng nhận chất lượng:', 'Quality certifications:')}
           </span>
           <span className="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[11px]">TCVN 7830:2021</span>
           <span className="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[11px]">ISO 9001:2015</span>
@@ -287,7 +289,7 @@ export const Footer: React.FC<FooterProps> = ({
         </div>
 
         <div className="flex items-center gap-3 text-xs text-slate-400">
-          <span>Đối tác thanh toán:</span>
+          <span>{l('Đối tác thanh toán:', 'Payment partners:')}</span>
           <div className="flex items-center gap-2">
             <span className="px-2 py-1 bg-white text-slate-900 rounded font-bold text-[10px]">VietQR</span>
             <span className="px-2 py-1 bg-blue-700 text-white rounded font-bold text-[10px]">VNPAY</span>

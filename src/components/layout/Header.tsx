@@ -51,7 +51,7 @@ export const Header: React.FC<HeaderProps> = ({
   onSelectProduct,
   allProducts,
 }) => {
-  const { language, setLanguage, t } = useLanguage();
+  const { language, setLanguage, t, l } = useLanguage();
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
   const [isSupportMenuOpen, setIsSupportMenuOpen] = useState(false);
   const [isAboutMenuOpen, setIsAboutMenuOpen] = useState(false);
@@ -120,7 +120,7 @@ export const Header: React.FC<HeaderProps> = ({
                     ? 'text-teal-400 font-extrabold'
                     : 'text-slate-400 hover:text-white'
                 }`}
-                title="Tiếng Việt (Mặc định)"
+                title={l('Tiếng Việt (Mặc định)', 'Vietnamese (Default)')}
               >
                 VI
               </button>
@@ -182,11 +182,11 @@ export const Header: React.FC<HeaderProps> = ({
             {isSearchFocused && searchQuery.trim() && (
               <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-xl shadow-2xl border border-slate-200 p-2 max-h-96 overflow-y-auto z-50">
                 <div className="text-[11px] font-semibold text-slate-400 px-3 py-1.5 uppercase">
-                  Kết quả tìm kiếm ({searchResults.length})
+                  {l('Kết quả tìm kiếm', 'Search results')} ({searchResults.length})
                 </div>
                 {searchResults.length === 0 ? (
                   <div className="p-4 text-center text-xs text-slate-500">
-                    Không tìm thấy sản phẩm phù hợp với "{searchQuery}"
+                    {l('Không tìm thấy sản phẩm phù hợp với', 'No products found matching')} "{searchQuery}"
                   </div>
                 ) : (
                   searchResults.map((item) => (
@@ -225,7 +225,7 @@ export const Header: React.FC<HeaderProps> = ({
             <button
               onClick={onOpenWarranty}
               className="hidden lg:flex items-center gap-1.5 px-2.5 py-2 rounded-xl text-slate-600 hover:text-teal-700 hover:bg-slate-100 transition-colors cursor-pointer text-xs font-medium"
-              title="Kích hoạt & tra cứu bảo hành điện tử"
+              title={l('Kích hoạt & tra cứu bảo hành điện tử', 'Activate & look up e-warranty')}
             >
               <ShieldCheck className="w-4 h-4 text-teal-700 shrink-0" />
               <span>{t('header.warranty', 'Bảo hành')}</span>
@@ -235,7 +235,7 @@ export const Header: React.FC<HeaderProps> = ({
             <button
               onClick={onOpenOrderTracking}
               className="p-2 sm:px-2.5 sm:py-2 rounded-xl text-slate-600 hover:text-teal-700 hover:bg-slate-100 transition-colors flex items-center gap-1.5 cursor-pointer text-xs font-medium"
-              title="Tra cứu tiến độ đơn hàng"
+              title={l('Tra cứu tiến độ đơn hàng', 'Track order progress')}
             >
               <PackageCheck className="w-4 h-4 text-teal-700 shrink-0" />
               <span className="hidden xl:inline">{t('header.orders', 'Tra cứu đơn')}</span>
@@ -245,7 +245,7 @@ export const Header: React.FC<HeaderProps> = ({
             <button
               onClick={onOpenCompare}
               className="relative p-2 sm:px-2.5 sm:py-2 rounded-xl text-slate-600 hover:text-teal-700 hover:bg-slate-100 transition-colors flex items-center gap-1.5 cursor-pointer text-xs font-medium"
-              title="So sánh thông số kỹ thuật"
+              title={l('So sánh thông số kỹ thuật', 'Compare specifications')}
             >
               <GitCompare className="w-4 h-4 text-teal-700 shrink-0" />
               <span className="hidden xl:inline">{t('header.compare', 'So sánh')}</span>
@@ -321,8 +321,8 @@ export const Header: React.FC<HeaderProps> = ({
                           }}
                           className="font-bold text-slate-900 hover:text-teal-700 cursor-pointer text-sm flex items-center justify-between mb-2 group"
                         >
-                          <span>Quạt Điện Thông Minh</span>
-                          <span className="text-[11px] text-teal-600 font-normal group-hover:underline">Xem tất cả</span>
+                          <span>{l('Quạt Điện Thông Minh', 'Smart Electric Fans')}</span>
+                          <span className="text-[11px] text-teal-600 font-normal group-hover:underline">{l('Xem tất cả', 'View all')}</span>
                         </div>
                         <ul className="space-y-1.5 text-xs text-slate-600">
                           <li>
@@ -333,7 +333,7 @@ export const Header: React.FC<HeaderProps> = ({
                               }}
                               className="hover:text-teal-700 transition-colors w-full text-left py-0.5"
                             >
-                              Quạt cây BLDC SoftAir (CF-100B)
+                              {l('Quạt cây BLDC SoftAir (CF-100B)', 'BLDC SoftAir standing fan (CF-100B)')}
                             </button>
                           </li>
                           <li>
@@ -344,7 +344,7 @@ export const Header: React.FC<HeaderProps> = ({
                               }}
                               className="hover:text-teal-700 transition-colors w-full text-left py-0.5"
                             >
-                              Quạt treo tường Silent-Wall
+                              {l('Quạt treo tường Silent-Wall', 'Silent-Wall wall fan')}
                             </button>
                           </li>
                           <li>
@@ -355,7 +355,7 @@ export const Header: React.FC<HeaderProps> = ({
                               }}
                               className="hover:text-teal-700 transition-colors w-full text-left py-0.5"
                             >
-                              Quạt sàn tuần hoàn FB-180 Turbo
+                              {l('Quạt sàn tuần hoàn FB-180 Turbo', 'FB-180 Turbo floor air circulator')}
                             </button>
                           </li>
                           <li>
@@ -366,7 +366,7 @@ export const Header: React.FC<HeaderProps> = ({
                               }}
                               className="hover:text-teal-700 transition-colors w-full text-left py-0.5"
                             >
-                              Quạt thông minh IoT WiFi
+                              {l('Quạt thông minh IoT WiFi', 'IoT WiFi smart fan')}
                             </button>
                           </li>
                           <li>
@@ -377,7 +377,7 @@ export const Header: React.FC<HeaderProps> = ({
                               }}
                               className="hover:text-teal-700 transition-colors w-full text-left py-0.5"
                             >
-                              Quạt tích điện dã ngoại 15000mAh
+                              {l('Quạt tích điện dã ngoại 15000mAh', '15000mAh rechargeable outdoor fan')}
                             </button>
                           </li>
                         </ul>
@@ -391,8 +391,8 @@ export const Header: React.FC<HeaderProps> = ({
                           }}
                           className="font-bold text-slate-900 hover:text-teal-700 cursor-pointer text-sm flex items-center justify-between mb-2 group"
                         >
-                          <span>Điều Hòa Inverter</span>
-                          <span className="text-[11px] text-teal-600 font-normal group-hover:underline">Xem tất cả</span>
+                          <span>{l('Điều Hòa Inverter', 'Inverter Air Conditioners')}</span>
+                          <span className="text-[11px] text-teal-600 font-normal group-hover:underline">{l('Xem tất cả', 'View all')}</span>
                         </div>
                         <ul className="space-y-1.5 text-xs text-slate-600">
                           <li>
@@ -403,7 +403,7 @@ export const Header: React.FC<HeaderProps> = ({
                               }}
                               className="hover:text-teal-700 transition-colors w-full text-left py-0.5"
                             >
-                              Điều hòa 9000 BTU Inverter (Phòng &lt;15m²)
+                              {l('Điều hòa 9000 BTU Inverter (Phòng <15m²)', '9000 BTU Inverter AC (rooms <15m²)')}
                             </button>
                           </li>
                           <li>
@@ -414,7 +414,7 @@ export const Header: React.FC<HeaderProps> = ({
                               }}
                               className="hover:text-teal-700 transition-colors w-full text-left py-0.5"
                             >
-                              Điều hòa Slim v3 Siêu Mỏng 16.8cm
+                              {l('Điều hòa Slim v3 Siêu Mỏng 16.8cm', 'Slim v3 ultra-thin 16.8cm AC')}
                             </button>
                           </li>
                         </ul>
@@ -431,8 +431,8 @@ export const Header: React.FC<HeaderProps> = ({
                           }}
                           className="font-bold text-slate-900 hover:text-teal-700 cursor-pointer text-sm flex items-center justify-between mb-2 group"
                         >
-                          <span>Bếp Từ Đôi & Đơn</span>
-                          <span className="text-[11px] text-teal-600 font-normal group-hover:underline">Xem tất cả</span>
+                          <span>{l('Bếp Từ Đôi & Đơn', 'Double & Single Induction Hobs')}</span>
+                          <span className="text-[11px] text-teal-600 font-normal group-hover:underline">{l('Xem tất cả', 'View all')}</span>
                         </div>
                         <ul className="space-y-1.5 text-xs text-slate-600">
                           <li>
@@ -443,7 +443,7 @@ export const Header: React.FC<HeaderProps> = ({
                               }}
                               className="hover:text-teal-700 transition-colors w-full text-left py-0.5"
                             >
-                              Bếp từ đôi MasterChef IGBT Infineon Đức
+                              {l('Bếp từ đôi MasterChef IGBT Infineon Đức', 'MasterChef double hob, German Infineon IGBT')}
                             </button>
                           </li>
                           <li>
@@ -454,7 +454,7 @@ export const Header: React.FC<HeaderProps> = ({
                               }}
                               className="hover:text-teal-700 transition-colors w-full text-left py-0.5"
                             >
-                              Bếp từ đơn siêu mỏng Solo-Pro
+                              {l('Bếp từ đơn siêu mỏng Solo-Pro', 'Solo-Pro ultra-slim single hob')}
                             </button>
                           </li>
                         </ul>
@@ -468,8 +468,8 @@ export const Header: React.FC<HeaderProps> = ({
                           }}
                           className="font-bold text-slate-900 hover:text-teal-700 cursor-pointer text-sm flex items-center justify-between mb-2 group"
                         >
-                          <span>Máy Hút Mùi Cảm Ứng</span>
-                          <span className="text-[11px] text-teal-600 font-normal group-hover:underline">Xem tất cả</span>
+                          <span>{l('Máy Hút Mùi Cảm Ứng', 'Touch-Control Range Hoods')}</span>
+                          <span className="text-[11px] text-teal-600 font-normal group-hover:underline">{l('Xem tất cả', 'View all')}</span>
                         </div>
                         <ul className="space-y-1.5 text-xs text-slate-600">
                           <li>
@@ -480,7 +480,7 @@ export const Header: React.FC<HeaderProps> = ({
                               }}
                               className="hover:text-teal-700 transition-colors w-full text-left py-0.5"
                             >
-                              Máy chữ T cảm biến vẫy tay WaveSensor
+                              {l('Máy chữ T cảm biến vẫy tay WaveSensor', 'T-shape hood with WaveSensor gesture control')}
                             </button>
                           </li>
                           <li>
@@ -491,7 +491,7 @@ export const Header: React.FC<HeaderProps> = ({
                               }}
                               className="hover:text-teal-700 transition-colors w-full text-left py-0.5"
                             >
-                              Máy kính vát SlopeCurved 1350m³/h
+                              {l('Máy kính vát SlopeCurved 1350m³/h', 'SlopeCurved angled glass hood 1350m³/h')}
                             </button>
                           </li>
                         </ul>
@@ -505,8 +505,8 @@ export const Header: React.FC<HeaderProps> = ({
                           }}
                           className="font-bold text-slate-900 hover:text-teal-700 cursor-pointer text-sm flex items-center justify-between mb-2 group"
                         >
-                          <span>Bình Nước Nóng Titanium</span>
-                          <span className="text-[11px] text-teal-600 font-normal group-hover:underline">Xem tất cả</span>
+                          <span>{l('Bình Nước Nóng Titanium', 'Titanium Water Heaters')}</span>
+                          <span className="text-[11px] text-teal-600 font-normal group-hover:underline">{l('Xem tất cả', 'View all')}</span>
                         </div>
                         <ul className="space-y-1.5 text-xs text-slate-600">
                           <li>
@@ -517,7 +517,7 @@ export const Header: React.FC<HeaderProps> = ({
                               }}
                               className="hover:text-teal-700 transition-colors w-full text-left py-0.5"
                             >
-                              Bình gián tiếp 15L / 20L / 30L chống giật TSS
+                              {l('Bình gián tiếp 15L / 20L / 30L chống giật TSS', '15L / 20L / 30L storage heaters with TSS anti-shock')}
                             </button>
                           </li>
                           <li>
@@ -528,7 +528,7 @@ export const Header: React.FC<HeaderProps> = ({
                               }}
                               className="hover:text-teal-700 transition-colors w-full text-left py-0.5"
                             >
-                              Bình trực tiếp Turbo bơm trợ lực DC
+                              {l('Bình trực tiếp Turbo bơm trợ lực DC', 'Turbo direct heater with DC booster pump')}
                             </button>
                           </li>
                         </ul>
@@ -539,7 +539,7 @@ export const Header: React.FC<HeaderProps> = ({
                     <div className="bg-slate-50 p-4 rounded-xl flex flex-col justify-between">
                       <div>
                         <span className="text-[11px] font-bold uppercase tracking-wider text-teal-800">
-                          Công cụ tiện ích
+                          {l('Công cụ tiện ích', 'Handy tools')}
                         </span>
                         <div className="mt-3 space-y-2">
                           <button
@@ -552,10 +552,10 @@ export const Header: React.FC<HeaderProps> = ({
                             <Calculator className="w-4 h-4 text-teal-700 mt-0.5 shrink-0" />
                             <div>
                               <div className="text-xs font-semibold text-slate-900 group-hover:text-teal-700">
-                                Tính công suất điều hòa (BTU)
+                                {l('Tính công suất điều hòa (BTU)', 'AC capacity calculator (BTU)')}
                               </div>
                               <div className="text-[11px] text-slate-500">
-                                Chọn máy chuẩn theo diện tích & hướng nắng
+                                {l('Chọn máy chuẩn theo diện tích & hướng nắng', 'Pick the right unit by room size & sun exposure')}
                               </div>
                             </div>
                           </button>
@@ -570,10 +570,10 @@ export const Header: React.FC<HeaderProps> = ({
                             <Compass className="w-4 h-4 text-teal-700 mt-0.5 shrink-0" />
                             <div>
                               <div className="text-xs font-semibold text-slate-900 group-hover:text-teal-700">
-                                Giải pháp theo không gian
+                                {l('Giải pháp theo không gian', 'Solutions by space')}
                               </div>
                               <div className="text-[11px] text-slate-500">
-                                Phòng ngủ, Bếp, Khách, Tắm
+                                {l('Phòng ngủ, Bếp, Khách, Tắm', 'Bedroom, Kitchen, Living room, Bathroom')}
                               </div>
                             </div>
                           </button>
@@ -588,7 +588,7 @@ export const Header: React.FC<HeaderProps> = ({
                           }}
                           className="w-full py-2 px-3 text-xs font-bold text-center text-teal-800 bg-teal-100 hover:bg-teal-200 rounded-lg transition-colors flex items-center justify-center gap-1"
                         >
-                          <span>Khám phá sản phẩm</span>
+                          <span>{l('Khám phá sản phẩm', 'Explore products')}</span>
                           <ExternalLink className="w-3.5 h-3.5" />
                         </button>
                       </div>
@@ -635,8 +635,8 @@ export const Header: React.FC<HeaderProps> = ({
                     >
                       <Wifi className="w-4 h-4 text-teal-700" />
                       <div>
-                        <div className="font-bold">Hướng dẫn kết nối App WiFi</div>
-                        <div className="text-[10px] text-teal-600">Tải App Chillami iOS & Android</div>
+                        <div className="font-bold">{l('Hướng dẫn kết nối App WiFi', 'WiFi app pairing guide')}</div>
+                        <div className="text-[10px] text-teal-600">{l('Tải App Chillami iOS & Android', 'Download the Chillami app for iOS & Android')}</div>
                       </div>
                     </button>
                     <button
@@ -647,7 +647,7 @@ export const Header: React.FC<HeaderProps> = ({
                       className="flex items-center gap-2.5 w-full p-2 text-xs font-medium text-slate-700 hover:text-teal-700 hover:bg-slate-50 rounded-lg text-left"
                     >
                       <ShieldCheck className="w-4 h-4 text-teal-600" />
-                      <span>Kích hoạt & Tra cứu bảo hành</span>
+                      <span>{l('Kích hoạt & Tra cứu bảo hành', 'Activate & look up warranty')}</span>
                     </button>
                     <button
                       onClick={() => {
@@ -657,7 +657,7 @@ export const Header: React.FC<HeaderProps> = ({
                       className="flex items-center gap-2.5 w-full p-2 text-xs font-medium text-slate-700 hover:text-teal-700 hover:bg-slate-50 rounded-lg text-left"
                     >
                       <Calculator className="w-4 h-4 text-teal-600" />
-                      <span>Công cụ tính BTU điều hòa</span>
+                      <span>{l('Công cụ tính BTU điều hòa', 'AC BTU calculator')}</span>
                     </button>
                     <button
                       onClick={() => {
@@ -667,7 +667,7 @@ export const Header: React.FC<HeaderProps> = ({
                       className="flex items-center gap-2.5 w-full p-2 text-xs font-medium text-slate-700 hover:text-teal-700 hover:bg-slate-50 rounded-lg text-left"
                     >
                       <Compass className="w-4 h-4 text-teal-600" />
-                      <span>Tư vấn theo không gian</span>
+                      <span>{l('Tư vấn theo không gian', 'Advice by living space')}</span>
                     </button>
                     <button
                       onClick={() => {
@@ -677,7 +677,7 @@ export const Header: React.FC<HeaderProps> = ({
                       className="flex items-center gap-2.5 w-full p-2 text-xs font-medium text-slate-700 hover:text-teal-700 hover:bg-slate-50 rounded-lg text-left"
                     >
                       <PhoneCall className="w-4 h-4 text-teal-600" />
-                      <span>Câu hỏi thường gặp (FAQ)</span>
+                      <span>{l('Câu hỏi thường gặp (FAQ)', 'Frequently asked questions (FAQ)')}</span>
                     </button>
                   </div>
                 )}
@@ -775,7 +775,7 @@ export const Header: React.FC<HeaderProps> = ({
                 className="hidden xl:flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium text-slate-600 hover:text-teal-700 rounded-lg hover:bg-slate-50 transition-colors cursor-pointer"
               >
                 <Calculator className="w-3.5 h-3.5 text-teal-600" />
-                <span>Tính công suất BTU</span>
+                <span>{l('Tính công suất BTU', 'BTU capacity calculator')}</span>
               </button>
             </div>
           </div>
@@ -791,7 +791,7 @@ export const Header: React.FC<HeaderProps> = ({
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Tìm kiếm thiết bị Chillami..."
+              placeholder={l('Tìm kiếm thiết bị Chillami...', 'Search Chillami appliances...')}
               className="w-full pl-9 pr-4 py-2.5 bg-slate-100 rounded-xl text-xs border border-transparent focus:border-teal-500 focus:bg-white"
             />
             <Search className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
@@ -805,7 +805,7 @@ export const Header: React.FC<HeaderProps> = ({
               }}
               className="p-3 text-left font-semibold text-xs text-slate-800 bg-slate-50 hover:bg-teal-50 rounded-xl"
             >
-              📦 Tất Cả Sản Phẩm
+              {l('📦 Tất Cả Sản Phẩm', '📦 All Products')}
             </button>
             <button
               onClick={() => {
@@ -814,7 +814,7 @@ export const Header: React.FC<HeaderProps> = ({
               }}
               className="p-3 text-left font-semibold text-xs text-slate-800 bg-slate-50 hover:bg-teal-50 rounded-xl"
             >
-              🔥 Ưu Đãi Mới
+              {l('🔥 Ưu Đãi Mới', '🔥 New Deals')}
             </button>
             <button
               onClick={() => {
@@ -823,7 +823,7 @@ export const Header: React.FC<HeaderProps> = ({
               }}
               className="p-3 text-left font-semibold text-xs text-slate-800 bg-slate-50 hover:bg-teal-50 rounded-xl"
             >
-              🧮 Tính BTU Điều Hòa
+              {l('🧮 Tính BTU Điều Hòa', '🧮 AC BTU Calculator')}
             </button>
             <button
               onClick={() => {
@@ -832,7 +832,7 @@ export const Header: React.FC<HeaderProps> = ({
               }}
               className="p-3 text-left font-semibold text-xs text-slate-800 bg-slate-50 hover:bg-teal-50 rounded-xl"
             >
-              🛡️ Kích Hoạt Bảo Hành
+              {l('🛡️ Kích Hoạt Bảo Hành', '🛡️ Activate Warranty')}
             </button>
             <button
               onClick={() => {
@@ -841,7 +841,7 @@ export const Header: React.FC<HeaderProps> = ({
               }}
               className="p-3 text-left font-semibold text-xs text-slate-800 bg-slate-50 hover:bg-teal-50 rounded-xl"
             >
-              📍 Nơi Mua Hàng
+              {l('📍 Nơi Mua Hàng', '📍 Where to Buy')}
             </button>
             <button
               onClick={() => {
@@ -850,7 +850,7 @@ export const Header: React.FC<HeaderProps> = ({
               }}
               className="p-3 text-left font-semibold text-xs text-slate-800 bg-slate-50 hover:bg-teal-50 rounded-xl"
             >
-              ⭐ Giải Pháp Không Gian
+              {l('⭐ Giải Pháp Không Gian', '⭐ Space Solutions')}
             </button>
             <button
               onClick={() => {
