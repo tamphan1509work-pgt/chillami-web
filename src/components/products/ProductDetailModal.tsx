@@ -124,8 +124,6 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                 <img
                   src={activeImage}
                   alt={product.name}
-                  // Full-size image URLs are guessed from the thumbnail; fall back to the thumbnail if missing
-                  onError={() => activeImage !== product.image && setActiveImage(product.image)}
                   className="w-full h-full object-contain rounded-xl transition-all duration-300"
                 />
 
@@ -173,7 +171,6 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
               )}
 
               {/* Energy Label & Quality Seals Box */}
-              {product.energyLabel && (
               <div className="p-3.5 rounded-2xl bg-gradient-to-r from-emerald-50/70 via-teal-50/50 to-blue-50/70 border border-emerald-100 space-y-2">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
@@ -206,7 +203,6 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                   </span>
                 </div>
               </div>
-              )}
 
               {/* Tech Commitment Badges */}
               <div className="grid grid-cols-3 gap-2.5 pt-1">
@@ -244,7 +240,6 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                   {product.name}
                 </h2>
 
-                {product.reviewsCount > 0 && (
                 <div className="flex items-center gap-3 mb-4">
                   <div className="flex items-center gap-1 text-xs text-amber-500 font-semibold">
                     <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
@@ -257,7 +252,6 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                     {l('Động cơ BLDC êm 13dB', 'Quiet 13dB BLDC motor')}
                   </span>
                 </div>
-                )}
 
                 {/* Price Box */}
                 <div className="p-4 rounded-2xl bg-teal-50/70 border border-teal-100 mb-5 flex items-baseline justify-between">
@@ -443,7 +437,6 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                     </a>
                   )}
 
-                  {product.manualDownloadUrl && (
                   <button
                     onClick={handleDownloadManual}
                     className="inline-flex items-center gap-1.5 text-xs font-medium text-slate-500 hover:text-teal-700 cursor-pointer"
@@ -451,7 +444,6 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                     <FileDown className="w-4 h-4" />
                     <span>{downloadSuccess ? l('✓ Đã tải HDSD (PDF)', '✓ Manual downloaded (PDF)') : l('Tải tài liệu HDSD (PDF)', 'Download user manual (PDF)')}</span>
                   </button>
-                  )}
                 </div>
               </div>
             </div>
@@ -472,7 +464,6 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                 )}
               </button>
 
-{product.features.length > 0 && (
               <button
                 onClick={() => setActiveTab('features')}
                 className={`text-xs sm:text-sm font-bold pb-2 transition-colors relative cursor-pointer whitespace-nowrap ${
@@ -484,10 +475,8 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                   <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-teal-700 rounded-full" />
                 )}
               </button>
-              )}
 
               {/* Energy Label Tab */}
-{product.energyLabel && (
               <button
                 onClick={() => setActiveTab('energy')}
                 className={`text-xs sm:text-sm font-bold pb-2 transition-colors relative cursor-pointer flex items-center gap-1.5 whitespace-nowrap ${
@@ -500,10 +489,8 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                   <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-emerald-600 rounded-full" />
                 )}
               </button>
-              )}
 
               {/* Video Tab */}
-{product.videoUrl && (
               <button
                 onClick={() => setActiveTab('video')}
                 className={`text-xs sm:text-sm font-bold pb-2 transition-colors relative cursor-pointer flex items-center gap-1.5 whitespace-nowrap ${
@@ -516,9 +503,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                   <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-rose-600 rounded-full" />
                 )}
               </button>
-              )}
 
-{product.reviewsCount > 0 && (
               <button
                 onClick={() => setActiveTab('reviews')}
                 className={`text-xs sm:text-sm font-bold pb-2 transition-colors relative cursor-pointer whitespace-nowrap ${
@@ -530,7 +515,6 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                   <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-teal-700 rounded-full" />
                 )}
               </button>
-              )}
             </div>
 
             {/* TAB 1: SPECS TABLE */}
