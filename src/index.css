@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
-/* Roboto everywhere: Tailwind's sans, mono and display stacks all point to it */
+/* Roboto everywhere (self-hosted variable font, weights 100-900): sans, mono and display all point to it */
 @theme {
-  --font-sans: 'Roboto', system-ui, -apple-system, sans-serif;
-  --font-mono: 'Roboto', system-ui, -apple-system, sans-serif;
-  --font-display: 'Roboto', system-ui, -apple-system, sans-serif;
+  --font-sans: 'Roboto Variable', 'Roboto', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Roboto Variable', 'Roboto', system-ui, -apple-system, sans-serif;
+  --font-display: 'Roboto Variable', 'Roboto', system-ui, -apple-system, sans-serif;
 }
 
 @layer base {

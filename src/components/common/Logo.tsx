@@ -67,7 +67,7 @@ export const Logo: React.FC<LogoProps> = ({
           <span
             className="font-extrabold uppercase"
             style={{
-              fontFamily: "'Roboto', sans-serif",
+              fontFamily: "'Roboto Variable', 'Roboto', sans-serif",
               letterSpacing: '0.08em',
               color: textColor,
               fontSize: `${iconSize * 0.9}px`,
@@ -80,7 +80,7 @@ export const Logo: React.FC<LogoProps> = ({
           <span
             className="font-bold relative"
             style={{
-              fontFamily: "'Roboto', sans-serif",
+              fontFamily: "'Roboto Variable', 'Roboto', sans-serif",
               color: textColor,
               fontSize: `${iconSize * 0.9}px`,
               lineHeight: 1,
@@ -104,7 +104,7 @@ export const Logo: React.FC<LogoProps> = ({
         <span
           className="font-extrabold uppercase transition-colors"
           style={{
-            fontFamily: "'Roboto', sans-serif",
+            fontFamily: "'Roboto Variable', 'Roboto', sans-serif",
             letterSpacing: '0.06em',
             color: textColor,
             fontSize: `${iconSize * 0.72}px`,
@@ -116,7 +116,7 @@ export const Logo: React.FC<LogoProps> = ({
         <span
           className="font-extrabold relative transition-colors"
           style={{
-            fontFamily: "'Roboto', sans-serif",
+            fontFamily: "'Roboto Variable', 'Roboto', sans-serif",
             color: textColor,
             fontSize: `${iconSize * 0.72}px`,
             lineHeight: 1,

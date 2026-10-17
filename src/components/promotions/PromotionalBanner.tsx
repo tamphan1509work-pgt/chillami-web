@@ -135,19 +135,19 @@ export const PromotionalBanner: React.FC<PromotionalBannerProps> = ({
             <div className="p-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg flex items-center justify-between gap-3 group">
               <div className="space-y-1">
                 <div className="flex items-center gap-2">
-                  <span className="text-xs font-black text-amber-300 bg-amber-500/20 px-2 py-0.5 rounded border border-amber-400/30">
+                  <span className="text-[11px] font-bold tracking-wide tabular-nums text-amber-300 bg-amber-500/20 px-2 py-0.5 rounded-md border border-amber-400/30">
                     {l('GIẢM 300.000đ', '300,000đ OFF')}
                   </span>
-                  <span className="text-[11px] text-slate-300">{l('Đơn từ 1.800.000đ', 'Orders from 1,800,000đ')}</span>
+                  <span className="text-xs text-slate-300 tabular-nums">{l('Đơn từ 1.800.000đ', 'Orders from 1,800,000đ')}</span>
                 </div>
-                <div className="text-xs text-slate-200">
-                  {l('Mã:', 'Code:')} <strong className="font-mono text-white text-sm">CHILLAMI2026</strong>
+                <div className="text-xs text-slate-300">
+                  {l('Mã:', 'Code:')} <strong className="ml-0.5 text-white text-sm font-semibold tracking-wider">CHILLAMI2026</strong>
                 </div>
               </div>
 
               <button
                 onClick={() => handleCopy('CHILLAMI2026')}
-                className="px-3 py-2 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold text-xs transition-colors cursor-pointer shrink-0 flex items-center gap-1.5"
+                className="px-3.5 py-2 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-semibold text-xs transition-colors cursor-pointer shrink-0 flex items-center gap-1.5"
               >
                 {copiedCode === 'CHILLAMI2026' ? (
                   <>
@@ -167,19 +167,19 @@ export const PromotionalBanner: React.FC<PromotionalBannerProps> = ({
             <div className="p-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg flex items-center justify-between gap-3 group">
               <div className="space-y-1">
                 <div className="flex items-center gap-2">
-                  <span className="text-xs font-black text-teal-300 bg-teal-500/20 px-2 py-0.5 rounded border border-teal-400/30">
+                  <span className="text-[11px] font-bold tracking-wide tabular-nums text-teal-300 bg-teal-500/20 px-2 py-0.5 rounded-md border border-teal-400/30">
                     {l('GIẢM 500.000đ', '500,000đ OFF')}
                   </span>
-                  <span className="text-[11px] text-slate-300">{l('Đơn Điều Hòa / Bếp từ', 'AC / induction hob orders')}</span>
+                  <span className="text-xs text-slate-300 tabular-nums">{l('Đơn Điều Hòa / Bếp từ', 'AC / induction hob orders')}</span>
                 </div>
-                <div className="text-xs text-slate-200">
-                  {l('Mã:', 'Code:')} <strong className="font-mono text-white text-sm">COOLSUMMER</strong>
+                <div className="text-xs text-slate-300">
+                  {l('Mã:', 'Code:')} <strong className="ml-0.5 text-white text-sm font-semibold tracking-wider">COOLSUMMER</strong>
                 </div>
               </div>
 
               <button
                 onClick={() => handleCopy('COOLSUMMER')}
-                className="px-3 py-2 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold text-xs transition-colors cursor-pointer shrink-0 flex items-center gap-1.5"
+                className="px-3.5 py-2 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-semibold text-xs transition-colors cursor-pointer shrink-0 flex items-center gap-1.5"
               >
                 {copiedCode === 'COOLSUMMER' ? (
                   <>
@@ -199,7 +199,7 @@ export const PromotionalBanner: React.FC<PromotionalBannerProps> = ({
             <div className="pt-2 flex flex-col sm:flex-row items-center gap-3">
               <button
                 onClick={onExploreProducts}
-                className="w-full sm:w-auto flex-1 py-3.5 px-6 rounded-2xl bg-white text-slate-950 hover:bg-slate-100 font-extrabold text-xs shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full sm:w-auto flex-1 py-3.5 px-6 rounded-2xl bg-white text-slate-950 hover:bg-slate-100 font-semibold text-sm shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer"
               >
                 <span>{l('Khám phá sản phẩm Livotec', 'Explore Livotec products')}</span>
                 <ArrowRight className="w-4 h-4 text-teal-700" />
@@ -208,7 +208,7 @@ export const PromotionalBanner: React.FC<PromotionalBannerProps> = ({
               {onExplorePromotions && (
                 <button
                   onClick={onExplorePromotions}
-                  className="w-full sm:w-auto py-3.5 px-5 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-semibold text-xs border border-white/20 transition-all cursor-pointer"
+                  className="w-full sm:w-auto py-3.5 px-5 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-medium text-sm border border-white/20 transition-all cursor-pointer"
                 >
                   {l('Xem thêm ưu đãi', 'See more deals')}
                 </button>
