@@ -1,0 +1,6 @@
+{
+  "name": "Chillami - Thiết Bị Điện Gia Dụng Cao Cấp",
+  "description": "Website bán lẻ thiết bị điện gia dụng thông minh Chillami - Quạt BLDC, Điều hòa Inverter, Bếp từ IGBT, Máy hút mùi và Bình nước nóng công nghệ cao.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

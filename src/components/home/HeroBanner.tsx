@@ -1,0 +1,272 @@
+import React, { useState } from 'react';
+import {
+  Wind,
+  ShieldCheck,
+  Zap,
+  ArrowRight,
+  Calculator,
+  Sparkles,
+  VolumeX,
+  CheckCircle2,
+  ChevronRight
+} from 'lucide-react';
+import { useLanguage } from '../../context/LanguageContext';
+
+interface HeroBannerProps {
+  onExploreProducts: () => void;
+  onOpenBtuCalc: () => void;
+}
+
+export const HeroBanner: React.FC<HeroBannerProps> = ({
+  onExploreProducts,
+  onOpenBtuCalc,
+}) => {
+  const { language, t } = useLanguage();
+  const [activeTab, setActiveTab] = useState<'bldc' | 'inverter' | 'igbt' | 'titanium'>('bldc');
+
+  const highlights = {
+    bldc: {
+      badge: language === 'vi' ? 'Công nghệ độc quyền' : 'Proprietary Tech',
+      title: language === 'vi' ? 'Quạt BLDC SoftAir 13dB' : 'BLDC SoftAir 13dB Fan',
+      desc: language === 'vi'
+        ? 'Động cơ một chiều không chổi than 100% dây đồng, 24 cấp độ gió tự nhiên, vận hành siêu tĩnh lặng bảo vệ giấc ngủ.'
+        : 'Brushless DC motor with 100% pure copper winding, 24 natural wind levels, ultra-quiet operation protecting sleep.',
+      stat: language === 'vi' ? 'Tiết kiệm 70%' : 'Save 70%',
+      statLabel: language === 'vi' ? 'Điện năng tiêu thụ' : 'Power Consumption',
+      image: 'https://images.unsplash.com/photo-1594910069352-7010f3c55c70?auto=format&fit=crop&w=1200&q=80',
+      actionLabel: language === 'vi' ? 'Xem Quạt BLDC' : 'View BLDC Fans',
+    },
+    inverter: {
+      badge: language === 'vi' ? 'Kiến trúc tối giản' : 'Minimalist Design',
+      title: language === 'vi' ? 'Điều Hòa Slim Inverter 16.8cm' : 'Slim Inverter AC 16.8cm',
+      desc: language === 'vi'
+        ? 'Thiết kế siêu mỏng thanh lịch kết hợp luồng gió Coanda thổi trần, làm lạnh dịu mát không gây khô da hay buốt đầu.'
+        : 'Ultra-slim elegant design paired with Coanda ceiling airflow, gentle cooling without drying skin or head chills.',
+      stat: 'CSPF 5.25',
+      statLabel: language === 'vi' ? 'Chuẩn 5 sao năng lượng' : '5-Star Energy Rating',
+      image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1200&q=80',
+      actionLabel: language === 'vi' ? 'Xem Điều Hòa Inverter' : 'View Inverter AC',
+    },
+    igbt: {
+      badge: language === 'vi' ? 'Linh kiện Infineon Đức' : 'German Infineon IGBT',
+      title: language === 'vi' ? 'Bếp Từ Đôi MasterChef IGBT' : 'MasterChef Induction Hob',
+      desc: language === 'vi'
+        ? 'Công nghệ sôi lăn tăn liên tục mức 1-3 không ngắt quãng, mặt kính Kanger vát kim cương chịu nhiệt 750°C.'
+        : 'Continuous low-simmer boiling without pulsing, diamond-beveled Kanger glass heat resistant to 750°C.',
+      stat: '4000W',
+      statLabel: language === 'vi' ? 'Booster đun siêu tốc' : 'Super-Fast Booster',
+      image: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=1200&q=80',
+      actionLabel: language === 'vi' ? 'Xem Bếp Từ Đôi' : 'View Induction Hobs',
+    },
+    titanium: {
+      badge: language === 'vi' ? 'Bảo hành bình chứa 10 năm' : '10-Year Tank Warranty',
+      title: language === 'vi' ? 'Bình Nước Nóng Men Titanium' : 'Titanium Water Heater',
+      desc: language === 'vi'
+        ? 'Chống ăn mòn tuyệt đối, cọc đốt Incoloy 840 truyền nhiệt nhanh, hệ thống chống giật ELCB kép an toàn tuyệt đối.'
+        : 'Zero corrosion, Incoloy 840 rapid heating element, dual ELCB anti-shock protection for ultimate safety.',
+      stat: language === 'vi' ? '72 Giờ' : '72 Hours',
+      statLabel: language === 'vi' ? 'Giữ nhiệt chuẩn SuperFoam' : 'SuperFoam Heat Retention',
+      image: 'https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=1200&q=80',
+      actionLabel: language === 'vi' ? 'Xem Bình Nóng Lạnh' : 'View Water Heaters',
+    },
+  };
+
+  const current = highlights[activeTab];
+
+  return (
+    <section className="relative bg-gradient-to-b from-teal-950 via-slate-900 to-slate-950 text-white overflow-hidden">
+      {/* Subtle background glow */}
+      <div className="absolute top-0 right-1/4 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-16 lg:pt-14 lg:pb-20">
+        {/* Top Tagline & Benchmark CTA */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 pb-6 border-b border-slate-800/80">
+          <div className="flex items-center gap-2 text-xs text-teal-400 font-semibold tracking-wider uppercase">
+            <Sparkles className="w-4 h-4 text-teal-300" />
+            <span>{language === 'vi' ? 'Thế hệ thiết bị điện gia dụng thông minh Chillami' : 'Next-Gen Chillami Smart Home Appliances'}</span>
+          </div>
+
+          <div className="flex items-center gap-3 text-xs">
+            <span className="flex items-center gap-1.5 text-teal-300 font-medium">
+              <CheckCircle2 className="w-4 h-4 text-teal-400" />
+              {language === 'vi' ? '1 Đổi 1 trong 30 ngày' : '30-Day 1-to-1 Replacement'}
+            </span>
+            <span className="text-slate-600 hidden sm:inline">·</span>
+            <span className="hidden sm:flex items-center gap-1.5 text-slate-300">
+              <ShieldCheck className="w-4 h-4 text-teal-400" />
+              {language === 'vi' ? 'Bảo hành chính hãng tới 10 năm' : 'Up to 10-Year Warranty'}
+            </span>
+          </div>
+        </div>
+
+        {/* Main Hero Split */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          {/* Left Hero Text (7 cols) */}
+          <div className="lg:col-span-7 space-y-6">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight font-display">
+              {language === 'vi' ? (
+                <>
+                  Nâng tầm không gian sống với thiết bị{' '}
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-cyan-300 to-teal-200">
+                    siêu êm & tiết kiệm điện
+                  </span>
+                </>
+              ) : (
+                <>
+                  Elevate your living space with{' '}
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-cyan-300 to-teal-200">
+                    ultra-quiet & energy-saving
+                  </span>{' '}
+                  appliances
+                </>
+              )}
+            </h1>
+
+            <p className="text-base sm:text-lg text-slate-300 font-normal leading-relaxed max-w-2xl">
+              {language === 'vi'
+                ? 'Hệ sinh thái thiết bị điện gia dụng Chillami: Động cơ BLDC không chổi than 13dB, Điều hòa Inverter thổi trần, Bếp từ IGBT sôi liu riu và Bình nóng lạnh men Titanium an toàn tuyệt đối.'
+                : 'Chillami smart ecosystem: Brushless BLDC 13dB fans, Coanda ceiling Inverter ACs, German IGBT induction hobs, and Titanium water heaters.'}
+            </p>
+
+            {/* Quick Metrics / USPs */}
+            <div className="grid grid-cols-3 gap-4 py-3 max-w-lg">
+              <div className="border-l-2 border-teal-500 pl-3">
+                <div className="text-xl sm:text-2xl font-bold text-white tracking-tight">13 dB</div>
+                <div className="text-xs text-slate-400">{language === 'vi' ? 'Siêu êm phòng ngủ' : 'Bedroom quiet'}</div>
+              </div>
+              <div className="border-l-2 border-teal-500 pl-3">
+                <div className="text-xl sm:text-2xl font-bold text-white tracking-tight">-70%</div>
+                <div className="text-xs text-slate-400">{language === 'vi' ? 'Tiết kiệm điện năng' : 'Power saving'}</div>
+              </div>
+              <div className="border-l-2 border-teal-500 pl-3">
+                <div className="text-xl sm:text-2xl font-bold text-white tracking-tight">{language === 'vi' ? '1 Đổi 1' : '1 to 1'}</div>
+                <div className="text-xs text-slate-400">{language === 'vi' ? '30 ngày tại nhà' : '30-day swap'}</div>
+              </div>
+            </div>
+
+            {/* Action Buttons */}
+            <div className="flex flex-wrap items-center gap-3 pt-2">
+              <button
+                onClick={onExploreProducts}
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold text-sm shadow-lg shadow-teal-500/20 transition-all cursor-pointer"
+              >
+                <span>{language === 'vi' ? 'Khám phá sản phẩm' : 'Explore Products'}</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+
+              <button
+                onClick={onOpenBtuCalc}
+                className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-semibold text-sm border border-slate-700 transition-all cursor-pointer"
+              >
+                <Calculator className="w-4 h-4 text-teal-400" />
+                <span>{language === 'vi' ? 'Tính BTU Điều Hòa' : 'Calculate AC BTU'}</span>
+              </button>
+            </div>
+
+            {/* Trust commitments */}
+            <div className="flex flex-wrap items-center gap-4 pt-2 text-xs text-slate-400">
+              <span className="flex items-center gap-1.5">
+                <CheckCircle2 className="w-4 h-4 text-teal-400" />
+                {language === 'vi' ? 'Miễn phí vận chuyển & lắp đặt' : 'Free delivery & installation'}
+              </span>
+              <span className="flex items-center gap-1.5">
+                <CheckCircle2 className="w-4 h-4 text-teal-400" />
+                {language === 'vi' ? 'Bảo hành điện tử E-Warranty' : 'E-Warranty protection'}
+              </span>
+              <span className="flex items-center gap-1.5">
+                <CheckCircle2 className="w-4 h-4 text-teal-400" />
+                {language === 'vi' ? 'Hỗ trợ 24/7 toàn quốc' : '24/7 nationwide support'}
+              </span>
+            </div>
+          </div>
+
+          {/* Right Interactive Tech Card (5 cols) */}
+          <div className="lg:col-span-5">
+            <div className="bg-slate-800/80 backdrop-blur-md rounded-3xl border border-slate-700/80 p-5 shadow-2xl overflow-hidden flex flex-col">
+              {/* Category tabs */}
+              <div className="grid grid-cols-4 gap-1 p-1 bg-slate-900/80 rounded-xl mb-4 text-xs font-semibold">
+                <button
+                  type="button"
+                  onClick={() => setActiveTab('bldc')}
+                  className={`py-2 px-1 text-center rounded-lg transition-colors cursor-pointer ${
+                    activeTab === 'bldc' ? 'bg-teal-700 text-white shadow-xs' : 'text-slate-400 hover:text-white'
+                  }`}
+                >
+                  {language === 'vi' ? 'Quạt BLDC' : 'BLDC Fan'}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setActiveTab('inverter')}
+                  className={`py-2 px-1 text-center rounded-lg transition-colors cursor-pointer ${
+                    activeTab === 'inverter' ? 'bg-teal-700 text-white shadow-xs' : 'text-slate-400 hover:text-white'
+                  }`}
+                >
+                  {language === 'vi' ? 'Điều Hòa' : 'Air Con'}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setActiveTab('igbt')}
+                  className={`py-2 px-1 text-center rounded-lg transition-colors cursor-pointer ${
+                    activeTab === 'igbt' ? 'bg-teal-700 text-white shadow-xs' : 'text-slate-400 hover:text-white'
+                  }`}
+                >
+                  {language === 'vi' ? 'Bếp Từ' : 'Induction'}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setActiveTab('titanium')}
+                  className={`py-2 px-1 text-center rounded-lg transition-colors cursor-pointer ${
+                    activeTab === 'titanium' ? 'bg-teal-700 text-white shadow-xs' : 'text-slate-400 hover:text-white'
+                  }`}
+                >
+                  {language === 'vi' ? 'Bình Nước' : 'Water Heat'}
+                </button>
+              </div>
+
+              {/* Showcase Image with Stat Overlay */}
+              <div className="relative w-full aspect-16/10 rounded-2xl overflow-hidden bg-slate-900 mb-4 group">
+                <img
+                  src={current.image}
+                  alt={current.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent" />
+
+                <div className="absolute bottom-3 left-3 right-3 flex items-end justify-between">
+                  <div className="bg-slate-900/90 backdrop-blur-md px-3 py-1.5 rounded-xl border border-slate-700">
+                    <div className="text-base font-extrabold text-teal-400 tracking-tight">{current.stat}</div>
+                    <div className="text-[10px] text-slate-300">{current.statLabel}</div>
+                  </div>
+                  <span className="text-[11px] font-semibold text-slate-300 bg-slate-900/80 px-2.5 py-1 rounded-lg border border-slate-700">
+                    {current.badge}
+                  </span>
+                </div>
+              </div>
+
+              {/* Content description */}
+              <div className="space-y-2">
+                <h3 className="text-lg font-bold text-white tracking-tight">{current.title}</h3>
+                <p className="text-xs text-slate-300 leading-relaxed">{current.desc}</p>
+              </div>
+
+              <div className="pt-4 mt-4 border-t border-slate-700/60 flex items-center justify-between">
+                <span className="text-xs text-slate-400 flex items-center gap-1">
+                  <VolumeX className="w-3.5 h-3.5 text-teal-400" />
+                  Chuẩn vận hành êm ái
+                </span>
+                <button
+                  onClick={onExploreProducts}
+                  className="inline-flex items-center gap-1 text-xs font-bold text-teal-400 hover:text-teal-300 transition-colors"
+                >
+                  <span>{current.actionLabel}</span>
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
