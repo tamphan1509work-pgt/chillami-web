@@ -1,6 +1,7 @@
 import { Product } from '../types';
 
 // Livotec products listed on homichi.com (source: homichi_san_pham.csv).
+// Images are copies of the Homichi product photos in public/images/products.
 // Prices of 0 with contactForPrice are shown as "Liên hệ" (contact for price).
 export const PRODUCTS: Product[] = [
   {
@@ -14,10 +15,8 @@ export const PRODUCTS: Product[] = [
     originalPrice: 0,
     rating: 0,
     reviewsCount: 0,
-    image: 'https://homichi.com/wp-content/uploads/2026/10/livotec-e-smart-lio-666v-06-07-1.png-300x300.webp',
-    gallery: [
-      'https://homichi.com/wp-content/uploads/2026/10/livotec-e-smart-lio-666v-06-07-1.png.webp'
-    ],
+    image: '/images/products/lio-666v.webp',
+    gallery: ['/images/products/lio-666v.webp'],
     inStock: true,
     tagline: 'Bếp từ đôi chính hãng Livotec',
     features: [],
@@ -41,10 +40,8 @@ export const PRODUCTS: Product[] = [
     originalPrice: 0,
     rating: 0,
     reviewsCount: 0,
-    image: 'https://homichi.com/wp-content/uploads/2026/10/LID-888-02.png-300x300.webp',
-    gallery: [
-      'https://homichi.com/wp-content/uploads/2026/10/LID-888-02.png.webp'
-    ],
+    image: '/images/products/lid-888.webp',
+    gallery: ['/images/products/lid-888.webp'],
     inStock: true,
     tagline: 'Bếp điện từ đôi chính hãng Livotec',
     features: [],
@@ -69,10 +66,8 @@ export const PRODUCTS: Product[] = [
     originalPrice: 0,
     rating: 0,
     reviewsCount: 0,
-    image: 'https://homichi.com/wp-content/uploads/2026/09/Gemini_Generated_Image_byl7p5byl7p5byl7-300x300.webp',
-    gallery: [
-      'https://homichi.com/wp-content/uploads/2026/09/Gemini_Generated_Image_byl7p5byl7p5byl7.webp'
-    ],
+    image: '/images/products/lv-200.webp',
+    gallery: ['/images/products/lv-200.webp'],
     inStock: true,
     tagline: 'Máy hút bụi không dây chính hãng Livotec',
     features: [],
@@ -96,10 +91,8 @@ export const PRODUCTS: Product[] = [
     originalPrice: 2700000,
     rating: 0,
     reviewsCount: 0,
-    image: 'https://homichi.com/wp-content/uploads/2026/09/Gemini_Generated_Image_l2dv8hl2dv8hl2dv-300x300.webp',
-    gallery: [
-      'https://homichi.com/wp-content/uploads/2026/09/Gemini_Generated_Image_l2dv8hl2dv8hl2dv.webp'
-    ],
+    image: '/images/products/lv-100.webp',
+    gallery: ['/images/products/lv-100.webp'],
     inStock: true,
     tagline: 'Máy hút bụi không dây chính hãng Livotec',
     features: [],
@@ -122,10 +115,8 @@ export const PRODUCTS: Product[] = [
     originalPrice: 1800000,
     rating: 0,
     reviewsCount: 0,
-    image: 'https://homichi.com/wp-content/uploads/2026/09/Gemini_Generated_Image_x319oax319oax319-300x300.webp',
-    gallery: [
-      'https://homichi.com/wp-content/uploads/2026/09/Gemini_Generated_Image_x319oax319oax319.webp'
-    ],
+    image: '/images/products/lv-99.webp',
+    gallery: ['/images/products/lv-99.webp'],
     inStock: true,
     tagline: 'Máy hút bụi không dây chính hãng Livotec',
     features: [],
@@ -148,10 +139,8 @@ export const PRODUCTS: Product[] = [
     originalPrice: 3200000,
     rating: 0,
     reviewsCount: 0,
-    image: 'https://homichi.com/wp-content/uploads/2026/09/Gemini_Generated_Image_z9gfrbz9gfrbz9gf-300x300.webp',
-    gallery: [
-      'https://homichi.com/wp-content/uploads/2026/09/Gemini_Generated_Image_z9gfrbz9gfrbz9gf.webp'
-    ],
+    image: '/images/products/lac-g62.webp',
+    gallery: ['/images/products/lac-g62.webp'],
     inStock: true,
     tagline: 'Quạt điều hòa chính hãng Livotec',
     features: [],
@@ -173,10 +162,8 @@ export const PRODUCTS: Product[] = [
     originalPrice: 2400000,
     rating: 0,
     reviewsCount: 0,
-    image: 'https://homichi.com/wp-content/uploads/2026/09/Gemini_Generated_Image_8s6ooo8s6ooo8s6o-300x300.webp',
-    gallery: [
-      'https://homichi.com/wp-content/uploads/2026/09/Gemini_Generated_Image_8s6ooo8s6ooo8s6o.webp'
-    ],
+    image: '/images/products/lac-g60.webp',
+    gallery: ['/images/products/lac-g60.webp'],
     inStock: true,
     tagline: 'Quạt điều hòa chính hãng Livotec',
     features: [],
@@ -198,10 +185,8 @@ export const PRODUCTS: Product[] = [
     originalPrice: 8990000,
     rating: 0,
     reviewsCount: 0,
-    image: 'https://homichi.com/wp-content/uploads/2026/09/Gemini_Generated_Image_8b2t7j8b2t7j8b2t-300x300.webp',
-    gallery: [
-      'https://homichi.com/wp-content/uploads/2026/09/Gemini_Generated_Image_8b2t7j8b2t7j8b2t.webp'
-    ],
+    image: '/images/products/lac-h66.webp',
+    gallery: ['/images/products/lac-h66.webp'],
     inStock: true,
     tagline: 'Quạt điều hòa chính hãng Livotec',
     features: [],
@@ -223,10 +208,8 @@ export const PRODUCTS: Product[] = [
     originalPrice: 7590000,
     rating: 0,
     reviewsCount: 0,
-    image: 'https://homichi.com/wp-content/uploads/2026/09/Gemini_Generated_Image_74v8gl74v8gl74v8-300x300.webp',
-    gallery: [
-      'https://homichi.com/wp-content/uploads/2026/09/Gemini_Generated_Image_74v8gl74v8gl74v8.webp'
-    ],
+    image: '/images/products/lac-g66s.webp',
+    gallery: ['/images/products/lac-g66s.webp'],
     inStock: true,
     tagline: 'Quạt điều hòa chính hãng Livotec',
     features: [],
@@ -248,10 +231,8 @@ export const PRODUCTS: Product[] = [
     originalPrice: 0,
     rating: 0,
     reviewsCount: 0,
-    image: 'https://homichi.com/wp-content/uploads/2026/09/quat-dieu-hoa-livotec-lac-h66s-1.png-300x300.webp',
-    gallery: [
-      'https://homichi.com/wp-content/uploads/2026/09/quat-dieu-hoa-livotec-lac-h66s-1.png.webp'
-    ],
+    image: '/images/products/lac-h66s.webp',
+    gallery: ['/images/products/lac-h66s.webp'],
     inStock: true,
     tagline: 'Quạt điều hòa chính hãng Livotec',
     features: [],
@@ -274,10 +255,8 @@ export const PRODUCTS: Product[] = [
     originalPrice: 1640000,
     rating: 0,
     reviewsCount: 0,
-    image: 'https://homichi.com/wp-content/uploads/2026/09/thumnail-may-suoi-gom-livotec-lch-1597d-2.png-300x300.webp',
-    gallery: [
-      'https://homichi.com/wp-content/uploads/2026/09/thumnail-may-suoi-gom-livotec-lch-1597d-2.png.webp'
-    ],
+    image: '/images/products/lch-1597d.webp',
+    gallery: ['/images/products/lch-1597d.webp'],
     inStock: true,
     tagline: 'Máy sưởi gốm chính hãng Livotec',
     features: [],
@@ -300,10 +279,8 @@ export const PRODUCTS: Product[] = [
     originalPrice: 1850000,
     rating: 0,
     reviewsCount: 0,
-    image: 'https://homichi.com/wp-content/uploads/2026/09/may-suoi-livotec-lch-2089t-2.png-300x300.webp',
-    gallery: [
-      'https://homichi.com/wp-content/uploads/2026/09/may-suoi-livotec-lch-2089t-2.png.webp'
-    ],
+    image: '/images/products/lch-2089t.webp',
+    gallery: ['/images/products/lch-2089t.webp'],
     inStock: true,
     tagline: 'Máy sưởi gốm chính hãng Livotec',
     features: [],
@@ -326,10 +303,8 @@ export const PRODUCTS: Product[] = [
     originalPrice: 2400000,
     rating: 0,
     reviewsCount: 0,
-    image: 'https://homichi.com/wp-content/uploads/2026/09/may-suoi-gom-livotec-lch-2079t-3-1.png-300x300.webp',
-    gallery: [
-      'https://homichi.com/wp-content/uploads/2026/09/may-suoi-gom-livotec-lch-2079t-3-1.png.webp'
-    ],
+    image: '/images/products/lch-2079t.webp',
+    gallery: ['/images/products/lch-2079t.webp'],
     inStock: true,
     tagline: 'Máy sưởi gốm chính hãng Livotec',
     features: [],
@@ -352,10 +327,8 @@ export const PRODUCTS: Product[] = [
     originalPrice: 5789000,
     rating: 0,
     reviewsCount: 0,
-    image: 'https://homichi.com/wp-content/uploads/2026/09/Gemini_Generated_Image_ydqjy9ydqjy9ydqj-300x300.webp',
-    gallery: [
-      'https://homichi.com/wp-content/uploads/2026/09/Gemini_Generated_Image_ydqjy9ydqjy9ydqj.webp'
-    ],
+    image: '/images/products/lhd-18iu.webp',
+    gallery: ['/images/products/lhd-18iu.webp'],
     inStock: true,
     tagline: 'Máy hút ẩm chính hãng Livotec',
     features: [],
@@ -377,10 +350,8 @@ export const PRODUCTS: Product[] = [
     originalPrice: 7610000,
     rating: 0,
     reviewsCount: 0,
-    image: 'https://homichi.com/wp-content/uploads/2026/09/Gemini_Generated_Image_6vp0zi6vp0zi6vp0-300x300.webp',
-    gallery: [
-      'https://homichi.com/wp-content/uploads/2026/09/Gemini_Generated_Image_6vp0zi6vp0zi6vp0.webp'
-    ],
+    image: '/images/products/lhd-25ih.webp',
+    gallery: ['/images/products/lhd-25ih.webp'],
     inStock: true,
     tagline: 'Máy hút ẩm chính hãng Livotec',
     features: [],
@@ -402,10 +373,8 @@ export const PRODUCTS: Product[] = [
     originalPrice: 7860000,
     rating: 0,
     reviewsCount: 0,
-    image: 'https://homichi.com/wp-content/uploads/2026/08/Gemini_Generated_Image_723v3c723v3c723v-300x300.webp',
-    gallery: [
-      'https://homichi.com/wp-content/uploads/2026/08/Gemini_Generated_Image_723v3c723v3c723v.webp'
-    ],
+    image: '/images/products/lhd-36iu.webp',
+    gallery: ['/images/products/lhd-36iu.webp'],
     inStock: true,
     tagline: 'Máy hút ẩm chính hãng Livotec',
     features: [],
@@ -427,10 +396,8 @@ export const PRODUCTS: Product[] = [
     originalPrice: 4990000,
     rating: 0,
     reviewsCount: 0,
-    image: 'https://homichi.com/wp-content/uploads/2026/08/Gemini_Generated_Image_g59k0sg59k0sg59k-300x300.webp',
-    gallery: [
-      'https://homichi.com/wp-content/uploads/2026/08/Gemini_Generated_Image_g59k0sg59k0sg59k.webp'
-    ],
+    image: '/images/products/lwh-i30a26s.webp',
+    gallery: ['/images/products/lwh-i30a26s.webp'],
     inStock: true,
     tagline: 'Bình nước nóng 30L gián tiếp chính hãng Livotec',
     features: [],
@@ -454,10 +421,8 @@ export const PRODUCTS: Product[] = [
     originalPrice: 3990000,
     rating: 0,
     reviewsCount: 0,
-    image: 'https://homichi.com/wp-content/uploads/2026/08/Gemini_Generated_Image_aj2o82aj2o82aj2o-300x300.webp',
-    gallery: [
-      'https://homichi.com/wp-content/uploads/2026/08/Gemini_Generated_Image_aj2o82aj2o82aj2o.webp'
-    ],
+    image: '/images/products/lwh-i30t26.webp',
+    gallery: ['/images/products/lwh-i30t26.webp'],
     inStock: true,
     tagline: 'Bình nước nóng 30L gián tiếp chính hãng Livotec',
     features: [],
@@ -481,10 +446,8 @@ export const PRODUCTS: Product[] = [
     originalPrice: 3990000,
     rating: 0,
     reviewsCount: 0,
-    image: 'https://homichi.com/wp-content/uploads/2026/08/Gemini_Generated_Image_g99ilog99ilog99i-300x300.webp',
-    gallery: [
-      'https://homichi.com/wp-content/uploads/2026/08/Gemini_Generated_Image_g99ilog99ilog99i.webp'
-    ],
+    image: '/images/products/lwh-i30b26.webp',
+    gallery: ['/images/products/lwh-i30b26.webp'],
     inStock: true,
     tagline: 'Bình nước nóng 30L gián tiếp chính hãng Livotec',
     features: [],
@@ -508,10 +471,8 @@ export const PRODUCTS: Product[] = [
     originalPrice: 4279000,
     rating: 0,
     reviewsCount: 0,
-    image: 'https://homichi.com/wp-content/uploads/2026/08/Gemini_Generated_Image_dnsqttdnsqttdnsq-300x300.webp',
-    gallery: [
-      'https://homichi.com/wp-content/uploads/2026/08/Gemini_Generated_Image_dnsqttdnsqttdnsq.webp'
-    ],
+    image: '/images/products/lwh-i30a25.webp',
+    gallery: ['/images/products/lwh-i30a25.webp'],
     inStock: true,
     tagline: 'Bình nước nóng 30L gián tiếp chính hãng Livotec',
     features: [],
@@ -535,10 +496,8 @@ export const PRODUCTS: Product[] = [
     originalPrice: 3890000,
     rating: 0,
     reviewsCount: 0,
-    image: 'https://homichi.com/wp-content/uploads/2026/08/Gemini_Generated_Image_jd4l6ljd4l6ljd4l-300x300.webp',
-    gallery: [
-      'https://homichi.com/wp-content/uploads/2026/08/Gemini_Generated_Image_jd4l6ljd4l6ljd4l.webp'
-    ],
+    image: '/images/products/lwh-i30x26.webp',
+    gallery: ['/images/products/lwh-i30x26.webp'],
     inStock: true,
     tagline: 'Bình nước nóng 30L gián tiếp chính hãng Livotec',
     features: [],
@@ -562,10 +521,8 @@ export const PRODUCTS: Product[] = [
     originalPrice: 3690000,
     rating: 0,
     reviewsCount: 0,
-    image: 'https://homichi.com/wp-content/uploads/2026/08/Gemini_Generated_Image_etvl0petvl0petvl-300x300.webp',
-    gallery: [
-      'https://homichi.com/wp-content/uploads/2026/08/Gemini_Generated_Image_etvl0petvl0petvl.webp'
-    ],
+    image: '/images/products/lwh-v15a26s.webp',
+    gallery: ['/images/products/lwh-v15a26s.webp'],
     inStock: true,
     tagline: 'Bình nước nóng 15L gián tiếp chính hãng Livotec',
     features: [],
@@ -589,10 +546,8 @@ export const PRODUCTS: Product[] = [
     originalPrice: 2990000,
     rating: 0,
     reviewsCount: 0,
-    image: 'https://homichi.com/wp-content/uploads/2026/08/Gemini_Generated_Image_vwlrk2vwlrk2vwlr-300x300.webp',
-    gallery: [
-      'https://homichi.com/wp-content/uploads/2026/08/Gemini_Generated_Image_vwlrk2vwlrk2vwlr.webp'
-    ],
+    image: '/images/products/lwh-v15b26.webp',
+    gallery: ['/images/products/lwh-v15b26.webp'],
     inStock: true,
     tagline: 'Bình nước nóng 15L gián tiếp chính hãng Livotec',
     features: [],
@@ -616,10 +571,8 @@ export const PRODUCTS: Product[] = [
     originalPrice: 2990000,
     rating: 0,
     reviewsCount: 0,
-    image: 'https://homichi.com/wp-content/uploads/2026/08/Gemini_Generated_Image_9quoyk9quoyk9quo-1-300x300.webp',
-    gallery: [
-      'https://homichi.com/wp-content/uploads/2026/08/Gemini_Generated_Image_9quoyk9quoyk9quo-1.webp'
-    ],
+    image: '/images/products/lwh-v15t26.webp',
+    gallery: ['/images/products/lwh-v15t26.webp'],
     inStock: true,
     tagline: 'Bình nước nóng 15L gián tiếp chính hãng Livotec',
     features: [],
@@ -643,10 +596,8 @@ export const PRODUCTS: Product[] = [
     originalPrice: 3289000,
     rating: 0,
     reviewsCount: 0,
-    image: 'https://homichi.com/wp-content/uploads/2026/08/Gemini_Generated_Image_jfvhnjfvhnjfvhnj-2-300x300.webp',
-    gallery: [
-      'https://homichi.com/wp-content/uploads/2026/08/Gemini_Generated_Image_jfvhnjfvhnjfvhnj-2.webp'
-    ],
+    image: '/images/products/lwh-v15a25.webp',
+    gallery: ['/images/products/lwh-v15a25.webp'],
     inStock: true,
     tagline: 'Bình nước nóng 15L gián tiếp chính hãng Livotec',
     features: [],
@@ -670,10 +621,8 @@ export const PRODUCTS: Product[] = [
     originalPrice: 2990000,
     rating: 0,
     reviewsCount: 0,
-    image: 'https://homichi.com/wp-content/uploads/2026/08/Gemini_Generated_Image_a8losda8losda8lo-300x300.webp',
-    gallery: [
-      'https://homichi.com/wp-content/uploads/2026/08/Gemini_Generated_Image_a8losda8losda8lo.webp'
-    ],
+    image: '/images/products/lwh-v15x26.webp',
+    gallery: ['/images/products/lwh-v15x26.webp'],
     inStock: true,
     tagline: 'Bình nước nóng 15L gián tiếp chính hãng Livotec',
     features: [],
@@ -697,10 +646,8 @@ export const PRODUCTS: Product[] = [
     originalPrice: 3685000,
     rating: 0,
     reviewsCount: 0,
-    image: 'https://homichi.com/wp-content/uploads/2026/08/Gemini_Generated_Image_jfvhnjfvhnjfvhnj-2-300x300.webp',
-    gallery: [
-      'https://homichi.com/wp-content/uploads/2026/08/Gemini_Generated_Image_jfvhnjfvhnjfvhnj-2.webp'
-    ],
+    image: '/images/products/lwh-v20a25.webp',
+    gallery: ['/images/products/lwh-v20a25.webp'],
     inStock: true,
     tagline: 'Bình nước nóng 20L gián tiếp chính hãng Livotec',
     features: [],
@@ -724,10 +671,8 @@ export const PRODUCTS: Product[] = [
     originalPrice: 3729000,
     rating: 0,
     reviewsCount: 0,
-    image: 'https://homichi.com/wp-content/uploads/2026/08/Gemini_Generated_Image_dnsqttdnsqttdnsq-300x300.webp',
-    gallery: [
-      'https://homichi.com/wp-content/uploads/2026/08/Gemini_Generated_Image_dnsqttdnsqttdnsq.webp'
-    ],
+    image: '/images/products/lwh-i20a25.webp',
+    gallery: ['/images/products/lwh-i20a25.webp'],
     inStock: true,
     tagline: 'Bình nước nóng 20L gián tiếp chính hãng Livotec',
     features: [],
@@ -751,10 +696,8 @@ export const PRODUCTS: Product[] = [
     originalPrice: 4290000,
     rating: 0,
     reviewsCount: 0,
-    image: 'https://homichi.com/wp-content/uploads/2026/08/Gemini_Generated_Image_g59k0sg59k0sg59k-300x300.webp',
-    gallery: [
-      'https://homichi.com/wp-content/uploads/2026/08/Gemini_Generated_Image_g59k0sg59k0sg59k.webp'
-    ],
+    image: '/images/products/lwh-i20a26s.webp',
+    gallery: ['/images/products/lwh-i20a26s.webp'],
     inStock: true,
     tagline: 'Bình nước nóng 20L gián tiếp chính hãng Livotec',
     features: [],
@@ -778,10 +721,8 @@ export const PRODUCTS: Product[] = [
     originalPrice: 3490000,
     rating: 0,
     reviewsCount: 0,
-    image: 'https://homichi.com/wp-content/uploads/2026/08/Gemini_Generated_Image_g99ilog99ilog99i-300x300.webp',
-    gallery: [
-      'https://homichi.com/wp-content/uploads/2026/08/Gemini_Generated_Image_g99ilog99ilog99i.webp'
-    ],
+    image: '/images/products/lwh-i20b26.webp',
+    gallery: ['/images/products/lwh-i20b26.webp'],
     inStock: true,
     tagline: 'Bình nước nóng 20L gián tiếp chính hãng Livotec',
     features: [],
@@ -805,10 +746,8 @@ export const PRODUCTS: Product[] = [
     originalPrice: 3490000,
     rating: 0,
     reviewsCount: 0,
-    image: 'https://homichi.com/wp-content/uploads/2026/08/Gemini_Generated_Image_aj2o82aj2o82aj2o-300x300.webp',
-    gallery: [
-      'https://homichi.com/wp-content/uploads/2026/08/Gemini_Generated_Image_aj2o82aj2o82aj2o.webp'
-    ],
+    image: '/images/products/lwh-i20t26.webp',
+    gallery: ['/images/products/lwh-i20t26.webp'],
     inStock: true,
     tagline: 'Bình nước nóng 20L gián tiếp chính hãng Livotec',
     features: [],
@@ -832,10 +771,8 @@ export const PRODUCTS: Product[] = [
     originalPrice: 3390000,
     rating: 0,
     reviewsCount: 0,
-    image: 'https://homichi.com/wp-content/uploads/2026/08/Gemini_Generated_Image_jd4l6ljd4l6ljd4l-300x300.webp',
-    gallery: [
-      'https://homichi.com/wp-content/uploads/2026/08/Gemini_Generated_Image_jd4l6ljd4l6ljd4l.webp'
-    ],
+    image: '/images/products/lwh-i20x26.webp',
+    gallery: ['/images/products/lwh-i20x26.webp'],
     inStock: true,
     tagline: 'Bình nước nóng 20L gián tiếp chính hãng Livotec',
     features: [],
@@ -859,10 +796,8 @@ export const PRODUCTS: Product[] = [
     originalPrice: 3990000,
     rating: 0,
     reviewsCount: 0,
-    image: 'https://homichi.com/wp-content/uploads/2026/08/Gemini_Generated_Image_etvl0petvl0petvl-300x300.webp',
-    gallery: [
-      'https://homichi.com/wp-content/uploads/2026/08/Gemini_Generated_Image_etvl0petvl0petvl.webp'
-    ],
+    image: '/images/products/lwh-v20a26s.webp',
+    gallery: ['/images/products/lwh-v20a26s.webp'],
     inStock: true,
     tagline: 'Bình nước nóng 20L gián tiếp chính hãng Livotec',
     features: [],
@@ -886,10 +821,8 @@ export const PRODUCTS: Product[] = [
     originalPrice: 3200000,
     rating: 0,
     reviewsCount: 0,
-    image: 'https://homichi.com/wp-content/uploads/2026/08/Gemini_Generated_Image_vwlrk2vwlrk2vwlr-300x300.webp',
-    gallery: [
-      'https://homichi.com/wp-content/uploads/2026/08/Gemini_Generated_Image_vwlrk2vwlrk2vwlr.webp'
-    ],
+    image: '/images/products/lwh-v20b26.webp',
+    gallery: ['/images/products/lwh-v20b26.webp'],
     inStock: true,
     tagline: 'Bình nước nóng 20L gián tiếp chính hãng Livotec',
     features: [],
@@ -913,10 +846,8 @@ export const PRODUCTS: Product[] = [
     originalPrice: 3200000,
     rating: 0,
     reviewsCount: 0,
-    image: 'https://homichi.com/wp-content/uploads/2026/08/Gemini_Generated_Image_9quoyk9quoyk9quo-1-300x300.webp',
-    gallery: [
-      'https://homichi.com/wp-content/uploads/2026/08/Gemini_Generated_Image_9quoyk9quoyk9quo-1.webp'
-    ],
+    image: '/images/products/lwh-v20t26.webp',
+    gallery: ['/images/products/lwh-v20t26.webp'],
     inStock: true,
     tagline: 'Bình nước nóng 20L gián tiếp chính hãng Livotec',
     features: [],
@@ -940,10 +871,8 @@ export const PRODUCTS: Product[] = [
     originalPrice: 3350000,
     rating: 0,
     reviewsCount: 0,
-    image: 'https://homichi.com/wp-content/uploads/2026/08/Gemini_Generated_Image_a8losda8losda8lo-300x300.webp',
-    gallery: [
-      'https://homichi.com/wp-content/uploads/2026/08/Gemini_Generated_Image_a8losda8losda8lo.webp'
-    ],
+    image: '/images/products/lwh-v20x26.webp',
+    gallery: ['/images/products/lwh-v20x26.webp'],
     inStock: true,
     tagline: 'Bình nước nóng 20L gián tiếp chính hãng Livotec',
     features: [],
@@ -967,10 +896,8 @@ export const PRODUCTS: Product[] = [
     originalPrice: 0,
     rating: 0,
     reviewsCount: 0,
-    image: 'https://homichi.com/wp-content/uploads/2026/08/quat-cay-livotec-sb-616-1-1.png-300x300.webp',
-    gallery: [
-      'https://homichi.com/wp-content/uploads/2026/08/quat-cay-livotec-sb-616-1-1.png.webp'
-    ],
+    image: '/images/products/sb-616.webp',
+    gallery: ['/images/products/sb-616.webp'],
     inStock: true,
     tagline: 'Quạt cây chính hãng Livotec',
     features: [],
@@ -993,10 +920,8 @@ export const PRODUCTS: Product[] = [
     originalPrice: 0,
     rating: 0,
     reviewsCount: 0,
-    image: 'https://homichi.com/wp-content/uploads/2026/08/quat-cay-livotec-s-420-1.png-300x300.webp',
-    gallery: [
-      'https://homichi.com/wp-content/uploads/2026/08/quat-cay-livotec-s-420-1.png.webp'
-    ],
+    image: '/images/products/s-420.webp',
+    gallery: ['/images/products/s-420.webp'],
     inStock: true,
     tagline: 'Quạt cây chính hãng Livotec',
     features: [],
@@ -1019,10 +944,8 @@ export const PRODUCTS: Product[] = [
     originalPrice: 2420000,
     rating: 0,
     reviewsCount: 0,
-    image: 'https://homichi.com/wp-content/uploads/2026/08/quat-cay-livotec-s-400-1.png-300x300.webp',
-    gallery: [
-      'https://homichi.com/wp-content/uploads/2026/08/quat-cay-livotec-s-400-1.png.webp'
-    ],
+    image: '/images/products/s-400.webp',
+    gallery: ['/images/products/s-400.webp'],
     inStock: true,
     tagline: 'Quạt cây chính hãng Livotec',
     features: [],
@@ -1044,10 +967,8 @@ export const PRODUCTS: Product[] = [
     originalPrice: 1490000,
     rating: 0,
     reviewsCount: 0,
-    image: 'https://homichi.com/wp-content/uploads/2026/08/quat-cay-livotec-s-300-1.png-300x300.webp',
-    gallery: [
-      'https://homichi.com/wp-content/uploads/2026/08/quat-cay-livotec-s-300-1.png.webp'
-    ],
+    image: '/images/products/s-300.webp',
+    gallery: ['/images/products/s-300.webp'],
     inStock: true,
     tagline: 'Quạt cây chính hãng Livotec',
     features: [],
@@ -1069,10 +990,8 @@ export const PRODUCTS: Product[] = [
     originalPrice: 1050000,
     rating: 0,
     reviewsCount: 0,
-    image: 'https://homichi.com/wp-content/uploads/2026/08/quat-cay-livotec-s-150b-1.png-300x300.webp',
-    gallery: [
-      'https://homichi.com/wp-content/uploads/2026/08/quat-cay-livotec-s-150b-1.png.webp'
-    ],
+    image: '/images/products/s-150b.webp',
+    gallery: ['/images/products/s-150b.webp'],
     inStock: true,
     tagline: 'Quạt cây chính hãng Livotec',
     features: [],
@@ -1094,10 +1013,8 @@ export const PRODUCTS: Product[] = [
     originalPrice: 1650000,
     rating: 0,
     reviewsCount: 0,
-    image: 'https://homichi.com/wp-content/uploads/2026/08/quat-cay-livotec-s-200-2-2.png-300x300.webp',
-    gallery: [
-      'https://homichi.com/wp-content/uploads/2026/08/quat-cay-livotec-s-200-2-2.png.webp'
-    ],
+    image: '/images/products/s-200.webp',
+    gallery: ['/images/products/s-200.webp'],
     inStock: true,
     tagline: 'Quạt cây chính hãng Livotec',
     features: [],
@@ -1119,10 +1036,8 @@ export const PRODUCTS: Product[] = [
     originalPrice: 1320000,
     rating: 0,
     reviewsCount: 0,
-    image: 'https://homichi.com/wp-content/uploads/2026/08/quat-cay-livotec-s-100-4.png-300x300.webp',
-    gallery: [
-      'https://homichi.com/wp-content/uploads/2026/08/quat-cay-livotec-s-100-4.png.webp'
-    ],
+    image: '/images/products/s-100.webp',
+    gallery: ['/images/products/s-100.webp'],
     inStock: true,
     tagline: 'Quạt cây chính hãng Livotec',
     features: [],
@@ -1144,10 +1059,8 @@ export const PRODUCTS: Product[] = [
     originalPrice: 11540000,
     rating: 0,
     reviewsCount: 0,
-    image: 'https://homichi.com/wp-content/uploads/2026/08/dieu-hoa-mot-chieu-livotec-dhv12i-inverter-thumbnails-18-03.png-300x300.webp',
-    gallery: [
-      'https://homichi.com/wp-content/uploads/2026/08/dieu-hoa-mot-chieu-livotec-dhv12i-inverter-thumbnails-18-03.png.webp'
-    ],
+    image: '/images/products/dhv12i.webp',
+    gallery: ['/images/products/dhv12i.webp'],
     inStock: true,
     tagline: 'Điều hòa một chiều chính hãng Livotec',
     features: [],
@@ -1171,10 +1084,8 @@ export const PRODUCTS: Product[] = [
     originalPrice: 11190000,
     rating: 0,
     reviewsCount: 0,
-    image: 'https://homichi.com/wp-content/uploads/2026/08/dieu-hoa-mot-chieu-livotec-dhv10-8i-inverter-01-06.png-300x300.webp',
-    gallery: [
-      'https://homichi.com/wp-content/uploads/2026/08/dieu-hoa-mot-chieu-livotec-dhv10-8i-inverter-01-06.png.webp'
-    ],
+    image: '/images/products/dhv10-8i.webp',
+    gallery: ['/images/products/dhv10-8i.webp'],
     inStock: true,
     tagline: 'Điều hòa một chiều chính hãng Livotec',
     features: [],
@@ -1198,10 +1109,8 @@ export const PRODUCTS: Product[] = [
     originalPrice: 10390000,
     rating: 0,
     reviewsCount: 0,
-    image: 'https://homichi.com/wp-content/uploads/2026/08/dieu-hoa-mot-chieu-livotec-dhv09i-inverter-thumbnails-18-03.png-300x300.webp',
-    gallery: [
-      'https://homichi.com/wp-content/uploads/2026/08/dieu-hoa-mot-chieu-livotec-dhv09i-inverter-thumbnails-18-03.png.webp'
-    ],
+    image: '/images/products/dhv09i.webp',
+    gallery: ['/images/products/dhv09i.webp'],
     inStock: true,
     tagline: 'Điều hòa một chiều chính hãng Livotec',
     features: [],
@@ -1225,10 +1134,8 @@ export const PRODUCTS: Product[] = [
     originalPrice: 11990000,
     rating: 0,
     reviewsCount: 0,
-    image: 'https://homichi.com/wp-content/uploads/2026/07/dieu-hoa-mot-chieu-livotec-dhv09j-inverter-thubnails-18-03.png-1-300x300.webp',
-    gallery: [
-      'https://homichi.com/wp-content/uploads/2026/07/dieu-hoa-mot-chieu-livotec-dhv09j-inverter-thubnails-18-03.png-1.webp'
-    ],
+    image: '/images/products/dhv12j.webp',
+    gallery: ['/images/products/dhv12j.webp'],
     inStock: true,
     tagline: 'Điều hòa một chiều chính hãng Livotec',
     features: [],
@@ -1252,10 +1159,8 @@ export const PRODUCTS: Product[] = [
     originalPrice: 11590000,
     rating: 0,
     reviewsCount: 0,
-    image: 'https://homichi.com/wp-content/uploads/2026/07/dieu-hoa-mot-chieu-livotec-dhv10-8j-inverter-01-06.png-300x300.webp',
-    gallery: [
-      'https://homichi.com/wp-content/uploads/2026/07/dieu-hoa-mot-chieu-livotec-dhv10-8j-inverter-01-06.png.webp'
-    ],
+    image: '/images/products/dhv10-8j.webp',
+    gallery: ['/images/products/dhv10-8j.webp'],
     inStock: true,
     tagline: 'Điều hòa một chiều chính hãng Livotec',
     features: [],
@@ -1279,10 +1184,8 @@ export const PRODUCTS: Product[] = [
     originalPrice: 10790000,
     rating: 0,
     reviewsCount: 0,
-    image: 'https://homichi.com/wp-content/uploads/2026/07/dieu-hoa-mot-chieu-livotec-dhv09j-inverter-thubnails-18-03.png-1-300x300.webp',
-    gallery: [
-      'https://homichi.com/wp-content/uploads/2026/07/dieu-hoa-mot-chieu-livotec-dhv09j-inverter-thubnails-18-03.png-1.webp'
-    ],
+    image: '/images/products/dhv09j.webp',
+    gallery: ['/images/products/dhv09j.webp'],
     inStock: true,
     tagline: 'Điều hòa một chiều chính hãng Livotec',
     features: [],
@@ -1302,7 +1205,7 @@ export const CATEGORIES_CONFIG = [
     id: 'fan',
     name: 'Quạt cây',
     subtitle: 'Quạt cây Livotec chính hãng',
-    image: 'https://homichi.com/wp-content/uploads/2026/08/quat-cay-livotec-s-400-1.png-300x300.webp',
+    image: '/images/products/s-400.webp',
     count: PRODUCTS.filter((p) => p.category === 'fan').length,
     subcategories: [] as string[],
   },
@@ -1310,7 +1213,7 @@ export const CATEGORIES_CONFIG = [
     id: 'ac',
     name: 'Điều hòa',
     subtitle: 'Điều hòa một chiều Inverter',
-    image: 'https://homichi.com/wp-content/uploads/2026/08/dieu-hoa-mot-chieu-livotec-dhv09i-inverter-thumbnails-18-03.png-300x300.webp',
+    image: '/images/products/dhv09i.webp',
     count: PRODUCTS.filter((p) => p.category === 'ac').length,
     subcategories: [] as string[],
   },
@@ -1318,7 +1221,7 @@ export const CATEGORIES_CONFIG = [
     id: 'air_cooler',
     name: 'Quạt điều hòa',
     subtitle: 'Làm mát bằng hơi nước',
-    image: 'https://homichi.com/wp-content/uploads/2026/09/Gemini_Generated_Image_z9gfrbz9gfrbz9gf-300x300.webp',
+    image: '/images/products/lac-g62.webp',
     count: PRODUCTS.filter((p) => p.category === 'air_cooler').length,
     subcategories: [] as string[],
   },
@@ -1326,7 +1229,7 @@ export const CATEGORIES_CONFIG = [
     id: 'water_heater',
     name: 'Bình nước nóng',
     subtitle: 'Bình gián tiếp 15L / 20L / 30L',
-    image: 'https://homichi.com/wp-content/uploads/2026/08/Gemini_Generated_Image_g59k0sg59k0sg59k-300x300.webp',
+    image: '/images/products/lwh-i30a26s.webp',
     count: PRODUCTS.filter((p) => p.category === 'water_heater').length,
     subcategories: [] as string[],
   },
@@ -1334,7 +1237,7 @@ export const CATEGORIES_CONFIG = [
     id: 'induction',
     name: 'Bếp từ',
     subtitle: 'Bếp từ đôi & bếp điện từ',
-    image: 'https://homichi.com/wp-content/uploads/2026/10/livotec-e-smart-lio-666v-06-07-1.png-300x300.webp',
+    image: '/images/products/lio-666v.webp',
     count: PRODUCTS.filter((p) => p.category === 'induction').length,
     subcategories: [] as string[],
   },
@@ -1342,7 +1245,7 @@ export const CATEGORIES_CONFIG = [
     id: 'dehumidifier',
     name: 'Máy hút ẩm',
     subtitle: 'Chống ẩm mốc mùa nồm',
-    image: 'https://homichi.com/wp-content/uploads/2026/09/Gemini_Generated_Image_ydqjy9ydqjy9ydqj-300x300.webp',
+    image: '/images/products/lhd-18iu.webp',
     count: PRODUCTS.filter((p) => p.category === 'dehumidifier').length,
     subcategories: [] as string[],
   },
@@ -1350,7 +1253,7 @@ export const CATEGORIES_CONFIG = [
     id: 'heater',
     name: 'Máy sưởi',
     subtitle: 'Sưởi gốm ấm áp mùa đông',
-    image: 'https://homichi.com/wp-content/uploads/2026/09/may-suoi-livotec-lch-2089t-2.png-300x300.webp',
+    image: '/images/products/lch-2089t.webp',
     count: PRODUCTS.filter((p) => p.category === 'heater').length,
     subcategories: [] as string[],
   },
@@ -1358,7 +1261,7 @@ export const CATEGORIES_CONFIG = [
     id: 'vacuum',
     name: 'Máy hút bụi',
     subtitle: 'Máy hút bụi không dây',
-    image: 'https://homichi.com/wp-content/uploads/2026/09/Gemini_Generated_Image_l2dv8hl2dv8hl2dv-300x300.webp',
+    image: '/images/products/lv-100.webp',
     count: PRODUCTS.filter((p) => p.category === 'vacuum').length,
     subcategories: [] as string[],
   }

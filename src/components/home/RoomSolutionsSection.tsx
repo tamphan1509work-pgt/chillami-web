@@ -87,11 +87,11 @@ export const RoomSolutionsSection: React.FC<RoomSolutionsSectionProps> = ({
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-slate-50 rounded-3xl p-6 sm:p-10 border border-slate-200/80">
           {/* Left Column: Space Photo & Tips (5 cols) */}
           <div className="lg:col-span-5 space-y-5">
-            <div className="relative w-full aspect-4/3 rounded-2xl overflow-hidden shadow-md">
+            <div className="relative w-full aspect-4/3 rounded-2xl overflow-hidden shadow-md bg-white">
               <img
                 src={currentSpace.image}
                 alt={currentSpace.title}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain p-6 pb-20"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
               <div className="absolute bottom-4 left-4 right-4 text-white">

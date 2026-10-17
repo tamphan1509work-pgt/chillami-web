@@ -49,7 +49,7 @@ export const ROOM_SOLUTIONS = [
     id: 'bedroom',
     title: 'Giải Pháp Phòng Ngủ',
     tagline: 'Giấc ngủ sâu tĩnh lặng, nhiệt độ êm dịu, không khô họng',
-    image: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=800&q=80',
+    image: '/images/products/dhv09i.webp',
     recommendedProducts: ['dhv09i', 's-400', 'lhd-18iu'],
     tips: [
       'Phòng dưới 15m² thường phù hợp điều hòa 9.000 BTU; phòng 15–20m² nên chọn 12.000 BTU.',
@@ -61,7 +61,7 @@ export const ROOM_SOLUTIONS = [
     id: 'living',
     title: 'Giải Pháp Phòng Khách',
     tagline: 'Không gian mở thanh lịch, luồng khí tươi tuần hoàn mát mẻ',
-    image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80',
+    image: '/images/products/lac-g62.webp',
     recommendedProducts: ['dhv12i', 'lac-g62', 's-300'],
     tips: [
       'Kết hợp quạt cây hoặc quạt điều hòa với điều hòa giúp không khí lưu thông đều khắp phòng.',
@@ -72,7 +72,7 @@ export const ROOM_SOLUTIONS = [
     id: 'kitchen',
     title: 'Giải Pháp Nhà Bếp',
     tagline: 'Nấu ăn nhanh gọn, căn bếp luôn sạch sẽ',
-    image: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=800&q=80',
+    image: '/images/products/lio-666v.webp',
     recommendedProducts: ['lio-666v', 'lid-888', 'lv-99'],
     tips: [
       'Bếp từ đôi nấu được hai món cùng lúc; cần dùng nồi chảo có đáy nhiễm từ.',
@@ -84,7 +84,7 @@ export const ROOM_SOLUTIONS = [
     id: 'bathroom',
     title: 'Giải Pháp Phòng Tắm',
     tagline: 'Nước nóng ấm áp an toàn tuyệt đối, thư giãn sảng khoái',
-    image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80',
+    image: '/images/products/lwh-v15a26s.webp',
     recommendedProducts: ['lwh-v15a26s', 'lwh-i30a26s', 'lch-1597d'],
     tips: [
       'Gia đình 1–2 người phù hợp bình 15L; 2–3 người chọn 20L; 3–5 người chọn 30L.',
